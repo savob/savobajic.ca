@@ -1,7 +1,7 @@
 ---
 title: "Targeted Hyperthermia for Glioblastoma Using Multiple Magnetic Tweezer System"
 date: 2022-01-01T23:56:30-05:00
-draft: true
+draft: false
 writers: "X. Wang, T.C. Wang, S. Bajic, X. Chen, G.Q. Shan, X. Huang, Y. Sun"
 publishedDate: "Under preparation"
 publication: "2022 Biophysical Society Meeting"
