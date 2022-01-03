@@ -6,7 +6,7 @@
      <title>{{ .Title }}</title>
 </head>
 <body>
-     {{ partial "header" (dict "Kind" .Kind "Template" "Single") }}
+     {{ partial "header" . }}
 
      <div style="margin:25px;">
           <h1>{{.Title}}</h1>
