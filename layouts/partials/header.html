@@ -1,0 +1,18 @@
+{{ range .Site.Params.custom_css}}
+<link rel="stylesheet" href="{{ . | absURL }}">
+{{else}}
+oh no no custom_css!!
+{{end }}
+
+<header>
+  <h1><a style=""href="/">Savo's Site</a></h1>
+</header>
+
+<nav>
+  <a class="navBar" href="/projects/">Projects</a>
+  <a class="navBar" href="/about-me/">About</a>
+  <a class="navBar" href="/publications/">Publications</a>
+  <a class="navBar" href="/work-experience/">Work Experience</a>
+  <a class="navBar" href="/volunteering/">Volunteering</a>
+  <a class="navBar" href="/contact/">Contact</a>
+</nav>

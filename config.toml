@@ -1,0 +1,6 @@
+baseURL = "http://savobajic.ca/"
+languageCode = "en-us"
+title = "Savo's Site"
+
+[params]
+custom_css = ["css/style.css"]

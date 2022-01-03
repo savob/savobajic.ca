@@ -1,0 +1,49 @@
+header {
+	text-align: center;
+	height: 75px;
+	padding:1px;
+	text-transform:capitalize;
+	background-color:#42a5f5;
+	color:white;
+	
+	text-decoration: none;
+	color:white;
+}
+
+a.navBar {
+	padding: 20px;
+	font-size:32px;
+	text-decoration: none;
+}
+
+nav {
+	border: 2px solid black;
+	margin:10px; 
+	padding:10px;
+	
+	text-align: center;
+	text-transform:capitalize;
+}
+
+div.pagelistentry {
+	border: 1px solid black;
+	margin:10px;
+	padding:10px;
+}
+
+p.pagelistentry {
+	font-size:18px;
+}
+
+.subtitle {
+  color:grey;
+  font-size:16px;
+}
+
+.workcontent {
+  font-size:18px;
+}
+
+.workintro {
+	margin:25px;
+}

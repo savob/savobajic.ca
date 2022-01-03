@@ -1,0 +1,24 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ .Title }}</title>
+</head>
+
+<body>
+  {{ partial "header" . }}
+
+  <div class="workintro">
+    <h1>{{.Title}}</h1>
+    <div class="subtitle">Organization: {{ .Params.company }}</div>
+    <div class="subtitle">Term: {{.Params.period}}</div>
+    <div class="worksummary"> {{ .Params.summary }} </div>
+  </div>
+     
+  <div class="workcontent">{{.Content}}</div>
+     
+  {{ partial "footer" . }}
+</body>
+</html>
