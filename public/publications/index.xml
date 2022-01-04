@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Savo&#39;s Site</title>
+    <link>https://savobajic.ca/publications/</link>
+    <description>Recent content in Publications on Savo&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jan 2022 23:29:01 -0500</lastBuildDate><atom:link href="https://savobajic.ca/publications/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Targeted Hyperthermia for Glioblastoma Using Multiple Magnetic Tweezer System</title>
+      <link>https://savobajic.ca/publications/targeted-hyperthermia-for-glioblastoma-using-multiple-magnetic-tweezer-system/</link>
+      <pubDate>Sat, 01 Jan 2022 23:56:30 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/publications/targeted-hyperthermia-for-glioblastoma-using-multiple-magnetic-tweezer-system/</guid>
+      <description>&lt;em&gt;&lt;strong&gt;NOTE: Currently under preparation&lt;/strong&gt;&lt;/em&gt;. In this publication my primary contributions were the simulations of the distributed alternating magnetic field using COMSOL Multiphysics resulting from a coil bed I designed iteratively to improve the control and strength of the magnetic field for therapy.</description>
+    </item>
+    
+  </channel>
+</rss>

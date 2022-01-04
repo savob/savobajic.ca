@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>signal processing on Savo&#39;s Site</title>
+    <link>https://savobajic.ca/tags/signal-processing/</link>
+    <description>Recent content in signal processing on Savo&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Jan 2022 15:40:31 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/signal-processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ocilloscope</title>
+      <link>https://savobajic.ca/projects/academic/ocilloscope/</link>
+      <pubDate>Mon, 03 Jan 2022 15:40:31 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/academic/ocilloscope/</guid>
+      <description>Produced an Arduino-based USB oscilloscope capable of measuring signals up to 20kHz, with AC/DC coupling and hardware 1X/10X scaling</description>
+    </item>
+    
+  </channel>
+</rss>

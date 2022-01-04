@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Savo&#39;s Site</title>
+    <link>https://savobajic.ca/tags/</link>
+    <description>Recent content in Tags on Savo&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Jan 2022 15:40:31 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3D printing</title>
+      <link>https://savobajic.ca/tags/3d-printing/</link>
+      <pubDate>Mon, 03 Jan 2022 15:40:31 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/3d-printing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prototyping</title>
+      <link>https://savobajic.ca/tags/prototyping/</link>
+      <pubDate>Mon, 03 Jan 2022 15:40:31 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/prototyping/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>signal processing</title>
+      <link>https://savobajic.ca/tags/signal-processing/</link>
+      <pubDate>Mon, 03 Jan 2022 15:40:31 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/signal-processing/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

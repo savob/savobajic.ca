@@ -1,0 +1,34 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ .Title }}</title>
+</head>
+<body>
+  {{ partial "header" . }}
+
+  <div style="margin:25px;">
+  
+  <h1>{{.Title}}</h1>
+  <div class="subtitle">Last Modified: {{ dateFormat "Monday, Jan 2, 2006" .Params.lastmod }}</div>
+  <div class="subtitle">Status: {{ .Params.status }}</div>
+  
+  {{ if .Params.finished }}
+  <div class="subtitle">Period: {{ .Params.started }} - {{ .Params.finished }}</div>
+  {{else}}
+	<div class="subtitle">Started: {{ .Params.started }}</div>
+	{{end}}
+	
+	{{ if .Params.client }}<div class="subtitle">Client: {{ .Params.client }}</div> {{end}}
+	<div class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
+  
+  
+  
+  <div class="projectcontent">{{.Content}}</div>
+  
+  </div>
+  
+  {{ partial "footer" . }}
+</body>
+</html>

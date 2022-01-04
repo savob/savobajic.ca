@@ -1,0 +1,52 @@
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Ocilloscope</title>
+</head>
+<body>
+     
+<link rel="stylesheet" href="https://savobajic.ca/css/style.css">
+
+
+<header>
+  <h1><a style=""href="/">Savo's Site</a></h1>
+</header>
+
+<nav>
+  <a class="navBar" href="/projects/">Projects</a>
+  <a class="navBar" href="/about-me/">About</a>
+  <a class="navBar" href="/publications/">Publications</a>
+  <a class="navBar" href="/work-experience/">Work Experience</a>
+  <a class="navBar" href="/volunteering/">Volunteering</a>
+  <a class="navBar" href="/contact/">Contact</a>
+</nav>
+
+
+     <div style="margin:25px;">
+          <h1>Ocilloscope</h1>
+          <div style="color:grey; font-size:16px;">Monday, Jan 3, 2022</div>
+          <div style="color:grey; font-size:16px;"></div>
+          <div style="font-size:18px;"><h1 id="overview">Overview</h1>
+<p>This was a semester long project I worked on with another student. We were presented a specification outlining the desired performance characteristics of our final design which was a hobbyist oscilloscope based around an Arduino Nano to convert an either ±15V or ±1.5V input signal to a 0 to 5V output to be read by the Arduino, complete with an adjustable trigger level and AC or DC coupling selection. In addition to creating a design that would condition the signal as required, we were tasked with documenting our progress and research in regular reports.</p>
+<p>We began by researching existing circuits that achieved a something we needed and then combining these individual circuits and specifying parts to make proposed solutions. This began with schematics of our designs in SPICE software (PSPICE originally, then LTSPICE) and simulating them with different expected inputs and see if the outputs would be what was expected.</p>
+<p>My teammate and I then refined our designs and decided on our proposed design before moving to EAGLE to design a circuit board for a prototype of the proposed design. Knowing that these boards would not have through-plated holes I designed for assembly by keeping all traces on the solder side of the board for the prototype.</p>
+<p>Once the boards were manufactured and we collected them along with our selected parts, it was our duty to assemble and test them using a function generator and an oscilloscope to verify our designs. Here are some photographs of the prototype.</p>
+<p><!-- raw HTML omitted --></p>
+<p>Our tests were successful, however I made the mistake of misreading a label when gathering components which led to one of the capacitors being three orders of magnitude too large (1uF instead of 1pF), which resulting in our low-pass filter cut-off frequency being 20Hz in tests instead of 20kHz. This being a human error, did not require us revising our design to correct.</p>
+<p>The final stage of the project was to add the Arduino and ±15V power supplies for the op-amps to the board and design a 3D printed housing for the system. We used the suggested component values for the circuits except for the -15V supply where we adapted a -12V design to configure it to output -15V. Below is the section of our final report displaying the system in different configurations.</p>
+<p>This final design was also subjected to testing to verify its performance to the criteria specified at the start of the project. Our testing was partially limited by the equipment we had (namely the range being limited to ±10V on the function generators, preventing proper ±15V tests). Our results were not perfect, however we deemed them appropriate given the expected use of this ‘product’ being hobbyists on low frequency signals.</p>
+<h2 id="objective">Objective</h2>
+<h2 id="constraints">Constraints</h2>
+<h2 id="takeaways">Takeaways</h2>
+<h1 id="detail">Detail</h1>
+</div>
+     </div>
+     <div style="height:35px;"></div>
+<div style=" position:fixed; color: white; height:35px; background-color:#757575; bottom:0px; text-align:center; width:99%">
+     <p style="margin:10px; "><a style="color: white; " target="_blank" href="http://savobajic.ca/">Savo Bajic's Website</a></p>
+</div>
+
+</body>
+</html>
