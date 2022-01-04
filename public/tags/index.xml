@@ -6,11 +6,65 @@
     <description>Recent content in Tags on Savo&#39;s Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Jan 2022 15:40:31 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 18:04:19 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bluetooth</title>
+      <link>https://savobajic.ca/tags/bluetooth/</link>
+      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/bluetooth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EAGLE</title>
+      <link>https://savobajic.ca/tags/eagle/</link>
+      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/eagle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>embedded</title>
+      <link>https://savobajic.ca/tags/embedded/</link>
+      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/embedded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HPVDT</title>
+      <link>https://savobajic.ca/tags/hpvdt/</link>
+      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/hpvdt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mobile</title>
+      <link>https://savobajic.ca/tags/mobile/</link>
+      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/mobile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vehicle</title>
+      <link>https://savobajic.ca/tags/vehicle/</link>
+      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/vehicle/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>3D printing</title>
       <link>https://savobajic.ca/tags/3d-printing/</link>
-      <pubDate>Mon, 03 Jan 2022 15:40:31 -0500</pubDate>
+      <pubDate>Thu, 03 Jan 2019 15:40:31 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/3d-printing/</guid>
       <description></description>
@@ -19,7 +73,7 @@
     <item>
       <title>prototyping</title>
       <link>https://savobajic.ca/tags/prototyping/</link>
-      <pubDate>Mon, 03 Jan 2022 15:40:31 -0500</pubDate>
+      <pubDate>Thu, 03 Jan 2019 15:40:31 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/prototyping/</guid>
       <description></description>
@@ -28,9 +82,36 @@
     <item>
       <title>signal processing</title>
       <link>https://savobajic.ca/tags/signal-processing/</link>
-      <pubDate>Mon, 03 Jan 2022 15:40:31 -0500</pubDate>
+      <pubDate>Thu, 03 Jan 2019 15:40:31 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/signal-processing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kinematics</title>
+      <link>https://savobajic.ca/tags/kinematics/</link>
+      <pubDate>Thu, 04 Oct 2018 17:20:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/kinematics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MATLAB</title>
+      <link>https://savobajic.ca/tags/matlab/</link>
+      <pubDate>Thu, 04 Oct 2018 17:20:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/matlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>https://savobajic.ca/tags/optimization/</link>
+      <pubDate>Thu, 04 Oct 2018 17:20:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/optimization/</guid>
       <description></description>
     </item>
     

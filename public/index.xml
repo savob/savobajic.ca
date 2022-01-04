@@ -8,12 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Jan 2022 19:14:23 -0500</lastBuildDate><atom:link href="https://savobajic.ca/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ocilloscope</title>
-      <link>https://savobajic.ca/projects/academic/ocilloscope/</link>
-      <pubDate>Mon, 03 Jan 2022 15:40:31 -0500</pubDate>
+      <title>Zephyr</title>
+      <link>https://savobajic.ca/projects/extracurricular/zephyr/</link>
+      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
       
-      <guid>https://savobajic.ca/projects/academic/ocilloscope/</guid>
-      <description>Produced an Arduino-based USB oscilloscope capable of measuring signals up to 20kHz, with AC/DC coupling and hardware 1X/10X scaling</description>
+      <guid>https://savobajic.ca/projects/extracurricular/zephyr/</guid>
+      <description>Designed the electronics system for Zephys, HPVDT&amp;rsquo;s road legal entry to ASME 2019</description>
     </item>
     
     <item>
@@ -77,6 +77,24 @@
       
       <guid>https://savobajic.ca/publications/targeted-hyperthermia-for-glioblastoma-using-multiple-magnetic-tweezer-system/</guid>
       <description>&lt;em&gt;&lt;strong&gt;NOTE: Currently under preparation&lt;/strong&gt;&lt;/em&gt;. In this publication my primary contributions were the simulations of the distributed alternating magnetic field using COMSOL Multiphysics resulting from a coil bed I designed iteratively to improve the control and strength of the magnetic field for therapy.</description>
+    </item>
+    
+    <item>
+      <title>Oscilloscope</title>
+      <link>https://savobajic.ca/projects/academic/ocilloscope/</link>
+      <pubDate>Thu, 03 Jan 2019 15:40:31 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/academic/ocilloscope/</guid>
+      <description>Produced an Arduino-based USB oscilloscope capable of measuring signals up to 20kHz, with AC/DC coupling and hardware 1X/10X scaling</description>
+    </item>
+    
+    <item>
+      <title>Mountain Bike Suspension</title>
+      <link>https://savobajic.ca/projects/academic/bike/</link>
+      <pubDate>Thu, 04 Oct 2018 17:20:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/academic/bike/</guid>
+      <description>Developed a kinematic model in MATLAB to perform a design optimization of a mountain bike suspension system.</description>
     </item>
     
   </channel>

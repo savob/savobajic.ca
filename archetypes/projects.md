@@ -13,9 +13,9 @@ summary:
 
 # Overview
 
-## Objective
+## Requirements
 
-## Constraints
+## Objectives
 
 ## Takeaways
 
