@@ -11,16 +11,16 @@
   <div style="margin:25px;">
   
   <h1>{{.Title}}</h1>
-  <div class="subtitle">Last Modified: {{ dateFormat "Monday, Jan 2, 2006" .Params.lastmod }}</div>
-  <div class="subtitle">Status: {{ .Params.status }}</div>
+  <div class="subtitle"><strong>Last Modified:</strong> {{ dateFormat "Monday, Jan 2, 2006" .Params.lastmod }}</div>
+  <div class="subtitle"><strong>Status:</strong> {{ .Params.status }}</div>
   
   {{ if .Params.finished }}
-  <div class="subtitle">Period: {{ .Params.started }} - {{ .Params.finished }}</div>
+  <div class="subtitle"><strong>Period:</strong> {{ .Params.started }} - {{ .Params.finished }}</div>
   {{else}}
-	<div class="subtitle">Started: {{ .Params.started }}</div>
+	<div class="subtitle"><strong>Started:</strong> {{ .Params.started }}</div>
 	{{end}}
 	
-	{{ if .Params.client }}<div class="subtitle">Client: {{ .Params.client }}</div> {{end}}
+	{{ if .Params.client }}<div class="subtitle"><strong>Client:</strong> {{ .Params.client }}</div> {{end}}
 	<div class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
   
   

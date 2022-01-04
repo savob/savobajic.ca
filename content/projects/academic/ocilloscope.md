@@ -1,6 +1,6 @@
 ---
 title: "Oscilloscope"
-date: 2022-01-03T15:40:31-05:00
+date: 2019-01-03T15:40:31-05:00
 draft: false
 started: "Feb 2019"
 finished: "Mar 2019"
@@ -17,15 +17,15 @@ In this class project I was tasked with a classmate to produce an Arduino-based 
 signals up 20kHz with an amplitude up to ±15V. The design was developed and prototyped incrementally to 
 introduce new features and fulfil the obectives and constraints.
 
-## Objectives
-- Use only four opamps in the design (so only one quad op-amp IC is needed)
-
-## Constraints
+## Requirements
 - Must convert an either ±15V (1X) or ±1.5V (10X) input signal to a 0 to 5V output (to be read by the Arduino)
   - 1X and 10X input mode to be manually selected
 - Accept input via standard BNC connector
 - Must have a manually adjustable trigger level
 - Must have AC or DC coupling selection
+
+## Objectives
+- Use only four opamps in the design (so only one quad op-amp IC is needed)
 
 ## Takeaways
 The importance of understanding of the prototyping process. By understanding how we were going to prototype
@@ -38,7 +38,7 @@ component rather than a via.
 
 <figure>
 <img src="/images/scope-traces.png" alt="Bottom trace layout on a prototype board">
-<figcaption>Fig. 1 - The trace layout of one prototype board, all on one layer.</figure>
+<figcaption>Fig. 1 - The trace layout of one prototype board, all on one layer</figure>
 </figure>
 
 # Detail
