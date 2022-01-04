@@ -5,7 +5,7 @@ draft: false
 started: "Feb 2019"
 finished: "Mar 2019"
 status: "Completed"
-client: MIE346, Analog and Digital electronics
+client: MIE346, Analog and Digital Electronics
 tags: [prototyping, 3D printing, signal processing]
 skills:
 summary: "Produced an Arduino-based USB oscilloscope capable of measuring signals up to 20kHz, with AC/DC coupling and hardware 1X/10X scaling"
@@ -37,7 +37,7 @@ to, when a connection needed to be on the "top", the trace would be terminated t
 component rather than a via.
 
 <figure>
-<img src="{{ .baseURL }}/images/scope-traces.png"> alt="Bottom trace layout on a prototype board">
+<img src="/images/scope-traces.png"> alt="Bottom trace layout on a prototype board">
 <figcaption>Fig. 1 - The trace layout of one prototype board, all on one layer.</figure>
 </figure>
 
