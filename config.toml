@@ -1,6 +1,15 @@
 baseURL = "https://savobajic.ca/"
 languageCode = "en-us"
 title = "Savo's Site"
+enableGitInfo = true
+
 
 [params]
 custom_css = ["css/style.css"]
+
+[markup.goldmark.renderer]
+      unsafe = true
+      
+[frontmatter]
+  lastmod = ["lastmod", ":git", "date", "publishDate"]
+

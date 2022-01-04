@@ -47,3 +47,17 @@ p.pagelistentry {
 .workintro {
 	margin:25px;
 }
+
+figure {
+	width: 500px;
+}
+
+figure img {
+	width: 100%;
+	height: auto;
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+}

@@ -4,6 +4,7 @@ date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: true
 started: ????????
+finished:
 status: "Design"
 client:
 tags:
