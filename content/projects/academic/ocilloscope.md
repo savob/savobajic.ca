@@ -1,5 +1,5 @@
 ---
-title: "Ocilloscope"
+title: "Oscilloscope"
 date: 2022-01-03T15:40:31-05:00
 draft: false
 started: "Feb 2019"
@@ -37,7 +37,7 @@ to, when a connection needed to be on the "top", the trace would be terminated t
 component rather than a via.
 
 <figure>
-<img src="/images/scope-traces.png" alt="Bottom trace layout on a prototype board">
+<img src="{{ .baseURL }}/images/scope-traces.png"> alt="Bottom trace layout on a prototype board">
 <figcaption>Fig. 1 - The trace layout of one prototype board, all on one layer.</figure>
 </figure>
 
