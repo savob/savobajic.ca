@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IGB on Savo&#39;s Site</title>
+    <link>https://savobajic.ca/tags/igb/</link>
+    <description>Recent content in IGB on Savo&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 04 May 2018 18:48:16 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/igb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Force Feedback Tester</title>
+      <link>https://savobajic.ca/projects/work/force-feedback/</link>
+      <pubDate>Fri, 04 May 2018 18:48:16 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/work/force-feedback/</guid>
+      <description>Expanded on my basic, single-axis, force feedback system to now monitor and control up to six axes and eased user configuration</description>
+    </item>
+    
+  </channel>
+</rss>

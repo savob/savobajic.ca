@@ -6,11 +6,11 @@
     <description>Recent content in Tags on Savo&#39;s Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Jan 2022 18:04:19 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Jan 2019 18:04:19 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bluetooth</title>
       <link>https://savobajic.ca/tags/bluetooth/</link>
-      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/bluetooth/</guid>
       <description></description>
@@ -19,7 +19,7 @@
     <item>
       <title>EAGLE</title>
       <link>https://savobajic.ca/tags/eagle/</link>
-      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/eagle/</guid>
       <description></description>
@@ -28,7 +28,7 @@
     <item>
       <title>embedded</title>
       <link>https://savobajic.ca/tags/embedded/</link>
-      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/embedded/</guid>
       <description></description>
@@ -37,7 +37,7 @@
     <item>
       <title>HPVDT</title>
       <link>https://savobajic.ca/tags/hpvdt/</link>
-      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/hpvdt/</guid>
       <description></description>
@@ -46,7 +46,7 @@
     <item>
       <title>mobile</title>
       <link>https://savobajic.ca/tags/mobile/</link>
-      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/mobile/</guid>
       <description></description>
@@ -55,7 +55,7 @@
     <item>
       <title>vehicle</title>
       <link>https://savobajic.ca/tags/vehicle/</link>
-      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/vehicle/</guid>
       <description></description>
@@ -112,6 +112,69 @@
       <pubDate>Thu, 04 Oct 2018 17:20:32 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IGB</title>
+      <link>https://savobajic.ca/tags/igb/</link>
+      <pubDate>Fri, 04 May 2018 18:48:16 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/igb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LabVIEW</title>
+      <link>https://savobajic.ca/tags/labview/</link>
+      <pubDate>Fri, 04 May 2018 18:48:16 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/labview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PLC</title>
+      <link>https://savobajic.ca/tags/plc/</link>
+      <pubDate>Fri, 04 May 2018 18:48:16 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/plc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>robotics</title>
+      <link>https://savobajic.ca/tags/robotics/</link>
+      <pubDate>Fri, 04 May 2018 18:48:16 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/robotics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>validation</title>
+      <link>https://savobajic.ca/tags/validation/</link>
+      <pubDate>Fri, 04 May 2018 18:48:16 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/validation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Arduino</title>
+      <link>https://savobajic.ca/tags/arduino/</link>
+      <pubDate>Wed, 04 May 2016 19:32:27 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>toy</title>
+      <link>https://savobajic.ca/tags/toy/</link>
+      <pubDate>Wed, 04 May 2016 19:32:27 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/toy/</guid>
       <description></description>
     </item>
     

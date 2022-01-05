@@ -6,14 +6,23 @@
     <description>Recent content in embedded on Savo&#39;s Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Jan 2022 18:04:19 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/embedded/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Jan 2019 18:04:19 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/embedded/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Zephyr</title>
       <link>https://savobajic.ca/projects/extracurricular/zephyr/</link>
-      <pubDate>Tue, 04 Jan 2022 18:04:19 -0500</pubDate>
+      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
       
       <guid>https://savobajic.ca/projects/extracurricular/zephyr/</guid>
       <description>Designed the electronics system for Zephys, HPVDT&amp;rsquo;s road legal entry to ASME 2019</description>
+    </item>
+    
+    <item>
+      <title>gameBOI</title>
+      <link>https://savobajic.ca/projects/personal/gameboi/</link>
+      <pubDate>Wed, 04 May 2016 19:32:27 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/gameboi/</guid>
+      <description>A small handheld capable of offering several user selectable games to be played using the two buttons and 32 LEDs that form a display. &lt;strong&gt;Created in under two weeks!&lt;/strong&gt;</description>
     </item>
     
   </channel>
