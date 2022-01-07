@@ -9,18 +9,20 @@
 
 <body>
   {{ partial "header" . }}
-  <article>
-  <section class="articleIntroBlock">
+
+  <main>
+  <section class="mainIntro">
     <h1>{{.Title}}</h1>
     <div class="worksummary"> {{ .Params.summary }} </div>
     <div class="subtitle">Organization: {{ .Params.company }}</div>
     <div class="subtitle">Term: {{.Params.period}}</div>
   </section>
      
-  <section class="articleContent">
+  <section class="mainContent">
   {{.Content}}
   </section>
-  </article>
+  </main>
+  
   {{ partial "footer" . }}
 </body>
 </html>

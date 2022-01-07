@@ -90,7 +90,7 @@ p.pagelistentry {
 
 
 
-article {
+main {
 	max-width: 1000px;
 	margin: 0px auto;
 	padding: 0px 10px;
@@ -114,10 +114,10 @@ figcaption {
 	font-style: italic;
 }
 
-section.articleIntroBlock {
+section.mainIntro {
 	margin:25px;
 }
-section.articleContent {
+section.mainContent {
 	
 }
 
