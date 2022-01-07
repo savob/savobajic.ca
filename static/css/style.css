@@ -1,51 +1,77 @@
+body {
+	font-family: Helvetica, sans-serif;
+	margin: 0;
+}
+
+/* Header and footer config */
 header {
 	text-align: center;
 	text-transform:capitalize;
 	background-color:DodgerBlue;
-	color:white;
+	
 	width: 100%;
+	
+	margin: 0 0 5px 0;
+}
+
+header h1 {margin: 0;}
+header a, footer a  {
+	text-decoration: none; 
+	color:white;
 }
 
 footer {
 	color: white; 
-	background-color:#757575; 
+	background-color:DimGray; 
 	bottom:0px; 
 	padding: 10px 0px;
-		text-align:center; 
+	text-align:center; 
 	width: 100%;
 }
 
-article {
-	max-width: 1000px;
-	margin: 5px;
-}
 
-a.footer {
-	text-decoration: none;
-	color: white;
-}
-
-a.navBar:link, a.navBar:visited {
-  
-  color: white;
-  padding: 10px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 2px;
-}
-
-a.navBar:hover, a.navBar:active {
-  background-color: red;
-}
-
-
+/* Nav bar stuff */
 nav {
 	margin: 0px 0px 10px 0px; 
 	background-color: DodgerBlue;
 	text-align: center;
 	text-transform:capitalize;
 }
+
+nav ul {
+  list-style-type: none;
+  margin: 0px auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li{
+	margin: 2px 1px 2px 2px;
+	display: inline;
+	border-right: 1px solid #bbb;
+}
+nav li:last-child {
+  border-right: none;
+}
+
+nav li a {
+  
+  color: white;
+  padding: 8px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 1px;
+}
+
+
+
+
+
+
+
+
+
 
 div.pagelistentry {
 	border: 1px solid black;
@@ -62,20 +88,24 @@ p.pagelistentry {
 	font-size:16px;
 }
 
-.workcontent {
+
+
+article {
+	max-width: 1000px;
+	margin: 0px auto;
+	padding: 0px 10px;
+	
 	font-size:18px;
 }
 
-.workintro {
-	margin:25px;
-}
-
 figure {
-	padding: 10px;
+	margin: 10px;
+	padding: 0px;
 }
 
 figure img {
 	width: 100%;
+	margin: 2px 0px;
 	height: auto;
 }
 
@@ -84,11 +114,11 @@ figcaption {
 	font-style: italic;
 }
 
-section.projectContent {
+section.articleIntroBlock {
+	margin:25px;
+}
+section.articleContent {
 	
 }
 
-body {
-	font-family: Helvetica, sans-serif;
-	margin: 0;
-}
+
