@@ -68,7 +68,7 @@ and out of the seat (referred to as “Ingress/Egress” testing).
 
 <figure>
 <img src="/images/ff-kneeload.jpg">
-<figcaption>Fig. 1 - Kneeload robot</figure>
+<figcaption>Fig. 1 - Kneeload robot</figcaption>
 </figure>
 
 Other than their end-effectors, these robots were virtually identical. They were the same KUKA brand welding arm, used the same 
@@ -84,7 +84,7 @@ both robots.
 
 <figure>
 <img src="/images/ff-robot-overview.png">
-<figcaption>Fig. 2 - Diagram of information flow in the system</figure>
+<figcaption>Fig. 2 - Diagram of information flow in the system</figcaption>
 </figure>
 
 With the hardware selected (binary input/output modules for the PLCs) and configured, I began the process of making software to run 
@@ -96,7 +96,7 @@ system for future tests.
 <img src="/images/ff-sys-overview.jpg">
 <figcaption>Fig. 3 - The layout of the knee load system (ingress/egress was setup similarly). The robot control cabinet is just out of 
 frame on the left, PLC is the bottom left, DAQ (and safety systems) are in-between the displays, the companion computer is on the right. 
-(The other computer is used to backup the robot)</figure>
+(The other computer is used to backup the robot)</figcaption>
 </figure>
 
 The robot motion software was written on the robot control computer using KUKA Robotics Language (KRL), I learned and tested different 
@@ -124,6 +124,6 @@ programming with examples.
 
 <figure>
 <img src="/images/ff-troubleshooting.png">
-<figcaption>Fig. 4 - An exerpt from the troubleshooting guide</figure>
+<figcaption>Fig. 4 - An exerpt from the troubleshooting guide</figcaption>
 </figure>
 

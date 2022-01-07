@@ -58,21 +58,21 @@ The circuit design is straightforward, the heart of it is the ATMega microcontro
 
 <figure>
 <img src="/images/gameboi-schematic.png">
-<figcaption>Fig. 1 - gameBOI schematic</figure>
+<figcaption>Fig. 1 - gameBOI schematic</figcaption>
 </figure>
 
 This was then turned into a printed circuit board layout without much difficulty due to the repeated parts of the circuit and few branching signals allowing most of the signals to be routed on the top layer.
 
 <figure>
 <img src="/images/gameboi-layout.png">
-<figcaption>Fig. 2 - Layout of the circuit in EAGLE</figure>
+<figcaption>Fig. 2 - Layout of the circuit in EAGLE</figcaption>
 </figure>
 
 Assembly was simple, I order a stencil for the paste which greatly expedited this process, allowing me to make the boards in series. I once made two within 40 minutes! I forgot to include one resistor in the initial order, so an equivalent through-hole resistor was used in the first few boards.
 
 <figure>
 <img src="/images/gameboi-assembled.jpg">
-<figcaption>Fig. 3 - Completed assembly</figure>
+<figcaption>Fig. 3 - Completed assembly</figcaption>
 </figure>
 
 With the hardware sorted I moved to programming. This was done using the Arduino IDE as I had the microcontroller configured just like the one present in an Arduino Nano. The structure was a large switch in a loop and depending on the global variables used to store the state of the system, different functions would be called to work the display/process input in different modes.
@@ -86,7 +86,7 @@ Uploading the code to the boards was done by using another Arduino I had as an i
 
 <figure>
 <img src="/images/gameboi-programming.jpg">
-<figcaption>Fig. 4 - Programming setup</figure>
+<figcaption>Fig. 4 - Programming setup</figcaption>
 </figure>
 
 
