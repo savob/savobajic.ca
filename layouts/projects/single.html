@@ -6,29 +6,31 @@
   <title>{{ .Title }}</title>
 </head>
 <body>
-  {{ partial "header" . }}
+	{{ partial "header" . }}
 
-  <div style="margin:25px;">
+	<article>
+  <section class="projectMetaBlock">
+	<h1>{{.Title}}</h1>
+	<div class="subtitle"><strong>Last Modified:</strong> {{ dateFormat "Monday, Jan 2, 2006" .Params.lastmod }}</div>
+	<div class="subtitle"><strong>Status:</strong> {{ .Params.status }}</div>
   
-  <h1>{{.Title}}</h1>
-  <div class="subtitle"><strong>Last Modified:</strong> {{ dateFormat "Monday, Jan 2, 2006" .Params.lastmod }}</div>
-  <div class="subtitle"><strong>Status:</strong> {{ .Params.status }}</div>
-  
-  {{ if .Params.finished }}
-  <div class="subtitle"><strong>Period:</strong> {{ .Params.started }} - {{ .Params.finished }}</div>
-  {{else}}
+	{{ if .Params.finished }}
+	<div class="subtitle"><strong>Period:</strong> {{ .Params.started }} - {{ .Params.finished }}</div>
+	{{else}}
 	<div class="subtitle"><strong>Started:</strong> {{ .Params.started }}</div>
 	{{end}}
 	
 	{{ if .Params.client }}<div class="subtitle"><strong>Client:</strong> {{ .Params.client }}</div> {{end}}
 	<div class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
+  </section>
   
   
+	<section class="projectContent">
+	{{.Content}}
+	</section>
   
-  <div class="projectcontent">{{.Content}}</div>
+	</article>
   
-  </div>
-  
-  {{ partial "footer" . }}
+	{{ partial "footer" . }}
 </body>
 </html>
