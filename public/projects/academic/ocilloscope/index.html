@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -6,40 +7,43 @@
   <title>Oscilloscope</title>
 </head>
 <body>
-  
-<link rel="stylesheet" href="https://savobajic.ca/css/style.css">
+	
+<link rel="stylesheet" href=/css/style.css>
 
 
 <header>
-  <h1><a style=""href="/">Savo's Site</a></h1>
+  <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-  <a class="navBar" href="/projects/">Projects</a>
-  <a class="navBar" href="/about-me/">About</a>
-  <a class="navBar" href="/publications/">Publications</a>
-  <a class="navBar" href="/work-experience/">Work Experience</a>
-  <a class="navBar" href="/volunteering/">Volunteering</a>
-  <a class="navBar" href="/contact/">Contact</a>
+<ul>
+ 
+<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
+</ul>
 </nav>
 
-
-  <div style="margin:25px;">
-  
-  <h1>Oscilloscope</h1>
-  <div class="subtitle"><strong>Last Modified:</strong> Tuesday, Jan 4, 2022</div>
-  <div class="subtitle"><strong>Status:</strong> Completed</div>
-  
-  
-  <div class="subtitle"><strong>Period:</strong> Feb 2019 - Mar 2019</div>
+	
+	<main>
+  <section class="mainIntro">
+	<h1>Oscilloscope</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> Saturday, Jan 8, 2022</div>
+	<div class="subtitle"><strong>Status:</strong> Completed</div>
   
 	
+	<div class="subtitle"><strong>Period:</strong> February 2019 - March 2019</div>
+	
+	
 	<div class="subtitle"><strong>Client:</strong> MIE346, Analog and Digital Electronics</div> 
+	
 	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/prototyping">prototyping</a> <a href="/tags/3d-printing">3D printing</a> <a href="/tags/signal-processing">signal processing</a> </div>
+	
+	<div class="introLine"></div>
+  </section>
   
   
-  
-  <div class="projectcontent"><h1 id="overview">Overview</h1>
+	<section class="mainContent">
+	<h1 id="overview">Overview</h1>
 <p>In this class project I was tasked with a classmate to produce an Arduino-based oscilloscope for a PC for
 signals up 20kHz with an amplitude up to ±15V. The design was developed and prototyped incrementally to
 introduce new features and fulfil the obectives and constraints.</p>
@@ -68,7 +72,7 @@ to, when a connection needed to be on the &ldquo;top&rdquo;, the trace would be 
 component rather than a via.</p>
 <figure>
 <img src="/images/scope-traces.png" alt="Bottom trace layout on a prototype board">
-<figcaption>Fig. 1 - The trace layout of one prototype board, all on one layer</figure>
+<figcaption>Fig. 1 - The trace layout of one prototype board, all on one layer</figcaption>
 </figure>
 <h1 id="detail">Detail</h1>
 <p>This was a semester long project I worked on with another student. We were presented a specification outlining the
@@ -82,7 +86,7 @@ circuits and specifying parts to make proposed solutions. This began with schema
 what was expected.</p>
 <figure>
 <img src="/images/scope-report.png" alt="An exerpt from the reports">
-<figcaption>Fig. 2 - An exerpt from the report</figure>
+<figcaption>Fig. 2 - An exerpt from the report</figcaption>
 </figure>
 <p>My teammate and I then refined our designs and decided on our proposed design before moving to EAGLE to design a
 circuit board for a prototype of the proposed design. Knowing that these boards would not have through-plated
@@ -93,7 +97,7 @@ the prototype.</p>
 <figure>
 <img src="/images/scope-top-proto.jpg" alt="Prototype board from the top">
 <img src="/images/scope-bottom-proto.jpg" alt="Prototype board from the bottom">
-<figcaption>Fig. 3 and 4 - The prototype board from the top and bottom respectively</figure>
+<figcaption>Fig. 3 and 4 - The prototype board from the top and bottom respectively</figcaption>
 </figure>
 <p>Our tests were successful, however I made the mistake of misreading a label when gathering components which led
 to one of the capacitors being three orders of magnitude too large (1uF instead of 1pF), which resulting in our
@@ -105,20 +109,20 @@ the -15V supply where we adapted a -12V design to configure it to output -15V. B
 report displaying the system in different configurations.</p>
 <figure>
 <img src="/images/scope-views.jpg" alt="Views from report">
-<figcaption>Fig. 5 - A series of views from the report</figure>
+<figcaption>Fig. 5 - A series of views from the report</figcaption>
 </figure>
 <p>This final design was also subjected to testing to verify its performance to the criteria specified at the start
 of the project. Our testing was partially limited by the equipment we had (namely the range being limited to ±10V
 on the function generators, preventing proper ±15V tests). Our results were not perfect, however we deemed them
 appropriate given the expected use of this ‘product’ being hobbyists on low frequency signals.</p>
-</div>
+
+	</section>
   
-  </div>
+	</main>
   
-  <div style="height:35px;"></div>
-<div style=" position:fixed; color: white; height:35px; background-color:#757575; bottom:0px; text-align:center; width:99%">
-     <p style="margin:10px; "><a style="color: white; " target="_blank" href="http://savobajic.ca/">Savo Bajic's Website</a></p>
-</div>
+	<footer>
+     <a href="http://savobajic.ca/">Savo Bajic's Website</a>
+</footer>
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -6,40 +7,43 @@
   <title>gameBOI</title>
 </head>
 <body>
-  
-<link rel="stylesheet" href="https://savobajic.ca/css/style.css">
+	
+<link rel="stylesheet" href=/css/style.css>
 
 
 <header>
-  <h1><a style=""href="/">Savo's Site</a></h1>
+  <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-  <a class="navBar" href="/projects/">Projects</a>
-  <a class="navBar" href="/about-me/">About</a>
-  <a class="navBar" href="/publications/">Publications</a>
-  <a class="navBar" href="/work-experience/">Work Experience</a>
-  <a class="navBar" href="/volunteering/">Volunteering</a>
-  <a class="navBar" href="/contact/">Contact</a>
+<ul>
+ 
+<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
+</ul>
 </nav>
 
-
-  <div style="margin:25px;">
-  
-  <h1>gameBOI</h1>
-  <div class="subtitle"><strong>Last Modified:</strong> Wednesday, May 4, 2016</div>
-  <div class="subtitle"><strong>Status:</strong> Completed</div>
-  
-  
-  <div class="subtitle"><strong>Period:</strong> May 2019 - May 2019</div>
+	
+	<main>
+  <section class="mainIntro">
+	<h1>gameBOI</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> Friday, Jan 7, 2022</div>
+	<div class="subtitle"><strong>Status:</strong> Completed</div>
   
 	
+	<div class="subtitle"><strong>Period:</strong> May 2019 - May 2019</div>
 	
+	
+	
+	<div class="subtitle"><strong>GitHub Repository:</strong> <a href="https://github.com/savob/gameBOI">https://github.com/savob/gameBOI</a></div> 
 	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/embedded">embedded</a> <a href="/tags/toy">toy</a> <a href="/tags/eagle">EAGLE</a> <a href="/tags/arduino">Arduino</a> </div>
+	
+	<div class="introLine"></div>
+  </section>
   
   
-  
-  <div class="projectcontent"><h1 id="overview">Overview</h1>
+	<section class="mainContent">
+	<h1 id="overview">Overview</h1>
 <p>I wanted to make a project to help show off my design capabilities to potential employers I was interviewing at for my PEY, so I
 decided that a small handheld game would be a fun way to do so and make a nice impression. I started this just before May started
 and had my first interview on the 10th, so I had to rush!</p>
@@ -75,17 +79,17 @@ that most issues seem to stem from my novice worksmanship. This will hopefully i
 <p>The circuit design is straightforward, the heart of it is the ATMega microcontroller which processes the button inputs on its interrupt pins, and controls the LEDs using a serial interface to four discrete shift registers (each controlling a group of 8 LEDs). Below is most of the schematic, one shift register and its LEDs have been left out.</p>
 <figure>
 <img src="/images/gameboi-schematic.png">
-<figcaption>Fig. 1 - gameBOI schematic</figure>
+<figcaption>Fig. 1 - gameBOI schematic</figcaption>
 </figure>
 <p>This was then turned into a printed circuit board layout without much difficulty due to the repeated parts of the circuit and few branching signals allowing most of the signals to be routed on the top layer.</p>
 <figure>
 <img src="/images/gameboi-layout.png">
-<figcaption>Fig. 2 - Layout of the circuit in EAGLE</figure>
+<figcaption>Fig. 2 - Layout of the circuit in EAGLE</figcaption>
 </figure>
 <p>Assembly was simple, I order a stencil for the paste which greatly expedited this process, allowing me to make the boards in series. I once made two within 40 minutes! I forgot to include one resistor in the initial order, so an equivalent through-hole resistor was used in the first few boards.</p>
 <figure>
 <img src="/images/gameboi-assembled.jpg">
-<figcaption>Fig. 3 - Completed assembly</figure>
+<figcaption>Fig. 3 - Completed assembly</figcaption>
 </figure>
 <p>With the hardware sorted I moved to programming. This was done using the Arduino IDE as I had the microcontroller configured just like the one present in an Arduino Nano. The structure was a large switch in a loop and depending on the global variables used to store the state of the system, different functions would be called to work the display/process input in different modes.</p>
 <p>I aimed to use as little memory and space to allow for as many potential game modes as possible. I used several methods to optimize my code for this including but not limited to:</p>
@@ -97,16 +101,16 @@ that most issues seem to stem from my novice worksmanship. This will hopefully i
 <p>Uploading the code to the boards was done by using another Arduino I had as an in-system programmer (ISP) by connecting the I2C headers of the two boards, along with a separate line for resetting the gameBOI. I then uploaded the code using the “Upload with programmer” option in the Arduino IDE.</p>
 <figure>
 <img src="/images/gameboi-programming.jpg">
-<figcaption>Fig. 4 - Programming setup</figure>
+<figcaption>Fig. 4 - Programming setup</figcaption>
 </figure>
-</div>
+
+	</section>
   
-  </div>
+	</main>
   
-  <div style="height:35px;"></div>
-<div style=" position:fixed; color: white; height:35px; background-color:#757575; bottom:0px; text-align:center; width:99%">
-     <p style="margin:10px; "><a style="color: white; " target="_blank" href="http://savobajic.ca/">Savo Bajic's Website</a></p>
-</div>
+	<footer>
+     <a href="http://savobajic.ca/">Savo Bajic's Website</a>
+</footer>
 
 </body>
 </html>

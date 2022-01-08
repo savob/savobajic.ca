@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Extracurricular on Savo&#39;s Site</title>
+    <title>Extracurricular Projects on Savo&#39;s Site</title>
     <link>https://savobajic.ca/projects/extracurricular/</link>
-    <description>Recent content in Extracurricular on Savo&#39;s Site</description>
+    <description>Recent content in Extracurricular Projects on Savo&#39;s Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Jan 2022 23:30:47 -0500</lastBuildDate><atom:link href="https://savobajic.ca/projects/extracurricular/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
       
       <guid>https://savobajic.ca/projects/extracurricular/zephyr/</guid>
-      <description>Designed the electronics system for Zephys, HPVDT&amp;rsquo;s road legal entry to ASME 2019</description>
+      <description>Designed the electronics system for Zephy, HPVDT&amp;rsquo;s entry to ASME 2019</description>
     </item>
     
   </channel>

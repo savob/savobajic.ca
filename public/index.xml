@@ -8,57 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Jan 2022 19:14:23 -0500</lastBuildDate><atom:link href="https://savobajic.ca/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>F!rosh Games Co-Chair</title>
-      <link>https://savobajic.ca/volunteering/frosh-games/</link>
-      <pubDate>Mon, 03 Jan 2022 01:54:35 -0500</pubDate>
-      
-      <guid>https://savobajic.ca/volunteering/frosh-games/</guid>
-      <description>Organized and delivered a sporting event to over 1000 participants across 20 teams, coordinating with over 20 parties internal and external to the Orientation committee</description>
-    </item>
-    
-    <item>
-      <title>Frosh Prank</title>
-      <link>https://savobajic.ca/volunteering/frosh-prank/</link>
-      <pubDate>Mon, 03 Jan 2022 01:54:33 -0500</pubDate>
-      
-      <guid>https://savobajic.ca/volunteering/frosh-prank/</guid>
-      <description>Organized an hour of entertainment for around 1000 attendees across 10 rooms with unique schedules for each one</description>
-    </item>
-    
-    <item>
       <title>Head of Electronics</title>
       <link>https://savobajic.ca/volunteering/hpvdt/</link>
       <pubDate>Mon, 03 Jan 2022 01:54:30 -0500</pubDate>
       
       <guid>https://savobajic.ca/volunteering/hpvdt/</guid>
       <description>Oversee the development and production of novel electrical systems to aid in the operation of our boundary pushing vehicles</description>
-    </item>
-    
-    <item>
-      <title>Reliability Engineering Coop</title>
-      <link>https://savobajic.ca/work-experience/reliability-coop/</link>
-      <pubDate>Mon, 03 Jan 2022 01:11:58 -0500</pubDate>
-      
-      <guid>https://savobajic.ca/work-experience/reliability-coop/</guid>
-      <description>Worked to oversee and implement new preventative and predictive maintenance programs, as well as providing other support to the engineering team</description>
-    </item>
-    
-    <item>
-      <title>Technical Centre Associate</title>
-      <link>https://savobajic.ca/work-experience/tech-cen-assc/</link>
-      <pubDate>Mon, 03 Jan 2022 01:11:34 -0500</pubDate>
-      
-      <guid>https://savobajic.ca/work-experience/tech-cen-assc/</guid>
-      <description>Was introduced to, and developed automated durability testing for automotive parts.</description>
-    </item>
-    
-    <item>
-      <title>Advance Co-op</title>
-      <link>https://savobajic.ca/work-experience/advance-coop/</link>
-      <pubDate>Mon, 03 Jan 2022 01:11:10 -0500</pubDate>
-      
-      <guid>https://savobajic.ca/work-experience/advance-coop/</guid>
-      <description>Focused on developing novel quality assurance testing schemes for an automotive component supplier.</description>
     </item>
     
     <item>
@@ -71,12 +26,30 @@
     </item>
     
     <item>
+      <title>Reliability Engineering Coop</title>
+      <link>https://savobajic.ca/work-experience/reliability-coop/</link>
+      <pubDate>Wed, 03 Jul 2019 01:11:58 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/work-experience/reliability-coop/</guid>
+      <description>Worked to oversee and implement new preventative and predictive maintenance programs, as well as providing other support to the engineering team</description>
+    </item>
+    
+    <item>
+      <title>F!rosh Games Co-Chair</title>
+      <link>https://savobajic.ca/volunteering/frosh-games/</link>
+      <pubDate>Fri, 03 May 2019 01:54:35 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/volunteering/frosh-games/</guid>
+      <description>Organized and delivered a sporting event to over 1000 participants across 20 teams, coordinating with over 20 parties internal and external to the Orientation committee</description>
+    </item>
+    
+    <item>
       <title>Zephyr</title>
       <link>https://savobajic.ca/projects/extracurricular/zephyr/</link>
       <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
       
       <guid>https://savobajic.ca/projects/extracurricular/zephyr/</guid>
-      <description>Designed the electronics system for Zephys, HPVDT&amp;rsquo;s road legal entry to ASME 2019</description>
+      <description>Designed the electronics system for Zephy, HPVDT&amp;rsquo;s entry to ASME 2019</description>
     </item>
     
     <item>
@@ -107,12 +80,39 @@
     </item>
     
     <item>
+      <title>F!rosh P!rank Co-Chair</title>
+      <link>https://savobajic.ca/volunteering/frosh-prank/</link>
+      <pubDate>Thu, 03 May 2018 01:54:33 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/volunteering/frosh-prank/</guid>
+      <description>Organized an hour of entertainment for around 1000 attendees across 10 rooms with unique schedules for each one</description>
+    </item>
+    
+    <item>
+      <title>Advance Co-op</title>
+      <link>https://savobajic.ca/work-experience/advance-coop/</link>
+      <pubDate>Thu, 03 May 2018 01:11:10 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/work-experience/advance-coop/</guid>
+      <description>Focused on developing novel quality assurance testing schemes for an automotive component supplier.</description>
+    </item>
+    
+    <item>
       <title>Kneeload Tester</title>
       <link>https://savobajic.ca/projects/work/kneeload/</link>
       <pubDate>Thu, 04 May 2017 19:00:56 -0500</pubDate>
       
       <guid>https://savobajic.ca/projects/work/kneeload/</guid>
       <description>Implemented a system to allow a legacy (pre-2000) welding robot to recieve force feedback from a modern computer.</description>
+    </item>
+    
+    <item>
+      <title>Technical Centre Associate</title>
+      <link>https://savobajic.ca/work-experience/tech-cen-assc/</link>
+      <pubDate>Wed, 03 May 2017 01:11:34 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/work-experience/tech-cen-assc/</guid>
+      <description>Was introduced to, and developed automated durability testing for automotive parts.</description>
     </item>
     
     <item>

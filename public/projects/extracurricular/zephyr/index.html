@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -6,40 +7,43 @@
   <title>Zephyr</title>
 </head>
 <body>
-  
-<link rel="stylesheet" href="https://savobajic.ca/css/style.css">
+	
+<link rel="stylesheet" href=/css/style.css>
 
 
 <header>
-  <h1><a style=""href="/">Savo's Site</a></h1>
+  <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-  <a class="navBar" href="/projects/">Projects</a>
-  <a class="navBar" href="/about-me/">About</a>
-  <a class="navBar" href="/publications/">Publications</a>
-  <a class="navBar" href="/work-experience/">Work Experience</a>
-  <a class="navBar" href="/volunteering/">Volunteering</a>
-  <a class="navBar" href="/contact/">Contact</a>
+<ul>
+ 
+<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
+</ul>
 </nav>
 
-
-  <div style="margin:25px;">
-  
-  <h1>Zephyr</h1>
-  <div class="subtitle"><strong>Last Modified:</strong> Tuesday, Jan 4, 2022</div>
-  <div class="subtitle"><strong>Status:</strong> Completed</div>
-  
-  
-  <div class="subtitle"><strong>Period:</strong> Jan 2019 - Apr 2019</div>
+	
+	<main>
+  <section class="mainIntro">
+	<h1>Zephyr</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> Saturday, Jan 8, 2022</div>
+	<div class="subtitle"><strong>Status:</strong> Completed</div>
   
 	
+	<div class="subtitle"><strong>Period:</strong> January 2019 - April 2019</div>
+	
+	
 	<div class="subtitle"><strong>Client:</strong> HPVDT</div> 
+	<div class="subtitle"><strong>GitHub Repository:</strong> <a href="https://github.com/hpvdt/zypher">https://github.com/hpvdt/zypher</a></div> 
 	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/hpvdt">HPVDT</a> <a href="/tags/vehicle">vehicle</a> <a href="/tags/mobile">mobile</a> <a href="/tags/embedded">embedded</a> <a href="/tags/bluetooth">Bluetooth</a> <a href="/tags/eagle">EAGLE</a> </div>
+	
+	<div class="introLine"></div>
+  </section>
   
   
-  
-  <div class="projectcontent"><h1 id="overview">Overview</h1>
+	<section class="mainContent">
+	<h1 id="overview">Overview</h1>
 <p>For the Human Powered Vehicles Design Team&rsquo;s (HPVDT) 2019 entry to the American Society of Mechanical Engineers&rsquo;s
 (ASME) human powered vehicle competiton I was tasked as Head of Electronics to produce an electronics system to
 control the lights as well as collecting and displaying data to the rider.</p>
@@ -108,7 +112,7 @@ adjusted without replacing any components.</p>
 <figure>
 <img src="/images/zephyr-proto-top.jpg" alt="The top of prototype boards"/>
 <img src="/images/zephyr-proto-bot.jpg" alt="The bottom of prototype boards"/>
-<figcaption>Fig. 1 and 2 - The top and bottom (respectively) sides of the prototype board used</figure>
+<figcaption>Fig. 1 and 2 - The top and bottom (respectively) sides of the prototype board used</figcaption>
 </figure>
 <p>These were then assembled and tested. They both performed as expected and were able to deliver upwards of one amp
 to LEDs with incredible line regulation resulting in now current fluctuations over the expected input range. Line
@@ -132,11 +136,11 @@ LED drivers, allowing it to control the lights, which could be dimmed using PWM 
 </ul>
 <figure>
 <img src="/images/zephyr-layout.png">
-<figcaption>Fig. 3 - Layout of Zephyr's circuit board</figure>
+<figcaption>Fig. 3 - Layout of Zephyr's circuit board</figcaption>
 </figure>
 <figure>
 <img src="/images/zephyr-assembled.jpg">
-<figcaption>Fig. 4 - Assembled Zephyr board</figure>
+<figcaption>Fig. 4 - Assembled Zephyr board</figcaption>
 </figure>
 <p>There was space allocated to three other removable modules on the PCB: a microSD card reader for data logging, a
 Bluetooth module (an HC-05) to communicate with the rider’s mobile phone and long-range communication module (an
@@ -146,16 +150,16 @@ neglected after it was discovered that logging could be performed just as easily
 communication was not implemented as it is meant to be used for a research project for me over the following summer.</p>
 <figure>
 <img src="/images/zephyr-app.png">
-<figcaption>Fig. 5 - The app designed for Zephyr</figure>
+<figcaption>Fig. 5 - The app designed for Zephyr</figcaption>
 </figure>
-</div>
+
+	</section>
   
-  </div>
+	</main>
   
-  <div style="height:35px;"></div>
-<div style=" position:fixed; color: white; height:35px; background-color:#757575; bottom:0px; text-align:center; width:99%">
-     <p style="margin:10px; "><a style="color: white; " target="_blank" href="http://savobajic.ca/">Savo Bajic's Website</a></p>
-</div>
+	<footer>
+     <a href="http://savobajic.ca/">Savo Bajic's Website</a>
+</footer>
 
 </body>
 </html>

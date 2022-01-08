@@ -1,63 +1,163 @@
+body {
+	font-family: Helvetica, sans-serif;
+	margin: 0;
+}
+.subtitle {
+	color:grey;
+	font-size:16px;
+}
+
+
+/* Header and footer config */
 header {
 	text-align: center;
-	height: 75px;
-	padding:1px;
 	text-transform:capitalize;
-	background-color:#42a5f5;
-	color:white;
+	background-color:DodgerBlue;
 	
-	text-decoration: none;
+	width: 100%;
+	
+	margin: 0 0 5px 0;
+}
+
+header h1 {margin: 0;}
+header a, footer a  {
+	text-decoration: none; 
 	color:white;
 }
 
-a.navBar {
-	padding: 20px;
-	font-size:32px;
-	text-decoration: none;
+footer {
+	color: white; 
+	background-color:DimGray; 
+	bottom:0px; 
+	padding: 10px 0px;
+	text-align:center; 
+	width: 100%;
 }
 
+
+/* Nav bar stuff */
 nav {
-	border: 2px solid black;
-	margin:10px; 
-	padding:10px;
-	
+	margin: 0px 0px 10px 0px; 
+	background-color: DodgerBlue;
 	text-align: center;
 	text-transform:capitalize;
 }
 
-div.pagelistentry {
+nav ul {
+  list-style-type: none;
+  margin: 0px auto;
+  padding: 0;
+  overflow: hidden;
+}
+nav li{
+	margin: 2px 1px 2px 2px;
+	display: inline;
+	border-right: 1px solid #bbb;
+}
+nav li:last-child {
+  border-right: none;
+}
+
+nav li a {
+  
+  color: white;
+  padding: 8px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+article {
 	border: 1px solid black;
 	margin:10px;
 	padding:10px;
 }
 
-p.pagelistentry {
+article p {
+	font-size:18px;
+	margin: 5px 0 0;
+}
+article h2 {
+	font-size: 24px;
+	margin: 10px 0 5px 0;
+}
+article ul {
+	margin: 10px;
+	padding: 0 0 0 20px;
+}
+article li {
+	margin: 5px 0;
+}
+img.thumbnail {
+	max-width: 100%;
+}
+div.listEntry {
+	width: 100%;
+}
+
+/* If the screen is wide enough, put the summary of pages and the thumbnail side-by-side */
+@media only screen and (min-width: 650px) {
+	img.thumbnail {
+		max-width: 49.5%;
+		max-height: 100%;
+	}
+	div.listEntry {
+		width: 49.5%;
+		display: inline-block;
+	}
+}
+
+main {
+	max-width: 1000px;
+	margin: 0px auto;
+	padding: 0px 10px;
+	
 	font-size:18px;
 }
 
-.subtitle {
-  color:grey;
-  font-size:16px;
-}
-
-.workcontent {
-  font-size:18px;
-}
-
-.workintro {
-	margin:25px;
-}
-
 figure {
-	width: 500px;
+	margin: 10px;
+	padding: 0px;
 }
 
 figure img {
 	width: 100%;
+	margin: 2px 0px;
 	height: auto;
 }
 
 figcaption {
-  text-align: center;
-  font-style: italic;
+	text-align: center;
+	font-style: italic;
 }
+
+section.mainIntro {
+	margin:25px 0;
+}
+
+section.mainIntro h1 {
+	margin: auto 0 0;
+}
+div.introLine {
+	width: calc(50vw + 90%);
+	height: 8px;
+	background-color: DodgerBlue;
+	margin: 5px 0;
+	position: relative;
+	left: -50vw;
+}
+section.mainContent {
+	
+}
+
+
