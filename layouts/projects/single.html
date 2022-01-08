@@ -12,6 +12,7 @@
 	<main>
   <section class="mainIntro">
 	<h1>{{.Title}}</h1>
+	<div class="introLine"></div>
 	<div class="subtitle"><strong>Last Modified:</strong> {{ dateFormat "Monday, Jan 2, 2006" .Params.lastmod }}</div>
 	<div class="subtitle"><strong>Status:</strong> {{ .Params.status }}</div>
   
@@ -22,7 +23,10 @@
 	{{end}}
 	
 	{{ if .Params.client }}<div class="subtitle"><strong>Client:</strong> {{ .Params.client }}</div> {{end}}
+	{{ if .Params.githubLink }}<div class="subtitle"><strong>GitHub Repository:</strong> <a href="{{ .Params.githubLink }}">{{ .Params.githubLink }}</a></div> {{end}}
 	<div class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
+	
+	<div class="introLine"></div>
   </section>
   
   

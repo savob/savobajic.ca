@@ -142,7 +142,19 @@ figcaption {
 }
 
 section.mainIntro {
-	margin:25px;
+	margin:25px 0;
+}
+
+section.mainIntro h1 {
+	margin: auto 0 0;
+}
+div.introLine {
+	width: calc(50vw + 90%);
+	height: 8px;
+	background-color: DodgerBlue;
+	margin: 5px 0;
+	position: relative;
+	left: -50vw;
 }
 section.mainContent {
 	
