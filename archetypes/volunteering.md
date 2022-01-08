@@ -4,7 +4,8 @@ date: {{ .Date }}
 draft: true
 period:
 company:
-summary:
 thumbnail:
+summary:
+points:
 ---
 
