@@ -7,4 +7,4 @@ summary: "Projects that ran parallel to my studies, primarily with the [Human Po
 
 # Extracurricular Projects
 
-These are projects I have worked on for groups associated with the establishments where I was/am getting educated. Primarily the [Human Powered Vehicle Design Team](https://hpvdt.skule.ca/) at the University of Toronto.
+Projects that ran parallel to my studies, primarily with the [Human Powered Vehicle Design Team](https://hpvdt.skule.ca/) at the University of Toronto.
