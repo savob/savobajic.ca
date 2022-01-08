@@ -1,6 +1,6 @@
 ---
 title: "Summer Research"
-date: 2022-01-03T01:20:32-05:00
+date: 2021-05-03T01:20:32-05:00
 draft: true
 period: "May 2021 - Sept. 2021"
 company: "University of Toronto"

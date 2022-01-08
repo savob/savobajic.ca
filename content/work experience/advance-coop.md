@@ -1,6 +1,6 @@
 ---
 title: "Advance Co-op"
-date: 2022-01-03T01:11:10-05:00
+date: 2018-05-03T01:11:10-05:00
 draft: false
 period: "May 2018 - Aug 2018"
 company: "IGB Automotive"

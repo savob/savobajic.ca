@@ -1,6 +1,6 @@
 ---
-title: "Frosh Prank"
-date: 2022-01-03T01:54:33-05:00
+title: "F!rosh P!rank Co-Chair"
+date: 2018-05-03T01:54:33-05:00
 draft: false
 period: "May 2018 - Oct 2018"
 company: "University of Toronto Engineering Orientation"

@@ -1,6 +1,6 @@
 ---
 title: "F!rosh Games Co-Chair"
-date: 2022-01-03T01:54:35-05:00
+date: 2019-05-03T01:54:35-05:00
 draft: false
 period: "May 2019 - Oct 2019"
 company: "University of Toronto Engineering Orientation"

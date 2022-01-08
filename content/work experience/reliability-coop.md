@@ -1,6 +1,6 @@
 ---
 title: "Reliability Engineering Coop"
-date: 2022-01-03T01:11:58-05:00
+date: 2019-07-03T01:11:58-05:00
 draft: false
 period: "July 2019 - Aug. 2020"
 company: "Patheon, a part of ThermoFisher Scientific"

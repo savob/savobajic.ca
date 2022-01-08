@@ -1,6 +1,6 @@
 ---
 title: "Technical Centre Associate"
-date: 2022-01-03T01:11:34-05:00
+date: 2017-05-03T01:11:34-05:00
 draft: false
 period: "May 2017 - Aug 2017"
 company: "IGB Automotive"
