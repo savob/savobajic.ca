@@ -2,7 +2,7 @@
 title: "Technical Centre Associate"
 date: 2017-05-03T01:11:34-05:00
 draft: false
-period: "May 2017 - Aug 2017"
+period: "May 2017 - August 2017"
 company: "IGB Automotive"
 summary: "Was introduced to, and developed automated durability testing for automotive parts."
 ---

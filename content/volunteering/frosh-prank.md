@@ -2,7 +2,7 @@
 title: "F!rosh P!rank Co-Chair"
 date: 2018-05-03T01:54:33-05:00
 draft: false
-period: "May 2018 - Oct 2018"
+period: "May 2018 - October 2018"
 company: "University of Toronto Engineering Orientation"
 summary: "Organized an hour of entertainment for around 1000 attendees across 10 rooms with unique schedules for each one"
 ---

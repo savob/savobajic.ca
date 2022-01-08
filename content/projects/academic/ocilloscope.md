@@ -2,8 +2,8 @@
 title: "Oscilloscope"
 date: 2019-01-03T15:40:31-05:00
 draft: false
-started: "Feb 2019"
-finished: "Mar 2019"
+started: "February 2019"
+finished: "March 2019"
 status: "Completed"
 client: MIE346, Analog and Digital Electronics
 tags: [prototyping, 3D printing, signal processing]

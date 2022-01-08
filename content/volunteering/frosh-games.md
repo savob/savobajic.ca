@@ -2,7 +2,7 @@
 title: "F!rosh Games Co-Chair"
 date: 2019-05-03T01:54:35-05:00
 draft: false
-period: "May 2019 - Oct 2019"
+period: "May 2019 - October 2019"
 company: "University of Toronto Engineering Orientation"
 summary: "Organized and delivered a sporting event to over 1000 participants across 20 teams, coordinating with over 20 parties internal and external to the Orientation committee"
 ---

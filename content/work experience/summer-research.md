@@ -2,7 +2,7 @@
 title: "Summer Research"
 date: 2021-05-03T01:20:32-05:00
 draft: true
-period: "May 2021 - Sept. 2021"
+period: "May 2021 - September 2021"
 company: "University of Toronto"
 summary: "Contributed electro-magneto-thermal simulations and hardware design for novel hyperthermia therapy for globioblastoma."
 ---

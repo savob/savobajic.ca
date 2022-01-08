@@ -2,7 +2,7 @@
 title: "Reliability Engineering Coop"
 date: 2019-07-03T01:11:58-05:00
 draft: false
-period: "July 2019 - Aug. 2020"
+period: "July 2019 - August 2020"
 company: "Patheon, a part of ThermoFisher Scientific"
 summary: "Worked to oversee and implement new preventative and predictive maintenance programs, as well as providing other support to the engineering team"
 ---

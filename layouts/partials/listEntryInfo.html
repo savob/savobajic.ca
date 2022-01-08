@@ -7,7 +7,11 @@
 {{/* Projects */}}
 {{ if .Params.status }}
 <div class="subtitle">Status: {{ .Params.status }}</div>
+{{ if .Params.finished }}
+<div class="subtitle">Period: {{ .Params.started }} - {{ .Params.finished }}</div>
+{{else}}
 <div class="subtitle">Started: {{ .Params.started }}</div>
+{{end}}
 {{ if .Params.client }}<div class="subtitle">Client: {{ .Params.client }}</div> {{end}}
 <div class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
 
