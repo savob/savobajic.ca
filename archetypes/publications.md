@@ -6,5 +6,6 @@ writers:
 publishedDate: "Under preparation"
 publication:
 summary:
+thumbnail:
 ---
 

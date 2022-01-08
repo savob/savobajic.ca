@@ -5,5 +5,6 @@ draft: true
 period:
 company:
 summary:
+thumbnail:
 ---
 

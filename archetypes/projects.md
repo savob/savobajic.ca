@@ -10,6 +10,7 @@ tags:
 skills:
 summary:
 githubLink:
+thumbnail:
 ---
 
 # Overview

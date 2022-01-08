@@ -9,7 +9,8 @@ client:
 tags: [embedded, toy, EAGLE, Arduino]
 skills: [soldering, layout, embedded]
 summary: "A small handheld capable of offering several user selectable games to be played using the two buttons and 32 LEDs that form a display. **Created in under two weeks!**"
-githubLink:
+githubLink: "https://github.com/savob/gameBOI"
+thumbnail: "/thumbnails/gameboi.jpg"
 ---
 
 # Overview

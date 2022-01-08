@@ -20,7 +20,7 @@ Canada. I performed the double duty of Head of Engineering and Team Captian both
 Championships both years.
 
 At university I joined a few student design teams, in the end deciding to dedicate myself to the
-[Human Powered Vehicles Design Team](https://hpvdt.skule.ca/). I began primarily interested in learning how we designed
+[Human Powered Vehicle Design Team](https://hpvdt.skule.ca/). I began primarily interested in learning how we designed
 the aerodynamic fairings and the holisitc engineering process related to the employment of composite materials. However after
 having the opprotunity to work on a lighting project for one vechicle in second year and a vacancy at the start of third year,
 I became the team's Head of Electronics, a role I still am responsible for.

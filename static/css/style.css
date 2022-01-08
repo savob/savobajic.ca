@@ -2,6 +2,11 @@ body {
 	font-family: Helvetica, sans-serif;
 	margin: 0;
 }
+.subtitle {
+	color:grey;
+	font-size:16px;
+}
+
 
 /* Header and footer config */
 header {
@@ -44,7 +49,6 @@ nav ul {
   padding: 0;
   overflow: hidden;
 }
-
 nav li{
 	margin: 2px 1px 2px 2px;
 	display: inline;
@@ -73,22 +77,45 @@ nav li a {
 
 
 
-div.pagelistentry {
+article {
 	border: 1px solid black;
 	margin:10px;
 	padding:10px;
 }
 
-p.pagelistentry {
+article p {
 	font-size:18px;
+	margin: 5px 0 0;
+}
+article h2 {
+	font-size: 24px;
+	margin: 10px 0 5px 0;
+}
+article ul {
+	margin: 10px;
+	padding: 0 0 0 20px;
+}
+article li {
+	margin: 5px 0;
+}
+img.thumbnail {
+	max-width: 100%;
+}
+div.listEntry {
+	width: 100%;
 }
 
-.subtitle {
-	color:grey;
-	font-size:16px;
+/* If the screen is wide enough, put the summary of pages and the thumbnail side-by-side */
+@media only screen and (min-width: 650px) {
+	img.thumbnail {
+		max-width: 49.5%;
+		max-height: 100%;
+	}
+	div.listEntry {
+		width: 49.5%;
+		display: inline-block;
+	}
 }
-
-
 
 main {
 	max-width: 1000px;
