@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reverse engineering on Savo&#39;s Site</title>
+    <link>https://savobajic.ca/tags/reverse-engineering/</link>
+    <description>Recent content in reverse engineering on Savo&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Sep 2017 17:05:25 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Entry Fob Replication</title>
+      <link>https://savobajic.ca/projects/personal/fob/</link>
+      <pubDate>Fri, 08 Sep 2017 17:05:25 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/fob/</guid>
+      <description>Reverse engineered and replicated an access fob for my residence at the time</description>
+    </item>
+    
+  </channel>
+</rss>

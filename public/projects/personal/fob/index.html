@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Entry Fob Replication</title>
+</head>
+<body>
+	
+<link rel="stylesheet" href=/css/style.css>
+
+
+<header>
+  <h1><a href="/">Savo's Site</a></h1>
+</header>
+
+<nav>
+<ul>
+ 
+<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
+</ul>
+</nav>
+
+	
+	<main>
+  <section class="mainIntro">
+	<h1>Entry Fob Replication</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> Saturday, Jan 8, 2022</div>
+	<div class="subtitle"><strong>Status:</strong> Complete</div>
+  
+	
+	<div class="subtitle"><strong>Period:</strong> September 2017 - September 2017</div>
+	
+	
+	
+	
+	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/reverse-engineering">reverse engineering</a> <a href="/tags/embedded">embedded</a> <a href="/tags/signal-processing">signal processing</a> <a href="/tags/eagle">EAGLE</a> </div>
+	
+	<div class="introLine"></div>
+  </section>
+  
+  
+	<section class="mainContent">
+	<h1 id="overview">Overview</h1>
+<p>I was curious to see how the entry system worked in the condo I was living in during my second year of studies,
+so I decided to see how the entry fob I was given worked (ideally in a non-destructive way). After taking it
+apart it became apparent it was a glorified TV remote so I set about replicating it with hobbist equipment.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Understand how the entry fob communicates with the security system
+<ul>
+<li><em>NON-DESTRUCTIVELY!</em> I needed to return my original fob in working condition.</li>
+</ul>
+</li>
+<li>Replicate the fob if reasonably possible</li>
+</ul>
+<h2 id="objectives">Objectives</h2>
+<ul>
+<li>Spoof access to other floors (fobs only allowed access to certain floors)</li>
+<li>Allow for &ldquo;field&rdquo; reprogramming without any additional equipment</li>
+</ul>
+<h2 id="takeaways">Takeaways</h2>
+<p>Some systems are simplier than you would have expected. Case and point, the fob&rsquo;s method of communicating to the building.</p>
+<p>Having the right tools makes the difference. When trying to catch the fob&rsquo;s output signal I originally was trying
+to use an Arduino as a rudimentary oscilloscope as I did not have access to one of my own at the time. I later used
+one on campus. This caused issues for few reasons:</p>
+<ol>
+<li><strong>It wasn&rsquo;t fast enough</strong>. It could only sample and broadcast a value a few times a millisecond, which made it hard to catch the narrow spikes</li>
+<li><strong>It wasn&rsquo;t regular</strong>. The timebase was unclear, I just had a string of values with no times associated with them.</li>
+<li><strong>It was difficult to change the window of measurement</strong>. I assumed that the signal would be very short, so I set
+the system up to blast data as fast as it could. It was only when I used the oscilloscope I was able to easily
+widen the window and see the period between pulses was wider than I anticipated.</li>
+</ol>
+<h2 id="points-of-improvement">Points of Improvement</h2>
+<p>My final blaster has a few possible improvements:</p>
+<ul>
+<li><strong>Use a smaller battery, mounted to the board.</strong> 9V batteries are annoying to lug around and having it visibly dangling off the board as you use it is suspicious at best.</li>
+<li><strong>Reduce power usage.</strong> Currently the system polls the button to blast, I can change this to have it instead sleep and wake up on button presses, or use the button to connect power to the entire system.</li>
+<li><strong>Increase the range.</strong> Although the replica has a reasonable useful range for interior spaces where it is rarely further than a metre from a scanner,
+the same could not be said if I were using it in the parking garage, even on my bike. This could be easily improved by reducing the resistor value for the LEDs.</li>
+<li><strong>Finally develop the &ldquo;field&rdquo; reprogramming feature.</strong> <em>Sigh&hellip;</em></li>
+</ul>
+<h1 id="detail">Detail</h1>
+<p>I moved into a new condo for my second year of university with two friends, and to enter the building it required the use
+of a fob. I was curious to see how it worked and if I could replicate it. The fob was a small black box with two bulbs
+sticking out the front that we had to aim at little panels and a single button to blast our entry code.</p>
+<p>I started by cracking it open carefully to avoid potentially damaging any delicate components that lay hidden within.
+With the top off, I could examine the compact and rather simple circuit contained. My main interest was in the bulbs
+as I wanted to see what they were. Prior to opening it up I assumed acted as a sender and the other recieved to
+allow some cross-talk with the building. However I found that they were connected in series! This meant that they could
+only be acting as a transmitters, thus my job of reverse engineering the protocol with the building was going to be an
+order of magnitude easier.</p>
+<figure>
+<img src="/images/fob-probing.jpg">
+<figcaption>Fig. 1 - Exposed board being probed for the output signal</figcaption>
+</figure>
+<p>I took the board to an oscilloscope and began to probe the output to the LEDs try and find the secrets of the sent signal.
+I learned that the sent signal followed a consistent basic structure once the button was pressed:</p>
+<ol>
+<li>A single pulse would be sent. (Likely to awake the building&rsquo;s system)</li>
+<li>An 80ms pause</li>
+<li>A 400ms string of pulses in rapid succession</li>
+<li>A 1000ms pause</li>
+<li>(Steps 3 and 4 would repeat until the button was released)</li>
+</ol>
+<p>I focused on trying to find a pattern in the third part of the structure, first to convert it to some value in binary,
+then to see if there is any pattern between messages each time the button is pressed. The first step was easy when I
+noticed that in the message there were pulses every 4ms, with some having a second pulse 0.8ms after the first.</p>
+<figure>
+<img src="/images/fob-pulses.jpg">
+<figcaption>Fig. 2 - A section of message pulses, with a double pulse circled in red</figcaption>
+</figure>
+<p>I decided to assign the single pulses a value of 0, and the doubles a value of 1. I downloaded the data from the
+oscilloscope and prepared an spreadsheet to spot spikes in the voltage readings and translate them accordingly into a
+string of binary.</p>
+<figure>
+<img src="/images/fob-signal-data.png">
+<figcaption>Fig. 3 - An exerpt from the spreadsheet. Leftmost column is time (ms), then voltage reading (V), then if this reading is a spike compared to the previous one, and the rightmost column records a 1  if there is another spike in close succession (a 0 otherwise)</figcaption>
+</figure>
+<p>I compared the data across five samples from my fob and found that it sent the same signal each time! I confirmed
+this by measuring my roommates' fobs to see theirs acted the same, albeit with unique messages for each fob. This
+meant all I needed to do was was replicated this signal with a system of my own and I would have a fob clone!</p>
+<p>All I needed were some basic parts (microcontroller, IR LED, button, resistors, battery) and I was set. I made
+my first prototype that was about as crude as I could get away with and went to test in the parking garage,
+away from most traffic so I could test in peace without having to explain myself to, or alarming, anyone.</p>
+<figure>
+<img src="/images/fob-prototype.jpg">
+<img src="/images/fob-prototype-back.jpg">
+<figcaption>Fig. 4 and 5 - My kitchmade prototype from the front and the back</figcaption>
+</figure>
+<p>It was successful on the first try! Which was very convientent since to recode the Arduino would need me to
+return to my apartment. Obviously running around with an Arduino, battery, and breadboard taped together is
+nowhere near as subtle or durable a final product as I wanted for the long term, so I made more compact system,
+substituting the Arduino development board for an embedded ATtiny85 microcontroller with everything (except the
+battery) on a single, custom circuit board I prepared in EAGLE.</p>
+<figure>
+<img src="/images/fob-assembled.jpg">
+<figcaption>Fig. 6 - Completed assembly (the "940" is for the wavelength of LED used)</figcaption>
+</figure>
+
+	</section>
+  
+	</main>
+  
+	<footer>
+     <a href="http://savobajic.ca/">Savo Bajic's Website</a>
+</footer>
+
+</body>
+</html>

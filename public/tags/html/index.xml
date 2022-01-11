@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>html on Savo&#39;s Site</title>
+    <link>https://savobajic.ca/tags/html/</link>
+    <description>Recent content in html on Savo&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Dec 2021 23:52:32 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>This Website</title>
+      <link>https://savobajic.ca/projects/personal/website/</link>
+      <pubDate>Thu, 30 Dec 2021 23:52:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/website/</guid>
+      <description>I made this website from scratch, would you like to peer behind the curtain?</description>
+    </item>
+    
+  </channel>
+</rss>

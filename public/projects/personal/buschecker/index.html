@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bus Stop Checker</title>
+</head>
+<body>
+	
+<link rel="stylesheet" href=/css/style.css>
+
+
+<header>
+  <h1><a href="/">Savo's Site</a></h1>
+</header>
+
+<nav>
+<ul>
+ 
+<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
+</ul>
+</nav>
+
+	
+	<main>
+  <section class="mainIntro">
+	<h1>Bus Stop Checker</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> Monday, Jan 10, 2022</div>
+	<div class="subtitle"><strong>Status:</strong> Finished</div>
+  
+	
+	<div class="subtitle"><strong>Period:</strong> January 2020 - April 2020</div>
+	
+	
+	<div class="subtitle"><strong>Client:</strong> My roommates</div> 
+	<div class="subtitle"><strong>GitHub Repository:</strong> <a href="https://github.com/savob/buscheck">https://github.com/savob/buscheck</a></div> 
+	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/wifi">wifi</a> <a href="/tags/esp32">ESP32</a> <a href="/tags/ttc">TTC</a> <a href="/tags/embedded">embedded</a> <a href="/tags/xml">XML</a> </div>
+	
+	<div class="introLine"></div>
+  </section>
+  
+  
+	<section class="mainContent">
+	<h1 id="overview">Overview</h1>
+<p>There are four bus stops around my apartment that my roommates and I use regularly. As we get ready to leave our
+apartment we usually check to see if we need to run to the buses or we can take it easy getting there. Using
+our phones takes a minute since we need to navigate them and wait for a response, so I wanted to see if I could
+make a system that would sit by the door and quickly serve up bus predictions.</p>
+<p>I <em>also</em> happened to have a WiFi development board that I really wanted to put to use and justify buying.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Get bus relevant bus predictions upon request</li>
+<li>Display the next few predictions</li>
+<li>Use my ESP32 dev board</li>
+</ul>
+<h2 id="objectives">Objectives</h2>
+<ul>
+<li>Be faster to inform us of buses than our phones</li>
+</ul>
+<h2 id="takeaways">Takeaways</h2>
+<p>It was really cool to see how fast not only I began to use it and enjoy the ease it brought, but also see my
+roommates do the same.</p>
+<p>Unfortunately it didn&rsquo;t see much use once completed since we were leaving the house significantly less often
+once COVID hit.</p>
+<p>After posting it on social media I had several friends ask for their own, so it made me wonder how I could
+go about adapting it into a more commercial project. So I decided to try it with a revised design.</p>
+<h1 id="detail">Detail</h1>
+<p>Around my apartment there are several bus stops my roommates and I use, and I wanted to see if there was
+some way I could set up a system to easily check for buses before heading out like we can when using our
+phones.</p>
+<p>My first step was to see how services got their information from the TTC (Toronto Transit Company), which
+after some basic searching turned out to be through a partner site called NextBus (they have since been
+rebranded as <a href="https://test.retro.umoiq.com/?a=ttc">UMO</a>). This partner ran a service that would provide
+information in XML format to simple command.</p>
+<p>The commands and interactions are described in the following <a href="https://retro.umoiq.com/xmlFeedDocs/NextBusXMLFeed.pdf">PDF</a>,
+which shows that the commands could be for other info than just the predictions for a given route or stop.
+A very helpful command for me was the <code>&quot;routeConfig&quot;</code> command because it lists out all the stops along a
+given route with their information. I used it to determine the numbers I needed to use to properly refer
+to a given stop, because I found out that the numbers you use to text for predictions at a stop do not
+match the number NextBus uses to identify stops in requests. Below is an example of one of the stops
+along the 52 and the information provided.</p>
+<blockquote>
+<p><code>&lt;stop tag=&quot;15003&quot; title=&quot;Lawrence Station&quot; lat=&quot;43.7252499&quot; lon=&quot;-79.40225&quot; stopId=&quot;15184&quot;/&gt;</code></p>
+</blockquote>
+<p>If I were to check the buses to arrive at Lawerence Station using the TTC&rsquo;s SMS service, I would text the
+<code>&quot;stopId&quot;</code> value, <strong>15184</strong>, printed on the sign there. However when performing a request on NextBus, I need
+to use the <code>&quot;tag&quot;</code> number, <strong>15003</strong>. Once I went through and recorded all the tags I needed I had all the
+information needed to make requests for buses and successfully tried it out on my browser. It would return
+the bus predictions in this format:</p>
+<blockquote>
+<p><code>&lt;predictions agencyTitle=&quot;Toronto Transit Commission&quot; routeTitle=&quot;52-Lawrence West&quot; routeTag=&quot;52&quot; stopTitle=&quot;Lawrence Station&quot; stopTag=&quot;15003&quot;&gt;</code></p>
+<p><code>&lt;direction title=&quot;West - West - 52f Lawrence West towards Royal York&quot;&gt;</code></p>
+<p><code>&lt;prediction epochTime=&quot;1641840499907&quot; seconds=&quot;31&quot; minutes=&quot;0&quot; isDeparture=&quot;false&quot; branch=&quot;52F&quot; dirTag=&quot;52_1_52F&quot; vehicle=&quot;8943&quot; block=&quot;52_16_160&quot; tripTag=&quot;43470454&quot; /&gt;</code></p>
+<p><code>...(other predictions)...</code></p>
+</blockquote>
+<h3 id="starting-on-the-microcontroller">Starting on the Microcontroller</h3>
+<p>The next step for me was to decide what microcontroller to use for this and how to parse the returned XML
+file with it. The choice was easy since I only had one microcontroller with WiFi built in, the ESP32.
+To parse the XML I looked for some libraries online, and found one called &ldquo;<a href="https://github.com/adafruit/TinyXML">tinyXML</a>&rdquo;
+that was meant to work with any microcontroller programmed using the Arduino IDE.</p>
+<p>I looked to the example to see how to get started with it, and found they had <em>only one</em> example&hellip; NextBus!
+Needless to say, this made things much easier for me since I had a solid foundation to collect the data I
+needed. I adapted the code, changing the request parameters for what I needed at each stop and then tested
+the system to verify it worked for me with reliable data comparing its output (over serial) to my own from
+my browser.</p>
+<h3 id="interface">Interface</h3>
+<p>With data collection working, all I had to do was tie it all together with some way for users to ask for
+a stop and to display it to them. I decided to use four buttons to corrispond to each stop we wanted, and
+a large four digit, seven-segment display for the times.</p>
+<figure>
+<img src="/images/bus-board.jpg">
+<figcaption>Fig. 1 - The designed board</figcaption>
+</figure>
+<p>To display a series of bus predictions on the one display, I decided to use each digit as a seperate
+space to show a prediction. To show preditions past 9 minutes on a single digit I decided to show the
+trailing digit and illuminate the decimal point that follows it (e.g. &ldquo;1.&rdquo; is 11 minutes). This limits
+the predictions displayed to 19 minutes, which I think is reasonable since I am fairly certain no one
+would bother waiting that long for a bus.</p>
+<figure>
+<img src="/images/bus-operating.png">
+<figcaption>Fig. 2 - The board in operation (showing a bus will arrive in 7 and 14 minutes)</figcaption>
+</figure>
+<p>To help with people knowing which button to press, I made filled areas of silkscreen on the circuit
+board to allow us to label each button as needed, rather than a brutish &ldquo;BTN1&rdquo; through &ldquo;BTN4&rdquo;. I
+powered it with a basic 5V USB power supply and it rests comfortably by our door.</p>
+
+	</section>
+  
+	</main>
+  
+	<footer>
+     <a href="http://savobajic.ca/">Savo Bajic's Website</a>
+</footer>
+
+</body>
+</html>
