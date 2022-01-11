@@ -65,6 +65,9 @@ limitations of using pure HTML - namely that it was difficult to modularize one'
 This meant that in order to have a consistent header and footer I would need to either 
 copy them into each `.html` by hand, or resort to some trickery.
 
+I have these original scraps of a website I prepared in HTML by hand available for 
+download [here](/website-by-hand.zip) for those curious.
+
 After looking up solutions I came across the concept of Static Site Generators (SSGs), 
 which as the name implies, build static HTML pages for you programmatically that you then 
 host. Of the ones available the one that stood out and I decided to use was HUGO. I 
