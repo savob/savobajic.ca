@@ -6,31 +6,139 @@
     <description>Recent content in Tags on Savo&#39;s Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Jan 2019 18:04:19 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Dec 2021 23:52:32 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Bluetooth</title>
-      <link>https://savobajic.ca/tags/bluetooth/</link>
-      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
+      <title>css</title>
+      <link>https://savobajic.ca/tags/css/</link>
+      <pubDate>Thu, 30 Dec 2021 23:52:32 -0500</pubDate>
       
-      <guid>https://savobajic.ca/tags/bluetooth/</guid>
+      <guid>https://savobajic.ca/tags/css/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>EAGLE</title>
-      <link>https://savobajic.ca/tags/eagle/</link>
-      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
+      <title>html</title>
+      <link>https://savobajic.ca/tags/html/</link>
+      <pubDate>Thu, 30 Dec 2021 23:52:32 -0500</pubDate>
       
-      <guid>https://savobajic.ca/tags/eagle/</guid>
+      <guid>https://savobajic.ca/tags/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HUGO</title>
+      <link>https://savobajic.ca/tags/hugo/</link>
+      <pubDate>Thu, 30 Dec 2021 23:52:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>clock</title>
+      <link>https://savobajic.ca/tags/clock/</link>
+      <pubDate>Sat, 20 Nov 2021 14:56:48 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/clock/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hardware</title>
+      <link>https://savobajic.ca/tags/hardware/</link>
+      <pubDate>Sat, 20 Nov 2021 14:56:48 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KiCAD</title>
+      <link>https://savobajic.ca/tags/kicad/</link>
+      <pubDate>Sat, 20 Nov 2021 14:56:48 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/kicad/</guid>
       <description></description>
     </item>
     
     <item>
       <title>embedded</title>
       <link>https://savobajic.ca/tags/embedded/</link>
-      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
+      <pubDate>Thu, 09 Jan 2020 14:25:29 -0500</pubDate>
       
       <guid>https://savobajic.ca/tags/embedded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ESP32</title>
+      <link>https://savobajic.ca/tags/esp32/</link>
+      <pubDate>Thu, 09 Jan 2020 14:25:29 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/esp32/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TTC</title>
+      <link>https://savobajic.ca/tags/ttc/</link>
+      <pubDate>Thu, 09 Jan 2020 14:25:29 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/ttc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wifi</title>
+      <link>https://savobajic.ca/tags/wifi/</link>
+      <pubDate>Thu, 09 Jan 2020 14:25:29 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/wifi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XML</title>
+      <link>https://savobajic.ca/tags/xml/</link>
+      <pubDate>Thu, 09 Jan 2020 14:25:29 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/xml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Arduino</title>
+      <link>https://savobajic.ca/tags/arduino/</link>
+      <pubDate>Sat, 04 May 2019 19:32:27 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EAGLE</title>
+      <link>https://savobajic.ca/tags/eagle/</link>
+      <pubDate>Sat, 04 May 2019 19:32:27 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/eagle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>toy</title>
+      <link>https://savobajic.ca/tags/toy/</link>
+      <pubDate>Sat, 04 May 2019 19:32:27 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/toy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bluetooth</title>
+      <link>https://savobajic.ca/tags/bluetooth/</link>
+      <pubDate>Fri, 04 Jan 2019 18:04:19 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/tags/bluetooth/</guid>
       <description></description>
     </item>
     
@@ -161,20 +269,11 @@
     </item>
     
     <item>
-      <title>Arduino</title>
-      <link>https://savobajic.ca/tags/arduino/</link>
-      <pubDate>Wed, 04 May 2016 19:32:27 -0500</pubDate>
+      <title>reverse engineering</title>
+      <link>https://savobajic.ca/tags/reverse-engineering/</link>
+      <pubDate>Fri, 08 Sep 2017 17:05:25 -0500</pubDate>
       
-      <guid>https://savobajic.ca/tags/arduino/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>toy</title>
-      <link>https://savobajic.ca/tags/toy/</link>
-      <pubDate>Wed, 04 May 2016 19:32:27 -0500</pubDate>
-      
-      <guid>https://savobajic.ca/tags/toy/</guid>
+      <guid>https://savobajic.ca/tags/reverse-engineering/</guid>
       <description></description>
     </item>
     

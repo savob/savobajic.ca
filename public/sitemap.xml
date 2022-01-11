@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://savobajic.ca/volunteering/hpvdt/</loc>
-    <lastmod>2022-01-03T16:15:55-05:00</lastmod>
+    <lastmod>2022-01-08T14:08:50-05:00</lastmod>
   </url>
   
   <url>
@@ -24,7 +24,7 @@
   
   <url>
     <loc>https://savobajic.ca/projects/extracurricular/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
+    <lastmod>2022-01-08T03:03:41-05:00</lastmod>
   </url>
   
   <url>
@@ -63,32 +63,122 @@
   </url>
   
   <url>
+    <loc>https://savobajic.ca/tags/css/</loc>
+    <lastmod>2022-01-11T01:06:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/html/</loc>
+    <lastmod>2022-01-11T01:06:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/hugo/</loc>
+    <lastmod>2022-01-11T01:06:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/</loc>
+    <lastmod>2022-01-11T01:06:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/projects/personal/website/</loc>
+    <lastmod>2022-01-11T01:06:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/clock/</loc>
+    <lastmod>2022-01-10T18:54:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/hardware/</loc>
+    <lastmod>2022-01-10T18:54:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/projects/personal/clock/</loc>
+    <lastmod>2022-01-10T18:54:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/kicad/</loc>
+    <lastmod>2022-01-10T18:54:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/work-experience/summer-research/</loc>
+    <lastmod>2022-01-08T15:58:31-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/projects/personal/buschecker/</loc>
+    <lastmod>2022-01-10T14:51:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/embedded/</loc>
+    <lastmod>2022-01-10T14:51:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/esp32/</loc>
+    <lastmod>2022-01-10T14:51:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/ttc/</loc>
+    <lastmod>2022-01-10T14:51:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/wifi/</loc>
+    <lastmod>2022-01-10T14:51:29-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/xml/</loc>
+    <lastmod>2022-01-10T14:51:29-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://savobajic.ca/about-me/</loc>
     <lastmod>2022-01-07T23:50:06-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://savobajic.ca/work-experience/reliability-coop/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
+    <lastmod>2022-01-08T14:08:50-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://savobajic.ca/volunteering/frosh-games/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://savobajic.ca/tags/bluetooth/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
+    <loc>https://savobajic.ca/tags/arduino/</loc>
+    <lastmod>2022-01-08T18:44:31-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://savobajic.ca/tags/eagle/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
+    <lastmod>2022-01-08T18:44:31-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://savobajic.ca/tags/embedded/</loc>
+    <loc>https://savobajic.ca/projects/personal/gameboi/</loc>
+    <lastmod>2022-01-08T18:44:31-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/toy/</loc>
+    <lastmod>2022-01-08T18:44:31-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/volunteering/frosh-games/</loc>
+    <lastmod>2022-01-08T14:08:50-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/bluetooth/</loc>
     <lastmod>2022-01-08T02:57:48-05:00</lastmod>
   </url>
   
@@ -99,11 +189,6 @@
   
   <url>
     <loc>https://savobajic.ca/tags/mobile/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://savobajic.ca/tags/</loc>
     <lastmod>2022-01-08T02:57:48-05:00</lastmod>
   </url>
   
@@ -134,7 +219,7 @@
   
   <url>
     <loc>https://savobajic.ca/tags/signal-processing/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
+    <lastmod>2022-01-08T18:41:54-05:00</lastmod>
   </url>
   
   <url>
@@ -189,12 +274,22 @@
   
   <url>
     <loc>https://savobajic.ca/volunteering/frosh-prank/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
+    <lastmod>2022-01-08T14:08:50-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://savobajic.ca/work-experience/advance-coop/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
+    <lastmod>2022-01-08T14:08:50-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/projects/personal/fob/</loc>
+    <lastmod>2022-01-08T18:41:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://savobajic.ca/tags/reverse-engineering/</loc>
+    <lastmod>2022-01-08T18:41:54-05:00</lastmod>
   </url>
   
   <url>
@@ -204,22 +299,7 @@
   
   <url>
     <loc>https://savobajic.ca/work-experience/tech-cen-assc/</loc>
-    <lastmod>2022-01-08T02:57:48-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://savobajic.ca/tags/arduino/</loc>
-    <lastmod>2022-01-07T23:50:06-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://savobajic.ca/projects/personal/gameboi/</loc>
-    <lastmod>2022-01-07T23:50:06-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://savobajic.ca/tags/toy/</loc>
-    <lastmod>2022-01-07T23:50:06-05:00</lastmod>
+    <lastmod>2022-01-08T14:08:50-05:00</lastmod>
   </url>
   
   <url>

@@ -1,5 +1,5 @@
 ---
-title: "Website"
+title: "This Website"
 date: 2021-12-30T23:52:32-05:00
 draft: false
 started: "December 2021"
@@ -12,6 +12,8 @@ summary: "I made this website from scratch, would you like to peer behind the cu
 githubLink: "https://github.com/savob/savobajic.ca"
 thumbnail:
 ---
+
+*(This is kinda meta)*
 
 # Overview
 
