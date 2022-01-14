@@ -30,7 +30,8 @@ forecast efficacy of treatments and sensitivity of the system.
 
 I began working a couple of weeks after my studies were finished so I could visit my family before starting work. I began 
 by reading through several papers provided to me by my supervisor and then began drafting up designs for the 3D magnetic 
-field generator he tasked me with. I finished my term about four months later when I left to visit family in Europe.
+field generator he tasked me with. I did the vast majority of work from home, going into the lab only to take measurements 
+or assemble the hardware. I finished my term about four months later when I left to visit family in Europe.
 
 At the start of June, there was a one week IEEE International Conference on Robotics and Automation (ICRA) that was being 
 organized by the head of our lab and was hosted virtually, so I attended some workshops related to my current project and 
@@ -45,3 +46,8 @@ the BBB could be increased, the uptake of pharamceuticals would be improved. My 
 the tangential and compressive force trends as the alignment of the force and the stack up of tumor components was varied.
 
 From that point on my focus returned solely to completing the magnetic field generator until the end of my term mid-Spetember.
+
+<figure>
+<img src="/images/research-desk.jpg">
+<figcaption>My little work corner where I kept things when I wasn't using them. (Don't worry I had a proper desk to work at when I was in the lab!)</figcaption>
+</figure>
