@@ -26,7 +26,7 @@ I *also* happened to have a WiFi development board that I really wanted to put t
 
 - Get bus relevant bus predictions upon request
 - Display the next few predictions
-- Use my ESP32 dev board
+- Use my ESP32 development board
 
 ## Objectives
 
@@ -49,7 +49,7 @@ phones.
 
 My first step was to see how services got their information from the TTC (Toronto Transit Company), which 
 after some basic searching turned out to be through a partner site called NextBus (they have since been 
-rebranded as [UMO](https://test.retro.umoiq.com/?a=ttc)). This partner ran a service that would provide 
+re-branded as [UMO](https://test.retro.umoiq.com/?a=ttc)). This partner ran a service that would provide 
 information in XML format to simple command. 
 
 The commands and interactions are described in the following [PDF](https://retro.umoiq.com/xmlFeedDocs/NextBusXMLFeed.pdf), 
@@ -62,7 +62,7 @@ along the 52 and the information provided.
 
 > `<stop tag="15003" title="Lawrence Station" lat="43.7252499" lon="-79.40225" stopId="15184"/>`
 
-If I were to check the buses to arrive at Lawerence Station using the TTC's SMS service, I would text the 
+If I were to check the buses to arrive at Lawrence Station using the TTC's SMS service, I would text the 
 `"stopId"` value, **15184**, printed on the sign there. However when performing a request on NextBus, I need 
 to use the `"tag"` number, **15003**. Once I went through and recorded all the tags I needed I had all the 
 information needed to make requests for buses and successfully tried it out on my browser. It would return 
@@ -92,7 +92,7 @@ my browser.
 ### Interface
 
 With data collection working, all I had to do was tie it all together with some way for users to ask for 
-a stop and to display it to them. I decided to use four buttons to corrispond to each stop we wanted, and 
+a stop and to display it to them. I decided to use four buttons to correspond to each stop we wanted, and 
 a large four digit, seven-segment display for the times.
 
 <figure>
@@ -100,8 +100,8 @@ a large four digit, seven-segment display for the times.
 <figcaption>Fig. 1 - The designed board</figcaption>
 </figure>
 
-To display a series of bus predictions on the one display, I decided to use each digit as a seperate 
-space to show a prediction. To show preditions past 9 minutes on a single digit I decided to show the 
+To display a series of bus predictions on the one display, I decided to use each digit as a separate 
+space to show a prediction. To show predictions past 9 minutes on a single digit I decided to show the 
 trailing digit and illuminate the decimal point that follows it (e.g. "1." is 11 minutes). This limits 
 the predictions displayed to 19 minutes, which I think is reasonable since I am fairly certain no one 
 would bother waiting that long for a bus.

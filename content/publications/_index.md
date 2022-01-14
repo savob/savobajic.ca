@@ -6,4 +6,4 @@ draft: false
 
 # Publications
 
-Below is a summarized list of my current publications, more details are available on their respective pages.
+Below is a summarized list of my current publications, with more details available on their respective pages.

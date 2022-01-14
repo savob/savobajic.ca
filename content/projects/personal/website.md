@@ -19,7 +19,7 @@ thumbnail:
 
 I made this website to have a little showcase of myself on the web, both for professional 
 advancement as well as just a way to show off what I'm up to to friends and family. It's 
-something I've talked about doing on and off for years but finally got around to commiting 
+something I've talked about doing on and off for years but finally got around to committing 
 to it.
 
 Although I originally intended to write it entirely word by word in HTML, I switched to 
@@ -29,7 +29,7 @@ with the source files hosted on [my GitHub account](https://github.com/savob/sav
 
 ## Takeaways
 
-- Switching to HUGO was immensely helpful for ensuring that my content is consistant as well 
+- Switching to HUGO was immensely helpful for ensuring that my content is consistent as well 
 as enjoying the pages it automatically generates like tag pages in addition to the content 
 itself.
 - Making a functional site is easy, but making it engaging is not as straight forward
@@ -44,7 +44,7 @@ layout of the website.
 
 # Detailed Report
 
-After years of throwing aroung the idea of having a personal website I committed and purchased 
+After years of throwing around the idea of having a personal website I committed and purchased 
 this domain December 30th, 2021. Just in time to ring in the new year. Originally I wanted the 
 `savo.ca` domain but it has already been purchased and now redirects to a site about the 
 benefits of owning a `.ca` domain. The irony is a *bit* frustrating.
@@ -90,7 +90,7 @@ the content on my site I don't have to think about them past setting their templ
 
 I would like to minimize the amount of scripting needed for my website, ideally keep 
 it at zero to ensure that the content is viewable by anyone with just an HTML parser. 
-To that end I am try to stict to only formatting the website with CSS, and so far I 
+To that end I am try to stick to only formatting the website with CSS, and so far I 
 have been successful at sticking to it.
 
 The layout of my website is kept basic for now, largely given my CSS abilities. The 
@@ -113,7 +113,7 @@ an acceptable, if uninspired design.
 All the content for the site is prepared in markdown (`.md`) files within folders that 
 match the structure of the website, as per HUGO guidelines. Media and such are 
 uploaded to the "static" directory, also as per HUGO guidelines. For more detail about 
-how these are then synthesised into HTML, please refer to the HUGO documentation 
+how these are then synthesized into HTML, please refer to the HUGO documentation 
 [here](https://gohugo.io/documentation/).
 
 To prepare one article takes me usually a couple of hours, especially if it is an old 

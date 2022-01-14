@@ -16,7 +16,7 @@ thumbnail: "/images/clock-display.png"
 # Overview
 
 I have for a while wanted to take a break from microcontroller-based projects and try 
-my hand at doing a projet without one. Without completely surrendering myself to the 
+my hand at doing a project without one. Without completely surrendering myself to the 
 world of analog, I took a stop towards this by try to do the classic hobbyist project 
 of a clock, but only with discrete logic chips.
 
@@ -63,7 +63,7 @@ with it, grabbing ICs I felt would be useful for the job and a fistful of LED di
 
 I quickly realized that this circuit was going to have to be large to fit all the ICs, 
 especially since they all came in DIP14/16 packaging. So I felt that a modular design would 
-be wise to keep things (and issues) seperate. It would also help create a sort of cliché 
+be wise to keep things (and issues) separate. It would also help create a sort of cliché 
 "80's hacker" aesthetic when paired with all through hole components and floating jumpers.
 
 ## Module Design and Prototyping
@@ -93,7 +93,7 @@ the different modules:
 
 The first part I worked on prototyping and getting working was the displays since they 
 would be used to debug the rest of the circuit. Once I had sorted the displays based on 
-whether they were common anode or cathode, I begain to connect them to the drivers 
+whether they were common anode or cathode, I began to connect them to the drivers 
 and would cycle through values to display using a set of switches to ensure I had 
 everything connected properly. This worked without a hitch.
 
@@ -126,7 +126,7 @@ might not recent properly. I believe this is an acceptable error case because it
 will correct itself once the digit is reset, although it will through off the time 
 in the process.
 
-Below is a demonstartion of a counter set up as described to count to 10 using the 
+Below is a demonstration of a counter set up as described to count to 10 using the 
 external AND gate.
 
 <figure>
@@ -157,12 +157,12 @@ Hz (2^15) down to 1 Hz.
 
 The CD4060 was designed for this job, having a string of T flip flops needed to divide the 
 signal, as well as the circuitry needed to drive the reference crystal used to provide 
-the 32 768 Hz. The only isue is that it has only 14 flip flops internally, so two CD4060s 
+the 32 768 Hz. The only issue is that it has only 14 flip flops internally, so two CD4060s 
 are needed to divide the signal all the way down to 1 Hz.
 
-#### Protopying Issues
+#### Prototyping Issues
 
-Making the protoype module for the clock on a breadboard was where I lost most of my time. 
+Making the prototype module for the clock on a breadboard was where I lost most of my time. 
 I was using a reference design I found and the system would work fine, however if I left it 
 running for a few minutes it would start to shift its frequency higher until it would 
 eventually just stop working entirely. This is not something I wanted. I wanted to make a 
@@ -186,7 +186,7 @@ jumper I was using to ground it, inside the plastic head at one end.
 ## Circuit Boards
 
 Once I had established the circuit for each module tested and documented, I transferred 
-the schematics to KiCAD and layed out a circuit board for each module.
+the schematics to KiCAD and laid out a circuit board for each module.
 
 I used edge connectors to pass the signals between them since it will also provide more 
 structural stiffness compared to jumpers when hung up on a wall.
@@ -223,7 +223,7 @@ The only addition to the signal generator board was the power input to supply th
 
 I have all of the components ready to go.
 
-I am currently waiting for a few other projects to be designed before commiting to one 
+I am currently waiting for a few other projects to be designed before committing to one 
 massive PCB order which this will be part of.
 
 

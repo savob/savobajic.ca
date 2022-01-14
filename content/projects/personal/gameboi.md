@@ -23,7 +23,7 @@ I decided to try and keep the design simple to minimize cost and development tim
 as a known and tested microcontroller I was familiar with at the heart of it all.
 
 In the end I had a system with 32 LEDs acting as a display, with the user's input limited to two buttons. The system had initially 
-just three games (now seven!) and the ability to store highscores in non-volatile memory.
+just three games (now seven!) and the ability to store high-scores in non-volatile memory.
 
 ## Requirements
 - Play a game
@@ -33,18 +33,18 @@ just three games (now seven!) and the ability to store highscores in non-volatil
 
 ## Objectives
 - Offer multiple games
-- Store highscores even when powered off
+- Store high-scores even when powered off
 
 ## Takeaways
 
-- This was my first time properly embedding a microcontroller in a design/board and it fortunately wasn't as fightening as I thought.
+- This was my first time properly embedding a microcontroller in a design/board and it fortunately wasn't as frightening as I thought.
 I will look forward to embedding many more microcontrollers to come!
 - The assembly process using surface mount technology is quite interesting and presents its own benefits such as easier component 
 placement and smaller components which is especially beneficial in portable projects. However it has drawbacks such as greater 
-difficulty probing lead directly or performing viual inspections for shorts.
+difficulty probing lead directly or performing visual inspections for shorts.
 - Several of my initial units did not function as intended. Some flat out not responding to anything, while others had issues such 
 as quadrants of their screens malfunctioning. After inspecting and trying to diagnose the cause of each faulty unit, it appears 
-that most issues seem to stem from my novice worksmanship. This will hopefully improve with more practice.
+that most issues seem to stem from my novice workmanship. This will hopefully improve with more practice.
 - *Double check Bill of Materials before purchasing components to not forget components, like 10k resistors!*
 
 # Detailed Report

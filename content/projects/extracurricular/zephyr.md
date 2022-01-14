@@ -14,12 +14,12 @@ githubLink: "https://github.com/hpvdt/zypher"
 
 # Overview
 
-For the Human Powered Vehicles Design Team's (HPVDT) 2019 entry to the American Society of Mechanical Engineers's 
-(ASME) human powered vehicle competiton I was tasked as Head of Electronics to produce an electronics system to 
+For the Human Powered Vehicles Design Team's (HPVDT) 2019 entry to the American Society of Mechanical Engineers 
+(ASME) human powered vehicle competition I was tasked as Head of Electronics to produce an electronics system to 
 control the lights as well as collecting and displaying data to the rider.
 
 This was achieved using a custom circuit board I designed in EAGLE that housed an Arduino Nano on the bike which 
-communicated with a mobile phone over Bluetooth to transmit data for the rider to see as well as recieve commands 
+communicated with a mobile phone over Bluetooth to transmit data for the rider to see as well as receive commands 
 from the rider (for example "turn on the left indicator").
 
 ## Requirements
@@ -34,7 +34,7 @@ from the rider (for example "turn on the left indicator").
 ## Objectives
 - Reduce power wasted for lighting
 - Use a mobile phone app for the primary user interface
-- Have a gih-power mode for the front lights to act as high beams
+- Have a high-power mode for the front lights to act as high beams
 - Collect and display the following data to the rider
   - Ambient temperature
   - Heading (compass)
@@ -44,7 +44,7 @@ from the rider (for example "turn on the left indicator").
 ## Takeaways
 
 This was my first circuit to use surface mount parts, as well as switched mode power supplies (used to drive the 
-LEDs). Both of these introduced me to new and more effecient ways to utilise space and power respectively, and 
+LEDs). Both of these introduced me to new and more efficient ways to utilize space and power respectively, and 
 the challenges that need to be overcome to utilize them. For example the selection of passive components for the
 LED driver can drastically change the performance of the system.
 
@@ -54,7 +54,7 @@ rider in a clear manner. I could also easily reconfigure the display with feedba
 phone mid-ride as well as occasional communication interruptions make me question the true feasibility of re-using 
 this interface in future projects for HPVDT.
 
-*Also learned to double check project names before commiting to them, to avoid errors such as using "Zypher" 
+*Also learned to double check project names before committing to them, to avoid errors such as using "Zypher" 
 instead of "Zephyr" in project materials.*
 
 # Detailed Report

@@ -8,7 +8,7 @@ status: "Completed, then revised"
 client: "IGB Automotive"
 tags: [PLC, LabVIEW, robotics, validation]
 skills: [PLC, KRL, LabVIEW]
-summary: "Implemented a system to allow a legacy (pre-2000) welding robot to recieve force feedback from a modern computer."
+summary: "Implemented a system to allow a legacy (pre-2000) welding robot to receive force feedback from a modern computer."
 thumbnail: "/images/ff-kneeload.jpg"
 ---
 
@@ -19,7 +19,7 @@ KUKA robotic arms performed the motions perfectly every time, they lacked any in
 for regulating the force they applied. Thus after several hundred cycles the seats would deform and thus the 
 robot would no longer apply the same force it did initially did when arriving at the same point. 
 
-I was tasked to, and delievered, in implementing a system for the robot to automatically compensate its 
+I was tasked to, and delivered, in implementing a system for the robot to automatically compensate its 
 motions to apply a constant force for the entire test (these could be upwards of 10 000 cycles) on their 
 "kneeload" robot.
 
@@ -39,7 +39,7 @@ valid approach.
 
 My employer, IGB Automotive, was a manufacturer of primarily automotive seat heating and cooling units. As part 
 of their efforts to improve their testing capabilities to improve and verify product quality they invested in 
-robotic arms to deliver durabilty tests on their products to ensure continued operation over the lifecycle of 
+robotic arms to deliver durability tests on their products to ensure continued operation over the life cycle of 
 a vehicle. These tests needed a constant load to be repeatedly applied and removed from a seat at set 
 positions, usually between 5 000 and 10 000 times, although some clients required more.
 
@@ -56,15 +56,15 @@ seat at prescribed points.
 </figure>
 
 Although the robot could perfectly repeat the motions of a test cycle to the end of time, the seats would 
-gradually deform during testing, so pressing 10 mm into the cushion would no longer yeild a force of 200 N 
-but only 150 N after a few hundred cycles which would not satisify the testing criteria. The robot did have 
-a loadcell fitted to monitor the applied load by the end-effector, however it was monitored by a modern 
-computer running a LabVIEW interface for the test operators completely seperate to the robot's control 
+gradually deform during testing, so pressing 10 mm into the cushion would no longer yield a force of 200 N 
+but only 150 N after a few hundred cycles which would not satisfy the testing criteria. The robot did have 
+a load cell fitted to monitor the applied load by the end-effector, however it was monitored by a modern 
+computer running a LabVIEW interface for the test operators completely separate to the robot's control 
 system based off a modified Windows 95 machine nested within the control panel. 
 
 > *(I remember when I was starting this project and my manager was working inside the control panel and explaining* 
 > *the robot to me. After mentioning the robot ran off Windows 95 he paused and poked his head out to ask me when* 
-> *I was born. "I was born '98 sir." A quiet "Damn" trailed off as he went back to his explaination of the panel)*
+> *I was born. "I was born '98 sir." A quiet "Damn" trailed off as he went back to his explanation of the panel)*
 
 So although we were able to measure the force in real time, there was no feedback to the robot itself to 
 adjust its motions. The system used by the test operators at the time was to periodically check if the force 
@@ -78,8 +78,8 @@ The missing link was communication between the modern computer collecting measur
 control system. Once a bridge was formed, the matter of adjusting motions would be trivial and the robot 
 could perform entire tests unsupervised.
 
-Getting data in or out of the computer was pretty simple, the data aquisition unit (DAQ) we used to collect 
-the applied force from the loadcell had several ununsed general purpose input/output (I/O) pins so we could 
+Getting data in or out of the computer was pretty simple, the data acquisition unit (DAQ) we used to collect 
+the applied force from the load cell had several unused general purpose input/output (I/O) pins so we could 
 use them without needing to bring in new hardware or reworking the code significantly.
 
 Getting data in or out of the robot presented issues though. There was no available I/O other than those 
@@ -95,7 +95,7 @@ and checked the status of the system using the status indicator on the BECKHOFF 
 everything was correct.
 
 Unfortunately the company did not have the software and hardware required to configure the PLC on hand 
-for me so I had to deduce the defualt configuration of the PLC and how to interact with it using the 
+for me so I had to deduce the default configuration of the PLC and how to interact with it using the 
 documentation provided and a few tests. The only PLC input module I had available to me at first was a 
 two channel, 0 to 24V, analog to digital converter. So for testing I used a potentiometer to swing the 
 voltage between extremes and see what needed to be done to get the robot to read and react to it.
@@ -104,7 +104,7 @@ Eventually after deducing some parameters I had the robot successfully swing eit
 right depending on whether the analog voltage reading I was feeding it fell above or below a threshold 
 defined in the robot's code. 
 
-This was the breakthough we were looking for and made me really happy to just sit there fiddling with 
+This was the breakthrough we were looking for and made me really happy to just sit there fiddling with 
 the potentiometer and watching the robot react accordingly.
 
 After replacing the potentiometer with a digital output of the DAQ I was able to have the computer 
@@ -112,7 +112,7 @@ operate the robot just as I had with the potentiometer.
 
 ## Making a Proper System
 
-With the communication system proven to work, I had succeeded in making the bridge we so despirately needed. 
+With the communication system proven to work, I had succeeded in making the bridge we so desperately needed. 
 My work now turned to fleshing the system out and using it to implement motion adjustments. 
 
 The first order of business was getting more I/O for the robot side to allow more more data transfer 
@@ -135,10 +135,10 @@ one of its outputs, then the DAQ would use two of its outputs to instruct the ro
 Once the modules came in I installed them and tested and debugged my system until it worked as expected, 
 adjusting the displacement until a force is met. To test this I used the robot pressing down on a stack 
 of nested paper cups that I would add or remove cups to to simulate a seat. You can see this stack at the 
-the middle of the bottom of figure 1, atop an upturned black wastebin.
+the middle of the bottom of figure 1, atop an upturned black waste bin.
 
-After the successful tests all that remainded on the deployment side of things was to clean up the 
-ratsnest of wiring that this had become on the robot desk as I was working on it. We purchased a PLC box 
+After the successful tests all that remained on the deployment side of things was to clean up the 
+rats nest of wiring that this had become on the robot desk as I was working on it. We purchased a PLC box 
 and I mounted all the electronics within it and ran the needed wiring internally and externally to the box.
 
 <figure>
@@ -148,7 +148,7 @@ and I mounted all the electronics within it and ran the needed wiring internally
 
 Afterwards, I focused on preparing the documentation to explain my work and how it could be modified for 
 future use after I returned to my studies. This included a detailed troubleshooting guide for many of 
-the nebuluous errors with the robot or issues that could arise specific to the system I prepared.
+the nebulous errors with the robot or issues that could arise specific to the system I prepared.
 
 With that I hung up my hat until the next year when I would return to [expand the system greatly](/projects/work/force-feedback).
 

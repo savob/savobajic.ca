@@ -16,10 +16,10 @@ thumbnail: "/images/ff-body.png"
 
 I expanded my force regulation system from just the single axis of feedback needed on the [kneeload robot](/projects/work/kneeload) 
 project from my previous term as a co-op student at IGB, to controlling up to six axes of force (three linear force, three torques)
-so the company could perforn ingress-egress tests using a robotically manipulated mannequin.
+so the company could perform ingress-egress tests using a robotically manipulated mannequin.
 
 In addition to being able to control these additional axes, I also improved the configurability of my tester, allowing the use of 
-specifically formatted text files to determine the forces needed at each pont of the test cycle. This made it easier for test 
+specifically formatted text files to determine the forces needed at each point of the test cycle. This made it easier for test 
 technicians to operate and customize the test protocol to each client's needs.
 
 This is still my largest design project have done for work.
@@ -29,7 +29,7 @@ This is still my largest design project have done for work.
 - Regulate the force on six axes
   - Three linear forces (Fx, Fy, and Fz)
   - Three torques (Tx, Ty, and Tz)
-- Implement this on the exsisting KUKA robots on site
+- Implement this on the existing KUKA robots on site
 - Train test technicians to operate the completed system
 
 ## Objectives
@@ -67,8 +67,8 @@ test to meet these requirements and would allow the robots to self-correct their
 ## The Robots
 
 There were two robots, each was equipped to administer a different type of test. One had a normal (single direction) load cell and 
-was meant for applying forces at distinct points on the automotive seat using a hemisphere endpiece (referred to as a ‘knee load’ 
-test), the other was equipped with 6-axis load cell (X, Y, Z forces and torques) and an endpiece to simulate a torso as it moves in 
+was meant for applying forces at distinct points on the automotive seat using a hemisphere end piece (referred to as a ‘knee load’ 
+test), the other was equipped with 6-axis load cell (X, Y, Z forces and torques) and an end piece to simulate a torso as it moves in 
 and out of the seat (referred to as “Ingress/Egress” testing).
 
 <figure>
@@ -123,7 +123,7 @@ robots to new paths but only needing users to enter in the new points.
 
 Data processing did not require much reworking to get it working at a basic level, the company already had some LabVIEW programs to 
 monitor and record the force, I only added checks to see if the robot was meeting the required loading criteria to get a basic 
-feedback system working. However, the test parameters were historically hardcoded into the software which meant a different application 
+feedback system working. However, the test parameters were historically hard coded into the software which meant a different application 
 had to be compiled for each different test. I spent a significant portion of my time rewriting the code so it could load in the test 
 parameters using external configuration files made in Excel which made the system much more accessible to the technicians to configure.
 
@@ -159,7 +159,7 @@ programming with examples.
 
 <figure>
 <img src="/images/ff-troubleshooting.png">
-<figcaption>Fig. 5 - An exerpt from the troubleshooting guide</figcaption>
+<figcaption>Fig. 5 - An excerpt from the troubleshooting guide</figcaption>
 </figure>
 
 # Extra Media
