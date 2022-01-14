@@ -17,7 +17,7 @@ thumbnail: "/images/fob-assembled.jpg"
 
 I was curious to see how the entry system worked in the condo I was living in during my second year of studies, 
 so I decided to see how the entry fob I was given worked (ideally in a non-destructive way). After taking it 
-apart it became apparent it was a glorified TV remote so I set about replicating it with hobbist equipment.
+apart it became apparent it was a glorified TV remote so I set about replicating it with hobbyist equipment.
 
 ## Requirements
 
@@ -32,13 +32,13 @@ apart it became apparent it was a glorified TV remote so I set about replicating
 
 ## Takeaways
 
-Some systems are simplier than you would have expected. Case and point, the fob's method of communicating to the building.
+Some systems are simpler than you would have expected. Case and point, the fob's method of communicating to the building.
 
 Having the right tools makes the difference. When trying to catch the fob's output signal I originally was trying 
 to use an Arduino as a rudimentary oscilloscope as I did not have access to one of my own at the time. I later used 
 one on campus. This caused issues for few reasons:
 1. **It wasn't fast enough**. It could only sample and broadcast a value a few times a millisecond, which made it hard to catch the narrow spikes
-2. **It wasn't regular**. The timebase was unclear, I just had a string of values with no times associated with them.
+2. **It wasn't regular**. The time base was unclear, I just had a string of values with no times associated with them.
 3. **It was difficult to change the window of measurement**. I assumed that the signal would be very short, so I set 
 the system up to blast data as fast as it could. It was only when I used the oscilloscope I was able to easily 
 widen the window and see the period between pulses was wider than I anticipated.
@@ -60,7 +60,7 @@ sticking out the front that we had to aim at little panels and a single button t
 
 I started by cracking it open carefully to avoid potentially damaging any delicate components that lay hidden within.
 With the top off, I could examine the compact and rather simple circuit contained. My main interest was in the bulbs 
-as I wanted to see what they were. Prior to opening it up I assumed acted as a sender and the other recieved to 
+as I wanted to see what they were. Prior to opening it up I assumed acted as a sender and the other received to 
 allow some cross-talk with the building. However I found that they were connected in series! This meant that they could 
 only be acting as a transmitters, thus my job of reverse engineering the protocol with the building was going to be an 
 order of magnitude easier.
@@ -93,7 +93,7 @@ string of binary.
 
 <figure>
 <img src="/images/fob-signal-data.png">
-<figcaption>Fig. 3 - An exerpt from the spreadsheet. Leftmost column is time (ms), then voltage reading (V), then if this reading is a spike compared to the previous one, and the rightmost column records a 1  if there is another spike in close succession (a 0 otherwise)</figcaption>
+<figcaption>Fig. 3 - An excerpt from the spreadsheet. Leftmost column is time (ms), then voltage reading (V), then if this reading is a spike compared to the previous one, and the rightmost column records a 1  if there is another spike in close succession (a 0 otherwise)</figcaption>
 </figure>
 
 I compared the data across five samples from my fob and found that it sent the same signal each time! I confirmed 
@@ -107,17 +107,28 @@ away from most traffic so I could test in peace without having to explain myself
 <figure>
 <img src="/images/fob-prototype.jpg">
 <img src="/images/fob-prototype-back.jpg">
-<figcaption>Fig. 4 and 5 - My kitchmade prototype from the front and the back</figcaption>
+<figcaption>Fig. 4 and 5 - My kitchenmaid prototype from the front and the back</figcaption>
 </figure>
 
-It was successful on the first try! Which was very convientent since to recode the Arduino would need me to 
+It was successful on the first try! Which was very convenient since to recode the Arduino would need me to 
 return to my apartment. Obviously running around with an Arduino, battery, and breadboard taped together is 
 nowhere near as subtle or durable a final product as I wanted for the long term, so I made more compact system, 
 substituting the Arduino development board for an embedded ATtiny85 microcontroller with everything (except the 
-battery) on a single, custom circuit board I prepared in EAGLE.
+battery) on a single protoboard.
+
+<figure>
+<img src="/images/fob-protoboard-front.jpg">
+<figcaption>Fig. 6 - Front of the protoboard version (Note that the ATtiny was positioned on the right half of the socket for programming, left half when in normal operation)</figcaption>
+</figure>
+<figure>
+<img src="/images/fob-protoboard-back.jpg">
+<figcaption>Fig. 7 - Rear of the protoboard version</figcaption>
+</figure>
+
+Afterwards, a custom circuit board I prepared in EAGLE, which I used to this day when visiting!
 
 <figure>
 <img src="/images/fob-assembled.jpg">
-<figcaption>Fig. 6 - Completed assembly (the "940" is for the wavelength of LED used)</figcaption>
+<figcaption>Fig. 8 - Completed assembly (the "940" is for the wavelength of LED used)</figcaption>
 </figure>
 
