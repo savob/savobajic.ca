@@ -320,6 +320,8 @@ parts: one to anchor to the platform and hold the coil, the other to come down a
 in place. These could be readily 3D-printed and used, the only additional modification was going to be the addition of some new 
 holes to the platform I had made to anchor the new holders to closer to the centre, which could be easily done with a hand drill.
 
+This modification also had the side-effect of increasing the expected viewing area by 50% from what I was originally striving for.
+
 I had the parts printed, however I ran out of time before I could drill the new holes. I also unfortunately forgot to take any 
 photos of these last minute revisions so I have nothing to show you for these.
 
