@@ -39,15 +39,13 @@ so I could layout PCBs. **Currently waiting to have them made.**
 
 ## Takeaways
 
-I'm a bit rusty at breadboard prototyping, need to double check my connections are actually 
+- I'm a bit rusty at breadboard prototyping, need to double check my connections are actually 
 working as they appear they should with continuity tests.
-
-Discrete logic isn't as troublesome as I expected, but this also is a basic project really. 
+- Discrete logic isn't as troublesome as I expected, but this also is a basic project really. 
 I would look to maybe use some in future projects, especially for safety systems and such.
+- *Does h4x0r aesthetic == poor user experience?*
 
-*Does h4x0r aesthetic == poor user experience?*
-
-# Detail
+# Detailed Report
 
 I've wanted to do something without a microcontroller for a while now since that's been the 
 common denominator in basically any project of moderate scale I've undertaken thus far. During 

@@ -35,7 +35,7 @@ motions to apply a constant force for the entire test (these could be upwards of
 valid approach.
 - Programming robot motions is easier than I expected
 
-# Detail
+# Detailed Report
 
 My employer, IGB Automotive, was a manufacturer of primarily automotive seat heating and cooling units. As part 
 of their efforts to improve their testing capabilities to improve and verify product quality they invested in 

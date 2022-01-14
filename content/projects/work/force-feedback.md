@@ -49,7 +49,7 @@ Modularizing the system's code enabled me to easily and rapidly scale it up from
 Although my communication protocol works as needed, using more purpose built hardware for data exchange would certainly increase 
 the bandwidth and thus decrease cycle times.
 
-# Detail
+# Detailed Report
 
 This was the focus of my second time working at IGB Automotive. This project focused on implementing force feedback routines into old 
 refurbished robotic arms to have them administer durability tests. This was built off some of the work I did the previous summer I 

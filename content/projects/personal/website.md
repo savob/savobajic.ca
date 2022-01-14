@@ -29,10 +29,11 @@ with the source files hosted on [my GitHub account](https://github.com/savob/sav
 
 ## Takeaways
 
-* Switching to HUGO was immensely helpful for ensuring that my content is consistant as well 
+- Switching to HUGO was immensely helpful for ensuring that my content is consistant as well 
 as enjoying the pages it automatically generates like tag pages in addition to the content 
 itself.
-* Making a functional site is easy, but making it engaging is not as straight forward
+- Making a functional site is easy, but making it engaging is not as straight forward
+- Writing up projects is time consuming
 
 ## Progress and Plans
 
@@ -41,7 +42,7 @@ on populating it with actual content at a rate of a few projects daily. I hope t
 the content I want up by the 17th of January, at which point I will look to improve the 
 layout of the website.
 
-# Detail
+# Detailed Report
 
 After years of throwing aroung the idea of having a personal website I committed and purchased 
 this domain December 30th, 2021. Just in time to ring in the new year. Originally I wanted the 

@@ -52,7 +52,7 @@ My final blaster has a few possible improvements:
 the same could not be said if I were using it in the parking garage, even on my bike. This could be easily improved by reducing the resistor value for the LEDs.
 - **Finally develop the "field" reprogramming feature.** *Sigh...*
 
-# Detail
+# Detailed Report
 
 I moved into a new condo for my second year of university with two friends, and to enter the building it required the use 
 of a fob. I was curious to see how it worked and if I could replicate it. The fob was a small black box with two bulbs 

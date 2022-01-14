@@ -21,6 +21,6 @@ thumbnail:
 
 ## Takeaways
 
-# Detail
+# Detailed Report
 
 

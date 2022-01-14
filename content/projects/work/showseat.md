@@ -39,7 +39,7 @@ tasked with implementing a digital potentiometer we could simply control with so
 - LabVIEW is an excellent way to create and modify virtual control interfaces
 - *"I wonder how I could have done this better?"*
 
-# Detail
+# Detailed Report
 
 When going to industry conferences and showcases, IGB Automotive had a dedicaed show seat that they would use to demonstrate 
 their products: heating for seats, steering wheels, bolsters, as well as seat cooling. However the set points for their main 

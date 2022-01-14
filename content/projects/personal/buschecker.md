@@ -35,15 +35,13 @@ I *also* happened to have a WiFi development board that I really wanted to put t
 ## Takeaways
 
 It was really cool to see how fast not only I began to use it and enjoy the ease it brought, but also see my 
-roommates do the same. 
-
-Unfortunately it didn't see much use once completed since we were leaving the house significantly less often 
-once COVID hit.
+roommates do the same. Unfortunately it didn't see much use once completed since we were leaving the house 
+significantly less often once COVID hit.
 
 After posting it on social media I had several friends ask for their own, so it made me wonder how I could 
 go about adapting it into a more commercial project. So I decided to try it with a revised design.
 
-# Detail
+# Detailed Report
 
 Around my apartment there are several bus stops my roommates and I use, and I wanted to see if there was 
 some way I could set up a system to easily check for buses before heading out like we can when using our 

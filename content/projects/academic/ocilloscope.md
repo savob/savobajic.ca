@@ -42,7 +42,7 @@ component rather than a via.
 <figcaption>Fig. 1 - The trace layout of one prototype board, all on one layer</figcaption>
 </figure>
 
-# Detail
+# Detailed Report
 
 This was a semester long project I worked on with another student. We were presented a specification outlining the 
 desired performance characteristics of our final design which was a hobbyist oscilloscope based around an Arduino 

@@ -38,7 +38,7 @@ large sets of data and experimented with parallelization of scripts to limited s
 
 I also practiced with novel data visualization strategies needed to convey the data to the team.
 
-# Detail
+# Detailed Report
 
 This was another class project I undertook; this one was done in groups of four. The outline for the project 
 was to either find an existing linkage system that can be reworked or come up with a new system altogether 

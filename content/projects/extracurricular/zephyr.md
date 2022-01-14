@@ -57,7 +57,7 @@ this interface in future projects for HPVDT.
 *Also learned to double check project names before commiting to them, to avoid errors such as using "Zypher" 
 instead of "Zephyr" in project materials.*
 
-# Detail
+# Detailed Report
 
 As electronics lead it was duty to develop the electronics system for our annual entry in the American Society of 
 Mechanical Engineers (ASME) human powered vehicle competition. Although the power that propels the vehicle must 

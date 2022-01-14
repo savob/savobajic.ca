@@ -36,20 +36,18 @@ just three games (now seven!) and the ability to store highscores in non-volatil
 - Store highscores even when powered off
 
 ## Takeaways
-This was my first time properly embedding a microcontroller in a design/board and it fortunately wasn't as fightening as I thought.
-I will look forward to embedding many more microcontrollers to come!
 
-The assembly process using surface mount technology is quite interesting and presents its own benefits such as easier component 
+- This was my first time properly embedding a microcontroller in a design/board and it fortunately wasn't as fightening as I thought.
+I will look forward to embedding many more microcontrollers to come!
+- The assembly process using surface mount technology is quite interesting and presents its own benefits such as easier component 
 placement and smaller components which is especially beneficial in portable projects. However it has drawbacks such as greater 
 difficulty probing lead directly or performing viual inspections for shorts.
-
-Several of my initial units did not function as intended. Some flat out not responding to anything, while others had issues such 
+- Several of my initial units did not function as intended. Some flat out not responding to anything, while others had issues such 
 as quadrants of their screens malfunctioning. After inspecting and trying to diagnose the cause of each faulty unit, it appears 
 that most issues seem to stem from my novice worksmanship. This will hopefully improve with more practice.
+- *Double check Bill of Materials before purchasing components to not forget components, like 10k resistors!*
 
-*Double check Bill of Materials before purchasing components to not forget components, like 10k resistors!*
-
-# Detail
+# Detailed Report
 
 This was a little handheld game console, where two rows of 16 LEDs each are used as a display and the user has two buttons for input. This was a project I undertook largely out of interest, but it also served as a good introduction to basic embedded microcontroller design and surface mount circuit design and assembly.
 
