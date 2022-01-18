@@ -264,7 +264,7 @@ I had a rough order for the features I was going to try implementing:
 ### Software PWM
 
 Due to my selection of pins, I was forced to use software PWM if I wanted any PWM on all the MOSFET outputs. I could have gotten 
-away with just using hardware PWM un the high-side pins like ELECTROBOOM did, however due to my pin arrangement I did not have 
+away with just using hardware PWM on the high-side pins like ELECTRONOOB did, however due to my pin arrangement I did not have 
 all the high sides on PWM either. So since I was going to have to do it on a few, I was going to go all the way to keep all of 
 them synchronized.
 
@@ -304,14 +304,14 @@ I tested my code for this to great success with some potentiometers as mention i
 
 ### Commutation
 
-This is where I spent a good portion of my time, as I needed to reteach myself and erassure myself what I was doing was right 
+This is where I spent a good portion of my time, as I needed to reteach myself and reassure myself what I was doing was right 
 in terms of BLDC control. The reason I had developed doubt was because when I was looking at ELECTRONOOB's code for this, he 
 would commutate his motor right after passing the zero-crossing, however if we look back at the [theory of BLDC commutation](../#motor-theory) 
 one can see that zero-crossing is halfway in the step, thus the system needs to wait another half-step before it commutates. 
 At high speeds this half step would be roughly 100 to 300 microseconds.
 
-ELECTRONNOOBS seems to have dodged this due to his use of a for loop in the interrupt that checks 10 times every 10us if the 
-zero has been indeed crossed which leaves a delay of 100us which in combination with other factors related to code exectution 
+ELECTRONOOBS seems to have dodged this due to his use of a for loop in the interrupt that checks 10 times every 10us if the 
+zero has been indeed crossed which leaves a delay of 100us which in combination with other factors related to code execution 
 probably generates a delay of between 150us and 200us between zero-crossing and commutation, which is tolerable in most 
 circumstances.
 
@@ -345,7 +345,7 @@ with not frying the system because I am intentionally stalling the motor.
 ## Success!
 
 I managed to achieve all the baseline supporting features I needed and they passed my tests, such as I2C data exchange and 
-motor buzzing. I eventually got the motor to spin up and then sustain rotation at full speed for extened period of time. 
+motor buzzing. I eventually got the motor to spin up and then sustain rotation at full speed for extended period of time. 
 Below I have a video of the ESC spinning up a motor and having it run for 10 seconds.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1bNdviOC-_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
