@@ -6,7 +6,7 @@ started: "May 2020"
 finished: "May 2020"
 status: "Assembled, Never Used"
 client:
-tags: [ESC, embedded, BLDC, KiCAD]
+tags: [ESC, embedded, BLDC, KiCAD, drone]
 skills: [embedded, KiCAD, BLDC]
 summary: "My first attempt to make a sensor-less ESC for my drone"
 githubLink:
@@ -24,17 +24,6 @@ This first version of my ESC was basically a replica of his work.
 Although I designed the system and *[almost]* assembled a board, I never actually did anything with them beyond that because 
 it was just a warm up for my second version and beyond.
 
-## Requirements
-
-- Operate with supply voltages between 9V and 20V
-- Be able to supply 30A continuously
-- Allow control over PWM and I2C
-
-## Objectives
-
-- Allow for RPM control
-- Allow data to be extracted over PWM (e.g. current duty cycle)
-
 ## Takeaways
 
 - This board was quite large and would barely fit on the frame I ordered. So I needed to shrink it down.
@@ -44,58 +33,6 @@ it was just a warm up for my second version and beyond.
 I was looking for an interesting project to bite into that would be both fun for me and cool to show off, even to 
 non-technically inclined people (such as my mother), so I decided to try and make my own quad-rotor drone from scratch. 
 As many would have you believe, the motors need to be accurately controlled for it to stay in the air. 
-
-## Motor Theory
-
-Although I wouldn't describe myself a great teacher, I will try my best to provide a basic overview of brush-less DC 
-motor control theory.
-
-An electric motor generally uses a set of permanent magnets and electrified coils to generate rotary motion. As current 
-flows through a coil, a magnetic field is generated, this magnetic field will induce a force (torque) on the coil as it 
-tries to align itself with the ambient magnetic field produced by the permanent magnets. Just before the fields reach 
-alignment (and thus no more force will be imparted on the motor), the current is commutated so the fields generated are 
-no longer about to align and the force continues to be imparted on the motor shaft. This cycle repeats as long as the 
-motor is operating. The rotating assemble in the motor is called the *rotor*, the stationary assembly the *stator*.
-
-<figure>
-<img src="/images/esc-dc-motor-gif.gif">
-<figcaption>Fig. 1 - An animation of a brushed DC motor. Courtesy of <a href="https://cecas.clemson.edu/cvel/auto/actuators/motors-dc-brushed.html">CVEL</a></figcaption>
-</figure>
-
-Basic DC motors use mechanical commutation methods like the brushes in the animation above. The motors used in most 
-quad-copters, especially for high performance drones, are brush-less DC motors which are constructed differently and need 
-a special controller to operate properly, generally called Electronic Speed Controllers (ESC). Their more complicated 
-operation is a trade off for significantly increased power density, vital for flight.
-
-Instead of having the coils attached to the rotating shaft to induce force on it due to the fixed ambient field from the 
-permanent magnets, they reverse this setup and have the motors on the shaft and windings stationary. Thus no brushes are 
-present and the motors are instead controlled using a three phase scheme. To do this the voltage on one of the wires must 
-pulled low, and high on another, while the third one is disconnected from either extreme. The supply of power must be 
-quickly and reliably changed to generate the needed rotation. This supply of power and commutation timing is what is 
-handled by the ESC.
-
-<figure>
-<img src="/images/esc-bldc-motor.gif">
-<figcaption>Fig. 2 - An animation of a brush-less DC motor. Courtesy of <a href="https://www.embitel.com/blog/embedded-blog/brushless-dc-motor-vs-pmsm-how-these-motors-and-motor-control-solutions-work">embitel</a></figcaption>
-</figure>
-
-Since most motors used on drones are meant to be compact and cheap, they usually lack any sensors on them to aid the 
-controller in properly knowing the position of the rotor, thus when it is optimal to commutate. However, there is a trick 
-that can be employed to derive the position of the rotor! Due to the generally rapid rotation of the rotor, there is a 
-**back electro-motive force (BEMF)** exerted on the coils in the stator, which can be monitored using the disconnected 
-phase of the motor.
-
-When disconnected from power the voltage on a phase will start at the voltage it was last supplied, as the rotor rotates 
-the voltage will gradually change to approach the other extreme at which point it will need to switch to that supply. 
-
-<figure>
-<img src="/images/esc-bldc-timing-chart.png">
-<figcaption>Fig. 3 - Timing chart showing a basic BLDC rotation with the voltage on (dotted line) and current through (solid) each phase marked. Figure 9 of <a href="https://www.ti.com/lit/an/sprabq7a/sprabq7a.pdf?ts=1642166596205">TI Application Report SPRABQ7A</a></figcaption>
-</figure>
-
-One generally finds it easiest to use the moment the voltage on this disconnected phase crosses the average voltage of all 
-phases (also called the "zero" voltage) using a comparator to know when the rotor is halfway through the step and time the 
-next commutation based on the time elapsed since the most recent phase change to reach that midpoint-crossing.
 
 ## Circuit Design
 
@@ -186,8 +123,23 @@ to carry the up to 1A at 5V without issue. The remainder of the side was used fo
 
 Assembly wasn't too notable, other than being my first set of SMT board to have components on both sides. This required me 
 to prop up the edges of the board so it would not be resting on the components and be level for when I was applying the 
-solder paste using the stencil. Since I was ordering and assembling V1 and V2 of the ESCs and Flight Computers together, I 
-ordered a stencil that had a portion for each of them.
+solder paste using the stencil. Since I was ordering and assembling V1 and V2 of the ESCs and Flight Computers together, 
+I ordered a stencil that had a portion for each of them.
+
+<figure>
+<img src="/images/esc-v1-mcu-side.jpg">
+<figcaption>Fig. 8 - The assembled control and voltage regulator side</figcaption>
+</figure>
+
+<figure>
+<img src="/images/esc-v1-mosfet-side.jpg">
+<figcaption>Fig. 9 - The assembled MOSFET/Inverter side (Note: I removed the MOSFET driver to use on other boards)</figcaption>
+</figure>
+
+<figure>
+<img src="/images/drone-shared-stencil.jpg">
+<figcaption>Fig. 10 - The combined stencil for the EWSC and flight computers V1s and V2s</figcaption>
+</figure>
 
 One thing I did mess up during assembly is when ordering the resistor arrays I accidentally ordered the wrong size - 
 *twice*. This is partially why I never tested these boards, although I could have easily fit through-hole resistors in their 
