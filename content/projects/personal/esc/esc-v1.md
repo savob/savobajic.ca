@@ -46,7 +46,7 @@ MOSFETs were changed to ones I could readily find.
 
 <figure>
 <img src="/images/esc-v1-schematic.svg">
-<figcaption>Fig. 4 - The completed schematic for the ESC V1 (PDF version: <a href="/pdf/ESC_V1.pdf">Colour</a> / <a href="/pdf/ESC_V1_BW.pdf">BW</a>)</figcaption>
+<figcaption>Fig. 1 - The completed schematic for the ESC V1 (PDF version: <a href="/pdf/ESC_V1.pdf">Colour</a> / <a href="/pdf/ESC_V1_BW.pdf">BW</a>)</figcaption>
 </figure>
 
 ### Brains
@@ -95,7 +95,7 @@ rails, this was done to easily allow the soldering of buffer capacitors along th
 
 <figure>
 <img src="/images/esc-v1-combined-layout.png">
-<figcaption>Fig. 5 - The overall layout of the board</figcaption>
+<figcaption>Fig. 2 - The overall layout of the board</figcaption>
 </figure>
 
 The output stage was put all on one side for simplicity and because given the powerful nature of the components, they were 
@@ -106,7 +106,7 @@ to them as well flooding them with solder to increase their current capacities.
 
 <figure>
 <img src="/images/esc-v1-top-layout.png">
-<figcaption>Fig. 6 - The layout of the output stage side</figcaption>
+<figcaption>Fig. 3 - The layout of the output stage side</figcaption>
 </figure>
 
 The remainder of the system (control and voltage regulator) were housed on one shared side. The 5V buck regulator was nested 
@@ -115,7 +115,7 @@ to carry the up to 1A at 5V without issue. The remainder of the side was used fo
 
 <figure>
 <img src="/images/esc-v1-bottom-layout.png">
-<figcaption>Fig. 7 - The layout of the control and voltage regulator side</figcaption>
+<figcaption>Fig. 4 - The layout of the control and voltage regulator side</figcaption>
 </figure>
 
 
@@ -128,17 +128,17 @@ I ordered a stencil that had a portion for each of them.
 
 <figure>
 <img src="/images/esc-v1-mcu-side.jpg">
-<figcaption>Fig. 8 - The assembled control and voltage regulator side</figcaption>
+<figcaption>Fig. 5 - The assembled control and voltage regulator side</figcaption>
 </figure>
 
 <figure>
 <img src="/images/esc-v1-mosfet-side.jpg">
-<figcaption>Fig. 9 - The assembled MOSFET/Inverter side (Note: I removed the MOSFET driver to use on other boards)</figcaption>
+<figcaption>Fig. 6 - The assembled MOSFET/Inverter side (Note: I removed the MOSFET driver to use on other boards)</figcaption>
 </figure>
 
 <figure>
 <img src="/images/drone-shared-stencil.jpg">
-<figcaption>Fig. 10 - The combined stencil for the EWSC and flight computers V1s and V2s</figcaption>
+<figcaption>Fig. 7 - The combined stencil for the EWSC and flight computers V1s and V2s</figcaption>
 </figure>
 
 One thing I did mess up during assembly is when ordering the resistor arrays I accidentally ordered the wrong size - 
