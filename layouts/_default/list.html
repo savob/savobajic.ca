@@ -26,10 +26,8 @@
 		
 		{{ partial "listEntryInfo" . }}
 		
-		<!-- See if there are subpages for this page -->
+		<!-- See if there are subpages for this page, list them -->
 		{{ if .Pages}}
-
-		<!-- sub pages for sections -->
 		<ul>
 		{{ range .Pages }}
 		<li><a href="{{.Permalink}}">{{.Title}}</a> - {{ .Params.summary }}</li>
