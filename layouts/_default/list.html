@@ -12,41 +12,40 @@
 	<main>
 	
 	{{.Content}}
-
-	{{ range .Pages }}
-	<article>
 	
-	<!-- See if there are subpages for this page -->
-	{{ if .Pages}}
-
-	{{ partial "listEntryInfo" . }}
-	
-	<!-- sub pages for sections -->
-	<ul>
-	{{ range .Pages }}
-	<li><a href="{{.Permalink}}">{{.Title}}</a> - {{ .Params.summary }}</li>
-	{{end}}
-	</ul>
+	<div class="row">
+	<div class="column">
+	{{ $articlesPerCol := math.Ceil (div (len $.Pages) 2.0)}}
+	{{ range $i, $article :=.Pages }}
+		<article>
 		
-	{{ else if .Params.thumbnail}}
-	<!-- No sub pages, so project. Has a thumbnail image with it -->
-	
-	<div class="listEntry">
-	{{ partial "listEntryInfo" . }}
-	</div>
-	
-	
-	<img class="thumbnail" src="{{.Params.thumbnail}}">
-	
-	{{ else }}
-	<!-- No sub pages, so project. Lacks a thumbnail image with it -->
-	{{ partial "listEntryInfo" . }}
-	
-	{{end}}
 		
-	</article>
+		{{if .Params.thumbnail}}
+		<img class="thumbnail" src="{{.Params.thumbnail}}">
+		{{end}}
+		
+		{{ partial "listEntryInfo" . }}
+		
+		<!-- See if there are subpages for this page -->
+		{{ if .Pages}}
+
+		<!-- sub pages for sections -->
+		<ul>
+		{{ range .Pages }}
+		<li><a href="{{.Permalink}}">{{.Title}}</a> - {{ .Params.summary }}</li>
+		{{end}}
+		</ul>
+		{{end}}
+			
+		</article>
+		
+		  {{ if modBool (add $i 1) $articlesPerCol }}
+    </div> <!-- end row -->
+    <div class="column">
+  {{ end }}
 	{{ end }}
-	
+	</div>
+	</div>
 	</main>
 	
 	{{ partial "footer" . }}
