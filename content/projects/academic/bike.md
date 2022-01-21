@@ -19,7 +19,7 @@ mountain bike suspension system.
 
 <figure>
 <img src="/images/bike-render.png" alt="Render of the final bike design">
-<figcaption>Fig. 1 - A render of the final bike design</figcaption>
+<figcaption>A render of the final bike design</figcaption>
 </figure>
 
 ## Requirements
@@ -52,7 +52,7 @@ instructors decided that we should aim to double the possible displacement of th
 
 <figure>
 <img src="/images/bike-old-design.png">
-<figcaption>Fig. 2 - A diagram of a conventional mountain bike suspension</figcaption>
+<figcaption>A diagram of a conventional mountain bike suspension</figcaption>
 </figure>
 
 Our proposed general design was the result of research we conducted. it is referred to as a ‘lower-link’ shock 
@@ -61,7 +61,7 @@ either by being a four-bar mechanism.
 
 <figure>
 <img src="/images/bike-proposed-design.png">
-<figcaption>Fig. 3 - The proposed design</figure>
+<figcaption>The proposed design</figure>
 </figure>
 
 We divided up major tasks amongst group members, my role was to program the simulation and optimization systems 
@@ -72,7 +72,7 @@ as would be the usual case).
 
 <figure>
 <img src="/images/bike-matlab-model.png">
-<figcaption>Fig. 4 - An example configuration with its path ploted</figcaption>
+<figcaption>An example configuration with its path ploted</figcaption>
 </figure>
 
 Once it would process all the different cases across our ranges of interest the system was programmed to then 
@@ -80,7 +80,7 @@ output a chart displaying what configurations achieved our desired displacement 
 
 <figure>
 <img src="/images/bike-configuration-summary.png">
-<figcaption>Fig. 5 - The summarized results from a set of simulations</figcaption>
+<figcaption>The summarized results from a set of simulations</figcaption>
 </figure>
 
 We then would select configurations from different regions of the chart and compare their performance using another function 
@@ -90,6 +90,6 @@ recommendation and documenting it in our report.
 
 <figure>
 <img src="/images/bike-shock-attributes.png">
-<figcaption>Fig. 6 - An example chart of how each configuration's reaction was characterized</figcaption>
+<figcaption>An example chart of how each configuration's reaction was characterized</figcaption>
 </figure>
 

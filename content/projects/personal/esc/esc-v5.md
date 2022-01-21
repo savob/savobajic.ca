@@ -44,7 +44,7 @@ Circuit design is basically the same as [V4](../esc-v4/#circuit-design) with onl
 
 <figure>
 <img src="/images/esc-v5-schematic.svg">
-<figcaption>Fig. 1 - The completed schematic for the ESC V5 (PDF version: <a href="/pdf/ESC_V5.pdf">Colour</a> / <a href="/pdf/ESC_V5_BW.pdf">BW</a>)</figcaption>
+<figcaption>The completed schematic for the ESC V5 (PDF version: <a href="/pdf/ESC_V5.pdf">Colour</a> / <a href="/pdf/ESC_V5_BW.pdf">BW</a>)</figcaption>
 </figure>
 
 ## Layout
@@ -59,14 +59,14 @@ spent a good portion of my routing seeing how close I could squeeze some traces 
 
 <figure>
 <img src="/images/esc-v5-combined-layout.png">
-<figcaption>Fig. 2 - The overall layout of the board</figcaption>
+<figcaption>The overall layout of the board</figcaption>
 </figure>
 
 The top side of the board houses the MOSFET driver circuitry on the left half and the feedback network on the right.
 
 <figure>
 <img src="/images/esc-v5-top-layout.png">
-<figcaption>Fig. 3 - The layout of the top side</figcaption>
+<figcaption>The layout of the top side</figcaption>
 </figure>
 
 The bottom of the board is where the control section and MOSFETs are located. I added the status diode between the address 
@@ -74,7 +74,7 @@ pads and R2 on the left.
 
 <figure>
 <img src="/images/esc-v5-bottom-layout.png">
-<figcaption>Fig. 4 - The layout of the bottom side</figcaption>
+<figcaption>The layout of the bottom side</figcaption>
 </figure>
 
 ## Assembly

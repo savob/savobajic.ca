@@ -62,7 +62,7 @@ motor is operating. The rotating assemble in the motor is called the *rotor*, th
 
 <figure>
 <img src="/images/esc-dc-motor-gif.gif">
-<figcaption>Fig. 1 - An animation of a brushed DC motor. Courtesy of <a href="https://cecas.clemson.edu/cvel/auto/actuators/motors-dc-brushed.html">CVEL</a></figcaption>
+<figcaption>An animation of a brushed DC motor. Courtesy of <a href="https://cecas.clemson.edu/cvel/auto/actuators/motors-dc-brushed.html">CVEL</a></figcaption>
 </figure>
 
 Basic DC motors use mechanical commutation methods like the brushes in the animation above. The motors used in most 
@@ -79,7 +79,7 @@ handled by the ESC.
 
 <figure>
 <img src="/images/esc-bldc-motor.gif">
-<figcaption>Fig. 2 - An animation of a brush-less DC motor. Courtesy of <a href="https://www.embitel.com/blog/embedded-blog/brushless-dc-motor-vs-pmsm-how-these-motors-and-motor-control-solutions-work">embitel</a></figcaption>
+<figcaption>An animation of a brush-less DC motor. Courtesy of <a href="https://www.embitel.com/blog/embedded-blog/brushless-dc-motor-vs-pmsm-how-these-motors-and-motor-control-solutions-work">embitel</a></figcaption>
 </figure>
 
 Since most motors used on drones are meant to be compact and cheap, they usually lack any sensors on them to aid the 
@@ -93,7 +93,7 @@ the voltage will gradually change to approach the other extreme at which point i
 
 <figure>
 <img src="/images/esc-bldc-timing-chart.png">
-<figcaption>Fig. 3 - Timing chart showing a basic BLDC rotation with the voltage on (dotted line) and current through (solid) each phase marked. Figure 9 of <a href="https://www.ti.com/lit/an/sprabq7a/sprabq7a.pdf?ts=1642166596205">TI Application Report SPRABQ7A</a></figcaption>
+<figcaption>Timing chart showing a basic BLDC rotation with the voltage on (dotted line) and current through (solid) each phase marked. Figure 9 of <a href="https://www.ti.com/lit/an/sprabq7a/sprabq7a.pdf?ts=1642166596205">TI Application Report SPRABQ7A</a></figcaption>
 </figure>
 
 One generally finds it easiest to use the moment the voltage on this disconnected phase crosses the average voltage of all 

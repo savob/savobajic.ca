@@ -97,7 +97,7 @@ a large four digit, seven-segment display for the times.
 
 <figure>
 <img src="/images/bus-board.jpg">
-<figcaption>Fig. 1 - The designed board</figcaption>
+<figcaption>The designed board</figcaption>
 </figure>
 
 To display a series of bus predictions on the one display, I decided to use each digit as a separate 
@@ -108,7 +108,7 @@ would bother waiting that long for a bus.
 
 <figure>
 <img src="/images/bus-operating.png">
-<figcaption>Fig. 2 - The board in operation (showing a bus will arrive in 7 and 14 minutes)</figcaption>
+<figcaption>The board in operation (showing a bus will arrive in 7 and 14 minutes)</figcaption>
 </figure>
 
 To help with people knowing which button to press, I made filled areas of silkscreen on the circuit 

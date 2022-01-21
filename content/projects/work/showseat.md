@@ -63,7 +63,7 @@ for the set points (i.e. see how much heat to apply).
 
 <figure>
 <img src="/images/seat-flow.png">
-<figcaption>Fig. 1 - Overview of the seat's control system</figcaption>
+<figcaption>Overview of the seat's control system</figcaption>
 </figure>
 
 The plan is put digital potentiometers in the place of the resistors and have them controlled by the DAQs, like with the relays.
@@ -103,7 +103,7 @@ a more conventional language like C/C++.
 
 <figure>
 <img src="/images/seat-labview-example.png">
-<figcaption>Fig. 2 - A generic example of the appearance of a LabVIEW program</figcaption>
+<figcaption>A generic example of the appearance of a LabVIEW program</figcaption>
 </figure>
 
 Once I squeezed my code into the overall program and added a panel for the user to set the set points, the system was good to go 

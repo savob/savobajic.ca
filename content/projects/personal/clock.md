@@ -99,7 +99,7 @@ everything connected properly. This worked without a hitch.
 
 <figure>
 <img src="/images/clock-decoder-test.gif">
-<figcaption>Fig. 1 - Cycling through values using a DIP switch set</figcaption>
+<figcaption>Cycling through values using a DIP switch set</figcaption>
 </figure>
 
 ### Counters
@@ -131,7 +131,7 @@ external AND gate.
 
 <figure>
 <img src="/images/clock-digit-test.gif">
-<figcaption>Fig. 2 - Cycling through a counter</figcaption>
+<figcaption>Cycling through a counter</figcaption>
 </figure>
 
 To ensure the pulse generated to reset a counter is long enough to also increment the 
@@ -139,7 +139,7 @@ adjacent counter I performed tests on cascaded timers that were successful.
 
 <figure>
 <img src="/images/clock-cascade-test.jpg">
-<figcaption>Fig. 3 - Cascading counters test. Note the additional counter at the bottom of the breadboard connected to the other (second chip from the top) and the AND gate between them</figcaption>
+<figcaption>Cascading counters test. Note the additional counter at the bottom of the breadboard connected to the other (second chip from the top) and the AND gate between them</figcaption>
 </figure>
 
 ### Signal Generator
@@ -152,7 +152,7 @@ Hz (2^15) down to 1 Hz.
 
 <figure>
 <img src="/images/clock-division.jpg">
-<figcaption>Fig. 4 - Division of the reference 32 768 Hz wave (blue) by a factor of 16 to generate the output (yellow)</figcaption>
+<figcaption>Division of the reference 32 768 Hz wave (blue) by a factor of 16 to generate the output (yellow)</figcaption>
 </figure>
 
 The CD4060 was designed for this job, having a string of T flip flops needed to divide the 
@@ -174,7 +174,7 @@ do to improve the stability. The best I got was just about 3 minutes before fail
 
 <figure>
 <img src="/images/clock-crystal-trials.jpg">
-<figcaption>Fig. 5 - Results of my trials of different passives around my crystal</figcaption>
+<figcaption>Results of my trials of different passives around my crystal</figcaption>
 </figure>
 
 In the end what turned out to be the cause of my issues is that the CD4060 did not have 
@@ -200,7 +200,7 @@ aesthetic.
 
 <figure>
 <img src="/images/clock-display.png">
-<figcaption>Fig. 6 - Layout of the display module</figcaption>
+<figcaption>Layout of the display module</figcaption>
 </figure>
 
 The reset module is little more than a breakout for the two available logic ICs. Since each 
@@ -209,14 +209,14 @@ each board myself as need when I assemble them.
 
 <figure>
 <img src="/images/clock-reset.png">
-<figcaption>Fig. 7 - Layout of the reset board</figcaption>
+<figcaption>Layout of the reset board</figcaption>
 </figure>
 
 The only addition to the signal generator board was the power input to supply the power rails.
 
 <figure>
 <img src="/images/clock-signal.png">
-<figcaption>Fig. 8 - Layout of the signal board</figcaption>
+<figcaption>Layout of the signal board</figcaption>
 </figure>
 
 ## Assembly

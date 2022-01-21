@@ -52,7 +52,7 @@ circuit's main design. My changes to the design were:
 
 <figure>
 <img src="/images/esc-v3-schematic.svg">
-<figcaption>Fig. 1 - The completed schematic for the ESC V3 (PDF version: <a href="/pdf/ESC_V3.pdf">Colour</a> / <a href="/pdf/ESC_V3_BW.pdf">BW</a>)</figcaption>
+<figcaption>The completed schematic for the ESC V3 (PDF version: <a href="/pdf/ESC_V3.pdf">Colour</a> / <a href="/pdf/ESC_V3_BW.pdf">BW</a>)</figcaption>
 </figure>
 
 ## Layout
@@ -62,7 +62,7 @@ what went into that layout. Below you can see the overall revised board for V3.
 
 <figure>
 <img src="/images/esc-v3-combined-layout.png">
-<figcaption>Fig. 2 - The overall layout of the board</figcaption>
+<figcaption>The overall layout of the board</figcaption>
 </figure>
 
 All changes that occurred were on the top side. The complete removal of the 5V regulator was in the top right. Three of the 
@@ -71,7 +71,7 @@ centre of the board.
 
 <figure>
 <img src="/images/esc-v3-top-layout.png">
-<figcaption>Fig. 3 - The layout of the top side</figcaption>
+<figcaption>The layout of the top side</figcaption>
 </figure>
 
 The bottom of the board remains largely unchanged from V2, other than changing the silkscreen text to reflect the version 
@@ -79,7 +79,7 @@ number and the redone trace for RESET from the SPI ISP header.
 
 <figure>
 <img src="/images/esc-v3-bottom-layout.png">
-<figcaption>Fig. 4 - The layout of the bottom side</figcaption>
+<figcaption>The layout of the bottom side</figcaption>
 </figure>
 
 ## Assembly
@@ -90,10 +90,10 @@ I got anyways.
 
 <figure>
 <img src="/images/esc-v3-top-assembled.jpg">
-<figcaption>Fig. 5 - The top side of the purchased PCB</figcaption>
+<figcaption>The top side of the purchased PCB</figcaption>
 </figure>
 
 <figure>
 <img src="/images/esc-v3-bottom-assembled.jpg">
-<figcaption>Fig. 6 - The bottom side of the purchased PCB</figcaption>
+<figcaption>The bottom side of the purchased PCB</figcaption>
 </figure>

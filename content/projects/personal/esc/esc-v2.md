@@ -57,7 +57,7 @@ connections and code can remain the same.
 
 <figure>
 <img src="/images/esc-v2-schematic.svg">
-<figcaption>Fig. 1 - The completed schematic for the ESC V2 (PDF version: <a href="/pdf/ESC_V2.pdf">Colour</a> / <a href="/pdf/ESC_V2_BW.pdf">BW</a>)</figcaption>
+<figcaption>The completed schematic for the ESC V2 (PDF version: <a href="/pdf/ESC_V2.pdf">Colour</a> / <a href="/pdf/ESC_V2_BW.pdf">BW</a>)</figcaption>
 </figure>
 
 ***Note: there is a connection from the RST on the ISP header (pin 5 - J1) directly to RESET on the ATmega (pin 29 - U1) 
@@ -85,7 +85,7 @@ QFN-32 package that is smaller (5mm by 5mm) than the TQFP-32 (7mm by 7mm).
 
 <figure>
 <img src="/images/esc-v2-combined-layout.png">
-<figcaption>Fig. 2 - The overall layout of the board</figcaption>
+<figcaption>The overall layout of the board</figcaption>
 </figure>
 
 The bottom of the board housed the MOSFET driving circuitry and most of the resistor networks used for BEMF dividers. Since 
@@ -93,7 +93,7 @@ the AVR ISP header and the MOSFET driver share many connections I put that on th
 
 <figure>
 <img src="/images/esc-v2-bottom-layout.png">
-<figcaption>Fig. 3 - The layout of the bottom side</figcaption>
+<figcaption>The layout of the bottom side</figcaption>
 </figure>
 
 In addition to the aforementioned microcontroller and MOSFETs, the 5V regulator was also put on the top side in the top 
@@ -103,7 +103,7 @@ Not only does this reduce space needed, but also resistive losses in the system.
 
 <figure>
 <img src="/images/esc-v2-top-layout.png">
-<figcaption>Fig. 4 - The layout of the top side</figcaption>
+<figcaption>The layout of the top side</figcaption>
 </figure>
 
 ## Assembly
@@ -112,12 +112,12 @@ Assembly was a standard affair. Stencil, paste, place, reflow, flip, stencil, pa
 
 <figure>
 <img src="/images/esc-v2-top-assembled.jpg">
-<figcaption>Fig. 5 - The assembled top side (with un-flipped U3)</figcaption>
+<figcaption>The assembled top side (with un-flipped U3)</figcaption>
 </figure>
 
 <figure>
 <img src="/images/esc-v2-bottom-assembled.jpg">
-<figcaption>Fig. 6 - The assembled bottom side</figcaption>
+<figcaption>The assembled bottom side</figcaption>
 </figure>
 
 There however was a *hack(!)* I had employed.
@@ -138,7 +138,7 @@ hack I was supposed to do.
 
 <figure>
 <img src="/images/esc-v2-blown-u3.jpg" alt="Blown up traces around incorrectly mounted U3">
-<figcaption>Fig. 7 - The remnants of a blown voltage regulator (U3, under the R3 label)</figcaption>
+<figcaption>The remnants of a blown voltage regulator (U3, under the R3 label)</figcaption>
 </figure>
 
 Having one IC literally explode when you turn on the power is *shi*-poor luck at the best of times, ***twice** is a conspiracy!* 
@@ -179,7 +179,7 @@ supplies, I had fried a microcontroller.
 
 <figure>
 <img src="/images/esc-v2-commandments.jpg">
-<figcaption>Fig. 8 - A bold title</figcaption>
+<figcaption>A bold title</figcaption>
 </figure>
 
 Frustrated with issues, I wrote down some *"New ESC Commandments"*. These were pointers that I would use going forward to avoid 
@@ -203,7 +203,7 @@ The completed system made good use of my new helping hands to ensure everything 
 
 <figure>
 <img src="/images/esc-v2-modified.jpg">
-<figcaption>Fig. 9 - The modified Arduino-ESC system</figcaption>
+<figcaption>The modified Arduino-ESC system</figcaption>
 </figure>
 
 Testing on the system was continued in parallel with firmware development, using this Arduino-ESC system in place of a proper 
@@ -231,7 +231,7 @@ roughly 3A which all components could sustain for extended periods of time.
 
 <figure>
 <img src="/images/esc-test-motor.jpg">
-<figcaption>Fig. 10 - The test motor with the power resistors</figcaption>
+<figcaption>The test motor with the power resistors</figcaption>
 </figure>
 
 The browning in the middle of the power resistors are indeed burns from continued use from tests I was doing above the usual 12V. 
@@ -243,7 +243,7 @@ to the fridge to cool quicker so I could continue testing. No, condensation **wa
 
 <figure>
 <img src="/images/esc-fridge.jpg">
-<figcaption>Fig. 11 - The ESC development setup chilling</figcaption>
+<figcaption>The ESC development setup chilling</figcaption>
 </figure>
 
 ## Developing Firmware
@@ -279,7 +279,7 @@ something neat to try.
 
 <figure>
 <img src="/images/esc-quick-correct-pwm.png">
-<figcaption>Fig. 12 - Comparison of output waveforms between "Quick" and "Phase Correct" PWM</figcaption>
+<figcaption>Comparison of output waveforms between "Quick" and "Phase Correct" PWM</figcaption>
 </figure>
 
 I did get this to work, although I had to do some tricks. When doing periodic software interrupts on the ATmega328P, one can only 

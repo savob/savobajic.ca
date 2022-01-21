@@ -73,12 +73,12 @@ and out of the seat (referred to as “Ingress/Egress” testing).
 
 <figure>
 <img src="/images/ff-kneeload.jpg">
-<figcaption>Fig. 1 - Kneeload robot</figcaption>
+<figcaption>Kneeload robot</figcaption>
 </figure>
 
 <figure>
 <img src="/images/ff-body.png">
-<figcaption>Fig. 2 - The ingress-egress robot</figcaption>
+<figcaption>The ingress-egress robot</figcaption>
 </figure>
 
 Other than their end-effectors, these robots were virtually identical. They were the same KUKA brand welding arm, used the same 
@@ -96,7 +96,7 @@ following system configuration for both robots.
 
 <figure>
 <img src="/images/ff-robot-overview.png">
-<figcaption>Fig. 3 - Diagram of information flow in the system</figcaption>
+<figcaption>Diagram of information flow in the system</figcaption>
 </figure>
 
 ## System Software
@@ -108,7 +108,7 @@ system for future tests.
 
 <figure>
 <img src="/images/ff-sys-overview.jpg">
-<figcaption>Fig. 4 - The layout of the knee load system (ingress/egress was setup similarly). The robot control cabinet is just out of 
+<figcaption>The layout of the knee load system (ingress/egress was setup similarly). The robot control cabinet is just out of 
 frame on the left, PLC is the bottom left, DAQ (and safety systems) are in-between the displays, the companion computer is on the right. 
 (The other computer is used to backup the robot)</figcaption>
 </figure>
@@ -159,7 +159,7 @@ programming with examples.
 
 <figure>
 <img src="/images/ff-troubleshooting.png">
-<figcaption>Fig. 5 - An excerpt from the troubleshooting guide</figcaption>
+<figcaption>An excerpt from the troubleshooting guide</figcaption>
 </figure>
 
 # Extra Media

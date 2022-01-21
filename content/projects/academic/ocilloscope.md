@@ -39,7 +39,7 @@ component rather than a via.
 
 <figure>
 <img src="/images/scope-traces.png" alt="Bottom trace layout on a prototype board">
-<figcaption>Fig. 1 - The trace layout of one prototype board, all on one layer</figcaption>
+<figcaption>The trace layout of one prototype board, all on one layer</figcaption>
 </figure>
 
 # Detailed Report
@@ -57,7 +57,7 @@ what was expected.
 
 <figure>
 <img src="/images/scope-report.png" alt="An exerpt from the reports">
-<figcaption>Fig. 2 - An exerpt from the report</figcaption>
+<figcaption>An exerpt from the report</figcaption>
 </figure>
 
 My teammate and I then refined our designs and decided on our proposed design before moving to EAGLE to design a 
@@ -71,7 +71,7 @@ the prototype.
 <figure>
 <img src="/images/scope-top-proto.jpg" alt="Prototype board from the top">
 <img src="/images/scope-bottom-proto.jpg" alt="Prototype board from the bottom">
-<figcaption>Fig. 3 and 4 - The prototype board from the top and bottom respectively</figcaption>
+<figcaption>The prototype board from the top and bottom respectively</figcaption>
 </figure>
 
 Our tests were successful, however I made the mistake of misreading a label when gathering components which led 
@@ -86,7 +86,7 @@ report displaying the system in different configurations.
 
 <figure>
 <img src="/images/scope-views.jpg" alt="Views from report">
-<figcaption>Fig. 5 - A series of views from the report</figcaption>
+<figcaption>A series of views from the report</figcaption>
 </figure>
 
 

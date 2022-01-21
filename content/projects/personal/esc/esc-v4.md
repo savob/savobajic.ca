@@ -55,7 +55,7 @@ the motor. I've sectioned off the schematic with explanations for each, but to s
 
 <figure>
 <img src="/images/esc-v4-schematic.svg">
-<figcaption>Fig. 1 - The completed schematic for the ESC V4 (PDF version: <a href="/pdf/ESC_V4.pdf">Colour</a> / <a href="/pdf/ESC_V4_BW.pdf">BW</a>)</figcaption>
+<figcaption>The completed schematic for the ESC V4 (PDF version: <a href="/pdf/ESC_V4.pdf">Colour</a> / <a href="/pdf/ESC_V4_BW.pdf">BW</a>)</figcaption>
 </figure>
 
 ### Microcontroller
@@ -161,7 +161,7 @@ joint mechanically when soldering in a hole compared to a pad.
 
 <figure>
 <img src="/images/esc-v4-combined-layout.png">
-<figcaption>Fig. 2 - The overall layout of the board</figcaption>
+<figcaption>The overall layout of the board</figcaption>
 </figure>
 
 The top side of the board houses the MOSFET driver circuitry on the left half and the feedback network on the right. I added 
@@ -169,7 +169,7 @@ some text to the silkscreen to help clarify some of the connections and provide 
 
 <figure>
 <img src="/images/esc-v4-top-layout.png">
-<figcaption>Fig. 3 - The layout of the top side</figcaption>
+<figcaption>The layout of the top side</figcaption>
 </figure>
 
 Given the reduced number of components in V4 compared to V3 or earlier, the bottom side, where the control electronics and 
@@ -177,7 +177,7 @@ MOSFETS reside, is quite simple. Given this additional space more notes are avai
 
 <figure>
 <img src="/images/esc-v4-bottom-layout.png">
-<figcaption>Fig. 4 - The layout of the bottom side</figcaption>
+<figcaption>The layout of the bottom side</figcaption>
 </figure>
 
 ## Assembly
@@ -191,14 +191,14 @@ days and even harvest the functional ones from previously assembled ESCs. *(Is t
 
 <figure>
 <img src="/images/esc-v4-stencil.jpg">
-<figcaption>Fig. 5 - The custom stencil for both sides of ESC V4</figcaption>
+<figcaption>The custom stencil for both sides of ESC V4</figcaption>
 </figure>
 
 The final assembled ESC V4s came out looking pretty good. Here is the "top" with the MOSFET driver and feedback array.
 
 <figure>
 <img src="/images/esc-v4-assembled-top.jpg">
-<figcaption>Fig. 6 - The assembled MOSFET driver and feedback side (top)</figcaption>
+<figcaption>The assembled MOSFET driver and feedback side (top)</figcaption>
 </figure>
 
 A view of the control/MOSFET side of one assembled ESC V4. Note: R2 was originally installed, but was replaced with a short 
@@ -206,7 +206,7 @@ when I [started using a ATMEL-ICE programmer](#working-with-updi).
 
 <figure>
 <img src="/images/esc-v4-assembled-bottom.jpg">
-<figcaption>Fig. 7 - The assembled control and MOSFET side (back)</figcaption>
+<figcaption>The assembled control and MOSFET side (back)</figcaption>
 </figure>
 
 ## Testing
@@ -232,7 +232,7 @@ single 1kΩ resistor between TX and the other pins.
 
 <figure>
 <img src="/images/esc-v4-udpi-schematic.png">
-<figcaption>Fig. 8 - Different versions of my pyUDPI interface schematic. Power connections are omitted for simplicity as they were simply Vcc to Vcc and GND to GND.</figcaption>
+<figcaption>Different versions of my pyUDPI interface schematic. Power connections are omitted for simplicity as they were simply Vcc to Vcc and GND to GND.</figcaption>
 </figure>
 
 This worked, although at a very slow upload speed of a couple hundred bytes a second. But hey, *it worked!*
@@ -243,7 +243,7 @@ green LED that would only light up when the adapter was correctly inserted, to p
 
 <figure>
 <img src="/images/esc-v4-serial-to-udpi.jpg">
-<figcaption>Fig. 9 - My pyUPDI board with a standard USB-Serial converter</figcaption>
+<figcaption>My pyUPDI board with a standard USB-Serial converter</figcaption>
 </figure>
 
 Our time together was not meant to last, and I grew frustrated with the upload times that exceeded 30 seconds for code that 
@@ -253,7 +253,7 @@ my 3-pin UDPI header to its 6-pin connector.
 
 <figure>
 <img src="/images/esc-v4-amtel-ice-udpi.jpg">
-<figcaption>Fig. 10 - My ATMEL-ICE and adapter for my UPDI header</figcaption>
+<figcaption>My ATMEL-ICE and adapter for my UPDI header</figcaption>
 </figure>
 
 The upgrade in tooling spoke for itself *immediately!* My programming times were a fraction of what they were using my pyUDPI 
@@ -439,7 +439,7 @@ to help explain it.
 
 <figure>
 <img src="/images/esc-v4-figure-21-6.png">
-<figcaption>Fig. 11 - An graph explaining the operation of Input Capture Frequency Measurement. Figure 21-6 in the datasheet.</figcaption>
+<figcaption>An graph explaining the operation of Input Capture Frequency Measurement. Figure 21-6 in the datasheet.</figcaption>
 </figure>
 
 The neat thing about the ATtiny is that it has an internal Event System that is capable of routing a variety of sources to 
@@ -459,7 +459,7 @@ which is the perfect moment to commutate!
 
 <figure>
 <img src="/images/esc-v4-figure-21-6.png">
-<figcaption>Fig. 12 - An graph explaining the operation of periodic interrupts. Figure 21-3 in the datasheet.</figcaption>
+<figcaption>An graph explaining the operation of periodic interrupts. Figure 21-3 in the datasheet.</figcaption>
 </figure>
 
 By constantly alternating between these two modes I should be reliably commutating the motor. I prepared a little chart to 
@@ -467,7 +467,7 @@ show how this should behave in theory.
 
 <figure>
 <img src="/images/esc-v4-timer-b.jpg">
-<figcaption>Fig. 13 - The rough timing diagram I made showing this working in theory</figcaption>
+<figcaption>The rough timing diagram I made showing this working in theory</figcaption>
 </figure>
 
 Before I actually went to test this though, I decided to develop and test the buzzing feature.

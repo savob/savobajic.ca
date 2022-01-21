@@ -100,7 +100,7 @@ grab that font!)*
 
 <figure>
 <img src="/images/website-portfolio-clip.png">
-<figcaption>Fig. 1 - An section from the print portfolio</figcaption>
+<figcaption>An section from the print portfolio</figcaption>
 </figure>
 
 The website design is not set right now, and will definitely change. I would like to 

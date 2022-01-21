@@ -61,7 +61,7 @@ determines the current supplied to the LEDs.
 
 <figure>
 <img src="/images/arbiter-brief.png">
-<figcaption>Fig. 1 - The basic circuits propsed for use in Tempest</figcaption>
+<figcaption>The basic circuits propsed for use in Tempest</figcaption>
 </figure>
 
 Other than changing some parts due to availabilities of the transistors origianlly mentioned in Tempest's outline, and then some 
@@ -79,14 +79,14 @@ be drawn!) I increased the width of the main power traces accordingly.
 
 <figure>
 <img src="/images/arbiter-layout.png">
-<figcaption>Fig. 2 - The final layout</figcaption>
+<figcaption>The final layout</figcaption>
 </figure>
 
 Once produced the finished circuit board looked like this, with that classic PCB green.
 
 <figure>
 <img src="/images/arbiter-board.jpg">
-<figcaption>Fig. 3 - The produced circuit board</figcaption>
+<figcaption>The produced circuit board</figcaption>
 </figure>
 
 ## Assembly
@@ -98,12 +98,12 @@ system to be easily removed as needed.
 
 <figure>
 <img src="/images/arbiter-assembled.jpg">
-<figcaption>Fig. 4 - The assembled board used in the vehicle</figcaption>
+<figcaption>The assembled board used in the vehicle</figcaption>
 </figure>
 
 A partially assembled spare board was prepared should the need arise, however it never found use as more than a paperweight.
 
 <figure>
 <img src="/images/arbiter-spare.jpg">
-<figcaption>Fig. 5 - A (mostly) assembled spare board</figcaption>
+<figcaption>A (mostly) assembled spare board</figcaption>
 </figure>

@@ -82,7 +82,7 @@ adjusted without replacing any components.
 <figure>
 <img src="/images/zephyr-proto-top.jpg" alt="The top of prototype boards"/>
 <img src="/images/zephyr-proto-bot.jpg" alt="The bottom of prototype boards"/>
-<figcaption>Fig. 1 and 2 - The top and bottom (respectively) sides of the prototype board used</figcaption>
+<figcaption>The top and bottom (respectively) sides of the prototype board used</figcaption>
 </figure>
 
 
@@ -110,12 +110,12 @@ LED drivers, allowing it to control the lights, which could be dimmed using PWM 
 
 <figure>
 <img src="/images/zephyr-layout.png">
-<figcaption>Fig. 3 - Layout of Zephyr's circuit board</figcaption>
+<figcaption>Layout of Zephyr's circuit board</figcaption>
 </figure>
 
 <figure>
 <img src="/images/zephyr-assembled.jpg">
-<figcaption>Fig. 4 - Assembled Zephyr board</figcaption>
+<figcaption>Assembled Zephyr board</figcaption>
 </figure>
 
 There was space allocated to three other removable modules on the PCB: a microSD card reader for data logging, a 
@@ -127,7 +127,7 @@ communication was not implemented as it is meant to be used for a research proje
 
 <figure>
 <img src="/images/zephyr-app.png">
-<figcaption>Fig. 5 - The app designed for Zephyr</figcaption>
+<figcaption>The app designed for Zephyr</figcaption>
 </figure>
 
 

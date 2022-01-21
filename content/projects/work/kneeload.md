@@ -52,7 +52,7 @@ seat at prescribed points.
 
 <figure>
 <img src="/images/ff-kneeload.jpg">
-<figcaption>Fig. 1 - The kneeload robot</figcaption>
+<figcaption>The kneeload robot</figcaption>
 </figure>
 
 Although the robot could perfectly repeat the motions of a test cycle to the end of time, the seats would 
@@ -143,7 +143,7 @@ and I mounted all the electronics within it and ran the needed wiring internally
 
 <figure>
 <img src="/images/kl-plc.jpg">
-<figcaption>Fig. 2 - The interior of the PLC cabinet (My, oh my, have I gotten better at wiring since)</figcaption>
+<figcaption>The interior of the PLC cabinet (My, oh my, have I gotten better at wiring since)</figcaption>
 </figure>
 
 Afterwards, I focused on preparing the documentation to explain my work and how it could be modified for 

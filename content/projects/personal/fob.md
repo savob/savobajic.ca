@@ -67,7 +67,7 @@ order of magnitude easier.
 
 <figure>
 <img src="/images/fob-probing.jpg">
-<figcaption>Fig. 1 - Exposed board being probed for the output signal</figcaption>
+<figcaption>Exposed board being probed for the output signal</figcaption>
 </figure>
 
 I took the board to an oscilloscope and began to probe the output to the LEDs try and find the secrets of the sent signal. 
@@ -84,7 +84,7 @@ noticed that in the message there were pulses every 4ms, with some having a seco
 
 <figure>
 <img src="/images/fob-pulses.jpg">
-<figcaption>Fig. 2 - A section of message pulses, with a double pulse circled in red</figcaption>
+<figcaption>A section of message pulses, with a double pulse circled in red</figcaption>
 </figure>
 
 I decided to assign the single pulses a value of 0, and the doubles a value of 1. I downloaded the data from the 
@@ -93,7 +93,7 @@ string of binary.
 
 <figure>
 <img src="/images/fob-signal-data.png">
-<figcaption>Fig. 3 - An excerpt from the spreadsheet. Leftmost column is time (ms), then voltage reading (V), then if this reading is a spike compared to the previous one, and the rightmost column records a 1  if there is another spike in close succession (a 0 otherwise)</figcaption>
+<figcaption>An excerpt from the spreadsheet. Leftmost column is time (ms), then voltage reading (V), then if this reading is a spike compared to the previous one, and the rightmost column records a 1  if there is another spike in close succession (a 0 otherwise)</figcaption>
 </figure>
 
 I compared the data across five samples from my fob and found that it sent the same signal each time! I confirmed 
@@ -107,7 +107,7 @@ away from most traffic so I could test in peace without having to explain myself
 <figure>
 <img src="/images/fob-prototype.jpg">
 <img src="/images/fob-prototype-back.jpg">
-<figcaption>Fig. 4 and 5 - My kitchenmaid prototype from the front and the back</figcaption>
+<figcaption>My kitchenmaid prototype from the front and the back</figcaption>
 </figure>
 
 It was successful on the first try! Which was very convenient since to recode the Arduino would need me to 
@@ -118,17 +118,17 @@ battery) on a single protoboard.
 
 <figure>
 <img src="/images/fob-protoboard-front.jpg">
-<figcaption>Fig. 6 - Front of the protoboard version (Note that the ATtiny was positioned on the right half of the socket for programming, left half when in normal operation)</figcaption>
+<figcaption>Front of the protoboard version (Note that the ATtiny was positioned on the right half of the socket for programming, left half when in normal operation)</figcaption>
 </figure>
 <figure>
 <img src="/images/fob-protoboard-back.jpg">
-<figcaption>Fig. 7 - Rear of the protoboard version</figcaption>
+<figcaption>Rear of the protoboard version</figcaption>
 </figure>
 
 Afterwards, a custom circuit board I prepared in EAGLE, which I used to this day when visiting!
 
 <figure>
 <img src="/images/fob-assembled.jpg">
-<figcaption>Fig. 8 - Completed assembly (the "940" is for the wavelength of LED used)</figcaption>
+<figcaption>Completed assembly (the "940" is for the wavelength of LED used)</figcaption>
 </figure>
 
