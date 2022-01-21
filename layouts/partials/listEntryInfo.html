@@ -6,28 +6,28 @@
 
 {{/* Projects */}}
 {{ if .Params.status }}
-<div class="subtitle">Status: {{ .Params.status }}</div>
+<p class="subtitle">Status: {{ .Params.status }}</p>
 {{ if .Params.finished }}
-<div class="subtitle">Period: {{ .Params.started }} - {{ .Params.finished }}</div>
+<p class="subtitle">Period: {{ .Params.started }} - {{ .Params.finished }}</p>
 {{else}}
-<div class="subtitle">Started: {{ .Params.started }}</div>
+<p class="subtitle">Started: {{ .Params.started }}</p>
 {{end}}
-{{ if .Params.client }}<div class="subtitle">Client: {{ .Params.client }}</div> {{end}}
-<div class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
+{{ if .Params.client }}<p class="subtitle">Client: {{ .Params.client }}</p> {{end}}
+<p class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</p>
 
 {{end}}
 
 {{/* Experience */}}
 {{ if .Params.company }}
-<div class="subtitle">{{ .Params.company }}</div>
-<div class="subtitle">{{ .Params.period }}</div>
+<p class="subtitle">{{ .Params.company }}</p>
+<p class="subtitle">{{ .Params.period }}</p>
 {{end}}
 
 {{/* Publications */}}
 {{ if .Params.publication }}
-<div class="subtitle">{{ .Params.writers }}</div>
-<div class="subtitle">{{ .Params.publication }}</div>
-<div class="subtitle">Published: {{ .Params.publishedDate}}</div>
+<p class="subtitle">{{ .Params.writers }}</p>
+<p class="subtitle">{{ .Params.publication }}</p>
+<p class="subtitle">Published: {{ .Params.publishedDate}}</p>
 {{end}}
 
 <p class="listEntry">{{.Summary}}</p>

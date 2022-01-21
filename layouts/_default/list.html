@@ -17,6 +17,7 @@
 	<div class="column">
 	{{ $articlesPerCol := math.Ceil (div (len $.Pages) 2.0)}}
 	{{ range $i, $article :=.Pages }}
+		<a href="{{.Permalink}}">
 		<article>
 		
 		
@@ -36,6 +37,7 @@
 		{{end}}
 			
 		</article>
+		</a>
 		
 		  {{ if modBool (add $i 1) $articlesPerCol }}
     </div> <!-- end row -->
