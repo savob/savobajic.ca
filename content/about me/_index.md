@@ -5,6 +5,11 @@ draft: false
 ---
 # About Me, Savo
 
+<figure>
+<img src="/images/headshot.jpg">
+<figcaption>Bajic, Savo Bajic</figcaption>
+</figure>
+
 Hi! My name is Savo Bajic and I'm a Canadian engineer in training. Although I graduated with honours from the mechanical 
 engineering program at the University of Toronto, my main interest is pursuing embedded electronics as a career and my hobby.
  I made this website to present both myself and my projects to anyone interested.
@@ -14,10 +19,20 @@ and Serbia. As result I am fluent in Czech and Serbian, in addition to English a
 Shanghai, China due to my dad's work and lived there for five years. We returned to our childhood home and I attended our local
 public high school for two years before leaving to study engineering at the University of Toronto.
 
+<figure>
+<img src="/images/shanghai.jpg">
+<figcaption>A photo I took on Nanjing Rd. in Shangahi</figcaption>
+</figure>
+
 Although I was enthralled by the idea of building and designing things from a young age, playing with LEGO and eventually LEGO
 robots, I really started to get into it with participating in the FIRST Robotics Challenge the two years I was in high school in
 Canada. I performed the double duty of Head of Engineering and Team Captain both years, and participating in the World
 Championships both years.
+
+<figure>
+<img src="/images/robotics.jpg">
+<figcaption>My team after winning our regional event in 2016 before heading to compete at the championships. I am holding the banner on the right.</figcaption>
+</figure>
 
 At university I joined a few student design teams, in the end deciding to dedicate myself to the
 [Human Powered Vehicle Design Team](https://hpvdt.skule.ca/). I began primarily interested in learning how we designed
@@ -41,5 +56,7 @@ the last year. When not working on some pet project I will often read some Sci-F
 
 ## Other
 
-You may find my [work experience]({{< ref "/work experience/_index.md">}}), [volunteer work]({{< ref "/volunteering/_index.md">}}), and [publications]({{< ref "/publications/_index.md">}}) on
-their own pages to avoid a massive page with everything in one heap.
+You may find my [work experience]({{< ref "/work experience/_index.md">}}), [volunteer work]({{< ref "/volunteering/_index.md">}}), 
+and [publications]({{< ref "/publications/_index.md">}}) on their own pages to avoid a massive page with everything in one heap.
+
+I've collected my contact information [here]({{< ref "/contact/_index.md">}}).
