@@ -3,7 +3,7 @@ title: "ESC V4"
 date: 2020-09-15T02:16:24-05:00
 draft: false
 started: "September 2020"
-finished:
+finished: "August 2021"
 status: "Testing, on Pause"
 client:
 tags: [ESC, embedded, BLDC, drone]
