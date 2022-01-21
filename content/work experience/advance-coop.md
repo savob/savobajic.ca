@@ -1,5 +1,5 @@
 ---
-title: "Advance Co-op"
+title: "Advanced Co-op"
 date: 2018-05-03T01:11:10-05:00
 draft: false
 period: "May 2018 - August 2018"
@@ -13,6 +13,7 @@ points: ["Integrated a force regulation system into legacy robotic arm systems f
 "Contributed code to improve the flexibility of our end of line product testers so they could be easily reconfigured for new clients and products."]
 ---
 
+*Small note: the actual title of this position was "Advance Co-op" since I worked for the "Advance" department which was responsible to "advance" our technologies. However, I have listed it as "Advance**d**" since everyone seems to think of it as a spelling mistake at first glance.*
 
 - Integrated a force regulation system into legacy robotic arm systems for use in seat durability testing. 
 This system was an expanded version of my previous work going from regulating a single axis of force to six, so a controlled path can be followed adapting to regulate force and torque at each point.
