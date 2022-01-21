@@ -16,12 +16,13 @@ body {
 /* Header and footer config */
 header {
 	text-align: center;
-	text-transform:capitalize;
-	background-color:DodgerBlue;
+	text-transform: capitalize;
+	background-color: DodgerBlue;
 	
 	width: 100%;
 	
-	margin: 0 0 5px 0;
+	padding: 0.25em 0;
+	margin: 0.5em 0;
 }
 
 header h1 {margin: 0;}
@@ -35,43 +36,75 @@ footer {
 	background-color:DimGray; 
 	bottom:0px; 
 	padding: 10px 0px;
-	text-align:center; 
+	text-align: center; 
 	width: 100%;
 }
 
 
 /* Nav bar stuff */
 nav {
-	margin: 0px 0px 10px 0px; 
+	margin: 0.5em 0 1em 0; 
 	background-color: DodgerBlue;
 	text-align: center;
-	text-transform:capitalize;
+	text-transform: capitalize;
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0px auto;
-  padding: 0;
-  overflow: hidden;
-}
-nav li{
-	margin: 2px 1px 2px 2px;
-	display: inline;
-	border-right: 1px solid #bbb;
-}
-nav li:last-child {
-  border-right: none;
-}
-
-nav li a {
-  
+nav a {
   color: white;
-  padding: 8px 25px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  margin: 1px;
+  font-size: 20px;
+  margin: 0.5em;
+  display: block;
 }
+
+nav div {
+	text-align: center;
+	padding: 0em;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  
+  margin: 0px auto;
+  max-width: 75em;
+  padding: 0;
+  
+  justify-content: space-around;
+  background-color: DodgerBlue;
+}
+
+.navbutton, .dropdown {
+  flex: 16%
+}
+@media (max-width: 800px) {
+	.navbutton, .dropdown {
+		flex: 33%
+	}
+}
+
+.navbutton:hover {background-color: DeepSkyBlue;}
+.dropdown:hover {background-color: DeepSkyBlue;}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: Grey;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+.dropdown-content a {
+  padding: 0.2em 1em;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown-content a:hover {background-color: DeepSkyBlue;}
+
+
 
 
 
@@ -111,7 +144,7 @@ div.listEntry {
 }
 
 /* If the screen is wide enough, put the summary of pages and the thumbnail side-by-side */
-@media only screen and (min-width: 650px) {
+@media (min-width: 650px) {
 	img.thumbnail {
 		max-width: 49.5%;
 		max-height: 100%;
@@ -123,7 +156,7 @@ div.listEntry {
 }
 
 main {
-	max-width: 1000px;
+	max-width: 70em;
 	margin: 0px auto;
 	padding: 0px 10px;
 	
