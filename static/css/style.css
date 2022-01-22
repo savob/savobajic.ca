@@ -1,3 +1,12 @@
+:root {
+	--backgroundColour: DodgerBlue;
+	--altBackgroundColour: DeepSkyBlue;
+	--asideBackgroundColour: LightGrey;
+	--mainText: Black;
+	--navText: White;
+	--subtitleText: Grey;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -6,9 +15,10 @@ html {
 body {
 	font-family: Helvetica, sans-serif;
 	margin: 0;
+	color: var(--mainText);
 }
 .subtitle {
-	color:grey;
+	color: var(--subtitleText);
 	font-size:16px;
 }
 div.wrapper {
@@ -21,7 +31,7 @@ div.wrapper {
 header {
 	text-align: center;
 	text-transform: capitalize;
-	background-color: DodgerBlue;
+	background-color: var(--backgroundColour);
 	
 	width: 100%;
 	
@@ -32,11 +42,11 @@ header {
 header h1 {margin: 0;}
 header a, footer a  {
 	text-decoration: none; 
-	color:white;
+	color: var(--navText);
 }
 
 footer {
-	color: white; 
+	color: var(--navText); 
 	background-color:DimGray; 
 	bottom:0px; 
 	padding: 10px 0px;
@@ -50,13 +60,13 @@ footer {
 /* Nav bar stuff */
 nav {
 	margin: 0.5em 0 1em 0; 
-	background-color: DodgerBlue;
+	background-color: var(--backgroundColour);
 	text-align: center;
 	text-transform: capitalize;
 }
 
 nav a {
-  color: white;
+  color: var(--navText);
   text-align: center;
   text-decoration: none;
   font-size: 20px;
@@ -78,20 +88,20 @@ nav div {
   padding: 0;
   
   justify-content: space-around;
-  background-color: DodgerBlue;
+  background-color: var(--backgroundColour);
 }
 
 .navbutton, .dropdown {
   flex: 16%
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 50rem) {
 	.navbutton, .dropdown {
 		flex: 33%
 	}
 }
 
-.navbutton:hover {background-color: DeepSkyBlue;}
-.dropdown:hover {background-color: DeepSkyBlue;}
+.navbutton:hover {background-color: var(--altBackgroundColour);}
+.dropdown:hover {background-color: var(--altBackgroundColour);}
 
 .dropdown-content {
   opacity: 0;
@@ -113,7 +123,7 @@ nav div {
   transform: translateY(0);
 }
 
-.dropdown-content a:hover {background-color: DeepSkyBlue;}
+.dropdown-content a:hover {background-color: var(--altBackgroundColour);}
 
 
 
@@ -170,7 +180,7 @@ img.thumbnail {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 50rem) {
   .column {
     flex: 100%;
     max-width: 100%;
@@ -224,7 +234,7 @@ section.mainIntro h1 {
 div.introLine {
 	width: calc(50vw + 90%);
 	height: 8px;
-	background-color: DodgerBlue;
+	background-color: var(--backgroundColour);
 	margin: 5px 0;
 	position: relative;
 	left: -50vw;
@@ -238,7 +248,7 @@ section.mainContent {
 
 .intro {
   display: flex;
-  background-color: LightGrey;
+  background-color: var(--asideBackgroundColour);
   padding: 0;
   height: 18rem;
   border-radius: 25px;
