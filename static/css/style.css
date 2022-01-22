@@ -4,7 +4,7 @@
 	--asideBackgroundColour: LightGrey;
 	--mainText: Black;
 	--navText: White;
-	--subtitleText: Grey;
+	--subtitleText: DimGrey;
 }
 
 html {
@@ -35,8 +35,8 @@ header {
 	
 	width: 100%;
 	
-	padding: 0.25em 0;
-	margin: 0.5em 0;
+	padding: 0;
+	margin:0;
 }
 
 header h1 {margin: 0;}
@@ -59,7 +59,7 @@ footer {
 
 /* Nav bar stuff */
 nav {
-	margin: 0.5em 0 1em 0; 
+	margin: 0 0 1em 0; 
 	background-color: var(--backgroundColour);
 	text-align: center;
 	text-transform: capitalize;
@@ -248,27 +248,52 @@ section.mainContent {
 
 .intro {
   display: flex;
-  background-color: var(--asideBackgroundColour);
+  background-color: var(--backgroundColour);
   padding: 0;
-  height: 18rem;
+  height: 18em;
   margin: 2rem 0;
+  color: var(--navText);
+  font-size: 15pt;
+}
+
+.intro h1 {
+	margin: 1rem 0;
 }
 
 .bio-shot {
   flex-shrink: 0;
   height: 100%;
   margin: 0 auto;
-  object-fit: cover;
+  object-fit: none;
 }
 
 
 div.bio-bit {
   padding: 0 2rem;
-  overflow:auto;
   margin: 1rem 0 0 0;
 }
 
 #recent, #featured {
 	margin: 3rem 0;
 }
+
+@media screen and (max-width: 50rem) {
+	.bio-shot, .bio-bit {
+		flex-basis: 100%;
+	}
+	
+	.bio-shot {
+  width: 100%;
+  margin: 0 auto;
+  height: 20rem;
+}
+	
+	.intro {
+  	display: flex;
+  	flex-direction: column;
+  	height: auto;
+	}
+}
+
+
 
