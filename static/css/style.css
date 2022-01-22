@@ -234,3 +234,24 @@ section.mainContent {
 }
 
 
+/* Home page */
+
+.intro {
+  display: flex;
+  background-color: LightGrey;
+  padding: 0;
+  height: 18rem;
+}
+
+.bio-shot {
+  flex-shrink: 0;
+  height: 100%;
+  margin: 0 auto;
+}
+
+
+div.bio-bit {
+  padding: 2rem;
+}
+
+

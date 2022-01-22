@@ -13,39 +13,7 @@
 	
 	{{.Content}}
 	
-	<div class="row">
-	<div class="column">
-	{{ $articlesPerCol := math.Ceil (div (len $.Pages) 2.0)}}
-	{{ range $i, $article :=.Pages }}
-		<a href="{{.Permalink}}">
-		<article>
-		
-		
-		{{if .Params.thumbnail}}
-		<img class="thumbnail" src="{{.Params.thumbnail}}">
-		{{end}}
-		
-		{{ partial "listEntryInfo" . }}
-		
-		<!-- See if there are subpages for this page, list them -->
-		{{ if .Pages}}
-		<ul>
-		{{ range .Pages }}
-		<li><a href="{{.Permalink}}">{{.Title}}</a> - {{ .Params.summary }}</li>
-		{{end}}
-		</ul>
-		{{end}}
-			
-		</article>
-		</a>
-		
-		  {{ if modBool (add $i 1) $articlesPerCol }}
-    </div> <!-- end row -->
-    <div class="column">
-  {{ end }}
-	{{ end }}
-	</div>
-	</div>
+	{{ partial "columnContent" (dict "context" . "pagesToPost" .Pages)}}
 	</main>
 	
 	{{ partial "footer" . }}
