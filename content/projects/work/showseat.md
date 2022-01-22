@@ -8,9 +8,9 @@ status: "Complete"
 client: "IGB Automotive"
 tags: [IGB, LabVIEW, embedded, prototyping, hacking]
 skills: [LabVIEW, embedded, prototyping, hacking]
-summary: "Revised the existing show seat used at demos to have its setpoints easily reconfigured with software. **My first embedded electronics project!**"
+summary: "Revised the existing show seat used at demos to have its set points easily reconfigured with software. **My first embedded electronics project!**"
 githubLink:
-thumbnail:
+thumbnail: "/images/seat-demo-seat.jpg"
 ---
 
 # Overview
@@ -41,13 +41,23 @@ tasked with implementing a digital potentiometer we could simply control with so
 
 # Detailed Report
 
-When going to industry conferences and showcases, IGB Automotive had a dedicaed show seat that they would use to demonstrate 
+When going to industry conferences and showcases, IGB Automotive had a dedicated show seat that they would use to demonstrate 
 their products: heating for seats, steering wheels, bolsters, as well as seat cooling. However the set points for their main 
 products: heaters, are set using resistors external to the control module so the same module can be dropped into different 
 vehicles without issue. However for this application it makes is much more difficult to change the set points with each new 
 seat or set of products used since the resistors built into the control system of the seat would need changing. This also 
 makes it difficult to demonstrate multiple set points for potential clients since a whole array of resistors would need to 
-be used in junction with a switch.
+be used in junction with a switch. 
+
+<figure>
+<img src="/images/seat-demo-seat.jpg">
+<figcaption>A basic demo seat with the interface powered off on the left</figcaption>
+</figure>
+
+<figure>
+<img src="/images/seat-demo-bolster.jpg">
+<figcaption>A demo bolster with heat distribution map show in the top right. (Controlled by button along the top)</figcaption>
+</figure>
 
 The solution my manager tasked me to implement was replacing these resistors in the show seat with a digital potentiometer we 
 could then adjust in software, thereby controlling the set points programmatically. Shame it didn't turn out to be as simple 

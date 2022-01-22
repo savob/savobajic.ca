@@ -10,6 +10,7 @@ tags: [HPVDT, vehicle, mobile, embedded, Bluetooth, EAGLE]
 skills: [embedded, c++, layout]
 summary: "Designed the electronics system for Zephy, HPVDT's entry to ASME 2019"
 githubLink: "https://github.com/hpvdt/zypher"
+thumbnail: "/images/zephyr-bike.jpg"
 ---
 
 # Overview

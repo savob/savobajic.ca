@@ -10,7 +10,7 @@ tags: [HPVDT, embedded, hardware, analog, EAGLE]
 skills: [embedded, hardware, analog, EAGLE]
 summary: "Prepared a hardware-only lighting system based on what was planned for the team's previous vehicle, Tempest. **My first PCB!**"
 githubLink: "https://github.com/hpvdt/arbiter"
-thumbnail:
+thumbnail: "/images/arbiter-vehicle.jpg"
 ---
 
 # Overview

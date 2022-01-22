@@ -10,7 +10,7 @@ tags: [ESC, embedded, BLDC, KiCAD, drone]
 skills: [embedded, KiCAD, BLDC]
 summary: "My first attempt to make a sensor-less ESC for my drone"
 githubLink:
-thumbnail: 
+thumbnail: "/images/esc-v1-mcu-side.jpg"
 ---
 
 # Overview

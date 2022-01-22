@@ -10,7 +10,7 @@ tags: [ESC, embedded, BLDC, drone]
 skills: [embedded, KiCAD, BLDC]
 summary: "Newest revision to the ESC. Largely design to use the available MOSFET drivers"
 githubLink:
-thumbnail:
+thumbnail: "/images/esc-v5-combined-layout.png"
 ---
 
 # Overview

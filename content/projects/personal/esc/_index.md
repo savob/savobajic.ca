@@ -10,7 +10,7 @@ tags: [ESC, embedded, BLDC, KiCAD, drone]
 skills: [embedded, BLDC, KiCAD]
 summary: "Making a custom electronic speed controller for my drone's motors"
 githubLink:
-thumbnail:
+thumbnail: "/images/esc-test-motor.jpg"
 ---
 
 # Overview of the ESC Project

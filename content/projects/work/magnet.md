@@ -10,7 +10,7 @@ tags: [COMSOL, AMNL, CAD, SolidWorks, research]
 skills: [COMSOL, AMNL, CAD, SolidWorks]
 summary: "Designed and built an alternating 3D-magnetic field generator for my research group"
 githubLink: 
-thumbnail: 
+thumbnail: "/images/magnet-assembled.jpg"
 ---
 
 # Overview
