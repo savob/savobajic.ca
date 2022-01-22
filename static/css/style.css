@@ -241,17 +241,26 @@ section.mainContent {
   background-color: LightGrey;
   padding: 0;
   height: 18rem;
+  border-radius: 25px;
+  margin: 2rem 0;
 }
 
 .bio-shot {
   flex-shrink: 0;
   height: 100%;
   margin: 0 auto;
+  object-fit: cover;
+  border-radius: 25px 0 0 25px;
 }
 
 
 div.bio-bit {
-  padding: 2rem;
+  padding: 0 2rem;
+  overflow:auto;
+  margin: 1rem 0 0 0;
 }
 
+#recent, #featured {
+	margin: 3rem 0;
+}
 
