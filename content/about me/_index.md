@@ -20,8 +20,8 @@ Shanghai, China due to my dad's work and lived there for five years. We returned
 public high school for two years before leaving to study engineering at the University of Toronto.
 
 <figure>
-<img src="/images/shanghai.jpg">
-<figcaption>A photo I took on Nanjing Rd. in Shangahi</figcaption>
+<img src="/images/beijing.jpg">
+<figcaption>Me (leftmost) visiting a temple on the outskirts of Beijing with my family and friends</figcaption>
 </figure>
 
 Although I was enthralled by the idea of building and designing things from a young age, playing with LEGO and eventually LEGO
