@@ -30,4 +30,4 @@
 <p class="subtitle">Published: {{ .Params.publishedDate}}</p>
 {{end}}
 
-<p class="listEntry">{{.Summary}}</p>
+<p class="listEntry">{{.Summary | markdownify|}}</p>
