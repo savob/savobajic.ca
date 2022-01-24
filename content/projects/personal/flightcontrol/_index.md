@@ -1,5 +1,5 @@
 ---
-title: "Drone Flight Computer"
+title: "Drone Flight Controller"
 date: 2020-04-01T20:17:17-05:00
 draft: false
 started: "May 2020"
@@ -8,14 +8,14 @@ status: "Programming, focusing on ESC"
 client:
 tags: [drone, imu, controls]
 skills: [KiCad, c++, embedded, control]
-summary: "Making a a custom flight computer for my drone to work with my custom ESCs and potentially other electronics."
+summary: "Making a a custom flight controller for my drone to work with my custom ESCs and potentially other electronics."
 githubLink:
 thumbnail:
 ---
 
 # Overview
 
-As part of my project to make a quadcopter from scratch I need a flight computer to control it in flight and receive 
+As part of my project to make a quadcopter from scratch I need a flight controller to control it in flight and receive 
 instructions from me. Overall this board would have four over responsibilities:
 
 1. Communicate with the ESCs for the motors
@@ -55,13 +55,13 @@ Will probably have more once I get coding them properly.
 
 # Detailed Report
 
-The brain of a drone is generally called a flight computer and a drone is little more than four stupidly powerful motors 
-attached to a minuscule frame without one. This flight computer is responsible for not only receiving commands from the 
+The brain of a drone is generally called a flight controller and a drone is little more than four stupidly powerful motors 
+attached to a minuscule frame without one. This flight controller is responsible for not only receiving commands from the 
 pilot but also stabilizing the drone given feedback from sensors, namely Inertial Measurement Units (**IMU**) that keep 
 track of the accelerations the drone experiences and thus can be used to construct an idea of the drone's orientation and 
 speed.
 
-Although there are commercial flight computers available on the market I wanted to try my hand at making one from scratch 
+Although there are commercial flight controllers available on the market I wanted to try my hand at making one from scratch 
 to see the effort that goes into it, as well as allowing myself to tailor it to my desires, most notably digital control 
 of the ESCs. I would also like to retain flexibility for future uses such as a fixed wing aircraft.
 
@@ -89,8 +89,8 @@ board. They also both carry banks of decoupling capacitors for the regulator and
 THe method of communication I intend to use on these boards is digital communication at 2.4GHz provided by standalone 
 nRF24L01 modules from Nordic Semiconductors. These house all the radio black magic on a separate board that is interacted 
 with over SPI from the main microcontroller. I gained familiarity with these from my telemetry work for HPVDT. In addition 
-to the SPI pins shared between the microcontroller and the module, there is a line used to flag the flight computer of a 
-received transmission which I have prepared to be used as an interrupt on the flight computer.
+to the SPI pins shared between the microcontroller and the module, there is a line used to flag the flight controller of a 
+received transmission which I have prepared to be used as an interrupt on the flight controller.
 
 These modules I have purchased are rated for low bandwidth (~1 kb/s) at ranges of around 1km with direct line of sight. 
 This is good for me as I intend to operate this drone (for now) exclusively with direct line of sight and up to a few 
@@ -128,7 +128,7 @@ drone(s) or actuators.
 
 I left headers for the microcontrollers to be easily programmed using their designated protocols as well as the using 
 the standard Arduino-esque bootloader and USB to Serial adapter which is handy for sending detailed debugging data to 
-the computer even when not used for programming.
+the controller even when not used for programming.
 
 # Versions
 

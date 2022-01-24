@@ -128,7 +128,7 @@ I ordered a stencil that had a portion for each of them.
 
 <figure>
 <img src="/images/esc-v1-mcu-side.jpg">
-<figcaption>he assembled control and voltage regulator side</figcaption>
+<figcaption>The assembled control and voltage regulator side</figcaption>
 </figure>
 
 <figure>
