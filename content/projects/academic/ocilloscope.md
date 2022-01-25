@@ -9,7 +9,7 @@ client: MIE346, Analog and Digital Electronics
 tags: [prototyping, 3D printing, signal processing]
 skills:
 summary: "Produced an Arduino-based USB oscilloscope capable of measuring signals up to 20kHz, with AC/DC coupling and hardware 1X/10X scaling"
-thumbnail: "/thumbnails/oscilloscope.jpg"
+thumbnail: "/images/scope-top-proto.jpg"
 ---
 
 # Overview
