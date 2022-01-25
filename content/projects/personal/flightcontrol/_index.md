@@ -10,7 +10,7 @@ tags: [drone, imu, controls]
 skills: [KiCad, c++, embedded, control]
 summary: "Making a a custom flight controller for my drone to work with my custom ESCs and potentially other electronics."
 githubLink:
-thumbnail: "/images/flight-controller-v2-top-assembled.jpg"
+thumbnail: "/images/flight-controller-thumbnail.jpg"
 ---
 
 # Overview
