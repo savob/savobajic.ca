@@ -10,7 +10,7 @@ tags: [html, HUGO, css]
 skills: [html, css, markdown]
 summary: "I made this website from scratch, would you like to peer behind the curtain?"
 githubLink: "https://github.com/savob/savobajic.ca"
-thumbnail:
+thumbnail: "/images/website-mobile.png"
 ---
 
 *(This is kinda meta)*
@@ -180,13 +180,23 @@ default each link gets an even split of the horizontal space (1/6 = 16%), howeve
 gracefully I bump them up to 33% and have them wrap inside the header to effectively form two evenly spaced and sized rows. A 
 similar approach is taken with the two column lists, although going from 50% width to 100% as the screen is narrowed.
 
+<figure>
+<img src="/images/website-mobile.png">
+<figcaption>The website's look on mobile for the personal project page</figcaption>
+</figure>
+
+<figure>
+<img src="/images/website-desktop.png">
+<figcaption>The website's look on desktop for the personal project page</figcaption>
+</figure>
+
 Font based units found their main use in making sure that elements "felt" the right size such as figures not being taller than 15 
 lines of text (addressing the excessive scrolling issues). They were also used for the breakpoints regarding site layout since the 
 headers needed to fit a certain number of characters in a row to have all six section in one row, otherwise they needed to be 
 split across two rows. A similar story with the project columns needing a certain number of characters in a line otherwise they 
 would be too narrow to read comfortably.
 
-This process really helped me improve my user experience on both mobile and besktop.
+This process really helped me improve my user experience on both mobile and desktop.
 
 ## Adding Content
 
