@@ -10,7 +10,7 @@ tags: [html, HUGO, css]
 skills: [html, css, markdown]
 summary: "I made this website from scratch, would you like to peer behind the curtain?"
 githubLink: "https://github.com/savob/savobajic.ca"
-thumbnail: "/images/website-mobile.png"
+thumbnail: "/images/website-internet.jpg"
 ---
 
 *(This is kinda meta)*
