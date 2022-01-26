@@ -10,7 +10,7 @@ tags: [hardware, toy, 555]
 skills: [hardware, layout]
 summary: "Made some festive blinking lights to hand out. Used the 555 timer!"
 githubLink:
-thumbnail:
+thumbnail: "/images/ornament-assembled.jpg"
 ---
 
 # Overview
