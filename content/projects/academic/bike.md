@@ -6,7 +6,7 @@ started: "October 2018"
 finished: "November 2018"
 status: "Completed"
 client: "MIE301, Kinematics and Dynamic of Machines"
-tags: [MATLAB, kinematics, vehicle, optimization]
+tags: [matlab, kinematics, vehicle, optimization]
 skills: [MATLAB, optimization]
 summary: "Developed a kinematic model in MATLAB to perform a design optimization of a mountain bike suspension system."
 thumbnail: "/images/bike-render.png"
