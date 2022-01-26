@@ -8,7 +8,7 @@ status: "Complete"
 client:
 tags: [ESC, embedded, BLDC, KiCAD]
 skills: [embedded, KiCAD, BLDC, C]
-summary: "My first actual attempt at building an ESC. A shrunk down revision of the first."
+summary: "My first *actual attempt* at building an ESC. A shrunk down revision of the first."
 githubLink:
 thumbnail: "/images/esc-v2-top-assembled.jpg"
 ---

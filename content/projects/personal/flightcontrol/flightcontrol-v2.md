@@ -8,7 +8,7 @@ status: "Development on hold for ESCs"
 client:
 tags: [drone, imu]
 skills: [KiCad, embedded, c++]
-summary: "My more powerful STM32 based version of a flight controller. Currently on hold."
+summary: "My more powerful STM32 based version of a flight controller. **Currently on hold.**"
 githubLink: "https://github.com/savob/drone_computer"
 thumbnail: "/images/flight-controller-v2-top-assembled.jpg"
 ---

@@ -8,7 +8,7 @@ status: "Assembled. Not planning on using."
 client:
 tags: [drone, imu]
 skills: [KiCad, embedded]
-summary: "My first flight controller design. Based on an ATmega328P so I could adapt many open-source drone projects to it if I decide to use them"
+summary: "My first flight controller design. Based on an ATmega328P so I could adapt many open-source drone projects to it if needed."
 githubLink:
 thumbnail: "/images/flight-controller-v1-top-assembled.jpg"
 ---

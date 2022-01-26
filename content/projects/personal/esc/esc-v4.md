@@ -8,7 +8,7 @@ status: "Testing, on Pause"
 client:
 tags: [ESC, embedded, BLDC, drone]
 skills: [embedded, KiCAD, BLDC]
-summary: "Another major revision to the BLDC ESC, mainly changing to the modern ATtiny family of microcontrollers. Based on V3 otherwise."
+summary: "Another major revision to the BLDC ESC, mainly changing to the modern ATtiny family of microcontrollers."
 githubLink: "https://github.com/savob/esc_v4_firmware"
 thumbnail: "/images/esc-v4-assembled-bottom.jpg"
 ---
