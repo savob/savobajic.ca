@@ -1,5 +1,5 @@
 ---
-title: "Battery Pack Cell Replacements"
+title: "Battery Pack Cell Replacement"
 date: 2021-10-01T19:09:33-05:00
 draft: false
 started: "October 2021"
