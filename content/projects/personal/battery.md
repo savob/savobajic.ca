@@ -23,8 +23,9 @@ Learned some new techniques and successfully replaced the cells in two of the ba
 
 ## Takeaways
 
-- Working with batteries/cells needs extra condsiderations compared to circuit with no stored energy
+- Working with batteries/cells needs extra considerations compared to circuit with no stored energy
 - One **can** solder directly to cell terminals with the right process (acid)
+- Solder wick makes for a decent low-profile conductor
 - **Fully charge battery packs once assembled before first use!**
 
 # Detailed Report
