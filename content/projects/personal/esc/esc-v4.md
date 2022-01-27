@@ -389,7 +389,7 @@ The reason I had the BEMF and commutation functions separate instead of combinin
 steps is so I could easily reverse the direction the motor turns in software. This is because although the order of 
 commutation steps gets reversed, the zero-crossings edges to spot get inverted. A "forward" commutation sequence:
 
-| **Step** | **High** | **Low** | **Zero Crossing Edge Type** |
+| **Step** | **High Phase** | **Low Phase** | **Zero Crossing Edge Type** |
 | :---: | :---: | :---: | :---: | 
 | **1** | A | B | C↓ |
 | **2** | A | C | B↑ |
@@ -400,7 +400,7 @@ commutation steps gets reversed, the zero-crossings edges to spot get inverted. 
 
 Compare that to a "reversed" rotation:
 
-| **Step** | **High** | **Low** | **Zero Crossing Edge Type** |
+| **Step** | **High Phase** | **Low Phase** | **Zero Crossing Edge Type** |
 | :---: | :---: | :---: | :---: |
 | **1** | A | B | C↑ |
 | **2** | C | B | A↓ |

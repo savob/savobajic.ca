@@ -330,6 +330,30 @@ div.bio-bit {
 	}
 }
 
+/* Code */
+code, pre {
+  border-radius: 0.3em;
+	background-color: var(--mainText);
+	color: var(--navText);
+	overflow-x: auto;
+  padding: 0 0.3em;
+}
+pre {
+  padding: 0.6em;
+}
+pre>code {
+  padding: 0; /* Needed to avoid odd indent on first line in multi-line code */
+}
 
-
+/* Tables */
+table {
+  margin: 0 auto;
+}
+th {
+	padding: 0.25em 1em;
+	border-bottom: 1px solid #ddd;
+}
+td {
+  padding: 0 1em;
+}
 
