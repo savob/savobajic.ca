@@ -8,14 +8,15 @@
 
 {{/* Projects */}}
 {{ if (eq .Section "projects") }}
-	<p class="subtitle">Status: {{ .Params.status }}</p>
-	{{ if .Params.finished }}
+	{{if .Params.status}}<p class="subtitle">Status: {{ .Params.status }}</p>{{end}}
+	
+	{{ if and .Params.finished .Params.started}}
 	<p class="subtitle">Period: {{ .Params.started }} - {{ .Params.finished }}</p>
-	{{else}}
+	{{else if .Params.started}}
 	<p class="subtitle">Started: {{ .Params.started }}</p>
 	{{end}}
 	{{ if .Params.client }}<p class="subtitle">Client: {{ .Params.client }}</p> {{end}}
-	<p class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</p>
+	{{ if .Params.tags }}<p class="subtitle"><strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}</p>{{end}}
 
 {{end}}
 
