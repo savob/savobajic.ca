@@ -25,14 +25,14 @@
                 {{- end -}}
             {{- else -}}
             
-            	<!-- Used to put titles of named lists/sections -->
+            	  <!-- Used to put titles of named lists/sections -->
                 {{if $.GetPage (print ($.Scratch.Get `url`) "/_index.md")}}
-                	{{with $.GetPage (print ($.Scratch.Get `url`) "/_index.md")}}
-            		 	<li class="breadcrumbs"><a class="subtitle" href="{{ (print ($.Scratch.Get `url`) "/_index.md") }}">{{ .Title }}</a></li>
-            		{{end}}
-				{{else}}
-                	<li class="breadcrumbs"><a class="subtitle" href="{{ $.Scratch.Get `url` }}">{{ humanize . }}</a></li>
-				{{end}}
+                    {{with $.GetPage (print ($.Scratch.Get `url`) "/_index.md")}}
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="{{ $.Scratch.Get `url` }}">{{ .Title }}</a></li>
+            		    {{end}}
+				        {{else}}
+                	  <li class="breadcrumbs"><a class="subtitle" href="{{ $.Scratch.Get `url` }}">{{ humanize . }}</a></li>
+				        {{end}}
             {{- end -}}
             
         {{- end -}}
