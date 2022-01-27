@@ -31,6 +31,6 @@ oh no no custom_css!!
 <div>
 </nav>
 
-<!-- {{ if not .IsHome }} -->
-<!-- {{ partial "breadcrumb" . }} -->
-<!-- {{end}} -->
+{{ if not .IsHome }}
+{{ partial "breadcrumb" . }}
+{{end}}
