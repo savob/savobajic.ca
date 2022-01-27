@@ -17,7 +17,7 @@ thumbnail: "/images/ornament-assembled.jpg"
 
 I wanted to make something small and simple (*read: cheap*) to hand out to friends and family for the holidays, and I felt 
 that a small blinking ornament would be perfect for this. LEDs and resistors are cheap and hardy, batteries and a basic 
-control system would be managable.
+control system would be manageable.
 
 In the end the circuit was nothing more than a basic 555 timer based blinker running off a 9V battery. I ordered panelized 
 boards to have plenty to hand out and hand soldered them all.
@@ -139,7 +139,7 @@ investigate what I was doing wrong.
 
 My first suspicion was that I was **over heating the 555s** when I was soldering them, since I was running my iron at 350°C 
 (~660°F) to melt my lead-free solder and applying heat for a long period time to drag solder its leads. To see if this was 
-true I made a ornament using leaded solder and running my soldering iron at a lower temperature of 300°S (~570°F). This 
+true I made a ornament using leaded solder and running my soldering iron at a lower temperature of 300°C (~570°F). This 
 did the trick, and I was able to assemble the rest of my boards without issue like this.
 
 ## Deployment
@@ -152,3 +152,5 @@ and handed them out to my friends and family.
 <figcaption>IT LIVES!</figcaption>
 </figure>
 
+
+*Note: I am currently in progress trying to find a picture of one in a tree!*
