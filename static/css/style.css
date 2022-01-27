@@ -9,6 +9,12 @@
 	font-size:18px;
 }
 
+@media screen and (max-width: 60em) {
+	:root {
+		font-size:16px;
+	}
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -25,12 +31,13 @@ body {
 }
 .subtitle {
 	color: var(--subtitleText);
-	font-size:16px;
+	font-size: 0.8em;
 }
 div.wrapper {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	margin: 0 0.5rem;
 }
 
 /* Header and footer config */
@@ -85,7 +92,7 @@ nav a {
   color: var(--navText);
   text-align: center;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.2em;
   margin: 0.5em;
   display: block;
 }
@@ -108,11 +115,11 @@ nav div {
 }
 
 .navbutton, .dropdown {
-  flex: 16%
+  flex: calc(100% / 6);
 }
-@media screen and (max-width: 50rem) {
+@media screen and (max-width: 60em) {
 	.navbutton, .dropdown {
-		flex: 33%
+		flex: calc(100% / 3);
 	}
 }
 
@@ -188,11 +195,9 @@ article:hover {
 }
 
 article p {
-	font-size:18px;
 	margin: 5px 0 0;
 }
 article h2 {
-	font-size: 24px;
 	margin: 10px 0 5px 0;
 }
 article ul {
@@ -230,7 +235,7 @@ img.thumbnail {
 /* Content */
 
 main {
-	padding: 0 0.5rem;
+	padding: 0;
 	width: 100%;
 	
 	counter-reset: figure;
@@ -238,8 +243,9 @@ main {
 }
 
 figure {
-	margin: 10px;
-	padding: 0px;
+	max-width: 100%;
+	margin: 0 1em;
+	padding: 0.25rem;
 }
 
 figure img {
