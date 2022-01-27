@@ -1,0 +1,18 @@
+{{ range .Pages }}
+	<a href="{{.Permalink}}">
+	<article>
+
+		{{ partial "listEntryInfo" . }}
+
+		<!-- List summary points -->
+		{{ if isset .Params "points"}}
+			<ul>
+			{{ range .Params.points }}
+				<li>{{ . }}</li>
+			{{end}}
+			</ul>
+		{{end}}
+		
+	</article>
+	</a>
+{{ end }}

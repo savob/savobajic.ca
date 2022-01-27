@@ -1,0 +1,37 @@
+{{ if or (eq .Section "work experience") (eq .Section "volunteering") }}
+	<h1>{{.Title}}</h1>
+	<div class="introLine"></div>
+	<div class="worksummary"> {{ .Params.summary }} </div>
+	<div class="subtitle">Organization: {{ .Params.company }}</div>
+	<div class="subtitle">Term: {{.Params.period}}</div>
+	<div class="introLine"></div>
+
+{{ else if (eq .Section "projects") }}
+
+	<h1>{{.Title}}</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> {{ dateFormat "Monday, Jan 2, 2006" .Params.lastmod }}</div>
+	<div class="subtitle"><strong>Status:</strong> {{ .Params.status }}</div>
+
+	{{ if .Params.finished }}
+		<div class="subtitle"><strong>Period:</strong> {{ .Params.started }} - {{ .Params.finished }}</div>
+	{{else}}
+		<div class="subtitle"><strong>Started:</strong> {{ .Params.started }}</div>
+	{{end}}
+
+	{{ if .Params.client }}<div class="subtitle"><strong>Client:</strong> {{ .Params.client }}</div> {{end}}
+	{{ if .Params.githubLink }}<div class="subtitle"><strong>GitHub Repository:</strong> <a href="{{ .Params.githubLink }}">{{ .Params.githubLink }}</a></div> {{end}}
+
+	<div class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
+
+	<div class="introLine"></div>
+
+{{ else}}
+
+	<h1>{{.Title}}</h1>
+	<div class="introLine"></div>
+	<div style="color:grey; font-size:16px;">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</div>
+	<div style="color:grey; font-size:16px;">{{if .Params.author}}Author: {{.Params.Author}}{{end}}</div>
+	<div class="introLine"></div>
+{{end}} 
+

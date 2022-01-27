@@ -13,7 +13,12 @@
 	
 	{{.Content}}
 	
-	{{ partial "columnContent" (dict "context" . "pagesToPost" .Pages)}}
+	
+	{{ if or (eq .Section "work experience") (eq .Section "volunteering") }}
+		{{ partial "experienceList" . }}
+	{{ else}}
+		{{ partial "columnContent" (dict "context" . "pagesToPost" .Pages)}}
+	{{end}}
 	</main>
 	
 	{{ partial "footer" . }}
