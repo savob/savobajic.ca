@@ -1,35 +1,37 @@
-	<div class="row">
-	<div class="column">
-	{{ $articlesPerCol := math.Ceil (div (len .pagesToPost) 2.0)}}
+<!-- Used for a two column reactive listing -->
 
-	{{ range $i, $article :=.pagesToPost }}
+<div class="row">
+<div class="column">
+{{ $articlesPerCol := math.Ceil (div (len .pagesToPost) 2.0)}}
+
+{{ range $i, $article :=.pagesToPost }}
+
+	<a href="{{.Permalink}}">
+	<article>
 	
-		<a href="{{.Permalink}}">
-		<article>
-		
-		
-		{{if .Params.thumbnail}}
-			<img class="thumbnail" src="{{.Params.thumbnail}}">
+	
+	{{if .Params.thumbnail}}
+		<img class="thumbnail" src="{{.Params.thumbnail}}">
+	{{end}}
+	
+	{{ partial "listEntryInfo" . }}
+	
+	<!-- See if there are subpages for this page, list them -->
+	{{ if .Pages}}
+		<ul>
+		{{ range .Pages }}
+			<li><a href="{{.Permalink}}">{{.Title}}</a> - {{ .Params.summary | markdownify}}</li>
 		{{end}}
+		</ul>
+	{{end}}
 		
-		{{ partial "listEntryInfo" . }}
-		
-		<!-- See if there are subpages for this page, list them -->
-		{{ if .Pages}}
-			<ul>
-			{{ range .Pages }}
-				<li><a href="{{.Permalink}}">{{.Title}}</a> - {{ .Params.summary | markdownify}}</li>
-			{{end}}
-			</ul>
-		{{end}}
-			
-		</article>
-		</a>
-		
-		{{ if modBool (add $i 1) $articlesPerCol }}
-    	</div> <!-- end row -->
-    	<div class="column">
-  	{{ end }}
+	</article>
+	</a>
+	
+	{{ if modBool (add $i 1) $articlesPerCol }}
+  	</div> <!-- end row -->
+  	<div class="column">
 	{{ end }}
-	</div>
-	</div>
+{{ end }}
+</div>
+</div>

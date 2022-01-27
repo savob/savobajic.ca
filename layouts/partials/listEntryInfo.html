@@ -1,33 +1,35 @@
+<!-- The info used for a list entry -->
+
 <h2 class=listEntry>
 	<a href="{{.Permalink}}">{{.Title}}</a>
 </h2>
 
-{{/* Subtitles to be decided based on the content, determined by unique params for pages */}}
+{{/* Subtitles to be decided based on the content, determined by section */}}
 
 {{/* Projects */}}
-{{ if .Params.status }}
-<p class="subtitle">Status: {{ .Params.status }}</p>
-{{ if .Params.finished }}
-<p class="subtitle">Period: {{ .Params.started }} - {{ .Params.finished }}</p>
-{{else}}
-<p class="subtitle">Started: {{ .Params.started }}</p>
-{{end}}
-{{ if .Params.client }}<p class="subtitle">Client: {{ .Params.client }}</p> {{end}}
-<p class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</p>
+{{ if (eq .Section "projects") }}
+	<p class="subtitle">Status: {{ .Params.status }}</p>
+	{{ if .Params.finished }}
+	<p class="subtitle">Period: {{ .Params.started }} - {{ .Params.finished }}</p>
+	{{else}}
+	<p class="subtitle">Started: {{ .Params.started }}</p>
+	{{end}}
+	{{ if .Params.client }}<p class="subtitle">Client: {{ .Params.client }}</p> {{end}}
+	<p class="subtitle">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</p>
 
 {{end}}
 
 {{/* Experience */}}
-{{ if .Params.company }}
-<p class="subtitle">{{ .Params.company }}</p>
-<p class="subtitle">{{ .Params.period }}</p>
+{{ if or (eq .Section "work experience") (eq .Section "volunteering") }}
+	<p class="subtitle">{{ .Params.company }}</p>
+	<p class="subtitle">{{ .Params.period }}</p>
 {{end}}
 
 {{/* Publications */}}
-{{ if .Params.publication }}
-<p class="subtitle">{{ .Params.writers }}</p>
-<p class="subtitle">{{ .Params.publication }}</p>
-<p class="subtitle">Published: {{ .Params.publishedDate}}</p>
+{{ if (eq .Section "publications") }}
+	<p class="subtitle">{{ .Params.writers }}</p>
+	<p class="subtitle">{{ .Params.publication }}</p>
+	<p class="subtitle">Published: {{ .Params.publishedDate}}</p>
 {{end}}
 
-<p class="listEntry">{{.Summary | markdownify|}}</p>
+<p class="listEntry">{{.Summary | markdownify}}</p>
