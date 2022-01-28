@@ -558,7 +558,32 @@ helicopters are helping to evacuate citizens.
 
 ## Exploration
 
-*Work in progress*
+To find the victims of the disaster, the robot would need to explore an enclosed, indoor space, segmented into multiple 
+areas/rooms, on it's own and in a timely manner.
+
+Unlike in contest 1, we didn't have to prepare the majority of the exploration algorithm. We instead primarily used the 
+available *Explore* class in ROS to handle automated exploration. Simply calling `Explore.start()` and `Explore.stop()` were 
+sufficient to run the exploration. 
+
+This exploration algorithm was built upon *gmapping*'s provided map of the world. We were used a "greedy" frontier-based 
+exploration algorithm, where the robot takes the average location of all the frontiers (divisions between explored and 
+unexplored areas, that are not obstacles) in its vicinity and heads to that average. This cycle is repeated again and again, 
+even as the robot moves to make a constantly shifting taget to reach.
+
+The reason it is called "greedy" is because it is favouring the *local* optimum, not considering where the actual optimum 
+exploration point is in the entire world that would likely reveal the most of the unexplored world.
+
+We did not choose to change `Explore` in any way, since we found its behaviour suitable for what we were trying to do. We 
+did however prepare some supporting code to intervene when `Explore` would get stuck. Due to its “greedy” algorithm, it 
+would get stuck when it arrives at a frontier average that does not reveal enough of the map to determine a new local
+frontier average compared to the previous one. The robot would then stop moving since it believed there was no where else 
+to go. To detect this condition, we had code to monitor the robot’s distance travelled in the last roughly 10 seconds, to 
+see if the robot had not moved a reasonable amount (about a metre).
+
+To "unstick" the robot there were two tricks we tried to use. The first was to have the robot complete a revolution where it 
+was in the hopes new frontiers would be uncovered and move the local frontier centroid. If that failed, we would then clear 
+the frontier "black list" in *gmapping* so the robot would then briefly consider the global frontier centroid briefly and 
+move to it.
 
 
 ## Emotion Detection
@@ -632,7 +657,12 @@ resentment, was enacted with the following sequence.
 4. Turn back 100 degrees (as if to look over its shoulder)
 5. Play sound telling them that the robot is only trying to help them
 
-To perform the movements, the `travel` function was reused from Contest 1's code.
+We decided the overall emotion as a group, however my teammates worked on deciding the exact responses and generating the 
+media needed. I transferred their ideas into code which was easy using the functions we had available:
+
+- To perform the movements, the `travel()` function was reused from Contest 1's code. 
+- To show images there was `showImage()`
+- To play audio there was `soundPlayer.playWave()`
 
 ## Overall Structure
 
