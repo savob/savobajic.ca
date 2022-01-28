@@ -168,5 +168,5 @@ Below is a video demo of the upgraded kneeload tester, I included a breakdown of
 so if you are very interested in it I would suggest watching it on their site.
 
 <div class="youtube">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6JYOd0CPHgE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube" src="https://www.youtube.com/embed/6JYOd0CPHgE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
