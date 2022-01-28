@@ -499,7 +499,8 @@ A full version of our code for this milestone is available at our [contest 2 Git
 
 ## Contest 2 Results
 
-Our code for these contest managed a perfect run!
+Our code for these contest managed a perfect run! Our report also received a good review, you can read it 
+[here](/pdf/Team-22-Contest-2-Report.pdf).
 
 I even recorded a simulated run of this contest since I was so proud of it. I would recommend that you view it in 4K if 
 possible to make out most of the details. 
@@ -531,40 +532,38 @@ possible to make out most of the details.
 > 
 > Left half / bottom left: VS Code IDE for developing the team’s code.
 
-# Contest 3
+# Milestone 3 - Search and Res-*ponse?*
 
-***Tune in soon for the grand finale!***
+As the culmination of our previous efforts, this milestone required us to have the robot explore a "disaster" to find and 
+provide instruction to the victims trapped within. This had the robot explore an unknown world for users to interact with 
+(all we knew about the victims was that there were going to be seven present), and then interact appropriately given their 
+emotional state as derived from their facial expression, for example trying to calm a distressed person while trying to 
+provide instruction on how to exit the building.
 
+## The Disaster
 
+The exact disaster was up to each team to decide for themselves, the only requirement was that the interactions must be 
+distinct and identifiable for each of the seven emotions we needed to identify. **Our team chose the disaster to be a fight 
+between Godzilla and King Kong**, due to the recent movie that was released titled *Godzilla vs. Kong* (Adam Wingard, 2021). 
+The victims are required to evacuate the building before Godzilla and King Kong begin to fight in the city, in the event 
+that the building is demolished in the ensuing battle. The victims were required to get to the roof of the building as 
+helicopters are helping to evacuate citizens.
 
+<figure>
+<img src="/images/rescue-movie-poster.jpg">
+<figcaption>Some promotional material for the movie showcasing the potential danger these people were in</figcaption>
+</figure>
 
+*To be completely honest I haven't watched this movie yet, but it was a fun (impeding) disaster to work with anyway!*
 
+## Exploration
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*Work in progress*
 
 
+## Emotion Detection
 
-
-
+*Work in progress*
 
 
 
@@ -582,3 +581,78 @@ possible to make out most of the details.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Emotional Responses
+
+The emotional responses designed to be multi-modal (multiple degrees of expression) making use of the outputs available to 
+us: the robot's motions and the multimedia capabilities of the laptop (image and sound). In addition to making the robot 
+more expressive by employing these additional outputs, it also helped us communicate with people with disabilities either 
+permanent ones they have had or temporary as a result of the disaster (e.g. debris obscuring vision). Issuing commands with 
+visuals and audio, as well as large motions for the visually impaired meant that at least one mode would be able to reach 
+most people.
+
+For each of the seven emotions victims would express, we had the robot express an emotion of its own in response, typically 
+a different one to the victims. Here is a table of the emotions our would try to emulate when responding to a given emotion 
+detected in the victim.
+
+| **Victim's Emotion** | **Robot's Response** |
+| :---: | :---: |
+| Neutral | Pride |
+| Happiness | Positively Excited |
+| Fear | Embarrassment |
+| Surprise | Surprise |
+| Disgust | Discontent|
+| Sadness | Anger |
+| Anger | Resentment |
+
+Each response was composed of between three to five steps that could be either a motion or media being played, but not both 
+simultaneously. These are all laid out in Table 1 of our [report](/pdf/Team-22-Contest-3-Report.pdf). One of the responses, 
+resentment, was enacted with the following sequence.
+
+1. Play sound of an unenthusiastic instruction to leave and show picture of or an emoji looking away
+2. Turn quickly 180 degrees
+3. Move straight short distance
+4. Turn back 100 degrees (as if to look over its shoulder)
+5. Play sound telling them that the robot is only trying to help them
+
+To perform the movements, the `travel` function was reused from Contest 1's code.
+
+## Overall Structure
+
+Just like in the first milestone, a finite state machine is used to regulate the robot's behaviour by having it in a single 
+state at a time with a defined procedure for changing between them. **There were eight states**: exploration and one for 
+each of the seven emotional reactions. These states also had sub-states used to regulate finer aspects of each major state, 
+for example, sub-states for emotional responses were used to progress through different the stages of the response.
+
+The main behaviour of the robot was to explore until it came across a victim of the disaster at which point it would 
+determine the emotion and switch to the appropriate reaction state. Once the reaction was completed, the rover would 
+continue searching until all seven victims were found or the time limit was reached.
+
+Once either of those end conditions were reached the robot would report reaching the condition and the time elapsed until 
+then, cease exploring, and shutdown.
+
+## Contest 3 Results
+
+We did alright in this this trial. We were able to identify and react accordingly all emotions reliably, only failing in one 
+of the 14 emotion checks we performed. However, there were some issues that caused the robot to spin in place for the 
+entirety of the first trial (the TA manually moved the robot to test emotion recognition), although this was not repeated 
+for the second trial where we managed to do everything with the exception of the one false identification.
+
+Our report for contest three can be found [here](/pdf/Team-22-Contest-3-Report.pdf), it did well too.
