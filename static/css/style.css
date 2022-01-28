@@ -242,6 +242,7 @@ main {
 	
 	counter-reset: figure;
 	flex-grow: 1;
+	margin: 0 0 1em;
 }
 
 figure {
