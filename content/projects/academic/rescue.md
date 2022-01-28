@@ -504,7 +504,10 @@ Our code for these contest managed a perfect run!
 I even recorded a simulated run of this contest since I was so proud of it. I would recommend that you view it in 4K if 
 possible to make out most of the details. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zvNsD12UBn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<div class="youtube">
+<iframe class="youtube" src="https://www.youtube.com/embed/zvNsD12UBn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 *Copied from the description of the video:*
 
