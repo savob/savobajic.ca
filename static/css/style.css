@@ -365,3 +365,7 @@ td {
   padding: 0 1em;
 }
 
+iframe {
+  margin: 0 auto;
+  display:block;
+}
