@@ -561,6 +561,11 @@ helicopters are helping to evacuate citizens.
 To find the victims of the disaster, the robot would need to explore an enclosed, indoor space, segmented into multiple 
 areas/rooms, on it's own and in a timely manner.
 
+<figure>
+<img src="/images/rescue-contest-3-practice-environment.png">
+<figcaption>The practice environment</figcaption>
+</figure>
+
 Unlike in contest 1, we didn't have to prepare the majority of the exploration algorithm. We instead primarily used the 
 available *Explore* class in ROS to handle automated exploration. Simply calling `Explore.start()` and `Explore.stop()` were 
 sufficient to run the exploration. 
@@ -569,6 +574,11 @@ This exploration algorithm was built upon *gmapping*'s provided map of the world
 exploration algorithm, where the robot takes the average location of all the frontiers (divisions between explored and 
 unexplored areas, that are not obstacles) in its vicinity and heads to that average. This cycle is repeated again and again, 
 even as the robot moves to make a constantly shifting taget to reach.
+
+<figure>
+<img src="/images/rescue-partial-exploration.png">
+<figcaption>Robot exploring the world. Current path is illustrated in red.</figcaption>
+</figure>
 
 The reason it is called "greedy" is because it is favouring the *local* optimum, not considering where the actual optimum 
 exploration point is in the entire world that would likely reveal the most of the unexplored world.
@@ -585,44 +595,48 @@ was in the hopes new frontiers would be uncovered and move the local frontier ce
 the frontier "black list" in *gmapping* so the robot would then briefly consider the global frontier centroid briefly and 
 move to it.
 
+<figure>
+<img src="/images/rescue-stuck-exploration.jpg">
+<figcaption>A situation where the robot is stuck (no notable red path) since it has no boundaries in its immediate vicinity (lighter circle around robot)</figcaption>
+</figure>
 
 ## Emotion Detection
 
-*Work in progress*
+There were seven emotional states that our robot needed to identify for each victim: anger, disgust, fear, happiness, 
+sadness, surprise, and neutral.
 
+<figure>
+<img src="/images/rescue-emotion-examples.png">
+<figcaption>An example image for each of the seven emotions</figcaption>
+</figure>
 
+Emotion detection was to be achieved using a convolutional neural network (CNN) to classify the images of people's faces. 
 
+The structure of the CNN can be split into two parts: the CNN and then a series of normal neural networks (NN). The images 
+are first passed into the CNN which puts it through four stages of convolutions, which treat the pixels as a grid of numbers 
+that have some effect on their neighbouring pixels. Once the four stages of convolutions are applied, the final NN takes the 
+grid of values and combines them into just seven buckets (values), for the confidence that a given emotion is present in the 
+given image.
 
+A vital component of machine learning is training to fit the model to the data and this application was no exception. Ours 
+was taught using "supervised" learning where the system is provided training data that has a corresponding set of expected 
+outputs, e.g. an image of a child smiling in the training data would have a corresponding "happiness" entry in the expected 
+output. These inputs are repeatedly fed in and compared to the needed outputs to try and tune the system iteratively to 
+reduce amount of error in results.
 
+For training the CNN we used a *k-fold* approach, where our training data was randomly and evenly split into *k* number of 
+groups (folds). *k* models are trained using *k-1* of the groups, and using the last group for validation. We used **5** 
+folds, so 5 models were trained in parallel. Model one used folds 2 to 5 for training and then fold 1 for validation, model 
+two would use fold 2 for validation and the others for training. This is used to make the most of our relatively limited 
+test data set.
 
+Once these five models were sufficiently trained, the one with the best performance on its validation set was selected and 
+used in the final version of our code. The one we selected and used in our final project had achieved a success rate of 
+almost 93%! 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+In the contest the robot would be provided **eight separate images for a given victim, all showing the same emotion**. So to 
+determine the true emotion present, we would run each of the images through the model and combine their confidences to 
+select the emotion with the highest combined confidence in the end.
 
 ## Emotional Responses
 
@@ -680,9 +694,14 @@ then, cease exploring, and shutdown.
 
 ## Contest 3 Results
 
-We did alright in this this trial. We were able to identify and react accordingly all emotions reliably, only failing in one 
-of the 14 emotion checks we performed. However, there were some issues that caused the robot to spin in place for the 
+We did well overall in this this trial. We were able to identify and react accordingly all emotions reliably, only failing 
+in one of the 14 emotion checks we performed. However, there were some issues that caused the robot to spin in place for the 
 entirety of the first trial (the TA manually moved the robot to test emotion recognition), although this was not repeated 
 for the second trial where we managed to do everything with the exception of the one false identification.
+
+<figure>
+<img src="/images/rescue-contest-3-marked-map.png">
+<figcaption>The contest environment map</figcaption>
+</figure>
 
 Our report for contest three can be found [here](/pdf/Team-22-Contest-3-Report.pdf), it did well too.
