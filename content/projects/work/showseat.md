@@ -6,7 +6,7 @@ started: "May 2017"
 finished: "May 2017"
 status: "Complete"
 client: "IGB Automotive"
-tags: [IGB, LabVIEW, embedded, prototyping, hacking]
+tags: [IGB, LabVIEW, embedded, prototyping, hack]
 skills: [LabVIEW, embedded, prototyping, hacking]
 summary: "Revised the existing show seat used at demos to have its set points easily reconfigured with software. **My first embedded electronics project!**"
 githubLink:

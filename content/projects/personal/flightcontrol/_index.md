@@ -6,7 +6,7 @@ started: "May 2020"
 finished:
 status: "Programming, focusing on ESC"
 client:
-tags: [drone, imu, controls]
+tags: [drone, imu, control]
 skills: [KiCad, c++, embedded, control]
 summary: "Making a a custom flight controller for my drone to work with my custom ESCs and potentially other electronics."
 githubLink:

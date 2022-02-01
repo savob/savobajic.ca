@@ -6,7 +6,7 @@ started: "January 2020"
 finished: "April 2020"
 status: "Finished"
 client: "My roommates"
-tags: [wifi, ESP32, TTC, embedded, XML]
+tags: [wifi, ESP32, embedded, XML]
 skills: [wifi, EAGLE, XML]
 summary: "Made a small system to check online for buses around my home at the press of a button."
 githubLink: "https://github.com/savob/buscheck"

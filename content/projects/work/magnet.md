@@ -6,7 +6,7 @@ started: "May 2021"
 finished: "September 2021"
 status: "Transferred"
 client: "Advanced Micro and Nanosystems Lab (AMNL) - UofT"
-tags: [COMSOL, AMNL, CAD, SolidWorks, research]
+tags: [COMSOL, AMNL, CAD, SolidWorks, research, biomed]
 skills: [COMSOL, AMNL, CAD, SolidWorks]
 summary: "Designed and built an alternating 3D-magnetic field generator for my research group"
 githubLink: 
