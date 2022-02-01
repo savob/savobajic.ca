@@ -431,9 +431,12 @@ SURF would be applied to both the processed reference images and the world image
 fed through the OpenCV `searchInScene` function to see how many features matched between the world and a given reference. If 
 the portion of features that match across a pairing exceed a confidence threshold I set, it is considered a possible match.
 
-An attempt is made to place a bounding box around the suspected match in the world's image using homography. If the area of 
-this box is too small, the match is rejected. If not, the area and feature match confidence are compared for a final match 
-confidence for that reference (so closer boxes are preferred). This process is repeated for all possible tags.
+Checking for features alone was not enough to be certain of what image was supposed to be caught, especially with multiple 
+visible in a shot. To avoid this causing issues, an attempt is made to place a bounding box around any suspected match in 
+the world's image using homography. **If the bounding box is self-intersecting (forms a bowtie shape) it is rejected as an 
+invalid match**. This check significantly reduced the number of false positives we encountered. If still valid but the area 
+of this box is too small, the match is also rejected. If not, the area and feature match confidence are compared for a final 
+match confidence for that reference (so closer boxes are preferred). This process is repeated for all possible tags. 
 
 Once all tags have be scanned for in the image, the top two final confidence are compared, if the highest one exceeds the 
 second by some ratio, it is considered a proper match and is recorded for that box. If this ratio is not met or no 
