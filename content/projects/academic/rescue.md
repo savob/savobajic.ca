@@ -6,7 +6,7 @@ started: "January 2021"
 finished: "April 2021"
 status: "Complete"
 client: "MIE443, Mechatronics Systems"
-tags: [ros, c++, ml, vision, slam, rpver]
+tags: [ros, c++, ml, vision, slam, rover]
 skills: [ros, c++, ml, vision, slam]
 summary: "Gradually developed an assistive robot to aid in a simulated disaster. *Simultanious localization and mapping (SLAM) and mchine learning (ML) used.*"
 githubLink: "https://github.com/savob/mie443_contest3"

@@ -6,7 +6,7 @@ started: "October 2020"
 finished: "December 2020"
 status: "Complete"
 client: "MIE444, Mechatronics Principles"
-tags: [matlab, rover, algorithms]
+tags: [matlab, rover]
 skills: [matlab, algorithms, CAD]
 summary: "Design and programmed a rover to autonomously navigate a maze and retrieve a block"
 githubLink:
