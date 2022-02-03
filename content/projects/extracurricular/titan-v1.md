@@ -1,7 +1,7 @@
 ---
 title: "TITAN V1"
 date: 2019-05-01T15:44:40-05:00
-draft: true
+draft: false
 started: "May 2019"
 finished: "August 2019"
 status: "Completed, Revised"
