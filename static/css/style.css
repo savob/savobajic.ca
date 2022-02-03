@@ -294,10 +294,10 @@ section.mainContent {
   display: flex;
   background-color: var(--backgroundColour);
   padding: 0;
-  height: 18em;
+  height: 12em;
   margin: 2rem 0;
   color: var(--navText);
-  font-size: 15pt;
+  font-size: 1.25rem;
 }
 
 .intro h1 {
