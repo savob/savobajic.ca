@@ -10,7 +10,7 @@ tags: [embedded, wireless]
 skills: [c++]
 summary: "Developed a general purpose wireless communication system to be used in future projects for HPVDT"
 githubLink:
-thumbnail:
+thumbnail: "/images/telemetry-modules.jpg"
 ---
 
 # Overview
