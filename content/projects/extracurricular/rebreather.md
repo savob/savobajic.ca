@@ -1,7 +1,7 @@
 ---
 title: "Rebreather Monitoring"
 date: 2020-06-07T22:23:42-05:00
-draft: true
+draft: false
 started: "May 2020"
 finished: "August 2020"
 status: "Assembled, in testing"
