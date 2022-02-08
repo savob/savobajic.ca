@@ -65,10 +65,12 @@ Mechanical Engineers (ASME) human powered vehicle competition. Although the powe
 come from the rider(s) electronics are used extensively in secondary systems; such as collection and processing 
 of vehicle data (e.g. speed) and lighting for safety (these lights are akin to a road-legal vehicles). 
 
-Until the present the team has not any custom system for this, relying on off the shelf lights and speedometers, 
-last year I managed to design a custom lighting circuit board which would allow us to properly drive the high-power 
-LEDs we use for lighting by maintaining a constant current through the connected load. Looking to iterate on it 
-this year I concluded it required significant redesign for two main reasons: size and efficiency.
+Until 2019 the team did not have any custom system for this, relying on off the shelf lights and speedometers, except the 
+previous year I managed to design a custom lighting circuit board which would allow us to properly drive the high-power 
+LEDs we use for lighting by maintaining a constant current through the connected load. Looking to iterate on it for Zephyr 
+I concluded it required significant redesign for two main reasons: size and efficiency.
+
+## Lighting Design
 
 The issue of size and efficiency were solved with a transition from using simple (resistors and transistors) 
 through-hole components to regulate the LEDs to a switching mode power supply composed of mostly surface mount 
@@ -82,10 +84,15 @@ adjusted without replacing any components.
 
 <figure>
 <img src="/images/zephyr-proto-top.jpg" alt="The top of prototype boards"/>
-<img src="/images/zephyr-proto-bot.jpg" alt="The bottom of prototype boards"/>
-<figcaption>The top and bottom (respectively) sides of the prototype board used</figcaption>
+<figcaption>The top  of the prototype board used</figcaption>
 </figure>
 
+<figure>
+<img src="/images/zephyr-proto-bot.jpg" alt="The bottom of prototype boards"/>
+<figcaption>The bottom of the prototype board used</figcaption>
+</figure>
+
+## Testing Lighting
 
 These were then assembled and tested. They both performed as expected and were able to deliver upwards of one amp 
 to LEDs with incredible line regulation resulting in now current fluctuations over the expected input range. Line 
@@ -98,6 +105,8 @@ the turn indicators, this was achieved using the 555-timer configuration used in
 With the performance of lighting system verified, I proceeded to initiate the designing our final PCB by putting 
 five identical LED driver circuit to operate in parallel to drive each different set of lights (head lights, tail 
 lights, high beams, left/right indicators) along with the timer circuit.
+
+## System Design
 
 The remaining PCB space was allocated to data collection and processing, at the heart of this sat a removable 
 Arduino Nano which was responsible for polling sensors for data. The data collected and the collection method 
@@ -114,11 +123,6 @@ LED drivers, allowing it to control the lights, which could be dimmed using PWM 
 <figcaption>Layout of Zephyr's circuit board</figcaption>
 </figure>
 
-<figure>
-<img src="/images/zephyr-assembled.jpg">
-<figcaption>Assembled Zephyr board</figcaption>
-</figure>
-
 There was space allocated to three other removable modules on the PCB: a microSD card reader for data logging, a 
 Bluetooth module (an HC-05) to communicate with the rider’s mobile phone and long-range communication module (an 
 nRF24L01+ transceiver) to broadcast this data out of the bike. Of these three only the Bluetooth module was 
@@ -131,5 +135,36 @@ communication was not implemented as it is meant to be used for a research proje
 <figcaption>The app designed for Zephyr</figcaption>
 </figure>
 
+## Assembly 
 
+The board assembly was a new experience to me. It was my first time soldering surface mount components other than the 
+protoboards for lighting. I soldered it entirely by hand with no stencils. For a first job I think it went alright. 
+Looking back on it now, I can see I've gotten better with time, and stencils can go a long way to making a nice board.
+
+<figure>
+<img src="/images/zephyr-assembled.jpg">
+<figcaption>Assembled Zephyr board</figcaption>
+</figure>
+
+## Contingency Board
+
+I actually had concerns over whether or not the printed circuit boards would make it in time, so I had a different design 
+made on campus using the board milling machine to use as a backup should they be needed. 
+
+<figure>
+<img src="/images/zephyr-milled-front.jpg">
+<figcaption>The front of the milled board</figcaption>
+</figure>
+
+<figure>
+<img src="/images/zephyr-milled-back.jpg">
+<figcaption>The back of the milled board</figcaption>
+</figure>
+
+Since the proper boards arrived just in time, these were never used.
+
+## Outcome
+
+The Zephyr system worked at competition. Unfortunately it didn't get much use, since there was no dedicated phone for the 
+app so the one teammate with an Android phone needed to lend their phone if it was to be used.
 
