@@ -204,11 +204,24 @@ This process really helped me improve my user experience on both mobile and desk
 
 ### Designing my Homepage
 
-My homepage is completely different to the rest of the website so I actually prepare it as its own html template.
+My [homepage](/) is completely different to the rest of the website so I actually prepare it as its own html template.
 
 Originally is served as little more than a landing page that had a little blurb and visitors had to navigate to pages of interest 
-through the section tabs in the header. I wanted something more inviting and helpful for people that visit, so I decided on the 
-layout that it uses now: introduction block, featured pages (I set these manually), and then my most recently updated pages.
+through the section tabs in the header. 
+
+<figure>
+<img src="/images/website-old-home-page.png">
+<figcaption>My original home page (and header). Yuck.</figcaption>
+</figure>
+
+I wanted something more inviting and helpful for people that visit, especially stanger that might not know or care too much for me *(yet!)*
+so I decided on the layout that it uses now. The introduction block, featured pages (I set these manually), and then my most recently 
+updated pages.
+
+<figure>
+<img src="/images/website-new-home-page.png">
+<figcaption>My home page now</figcaption>
+</figure>
 
 The introduction block is entirely written in raw html code that describes it.
 
