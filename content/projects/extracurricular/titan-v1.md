@@ -376,11 +376,11 @@ Communication with the RPis was handled over a dedicated serial line for each. T
 sending a message to the STM32, and then the STM32 responds accordingly. **The STM32 *never* initiates an exchange!** The 
 structure of the message received by the STM32 followed this format:
 
-> 1 character - Message type (capital letters are for sending data, lowercase for requesting data)
+> **1 character** - Message type (capital letters are for sending data, lowercase for requesting data)
 > 
-> 1 character - Data length, n *(only if the RPi is sending data)*
+> **1 character** - Data length, ***n*** *(only if the RPi is sending data)*
 > 
-> n bytes - Data to STM32 *(if the RPi is sending data)*
+> ***n* bytes** - Data to STM32 *(if the RPi is sending data)*
 
 If the RPi is requesting data for itself, it will simply send a lowercase letter for that field, e.g. "s" for speed. If it 
 has data it wants to impart on the STM32 (to pass on to the other RPi), like the ANT+ data, it will start with a capital and 

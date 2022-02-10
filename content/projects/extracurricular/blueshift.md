@@ -110,10 +110,110 @@ I had a teammate interested in helping with the project, so I had them prepare a
 circuit I wanted to implement. Other than these blocks, the rest of the circuitry is my own design. The third iteration of 
 the design is what we committed to using in Blueshift. 
 
+The design of the board centres on an STM32F103 development board and RPi pair which do all the data collection, fanning out 
+from the STM32 lie all the same sensors used on TITAN (DHT, battery dividers, encoder, etc.), one immediate difference is 
+that the nRF24L01 modulke used for telemetry is connected to the STM32 - not the RPi like in TITAN. On the right of the 
+schematic are the four light line regulators controlled from the STM32. Along the bottom is the power protection circuitry I 
+wanted to introduce and the 5V regulator.
+
 <figure>
 <img src="/images/blueshift-v3-schematic.svg">
 <figcaption>The completed schematic for the Blueshift V3 (PDF version: <a href="/pdf/blueshift-v3.pdf">Colour</a> / <a href="/pdf/blueshift-v3-BW.pdf">BW</a>)</figcaption>
 </figure>
+
+### Microcontroller
+
+The microcontroller used on Blueshift is the STM32F103CBT, mounted to a "Bluepill" development board. This was reused 
+because it performed its duties well on TITAN so I expected it to continue with Blueshift. 
+
+It has a wealth of features that make it more suited to this than something like a typical ATmega328P used in our previous 
+projects too. For starters it simply has more pins, which with all the things connected to it is much needed. It has 
+several hardware communication peripherals allowing it to handle two UART-serial lines with the RPi and GPS, in parallel 
+with the SPI needed for the nRF24. Any of its pins can be used as an interrupt which makes connecting lines like for the 
+light buttons or the radio received flag work anywhere.
+
+### Sensors
+
+All the [sensors from TITAN](../titan-v1#sensors) were reused in Blueshift. The only change was that with only one RPi, the 
+ANT+ dongle used for monitoring rider power and heart rate would be in the main (and only) RPi.
+
+- Resistor voltage dividers
+   - Battery levels - Used to divide the different battery voltages down to safe levels for the STM32 to measure
+- DHT22 (Digital Humidity and Temperature)
+   - Temperature in vehicle
+   - Humidity in vehicle
+- Optical Encoder
+   - Wheel-based speed - The period between pulses provides the rotational rate of the wheel
+   - Wheel-based distance - The number of rotations is counted and used to estimate the distance travelled
+   - Crank-based cadence - The rate our rider is pedalling
+- GPS
+   - Location - Not super useful during rides but useful in run analysis
+   - GPS-based speed - A redundant speed value in the event the encoder is not acting correctly
+- ANT+ Dongle (USB connection to RPi)
+   - Cadence - The rider will have ANT+ power pedals that broadcast this
+   - Power - The rider's power pedals also broadcast this
+   - Heart Rates - The rider will wear heart rate monitors that broadcast this
+
+### Telemetry
+
+For wireless communication I wanted us to try using nRF24L01 modules. These module are primarily controlled using an SPI 
+interface with two additional digital lines to either enable it, or inform its host that its attention is needed. In 
+Blueshift the module is connected directly to the STM32.
+
+### Lighting
+
+The lighting driver circuits were designed by another teammate based on the reference designs for the driver chip I selected, 
+the [AP3031](https://www.diodes.com/part/view/AP3031/) from Diodes Incorporated. These are DC/DC converters that would boost 
+the voltage from the supplied battery voltage to what was needed to drive the LED chains with a constant current. 
+
+This current was monitored by measuring the voltage across a feedback resistor and trying to keep it at about 200mV. So the 
+current was set using the resistor value (`V/I = R`). For our brightest lights we needed 1A, so a 200mΩ resistor was used, 
+the rest of the lights generally needed only 250mA so they had resistors of about 800mΩ. This is why both are present in the 
+schematic, although only the one needed would actually be installed during assembly.
+
+These lighting drivers were controlled by PWM signals from the STM32 which let us dim the lights as we pleased. Thus the 
+rider's buttons did *not* directly control the lights. Instead the STM32 would monitor the buttons and adjust the lights 
+as needed. This scheme allowed for the automatic or even remote operation of lights, e.g. turning them all on when starting 
+the system.
+
+In addition to using PWM to dim the lights, we added a potentiometer to dial in the current supplied to the lights if needed 
+by contributing to the feedback signal read by the driving IC.
+
+### Power Supply
+
+The lighting system and main display could accept the battery voltage (~10V) as is, however the data collection side cannot. 
+However, for the sensitive electronics side well-regulated 3.3V and 5V lines were needed. 
+
+The Raspberry Pi needed 5V with a potential draw of up to 3A under load. This high power, needed an efficient conversion so 
+a DC/DC switched mode regulator was used in a buck configuration to step down the voltage from the battery. The system I 
+implemented on the board claimed efficiency of over 85% given our input voltage and output load.
+
+To provide the 3.3V for the majority of the board, I used the 3.3V generated by the RPi. This made my circuit simpler since 
+I didn't need to include a dedicated 3.3V regulator but also prevented any issues arising from a potential 3.3V mismatch 
+between my board and the RPi that could ruin one or the other.
+
+### Power Protection
+
+One minor theme present in this system is power protection. There is the obvious input protection systems for reversed 
+polarity or over-voltage, both of which can damage the system. I added an under voltage stage that would prevent the system 
+from over discharging and damaging a battery. All these systems had designated LEDs to inform the user of a failure, as well 
+as fourth "OK" LED to let users know everything was [all correct](https://en.wikipedia.org/wiki/OK).
+
+- **Reverse polarity protection was achieved using a P-channel MOSFET.** If the polarity was correct then the body diode 
+would allow some current, which would then set the MOSFET into it's conductive, and then saturated state. Much more 
+efficient than a simple diode.
+- **Over voltage protection was achieved using two P-channel MOSFETs.** As the voltage would rise about the threshold set by 
+the Zener D8, the first MOSFET would begin conducting, this would raise the the gate voltage of the second MOSFET and 
+eventually cut off the current to the rest of the system.
+- **Under voltage protection was achieved using a reference voltage and a comparator.** If the voltage fell below some 
+threshold set relative to the reference voltage generated by Zener D6, the main voltage regulator would be disabled.
+
+Once the power passed through these stages, it would reach the system supplying the lights, RPi, and main display!
+
+These weren't the only protection circuits present through the system though. There were five pairs of protection diodes 
+spread around the circuit (D1 to D5) to limit the voltage at certain nodes to fall between the power rails. These were meant 
+to prevent a failure from the STM32 prom propagating along the data lines to the RPi and GPS leading to them also getting 
+damaged, as had happened with one RPi used for development purposes of other systems before work on Blueshift started.
 
 ### Analog System Power
 
@@ -238,28 +338,164 @@ essentially no utility for the team outside of its purpose to power the analog c
 
 ## Testing
 
+Once assembled I put the system through some basic hardware tests before we could begin programming to ensure everything was 
+working as anticipated. If not, there would be a chance the board would fail when finally put into use wasting our time.
+
+To ensure the safety of the board and the modules that would eventually connect to it, the board was tested incrementally. 
+At first with nothing connected to it to test the hardware built into it, then once I was confident I would gradually 
+introduce modules until I had the whole system there.
+
 ### Power Monitoring Tests
+
+The first tests I did were with the board's power protection and supply system to ensure they worked. I followed it through 
+the steps below which corresponded to the faith I had in the system operating properly in each condition, ranked highest 
+to lowest faith.
+
+1. **Normal conditions.** Supplied the expected 10V. The system generated the proper 5V and no error LEDs lit up. Good.
+2. **Under voltage.** Supplied 8V. The "UV" LED lit up and the 5V supply was disabled. Good.
+3. **Reverse polarity.** Supplied -10V. The "RP" LED lit up and no power made it to the system. Good.
+4. **Over voltage.** Supplied 15V. No error LEDs lit up, power reaching the system, 5V supply operating. **Bad.**
+   - *Note: 15V was still tolerated by all parts present during this test so no damage occurred other.*
+
+Looking at my schematic I identified the problem. When I was placing the MOSFET on the power line (G2) I had copied and 
+pasted the MOSFET used for reverse polarity (G1). I had forgotten that it was placed "in-reverse" for reverse polarity 
+protection and left it. This meant that as long as the polarity of the system was correct the MOSFET would conduct either 
+through its body diode or normal means, so it was unable to cut power to the system. 
+
+I noted the failure of the over voltage system down for correction in a future revision. I also realized that my under 
+voltage protection system was naive, since it only disabled the 5V supply (turning off the data collection circuitry) but 
+there was still power on the rail for the main display and lights to still use which could drain or kill the battery. To 
+remedy this, I would have the comparator cut power into the system using a MOSFET as I had done with the other two stages.
+
+Neither of these issues would prevent the system from operating under normal conditions as established with test 1, so I 
+simply made a note to make sure we were dilligent about the batteries we used and changed them regularly.
 
 ### Lighting Tests
 
+Testing the lighting was pretty simple, I soldered a chain of high power LEDs to the output I wanted to test and then used 
+jumper wires in place of the STM32 to send an enable signal to that line. My tests for each line had these steps:
+
+1. **Normal operation.** Have the LEDs soldered to the output, enable the driver with a jumper wire.
+2. **Current check.** Use a current clamp around the LED leads to verify the current matches expectations
+3. **Disconnected test.** Disconnect the LEDs and enable the driver for 20 seconds.
+4. **Normal operation.** Reconnect the LEDs and run them to make sure the driver detected the open load in the previous step 
+and did not damage itself.
+
+All four lighting lines passed these tests without issue.
+
 ### Data System Tests
 
-### Telemetry Tests
+Once all the power circuits were tested, I installed the STM32 and RPi had them perform basic data exchanges like on TITAN 
+to check they were communicating properly. They communicated without issue, passing my dummy data back and forth.
 
+After communication was established, I added the sensor modules and ran simple code on the STM32 to check it was able to 
+collect all the data correctly, which it did. It was able to collect GPS and DHT data, pick up on button presses, and catch 
+encoder interrupts.
+
+The final piece that needed to fall into place was the nRF24L01 communication module. I placed it in its socket and had the 
+STM32 run some basic configuration instructions on it and then verify if they were accepted. This proved the nRF24L01 was 
+responsive to the STM32 and was ready to be used.
+
+***The system was ready to get coded.***
 
 ## Programming
 
+Although much of the code was reused from TITAN, there were some changes and some novel code that needed to be written 
+specifically for Blueshift. As with TITAN, the code running on the microcontroller was written in C/C++ using the Arduino 
+platform, while the code that ran on the RPi was written in Python.
+
+**The main changes to the code of Blueshift compared to TITAN was with the code meant to run on the Raspberry Pi.** I was 
+ready to simply reuse my code from TITAN written in Python with the necessary changes made to get it to work for Blueshift. 
+However I had two teammates express an interest in trying to optimize my code and port it to C or C++ in hopes of even 
+better performance that just optimized Python.
+
 ### Data Collection
 
-### Data Exchange
+Data collection was kept the same from TITAN since we were using all the same sensors. The only changes were that a couple 
+of the pin allocations were changed so that had to be reflected in the code. In summary from TITAN:
 
-### Telemetry
-
-### ANT+ Collection
+- **GPS** - Used a library
+- **DHT** - Used a library
+- **Encoders** (wheel and crank) - Used interrupts to record their rotational periods/speeds and number of rotations
+- **Battery levels** - Used internal analog to digital converter on STM32 to determine battery voltage and thus level 
+   - *Refer to [TITAN's section](../titan-v1#battery-monitoring) on this for more detail*
 
 ### Light Control
 
+Light control was handed by a teammate that was interested in contributing some code to the project based on the exercises I 
+had prepared for them earlier in the year. All light control code was on the STM32.
+
+The lights were controlled by PWM outputs so they could be dimmed, with simple `analogWrite` functions used for this.
+
+To capture the rider's inputs from the buttons, I asked them to prepare an interrupt based system. This system also required 
+software debouncing, to not catch any unnecessary of toggles with each press.
+
+Finally, I had them add new commands to the established data exchange structure so we could both query or set the lights 
+using data commands instead of only the buttons. This allowed us to display the light state on the screen to the rider, as 
+well enabling the possibility of remote control with telemetry.
+
+### Data Exchange
+
+This again was taken basically whole from [my work on TITAN](../titan-v1#communication-with-rpis). Communication between the 
+RPi and STM32 was done over a serial line using predefined message structures, explained below.
+
+> **1 character** - Message type (capital letters are for sending data, lowercase for requesting data)
+> 
+> **1 character** - Data length, ***n*** *(only if the RPi is sending data)*
+> 
+> ***n* bytes** - Data to STM32 *(if the RPi is sending data)*
+
+As hinted by the structure, the **STM32 would only receive data from the RPi and never initiate an exchange itself**. When 
+the STM32 is responding with data to a request, it replies with just the data length and data itself (*no leading message 
+type character*).
+
+The reason I used a data length character as part of messages, rather than a fixed length or delimiting character to 
+communicate message length is because it allows for greater flexibility than a fixed length, and it doesn't risk a 
+delimiting character randomly occurring in exchanged data, misleading the RPi or STM32.
+
+### ANT+ Data Collection
+
+Just like on TITAN a USB receiver for ANT+ signals was used on the RPi to collect the power, cadence, and heart rate data 
+for the rider. I reused the [python code from TITAN](../titan-v1#ant), although I trimmed it down to only monitor one set of 
+rider devices rather than two. The RPi would still update the STM32 with this information as it got updated should telemetry 
+be achieved.
+
+**My teammates were unable to get a C/C++ version of ANT+ operational, so the Python version was kept for competition.**
+
 ### Video Display and Overlay
+
+The code for this was also copied from TITAN and was essentially the same, just that I removed the different "front" or 
+"rear" code since there was only going to be one rider and display for this so it was redundant. The 
+[feed shown](../titan-v1#camera-feed) to the rider was still a "preview" of the RPi camera with a data-loaded heads up 
+display [overlaid](../titan-v1#overlay).
+
+Although my teammates had come success with putting up a video feed with C-based code using OpenCV, there was a noticeable 
+latency and decreased frame rate compared to my original Python-based approach, which only got worse when they applied an 
+overlay to it. **So this was scrapped and we intended to keep the Python video system for Blueshift at competition.**
+
+I did keep working on this myself after the cancellation of the competition in the wake of the pandemic, in parallel with my 
+work on the telemetry system. I was able to get a hybrid approach to work where Python code would still be used to put the 
+camera feed on screen as a "preview", however I used a separate C program to overlay the data using low level graphics 
+functions specific to the Raspberry Pi 3B+s we had. It is this code that is running in the Blueshift telemetry demo video.
+
+### Telemetry
+
+Over the year leading up to Blueshift I had been doing some research into how we could finally achieve telemetry with the 
+nRF24 modules I had purchased. I have a [telemetry page](../telemetry) dedicated to my work on it, so I will summarize it by 
+stating I was greatly helped by the libraries available for it, and that I made functions to easily exchange data wirelessly 
+like it was data flowing between microcontroller/processors on TITAN and Blueshift.
+
+**I am not certain I would have had it in time for the competition, but Blueshift would be able to race even without it.**
+
+I have a video of me using the system to test my C-based overlay by feeding the system data wirelessly from my laptop.
+
+<div class="youtube">
+<iframe class="youtube" src="https://www.youtube.com/embed/_cpkm76RVns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+*Note: I forgot to mention in the video but the reason the overlay appears undersized is because it is designed to be put 
+over a 720p video feed, which is the resolution used in the vehicle. However for testing the camera was outputting 1080p to 
+match my monitor's resolution.*
 
 ## Outcome
 
@@ -278,7 +514,9 @@ Even so, it served as an excellent design exercise and let me figure out some th
 
 I went back and prepared a new schematic to remedy most of my issues with the design of V3. The issues addressed were:
 
-- Power protection circuitry issues I identified
+- Incorrect configuration of the over voltage MOSFET
+- I have the under voltage protection system cut power to the entire system using a MOSFET, not just disable the 5V regulator. 
+   - This will prevent the display or lights from continuing to drain the battery if under voltage occurs.
 - Moved the voltage divider for the auxiliary battery on board
 - Added protection diodes for axillary battery level line
 
