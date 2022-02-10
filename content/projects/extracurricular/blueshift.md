@@ -1,7 +1,7 @@
 ---
 title: "Blueshift"
 date: 2019-10-08T17:07:58-05:00
-draft: true
+draft: false
 started: "October 2019"
 finished: "March 2019"
 status: "Completed, never used."
