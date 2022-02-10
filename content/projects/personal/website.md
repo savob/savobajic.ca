@@ -30,19 +30,20 @@ website builder to help me accelerate my progress and simplify updating it in th
 - Switching to HUGO was immensely helpful for ensuring that my content is consistent as well as enjoying the pages it 
 automatically generates like tag pages in addition to the content itself.
 - Making a functional site is easy, but making it engaging is not as straight forward
+   - Adding a showcase or two to the home page really helps with this!
+   - Small responsive designs also help make a website feel more lively, especially when hovering over elements
 - Writing up projects is time consuming
 - Designing for mobile helped me improve my design for desktop too
 
 ## Progress and Plans
 
-Progress comes and goes, I am satisfied with the layout of the site and am focusing on populating it with actual content 
-at a rate of a few projects weekly.
+I've reached a point where I am satisfied with the way my content is laid out, even adding some *responsive* elements! I've 
+also uploaded all the projects I've worked on that I feel are worth showing off here. *(So now I can go back to adding to 
+that list!)*
 
-I would like to add a "breadcrumb" to the top of pages to improve navigation. For example at the of this page would be something like:
-
-> "Projects" >> "Personal" >> "This Website"
-
-With each entry being a link to that page.
+Other than updating the website with my future projects as they come, the next major addition to the website will probably 
+be a "dark" theme so I can exercise my CSS abilities and please my friends that haven't used a "light" theme since 2018. 
+Maybe I'll also make more use of the footer I included, to toggle the themes or have some other information about the website.
 
 # Detailed Report
 
@@ -57,14 +58,14 @@ Raspberry Pi's or my NAS but to keep things simple for myself I decided to go wi
 
 After doing some research the main concern for me was the cost, so I was trying to find the cheapest service since I 
 [currently] do not most of the features offered to me. After asking my sister where she hosted her site and how much she 
-pays for it, I decided to go to Netlify since the their basic plan is free.99.
+pays for it, I decided to go to Netlify since the their basic plan is *free*.99.
 
 ## Website Architecture
 
 I initially intended to make the website largely, if not entirely from scratch in HTML and some potential scripting. After 
 I started, I quickly came to realize some of the limitations of using pure HTML - namely that it was difficult to modularize 
 one's website. This meant that in order to have a consistent header and footer I would need to either copy them into each 
-`.html` by hand, or resort to some trickery.
+`.html` by hand, or resort to some trickery like scripts.
 
 I have these original scraps of a website I prepared in HTML by hand available for download [here](/website-by-hand.zip) 
 for those curious.
@@ -89,9 +90,8 @@ I would like to minimize the amount of scripting needed for my website, ideally 
 is viewable by anyone with just an HTML parser. To that end I am try to stick to only formatting the website with CSS, and 
 so far I have been successful at sticking to it.
 
-The layout of my website is kept basic for now, largely given my CSS abilities. The design used is inspired (stolen) from a 
-print portfolio of my projects that I prepared at the end of my third year studies, roughly April 2019. *(I still need to 
-grab that font!)*
+The design used is inspired (stolen) from a print portfolio of my projects that I prepared at the end of my third year 
+studies, roughly April 2019, with the help of my sister. *(I still need to grab that font!)*
 
 <figure>
 <img src="/images/website-portfolio-clip.png">
@@ -100,22 +100,26 @@ grab that font!)*
 
 After many rounds of tweaking of the `.html` templates and my `.css` files, I've arrived at what I can comfortably call my 
 final layout for my site. I may fool around with making a "dark" theme or something else more experimental, but feel that 
-as a layout of content it works well.
+layout of content itself is what I want.
 
 ### General Layout
 
 I wanted the website to have a constant header and footer on every page to help with navigation, even if the footer isn't 
 quite utilized right now. Between these would rest the content of each page. 
 
-In the header I wanted links to every section of my website, as well a drop down list for subsections under "Projects".
+In the header I wanted links to every section of my website, as well a drop down list for subsections under "Projects". I 
+also added "breadcrumb" navigation so users can easily go back to other sections of interest. This is the list of links 
+just below the section tabs that goes like:
 
-In the footer I just wanted to reassert this is my site, but I think I may look to add theme settings there or contact info.
+> "Projects" / "Personal" / "This Website"
+
+In the footer I reassert this is my site, but I think I may look to add theme settings there or contact info in the future.
 
 ### Single Pages
 
 The layout of single pages (any specific content, e.g. a job or project) is pretty basic. Other than inserting the header and 
 footer, all that there is to them is two sections: an intro section and the content. The intro section is what covers the 
-brief meta details of the page at the start such as the title or tage, this is everything between the header and the second 
+brief meta details of the page at the start such as the title or tags, this is everything between the header and the second 
 horizontal line. Anything below the second horizontal line to the footer is the content taken straight from the `.md` files 
 that describe it.
 
@@ -190,13 +194,32 @@ similar approach is taken with the two column lists, although going from 50% wid
 <figcaption>The website's look on desktop for the personal project page</figcaption>
 </figure>
 
-Font based units found their main use in making sure that elements "felt" the right size such as figures not being taller than 15 
-lines of text (addressing the excessive scrolling issues). They were also used for the breakpoints regarding site layout since the 
-headers needed to fit a certain number of characters in a row to have all six section in one row, otherwise they needed to be 
-split across two rows. A similar story with the project columns needing a certain number of characters in a line otherwise they 
+Font based units found their main use in making sure that elements "felt" the right size such as figures not being taller than a set 
+number of lines of text (addressing the excessive scrolling issues). They were also used for the breakpoints regarding site layout 
+since the headers needed to fit a certain number of characters in a row to have all six section in one row, otherwise they needed to 
+be split across two rows. A similar story with the project columns needing a certain number of characters in a line otherwise they 
 would be too narrow to read comfortably.
 
 This process really helped me improve my user experience on both mobile and desktop.
+
+### Designing my Homepage
+
+My homepage is completely different to the rest of the website so I actually prepare it as its own html template.
+
+Originally is served as little more than a landing page that had a little blurb and visitors had to navigate to pages of interest 
+through the section tabs in the header. I wanted something more inviting and helpful for people that visit, so I decided on the 
+layout that it uses now: introduction block, featured pages (I set these manually), and then my most recently updated pages.
+
+The introduction block is entirely written in raw html code that describes it.
+
+As for the two lists, I reuse the multi-column list structure I prepared but pass in specifically selected lists. For the featured 
+projects list I use a hand-curated list of pages that I store in the header of the home page's `_index.md` file. For the most 
+recently updated pages, I have Hugo go through all my pages and sort them by their most recent change based on the commit history. 
+It then pulls out a handful of the most recently updated ones to put in the list.
+
+I feel that by showing these projects on the main pages, especially my hand selected ones makes the website feel much more of 
+complete website. I have received feedback from friends that even though they weren't originally seeking some of the projects 
+that are featured they still visited the pages because it was shown to them and it sparked their curiosity.
 
 ## Adding Content
 
@@ -205,7 +228,10 @@ as per HUGO guidelines. Media and such are uploaded to the "static" directory, a
 about how these are then synthesized into HTML, please refer to the HUGO documentation [here](https://gohugo.io/documentation/).
 
 To prepare one article takes me usually a couple of hours, especially if it is an old project that needs me to sift through 
-my old photos on my phone for something to use. 
+my old photos on my phone for something to use. Sometimes I also need to retake photos to make them nicer (generally on clean 
+backgrounds). With some of my really old electronics projects that I did with EAGLE before my student license expired, I also 
+need to import them into KiCad which I use now, and iron out the issues with this conversion process to create the media for 
+them.
 
 Once prepared, I push a commit related to that content up to the GitHub. Once uploaded, Netlify detects the push and rebuilds 
 the site with the new data and begins to host it immediately if there is no issue during build. HUGO is actually able to use 
