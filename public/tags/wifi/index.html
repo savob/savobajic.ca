@@ -11,31 +11,71 @@
 <link rel="stylesheet" href=/css/style.css>
 
 
+<div class="wrapper">
+
 <header>
   <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-<ul>
- 
-<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
-</ul>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
 </nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                	  <li class="breadcrumbs"><a class="subtitle" href="/tags">Tags</a></li>
+				        
+                
+                	  <li class="breadcrumbs"><a class="subtitle" href="/tags/wifi">Wifi</a></li>
+				        </ul>
+
+
 
 	
 	<main>
 	
 	
-
 	
+	
+	
+		
+
+<div class="row">
+<div class="column">
+
+
+
+
+	<a href="https://savobajic.ca/projects/personal/buschecker/">
 	<article>
 	
 	
 	
+		<img class="thumbnail" src="/images/bus-board.jpg">
 	
 	
-	<div class="listEntry">
-	<h2 class=listEntry>
+	
+
+<h2 class=listEntry>
 	<a href="https://savobajic.ca/projects/personal/buschecker/">Bus Stop Checker</a>
 </h2>
 
@@ -43,12 +83,15 @@
 
 
 
-<div class="subtitle">Status: Finished</div>
-
-<div class="subtitle">Period: January 2020 - April 2020</div>
-
-<div class="subtitle">Client: My roommates</div> 
-<div class="subtitle"><strong>Tags:</strong> <a href="/tags/wifi">wifi</a> <a href="/tags/esp32">ESP32</a> <a href="/tags/ttc">TTC</a> <a href="/tags/embedded">embedded</a> <a href="/tags/xml">XML</a> </div>
+	<p class="subtitle">Status: Finished</p>
+	
+	
+	<p class="subtitle">Period: January 2020 - April 2020</p>
+	
+	<p class="subtitle">Client: My roommates</p> 
+	
+	  <p class="subtitle"><strong>Tags:</strong> <a href="/tags/embedded">embedded</a> <a href="/tags/esp32">ESP32</a> <a href="/tags/wifi">wifi</a> <a href="/tags/xml">XML</a> </p>
+	
 
 
 
@@ -60,21 +103,28 @@
 
 <p class="listEntry">Made a small system to check online for buses around my home at the press of a button.</p>
 
-	</div>
 	
-	
-	<img class="thumbnail" src="/images/bus-board.jpg">
 	
 	
 		
 	</article>
+	</a>
 	
+	
+  	</div> 
+  	<div class="column">
+	
+
+</div>
+</div>
+
 	
 	</main>
 	
 	<footer>
      <a href="http://savobajic.ca/">Savo Bajic's Website</a>
 </footer>
+</div>
 
 </body>
 </html>

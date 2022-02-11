@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>ESC V3</title>
+</head>
+<body>
+  
+<link rel="stylesheet" href=/css/style.css>
+
+
+<div class="wrapper">
+
+<header>
+  <h1><a href="/">Savo's Site</a></h1>
+</header>
+
+<nav>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
+</nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects">Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/personal">Personal Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/personal/esc">Drone ESC</a></li>
+            		    
+				        <li class="breadcrumbs"><a class="subtitle" href="/projects/personal/esc/esc-v3">ESC V3</a></li></ul>
+
+
+
+	
+	<main>
+	<section class="mainIntro">
+  
+
+
+
+	<h1>ESC V3</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> Saturday, Jan 22, 2022</div>
+	<div class="subtitle"><strong>Status:</strong> Complete, Never Assembled</div>
+
+	
+		<div class="subtitle"><strong>Period:</strong> August 2020 - September 2020</div>
+	
+
+	
+	
+
+	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/bldc">BLDC</a> <a href="/tags/drone">drone</a> <a href="/tags/embedded">embedded</a> <a href="/tags/esc">ESC</a> </div>
+
+	<div class="introLine"></div>
+
+ 
+
+
+  </section>
+
+  <section class="mainContent">
+  <h1 id="overview">Overview</h1>
+<p>A minor revision of <a href="../esc-v2">V2</a>, primarily to try preventing the issues I had with multiple voltage rails repeating.
+<strong>I did not change anything related to the microcontroller</strong> so I could theoretically use the same code from V2 and drop it
+into V3, and vice versa. Yes, that means my PWM issues would still be present on this one.</p>
+<p>In addition to these power related changes, I added two status LEDs. One to light up when there is power applied to the board
+and another to be controlled by the microcontroller.</p>
+<p>I ordered the boards but never bothered to assemble them, as I was already planning <a href="../esc-v4">V4</a> so I didn&rsquo;t order parts
+for what amounted to an obsolete version.</p>
+<h1 id="detailed-report">Detailed Report</h1>
+<p>This revision was mainly a pruning of some thorns in V2 related to development: mixed voltages and expressing status to the
+user. You can read into what went into designing V2 <a href="../esc-v2/#detailed-report">here</a>, here I will focus only on my changes:</p>
+<ul>
+<li>The removal of the 5V regulator.
+<ul>
+<li>It is now dependant on an external 5V supply for the microcontroller.</li>
+<li>This was done to avoid issues related to unequal 5V through the system and with programmers.</li>
+</ul>
+</li>
+<li>The addition of Schottky diodes to supply line for the MOSFET driver.
+<ul>
+<li>This was done to ensure that the driver chip would always be supplied the higher of 5V or Vbatt</li>
+</ul>
+</li>
+<li>The addition of two status LEDs.
+<ul>
+<li>One controlled by the microcontroller (user)</li>
+<li>One to illuminate when power is applied to the system on Vbatt</li>
+</ul>
+</li>
+<li>Proper programming connections for SPI ISP</li>
+</ul>
+<h2 id="circuit-design">Circuit Design</h2>
+<p>Since this is the basically the same as V2 (and thus V1), please refer to <a href="../esc-v1/#circuit-design">V1&rsquo;s section</a> on the
+circuit&rsquo;s main design. My changes to the design were:</p>
+<ul>
+<li>The removal of the 5V regulator subsystem</li>
+<li>The addition of Schottky diodes to supply line for the MOSFET driver. <strong>D6 and D7</strong>.</li>
+<li>The addition of two status LEDs. <strong>D4</strong> for the microcontroller and <strong>D5</strong> for power indication.</li>
+<li>The rearrangement of how the RESET signal for the microcontroller is routed for programming.</li>
+</ul>
+<figure>
+<img src="/images/esc-v3-schematic.svg">
+<figcaption>The completed schematic for the ESC V3 (PDF version: <a href="/pdf/ESC_V3.pdf">Colour</a> / <a href="/pdf/ESC_V3_BW.pdf">BW</a>)</figcaption>
+</figure>
+<h2 id="layout">Layout</h2>
+<p>I started by reusing the layout from V2, so I will link to <a href="../esc-v2/#layout">its layout description</a> for details regarding
+what went into that layout. Below you can see the overall revised board for V3.</p>
+<figure>
+<img src="/images/esc-v3-combined-layout.png">
+<figcaption>The overall layout of the board</figcaption>
+</figure>
+<p>All changes that occurred were on the top side. The complete removal of the 5V regulator was in the top right. Three of the
+four new diodes sit in the space it formerly occupied, the only exception being the controlled diode (D4) sitting in the
+centre of the board.</p>
+<figure>
+<img src="/images/esc-v3-top-layout.png">
+<figcaption>The layout of the top side</figcaption>
+</figure>
+<p>The bottom of the board remains largely unchanged from V2, other than changing the silkscreen text to reflect the version
+number and the redone trace for RESET from the SPI ISP header.</p>
+<figure>
+<img src="/images/esc-v3-bottom-layout.png">
+<figcaption>The layout of the bottom side</figcaption>
+</figure>
+<h2 id="assembly">Assembly</h2>
+<p>None of these were assembled. A revised stencil for it wasn&rsquo;t even ordered, I simply planned to wipe off the excess solder
+not needed for the regulator and hand solder the new components if I were to assemble it. Here are some pictures of the PCBs
+I got anyways.</p>
+<figure>
+<img src="/images/esc-v3-top-assembled.jpg">
+<figcaption>The top side of the purchased PCB</figcaption>
+</figure>
+<figure>
+<img src="/images/esc-v3-bottom-assembled.jpg">
+<figcaption>The bottom side of the purchased PCB</figcaption>
+</figure>
+
+  </section>
+  </main>
+  
+  <footer>
+     <a href="http://savobajic.ca/">Savo Bajic's Website</a>
+</footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Rebreather Monitoring</title>
+</head>
+<body>
+  
+<link rel="stylesheet" href=/css/style.css>
+
+
+<div class="wrapper">
+
+<header>
+  <h1><a href="/">Savo's Site</a></h1>
+</header>
+
+<nav>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
+</nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects">Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/extracurricular">Extracurricular Projects</a></li>
+            		    
+				        <li class="breadcrumbs"><a class="subtitle" href="/projects/extracurricular/rebreather">Rebreather Monitoring</a></li></ul>
+
+
+
+	
+	<main>
+	<section class="mainIntro">
+  
+
+
+
+	<h1>Rebreather Monitoring</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> Tuesday, Feb 8, 2022</div>
+	<div class="subtitle"><strong>Status:</strong> Assembled, in testing</div>
+
+	
+		<div class="subtitle"><strong>Period:</strong> May 2020 - August 2020</div>
+	
+
+	<div class="subtitle"><strong>Client:</strong> HPVDT</div> 
+	
+
+	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/analog">analog</a> <a href="/tags/axios">axios</a> <a href="/tags/embedded">embedded</a> <a href="/tags/hpvdt">HPVDT</a> </div>
+
+	<div class="introLine"></div>
+
+ 
+
+
+  </section>
+
+  <section class="mainContent">
+  <h1 id="overview">Overview</h1>
+<p>The most critical electronics system in HPVDT&rsquo;s submarine project, Axios, is the rebreather monitoring system. This system is
+responsible for reading and displaying the current concentrations of oxygen and carbon dioxide to the rider from the sensors
+located around the submarine so they know how to regulate the rebreather.</p>
+<figure>
+<img src="/images/axios-render.jpg">
+<figcaption>A render of Axios</figcaption>
+</figure>
+<p>In addition to the necessary reliability and accuracy of the system for safe operation of the submarine, the values needed
+to be easily read in the darkness and shine through the back of the mirror used for navigation.</p>
+<p><em>The work on this system was split pretty evenly between me and another team member interested in learning electronics</em>. The
+system has been designed and assembled. It is currently being tested before being approved for use.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Read and display the gas concentration from each of the
+<ul>
+<li>3 Oxygen sensors (PSR-11-39-MD), accurate to 0.1%</li>
+<li>1 CO2 sensor (MH-Z19B), accurate to within 5ppm</li>
+</ul>
+</li>
+<li>Operate for hours on end</li>
+<li>Use a bright and reliable display method</li>
+</ul>
+<h2 id="objectives">Objectives</h2>
+<ul>
+<li>Allow for the system to be calibrated without needing code to be updated</li>
+</ul>
+<h2 id="takeaways">Takeaways</h2>
+<p>Interfaced with two new types of sensor output: ridiculously low voltage ranges and PWM. Both of these needed me to
+implement new methods of handling them I hadn&rsquo;t in any of my projects before, some in hardware, others in software.</p>
+<h1 id="detailed-report">Detailed Report</h1>
+<p>HPVDT has been working on a submarine called Axios on and off for a few years now. I remember them showing it off in the
+clubs fair of my first year of university and thought it was a really cool project and wanted to contribute to it so it was
+a major factor in me joining the team in the first place. So when we decided to focus our efforts on trying to complete it
+(originally for the end of summer 2020) I hopped on the chance to contribute!</p>
+<p>There are a few electronics systems I needed to prepare as the head of electronics and arguably the most critical for rider
+safety was the rebreather monitoring system.</p>
+<p>The majority of previous notable human powered submarines were wet hulled, allowing fluid to freely enter and exit the hull
+and traditional diving equipment was used to provide the air for the riders to breathe. Axios however is dry hulled, so air
+stays in and water stays out. This makes it impossible to use traditional diving systems since the air released, that would
+normally be exhausted into the water and away would instead accumulate and build pressure within the submarine. Axios makes
+use of a rebreather system where the air in the submarine is recycled and chemically treated to maintain safe oxygen and
+carbon dioxide levels, thus the pressure stays constant at around atmospheric.</p>
+<p><strong>The rebreather needs to be adjusted by the rider to accommodate changes in the air composition so they need to know what
+the exact composition of the air is. To provide this information is the purpose of the rebreather monitoring system.</strong> To
+gather this information of the atmosphere in the sub there are three oxygen sensors and one carbon dioxide sensor. The rider
+will be informed of each sensor&rsquo;s readings separately (instead of an average) to allow them to identify any potential issues
+with the sensor system.</p>
+<p>Not only does the system need to accurately reflect the composition of the air in Axios, it also needs to be reliable and
+easily readable in the darkness of the submarine.</p>
+<h2 id="circuit-design">Circuit Design</h2>
+<p>The circuit design and layout was completed in EAGLE. For the circuit design I had the teammate design the circuit in
+modules based on purpose that were then combined for the final design.</p>
+<p>The overall system design is centered on an ATmega328P microcontroller, the same used in Arduino Nanos. Fanning out from it
+are the circuits responsible for conditioning the oxygen sensor signals, the CO2 signal and then the displays. The entire
+system is powered off a shared 5V supply generated from a linear regulator stepping down the supplied battery voltage.</p>
+<figure>
+<img src="/images/axios-schematic.png">
+<figcaption>The completed schematic for the hot wire cutter (<a href="/pdf/rebreather-schematic.pdf">PDF version</a>)</figcaption>
+</figure>
+<p>The ATmega was chosen for both our familiarity with it and having just the right amount of features we needed for this. It
+has an internal analog to digital converter for the oxygen sensors, interrupt pins for the CO2 sensor, and timers needed for
+driving the displays. Both SPI ISP headers and serial headers for programming were put on the board.</p>
+<p>A linear regulator was used to supply the 5V instead of a more efficient switched mode one to minimize the noise on the
+supply line which may affect the amplification and reading of the oxygen sensors' small signals.</p>
+<h3 id="display-modules">Display Modules</h3>
+<p>There are four displays needed for the system, each with four digits. It was decided that the most reliable way to display
+information clearly to the rider was through the use of LED seven-segment displays.</p>
+<p>Each display needed 12 pins to be controlled: 8 for the segments (character + decimal point) and 4 to set which digit(s) to
+show. With four displays each individually controlled, up to 48 pins would be needed! This would not be feasible to control
+from the microcontroller directly since a much larger microcontroller would be needed, instead much of the control would be
+offloaded to shift registers.</p>
+<p>Shift registers take in information serially (sequentially) on two pins, data and clock, and then output it in parallel. The
+basic principle can be imagined as them taking in and storing whatever the state of &ldquo;data&rdquo; is when &ldquo;clock&rdquo; is pulsed to
+their first slot as they move all previous data over one spot to make space for it. They can be daisy chained to form an
+arbitrarily long chain all controlled from the same two inputs, this allows a microcontroller to use just two pins to
+control theoretically an infinite number of outputs.</p>
+<p>Each display uses a shift register to control the segments that are illuminated, so the microcontroller handles all 24
+segments with just two pins. The microcontroller then uses transistors to control which digit is visible on all the displays.
+Thus, it is able to control <strong>all of the displays using only six of its pins</strong>! <em>There is actually a seventh pin, used to
+regulate the brightness</em> of the displays by using a PWM wave on the output enable pins of all shit registers, but it is not
+vital.</p>
+<h3 id="oxygen-sensor-system">Oxygen Sensor System</h3>
+<p>Our oxygen sensors used for the submarine are basically open air chemical cells that produce a voltage linearly proportional
+to the oxygen present in the air, between <strong>10mV at 0% and 65mV at 100%</strong>. The problem is that this signal is much too small
+for a typical ATmega328 to meaningfully read given the resolution of its ADC (10 bits, 1024 increments), even when using the
+1.1V reference instead of the 5V.</p>
+<p>To address this, the signal from the sensors is amplified to a larger range before being read by the microcontroller, using
+an operational amplifier in a non-inverting configuration.</p>
+<p>Since the characteristics of each sensor will vary due to manufacturing and change over time with use as the chemicals are
+expended, the gain needs to be easily adjusted. This is done by using a potentiometer as part of the feedback loop for the
+amplifier allowing the gain to be increased or decreased as needed so that 100% oxygen would correspond to the maximum
+reading of about 5V.</p>
+<p>The gain isn&rsquo;t the only thing that requires calibration, a low point calibration is also needed. This is because the no
+oxygen doesn&rsquo;t produce an output on the sensor of zero volts, but rather some intermediate voltage. So a second calibration
+point is set using the atmospheric concentration of oxygen (about 21%) using potentiometer to produce a reference voltage
+for this level on each sensor. This second point is a convenient calibration point since we want to keep Axios' environment
+as similar to atmospheric as possible, so by calibrating to it we can be confident the values near it will be accurate.</p>
+<h3 id="carbon-dioxide-sensor-interface">Carbon Dioxide Sensor Interface</h3>
+<p>The carbon dioxide sensor selected for use in the submarine outputs a PWM signal which expresses the CO2 levels it measured,
+all it needs from the system in return is a pair of power connections (0 and 5V). However the PWM signal cannot be fed into
+the ATmega directly because the sensor outputs a 3.3V wave, so it wouldn&rsquo;t register properly on its 5V logic.</p>
+<p>To accommodate this difference, a level-shifter is needed to convert this 3.3V signal into a 5V one. A basic one is used for
+Axios, just a transistor controlled by the sensor PWM that pulls down on pin on the ATmega when the PWM is high. The only
+inconvenience to this simple arrangements is that the signal will get inverted so the PWM highs will be output as lows, and
+vice versa.</p>
+<h2 id="layout">Layout</h2>
+<p>Other than providing some basic requirements to the teammate related to size limits and display positioning, the layout was
+entirely their design. There was no need for mounting holes since the board would be adhered into place.</p>
+<p>They prepared a display module layout that was repeated for each of the four displays, the three oxygen ones at the top, the
+CO2 one at the bottom, and the remaining electronics in the gap between these display banks.</p>
+<figure>
+<img src="/images/axios-layout-combined.png">
+<figcaption>Combined layout of the board</figcaption>
+</figure>
+<p>All the surface mount parts are mounted on the front, as well as the potentiometers (although they can also be mounted to
+the front). In addition to the components, there were some instructions added to the silkscreen to instruct users on how to
+properly calibrate the oxygen sensor system should I not be present.</p>
+<figure>
+<img src="/images/axios-layout-front.png">
+<figcaption>The layout of the front side of the board</figcaption>
+</figure>
+<p>There is not much going on on the back side of the board specific to it, other than being where the displays mount to.</p>
+<figure>
+<img src="/images/axios-layout-back.png">
+<figcaption>The layout of the back side of the board</figcaption>
+</figure>
+<h2 id="assembly">Assembly</h2>
+<p>A standard mixed part affair, just that the teammate did the assembly under my supervision instead of me doing it myself.</p>
+<p>A stencil was used to place the paste on the board, the surface mount components were all placed and reflowed. Before moving
+to placing and soldering the through hole components the board was checked for any shorts caused by solder bridging some of
+the leads on the ICs. Luckily there were none present.</p>
+<figure>
+<img src="/images/axios-assembled-smt.jpg">
+<figcaption>A board partially assembled, prior to the addition of through hole parts</figcaption>
+</figure>
+<p>My teammate then soldered the through hole components (displays and potentiometers) and board assembly was complete. I then
+soldered wires for testing and programming the microcontroller myself before I started coding.</p>
+<figure>
+<img src="/images/axios-assembled-back.jpg">
+<figcaption>A completely assembled and connected board from the back</figcaption>
+</figure>
+<figure>
+<img src="/images/axios-assembled-front.jpg">
+<figcaption>A completely assembled and connected board from the front</figcaption>
+</figure>
+<h2 id="programming">Programming</h2>
+<p>I handled the programming of the system myself.</p>
+<p>The board is programmed entirely in the Arduino IDE as an Arduino Nano. Its code is prepared in C++ and then uploaded using
+an In-System Programmer (ISP), which originally was another Arduino I prepared for this purpose but I now possess a proper
+commercial one.</p>
+<h3 id="display-code">Display Code</h3>
+<p>The display code is based off what I did for the <a href="../scoreboard#display-code">scoreboard project</a>. However instead of
+controlling the segments directly from pins of the microcontroller, the microcontroller would be passing settings to the
+shift registers that controlled the segments for each display.</p>
+<p>To communicate the microcontroller would operate the data and clock lines for the shift registers. It would start by setting
+the two lines low, then based on whether or not a segment needed to be on - setting the data line, before finally raising
+the clock line and pushing the data into the registers. This was done for each bit of the displayed character for each of
+the four displays present.</p>
+<pre><code>// Output new segments to shift registers
+for (byte displayIndex = 0; displayIndex &lt; numberOfDisplays; displayIndex++) {
+  // For each digit output push out segments bit by bit
+
+  for (byte bitOut = 0; bitOut &lt; 8; bitOut++) {
+    PORTD &amp;= B11001111; // Clear data and clock
+
+    // Set data pin as required
+    if ((displayArray[displayIndex][currentDigit] &amp; (1 &lt;&lt; bitOut)) == 0) {
+      // The segment meant to be off (0)
+      PORTD |= B00010000; // Set segment to be off (high)
+    }
+    else PORTD |= B00000000; // Set segment to be on (low)
+
+    PORTD |= B00100000; // Set clock high to push data in
+  }
+}
+</code></pre><h3 id="oxygen-reading">Oxygen Reading</h3>
+<p>Oxygen readings are generated from some linear interpolations. The interpolation line is set with one point just below 5V
+for the maximum (100%) reading, then another voltage set by potentiometer for each sensor at atmospheric conditions (~21%,
+so ~1V). The function used to get oxygen readings fits the voltage-oxygen line in the form of <code>y = mx + b</code> and then uses it
+to derive what the oxygen value is by rearranging to <code>x = (y - b) / m</code>.</p>
+<pre><code>float oxygenRead(byte sensor) {
+  // Oxygen value calculations
+  // Get analog values
+  float OR = analogRead(oxygenSensor[sensor]);          // Oxygen sensor reading
+  float cal = analogRead(oxygenCalibration[sensor]);    // This is the calibration value.
+
+  // Math
+  float b = cal / 21.0;
+  float m = (1010 - cal) / 79.0; // This is the gradient (slope) of the function.
+  float oxy = (OR - b) / m;     // This is the oxygen value.
+
+  return (oxy);
+}
+</code></pre><p><em>The reason I used a point slightly below the actual maximum of the range, 1010 instead of 1023, for the 100% mark is so
+that during calibration of the oxygen sensors there is clear feedback that the gain is set too high, since over 100% will
+appear.</em></p>
+<h3 id="carbon-dioxide-reading">Carbon Dioxide Reading</h3>
+<p>The carbon dioxide reading is PWM based, so the width of the output high phase corresponds to the concentration of CO2
+detected by the sensor. This wave is connected to an interrupt pin on the ATmega which toggles on <em>any</em> state change so it
+marks both the start and end of a PWM wave.</p>
+<p>The signal has a period of about a second according the the manufacturer&rsquo;s data sheet, and the CO2 level is encoded using
+the following formula, <code>CO2 = ppm span * (Th - 2ms) / (Th + Tl - 4ms)</code>, where <code>Th</code> and <code>Tl</code> are the periods the wave was
+high or low respectively. The measuring span (<code>ppm span</code>) of our model of sensor is 2000ppm. This results in the following
+interrupt routine for the CO2 input.</p>
+<pre><code>void CO2Interrupt () {
+  // Based on time high and low for a PWM cycle, in milliseconds (total period ~1004ms)
+
+  // NOTE THE PWM IS INVERTED BY THE LEVEL SHIFTER, HENCE THE SEEMINGLY CONTRADICTORY PIN STATES
+  
+  unsigned long currentTime = millis();
+  
+  if (digitalRead(CO2Sensor) == HIGH) {
+    lastFalling = currentTime; // Mark falling edge of PWM
+  }
+  else {
+    // Rising edge, start of a new pulse
+
+    // Calculate CO2 level from last pulse
+    // CO2 = ppm span * (Th - 2ms) / (Th + Tl - 4ms)
+    
+    unsigned long timeHigh = lastFalling - lastRising;
+    unsigned long timeLow = currentTime - lastFalling;
+   
+    CO2Level = CO2Span * (timeHigh - 2);
+    CO2Level = CO2Level / (timeHigh + timeLow - 4);
+    
+    lastRising = currentTime; // Update rising time
+  }
+}
+</code></pre><p>Note: the CO2 sensor recommends a few minutes to warm up before results can be used. To communicate this to the rider I have
+the display for the CO2 reading show a count down for four minutes after powering on before finally showing a CO2 reading.</p>
+<h2 id="testing">Testing</h2>
+<p>Testing was completed by me and is largely complete, except for proper testing of the oxygen sensors. Most of it has gone
+well, I had some hardware issues that were revealed with testing the CO2 sensor but it has been patched over now.</p>
+<h3 id="display-tests">Display Tests</h3>
+<p>The display code works fine, I have been able to show any arbitrary values on all four displays and adjust their brightness
+as I please.</p>
+<h3 id="carbon-dioxide-testing">Carbon Dioxide Testing</h3>
+<p>When I assembled the system so the carbon dioxide sensor was connected, <strong>I found that the CO2 sensor appeared to be
+unresponsive and the microcontroller was unable to get any data from it to use.</strong> Not exactly the plug and play experience I
+was hoping for.</p>
+<p>I took out my oscilloscope and checked if the sensor was actually producing a signal. Not only was it producing a proper
+output signal, it also informed me that my workspace needed some fresh air! I then probed the output of the level shifter,
+this was stuck high. This made no sense to me so I consulted the schematic, and it <strong>turned out the issue was with the
+transistor used for the level shifting</strong>.</p>
+<p>In the design I wanted to use a certain N-channel MOSFET I had selected, however it didn&rsquo;t have a part in the default
+libraries included with EAGLE so I wanted to use a similar MOSFET that was included that came in the same packaging and had
+the same pin out, just a different name and internals. I had either failed to properly identify this equivalent, or had
+accidentally been off when entering the name since the part used in the schematic and on the board failed to match the one
+I purchased and installed. Thus the level shifter was not working since the signals were all going to the wrong pins.</p>
+<p>Initially I wanted to remedy this by purchasing the actual part specified and using that on the board. Unfortunately it was
+obsolete and I couldn&rsquo;t find suitable replacements for it. In the end I went ahead and moved the level shifter off-board by
+soldering the MOSFET to the CO2 sensor and replacing the transistor on the board with a short between the CO2 data line and
+the input on the microcontroller.</p>
+<h3 id="oxygen-sensor-testing">Oxygen Sensor Testing</h3>
+<p>Testing the oxygen sensors properly is the last remaining tasks for this project before installing it in the submarine. The
+reason we haven&rsquo;t done it yet is because unlike the CO2 sensor which is an electrical sensor, the oxygen sensors use
+chemical reactions and thus have a limited operation life so we will wait until we are near the deployment of the submarine
+to purchase them and use them in testing before reusing them for actual trials of the submarine.</p>
+<p><em>However,</em> it is still possible to test the system using a controlled voltage to simulate the behaviour of the oxygen
+sensors as far as the system can tell. So this is what I am currently in the process of doing.</p>
+<h2 id="current-status">Current Status</h2>
+<p>With the board assembled and largely programmed, all that remains before deploying the system is properly testing and
+verifying its ability to accurately measure oxygen concentrations.</p>
+
+  </section>
+  </main>
+  
+  <footer>
+     <a href="http://savobajic.ca/">Savo Bajic's Website</a>
+</footer>
+</div>
+
+</body>
+</html>

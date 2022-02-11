@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>ESC V5</title>
+</head>
+<body>
+  
+<link rel="stylesheet" href=/css/style.css>
+
+
+<div class="wrapper">
+
+<header>
+  <h1><a href="/">Savo's Site</a></h1>
+</header>
+
+<nav>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
+</nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects">Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/personal">Personal Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/personal/esc">Drone ESC</a></li>
+            		    
+				        <li class="breadcrumbs"><a class="subtitle" href="/projects/personal/esc/esc-v5">ESC V5</a></li></ul>
+
+
+
+	
+	<main>
+	<section class="mainIntro">
+  
+
+
+
+	<h1>ESC V5</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> Wednesday, Jan 26, 2022</div>
+	<div class="subtitle"><strong>Status:</strong> Designed, waiting for boards to arrive</div>
+
+	
+		<div class="subtitle"><strong>Started:</strong> August 2021</div>
+	
+
+	
+	
+
+	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/bldc">BLDC</a> <a href="/tags/drone">drone</a> <a href="/tags/embedded">embedded</a> <a href="/tags/esc">ESC</a> </div>
+
+	<div class="introLine"></div>
+
+ 
+
+
+  </section>
+
+  <section class="mainContent">
+  <h1 id="overview">Overview</h1>
+<p>I need a new revision of my ESC to accommodate the replacement MOSFET drivers I was able to source. I will also use this as
+an opportunity to fix some of the minor inconveniences I face with V4.</p>
+<p>Currently still finalizing the board and hope to order it in the coming weeks.</p>
+<h2 id="takeaways">Takeaways</h2>
+<p>None so far, project is still to be designed, let alone tested.</p>
+<h1 id="detailed-report">Detailed Report</h1>
+<p>This revision was started because I had run out of functioning parts during the testing of V4 and the IC shortage has forced
+me to select an alternative MOSFET driver, the <a href="https://www.mouser.ca/datasheet/2/196/Infineon-IRS2334-DataSheet-v01_00-EN-1228568.pdf">IRS2334S</a>
+from International Rectifier as the replacement for the FAN7388s and FAN7888s I was using until then.</p>
+<p>My goal is to keep the board as similar to V4 so that my code doesn&rsquo;t have to be significantly altered and I can focus on
+getting the motors to work.</p>
+<h2 id="circuit-design">Circuit Design</h2>
+<p>Circuit design is basically the same as <a href="../esc-v4/#circuit-design">V4</a> with only a few minor changes.</p>
+<ul>
+<li>Replaced the FAN7388/FAN7888 MOSFET driver with the IRS2334S</li>
+<li>Removed the unnecessary resistor on the UDPI line (R2 in V4&rsquo;s schematic)</li>
+<li>Rearranged the MOSFET driver signals such that all the low side signals are on one port. (Done to simplify/optimize coding for commutations)</li>
+<li>Added a status LED on the last unused pin</li>
+</ul>
+<figure>
+<img src="/images/esc-v5-schematic.svg">
+<figcaption>The completed schematic for the ESC V5 (PDF version: <a href="/pdf/ESC_V5.pdf">Colour</a> / <a href="/pdf/ESC_V5_BW.pdf">BW</a>)</figcaption>
+</figure>
+<h2 id="layout">Layout</h2>
+<p>Laying out the board I wanted to try and keep the part placements identical to V4&rsquo;s so I could reuse the same solder paste
+stencil, this is a major reason why I choose the IRS2334S since it came in the same package as the FAN7x88s. Other than the
+addition of the status LED, I was able to leave all components in their place and seat the new ones in place of removed ones
+(R2 where old R2 was, and the MOSFET drivers).</p>
+<p>Routing traces was a bit harder than expected since I didn&rsquo;t want to redo the entire thing from scratch. As a result, I
+spent a good portion of my routing seeing how close I could squeeze some traces and vias.</p>
+<figure>
+<img src="/images/esc-v5-combined-layout.png">
+<figcaption>The overall layout of the board</figcaption>
+</figure>
+<p>The top side of the board houses the MOSFET driver circuitry on the left half and the feedback network on the right.</p>
+<figure>
+<img src="/images/esc-v5-top-layout.png">
+<figcaption>The layout of the top side</figcaption>
+</figure>
+<p>The bottom of the board is where the control section and MOSFETs are located. I added the status diode between the address
+pads and R2 on the left.</p>
+<figure>
+<img src="/images/esc-v5-bottom-layout.png">
+<figcaption>The layout of the bottom side</figcaption>
+</figure>
+<h2 id="assembly">Assembly</h2>
+<p>I have already ordered and recieved the components I need for this project. All that I need to do is order the boards and
+to get to it.</p>
+<h2 id="outcomes">Outcomes</h2>
+<p>Nothing really yet.</p>
+
+  </section>
+  </main>
+  
+  <footer>
+     <a href="http://savobajic.ca/">Savo Bajic's Website</a>
+</footer>
+</div>
+
+</body>
+</html>

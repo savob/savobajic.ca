@@ -1,71 +1,178 @@
+:root {
+	--backgroundColour: DodgerBlue;
+	--altBackgroundColour: DeepSkyBlue;
+	--asideBackgroundColour: LightGrey;
+	--mainText: Black;
+	--navText: White;
+	--subtitleText: DimGrey;
+	
+	font-size:18px;
+	
+}
+
+@media screen and (max-width: 60em) {
+	:root {
+		font-size:16px;
+		overflow-x: hidden;
+	}
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 body {
 	font-family: Helvetica, sans-serif;
 	margin: 0;
+	color: var(--mainText);
+	max-width: 70rem;
+	margin: 0px auto;
+	
+	overflow-x: hidden;
 }
 .subtitle {
-	color:grey;
-	font-size:16px;
+	color: var(--subtitleText);
+	font-size: 0.8em;
 }
-
+div.wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	margin: 0 0.5rem;
+}
 
 /* Header and footer config */
 header {
 	text-align: center;
-	text-transform:capitalize;
-	background-color:DodgerBlue;
+	text-transform: capitalize;
+	background-color: var(--backgroundColour);
 	
 	width: 100%;
+	position: relative;
+	left: -50vw;
 	
-	margin: 0 0 5px 0;
+	padding: 0 50vw;
+	margin:0;
 }
 
 header h1 {margin: 0;}
 header a, footer a  {
 	text-decoration: none; 
-	color:white;
+	color: var(--navText);
 }
 
 footer {
-	color: white; 
+	color: var(--navText); 
 	background-color:DimGray; 
 	bottom:0px; 
-	padding: 10px 0px;
-	text-align:center; 
+	padding: 10px 50vw;
+	text-align: center; 
 	width: 100%;
+	
+	flex-shrink: 0;
+	width: 100%;
+	position: relative;
+	left: -50vw;
 }
 
 
 /* Nav bar stuff */
 nav {
-	margin: 0px 0px 10px 0px; 
-	background-color: DodgerBlue;
+	margin: 0 0 0.5em 0; 
+	background-color: var(--backgroundColour);
 	text-align: center;
-	text-transform:capitalize;
+	text-transform: capitalize;
+	
+	width: 100%;
+	position: relative;
+	left: -50vw;
+	padding: 0 50vw;
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0px auto;
-  padding: 0;
-  overflow: hidden;
-}
-nav li{
-	margin: 2px 1px 2px 2px;
-	display: inline;
-	border-right: 1px solid #bbb;
-}
-nav li:last-child {
-  border-right: none;
-}
-
-nav li a {
-  
-  color: white;
-  padding: 8px 25px;
+nav a {
+  color: var(--navText);
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  margin: 1px;
+  font-size: 1.2em;
+  margin: 0.5em;
+  display: block;
+}
+
+nav div {
+	text-align: center;
+	padding: 0em;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  
+  margin: 0px auto;
+  max-width: 75em;
+  padding: 0;
+  
+  justify-content: space-around;
+  background-color: var(--backgroundColour);
+}
+
+.navbutton, .dropdown {
+  flex: calc(100% / 6);
+}
+@media screen and (max-width: 60em) {
+	.navbutton, .dropdown {
+		flex: calc(100% / 3);
+	}
+}
+
+.navbutton:hover {background-color: var(--altBackgroundColour);}
+.dropdown:hover {background-color: var(--altBackgroundColour);}
+
+.dropdown-content {
+  opacity: 0;
+  position: absolute;
+  background-color: Grey;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  transform: translateY(-100em);
+  transition: opacity 250ms ease-in-out;
+}
+
+
+.dropdown-content a {
+  padding: 0.2em 1em;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-content a:hover {background-color: var(--altBackgroundColour);}
+
+
+
+/* Breadcrumbs */
+
+
+.breadcrumbs{
+	list-style-type: none;
+	display: inline;
+	margin: 0 0 0.5em 0;
+	padding: 0;
+}
+
+ul.breadcrumbs li+li:before {
+  padding: 8px;
+  color: black;
+  content: " / ";
+}
+
+.breadcrumbs a{
+	text-decoration: none; 
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
 }
 
 
@@ -75,20 +182,24 @@ nav li a {
 
 
 
-
+/* Lists */
 
 article {
 	border: 1px solid black;
-	margin:10px;
+	margin:20px 10px;
 	padding:10px;
+	
+	transition: background-color 250ms ease-in-out;
+}
+
+article:hover {
+  background-color: rgba(0,0,0,0.1);
 }
 
 article p {
-	font-size:18px;
 	margin: 5px 0 0;
 }
 article h2 {
-	font-size: 24px;
 	margin: 10px 0 5px 0;
 }
 article ul {
@@ -100,40 +211,56 @@ article li {
 }
 img.thumbnail {
 	max-width: 100%;
-}
-div.listEntry {
-	width: 100%;
+	margin: 2px auto;
+	max-height: 30em;
+	display: block;
 }
 
-/* If the screen is wide enough, put the summary of pages and the thumbnail side-by-side */
-@media only screen and (min-width: 650px) {
-	img.thumbnail {
-		max-width: 49.5%;
-		max-height: 100%;
-	}
-	div.listEntry {
-		width: 49.5%;
-		display: inline-block;
-	}
+.row {
+  display: flex;
+  flex-wrap: wrap;
 }
+.column {
+  flex: 50%;
+  max-width: 50%;
+}
+
+
+@media (max-width: 50rem) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* Content */
 
 main {
-	max-width: 1000px;
-	margin: 0px auto;
-	padding: 0px 10px;
+	padding: 0;
+	width: 100%;
 	
-	font-size:18px;
+	counter-reset: figure;
+	flex-grow: 1;
+	margin: 0 0 1em;
 }
 
 figure {
-	margin: 10px;
-	padding: 0px;
+	max-width: 100%;
+	margin: 0 1em;
+	padding: 0.25rem;
 }
 
 figure img {
-	width: 100%;
-	margin: 2px 0px;
-	height: auto;
+	max-width: 100%;
+	margin: 2px auto;
+	max-height: 30em;
+	display: block;
+}
+
+figcaption::before {
+	counter-increment: figure;
+  content: "Figure " counter(figure) " - ";
 }
 
 figcaption {
@@ -149,9 +276,9 @@ section.mainIntro h1 {
 	margin: auto 0 0;
 }
 div.introLine {
-	width: calc(50vw + 90%);
+	width: calc(50vw + 100%);
 	height: 8px;
-	background-color: DodgerBlue;
+	background-color: var(--backgroundColour);
 	margin: 5px 0;
 	position: relative;
 	left: -50vw;
@@ -161,3 +288,94 @@ section.mainContent {
 }
 
 
+/* Home page */
+
+.intro {
+  display: flex;
+  background-color: var(--backgroundColour);
+  padding: 0;
+  height: 12em;
+  margin: 2rem 0;
+  color: var(--navText);
+  font-size: 1.25rem;
+}
+
+.intro h1 {
+	margin: 1rem 0;
+}
+
+.bio-shot {
+  flex-shrink: 0;
+  height: 100%;
+  margin: 0 auto;
+  object-fit: none;
+}
+
+
+div.bio-bit {
+  padding: 0 2rem;
+  margin: 1rem 0 0 0;
+}
+
+#recent, #featured {
+	margin: 3rem 0;
+}
+
+@media screen and (max-width: 50rem) {
+	.bio-shot, .bio-bit {
+		flex-basis: 100%;
+	}
+	
+	.bio-shot {
+  width: 100%;
+  margin: 0 auto;
+  height: 20rem;
+}
+	
+	.intro {
+  	display: flex;
+  	flex-direction: column;
+  	height: auto;
+	}
+}
+
+/* Code */
+code, pre {
+  border-radius: 0.3em;
+	background-color: var(--mainText);
+	color: var(--navText);
+	overflow-x: auto;
+  padding: 0 0.3em;
+}
+pre {
+  padding: 0.6em;
+}
+pre>code {
+  padding: 0; /* Needed to avoid odd indent on first line in multi-line code */
+}
+
+/* Tables */
+table {
+  margin: 0 auto;
+}
+th {
+	padding: 0.25em 1em;
+	border-bottom: 1px solid #ddd;
+}
+td {
+  padding: 0 1em;
+}
+
+iframe.youtube {
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  
+}
+
+div.youtube {
+	position: relative;
+  padding-bottom: 56.25%; /* 16:9*/ 
+}

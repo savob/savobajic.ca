@@ -44,6 +44,33 @@
     </item>
     
     <item>
+      <title>Battery Pack Cell Replacement</title>
+      <link>https://savobajic.ca/projects/personal/battery/</link>
+      <pubDate>Fri, 01 Oct 2021 19:09:33 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/battery/</guid>
+      <description>Replaced the cells in some old battery packs for my friends</description>
+    </item>
+    
+    <item>
+      <title>ESC V5</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v5/</link>
+      <pubDate>Fri, 20 Aug 2021 01:46:25 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v5/</guid>
+      <description>Newest revision to the ESC. Largely designed to use the available MOSFET drivers.</description>
+    </item>
+    
+    <item>
+      <title>3D Magnetic Field Generator</title>
+      <link>https://savobajic.ca/projects/work/magnet/</link>
+      <pubDate>Tue, 11 May 2021 21:56:15 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/work/magnet/</guid>
+      <description>Designed and built an alternating 3D-magnetic field generator for my research group</description>
+    </item>
+    
+    <item>
       <title>Research Assistant</title>
       <link>https://savobajic.ca/work-experience/summer-research/</link>
       <pubDate>Mon, 03 May 2021 01:20:32 -0500</pubDate>
@@ -53,12 +80,156 @@
     </item>
     
     <item>
+      <title>Rescue Rover</title>
+      <link>https://savobajic.ca/projects/academic/rescue/</link>
+      <pubDate>Wed, 27 Jan 2021 14:49:34 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/academic/rescue/</guid>
+      <description>Gradually developed an assistive robot to aid in a simulated disaster. &lt;em&gt;Simultanious localization and mapping (SLAM) and mchine learning (ML) used.&lt;/em&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hot Wire Foam Cutter</title>
+      <link>https://savobajic.ca/projects/extracurricular/hot-wire/</link>
+      <pubDate>Fri, 01 Jan 2021 10:08:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/extracurricular/hot-wire/</guid>
+      <description>Contributed electronics design to the construction of an in-house CNC hot-wire foam cutting for HPVDT</description>
+    </item>
+    
+    <item>
+      <title>Mazebot</title>
+      <link>https://savobajic.ca/projects/academic/mazebot/</link>
+      <pubDate>Wed, 14 Oct 2020 23:53:01 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/academic/mazebot/</guid>
+      <description>Design and programmed a rover to autonomously navigate a maze and retrieve a block</description>
+    </item>
+    
+    <item>
+      <title>Crane Gantry Control System</title>
+      <link>https://savobajic.ca/projects/academic/controls/</link>
+      <pubDate>Thu, 01 Oct 2020 15:18:54 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/academic/controls/</guid>
+      <description>Made a simulated control system for a gantry crane system</description>
+    </item>
+    
+    <item>
+      <title>ESC V4</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v4/</link>
+      <pubDate>Tue, 15 Sep 2020 02:16:24 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v4/</guid>
+      <description>Another major revision to the BLDC ESC, mainly changing to the modern ATtiny family of microcontrollers.</description>
+    </item>
+    
+    <item>
+      <title>Arterial Guidewire Simulation (Capstone)</title>
+      <link>https://savobajic.ca/projects/academic/capstone/</link>
+      <pubDate>Sun, 30 Aug 2020 22:32:10 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/academic/capstone/</guid>
+      <description>Developed a tool to determine the approximate wear on the insides of blood vessels as a guide wire is fed through them.</description>
+    </item>
+    
+    <item>
+      <title>ESC V3</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v3/</link>
+      <pubDate>Sun, 16 Aug 2020 01:03:06 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v3/</guid>
+      <description>A revision of ESV V2 with the voltage regulator removed</description>
+    </item>
+    
+    <item>
+      <title>Rebreather Monitoring</title>
+      <link>https://savobajic.ca/projects/extracurricular/rebreather/</link>
+      <pubDate>Sun, 07 Jun 2020 22:23:42 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/extracurricular/rebreather/</guid>
+      <description>Led the design of the rebreather monitoring system for our submarine project</description>
+    </item>
+    
+    <item>
+      <title>Flight Controller V2</title>
+      <link>https://savobajic.ca/projects/personal/flightcontrol/flightcontrol-v2/</link>
+      <pubDate>Sat, 23 May 2020 21:00:48 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/flightcontrol/flightcontrol-v2/</guid>
+      <description>My more powerful STM32 based version of a flight controller. &lt;strong&gt;Currently on hold.&lt;/strong&gt;</description>
+    </item>
+    
+    <item>
+      <title>ESC V2</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v2/</link>
+      <pubDate>Tue, 05 May 2020 12:33:12 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v2/</guid>
+      <description>My first &lt;em&gt;actual attempt&lt;/em&gt; at building an ESC. A shrunk down revision of the first.</description>
+    </item>
+    
+    <item>
+      <title>ESC V1</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v1/</link>
+      <pubDate>Mon, 04 May 2020 12:33:08 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v1/</guid>
+      <description>My first attempt to make a sensor-less ESC for my drone</description>
+    </item>
+    
+    <item>
+      <title>Flight Controller V1</title>
+      <link>https://savobajic.ca/projects/personal/flightcontrol/flightcontrol-v1/</link>
+      <pubDate>Thu, 23 Apr 2020 21:00:45 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/flightcontrol/flightcontrol-v1/</guid>
+      <description>My first flight controller design. Based on an ATmega328P so I could adapt many open-source drone projects to it if needed.</description>
+    </item>
+    
+    <item>
+      <title>Scoreboard</title>
+      <link>https://savobajic.ca/projects/extracurricular/scoreboard/</link>
+      <pubDate>Thu, 13 Feb 2020 01:07:58 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/extracurricular/scoreboard/</guid>
+      <description>Made a small display board to keep score of a game</description>
+    </item>
+    
+    <item>
+      <title>Telemetry</title>
+      <link>https://savobajic.ca/projects/extracurricular/telemetry/</link>
+      <pubDate>Tue, 04 Feb 2020 12:04:34 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/extracurricular/telemetry/</guid>
+      <description>Developed a general purpose wireless communication system to be used in future projects for HPVDT</description>
+    </item>
+    
+    <item>
       <title>Bus Stop Checker</title>
       <link>https://savobajic.ca/projects/personal/buschecker/</link>
       <pubDate>Thu, 09 Jan 2020 14:25:29 -0500</pubDate>
       
       <guid>https://savobajic.ca/projects/personal/buschecker/</guid>
       <description>Made a small system to check online for buses around my home at the press of a button.</description>
+    </item>
+    
+    <item>
+      <title>Ornaments</title>
+      <link>https://savobajic.ca/projects/personal/ornaments/</link>
+      <pubDate>Wed, 20 Nov 2019 11:49:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/ornaments/</guid>
+      <description>Made some festive blinking lights to hand out. Used the 555 timer!</description>
+    </item>
+    
+    <item>
+      <title>Blueshift</title>
+      <link>https://savobajic.ca/projects/extracurricular/blueshift/</link>
+      <pubDate>Tue, 08 Oct 2019 17:07:58 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/extracurricular/blueshift/</guid>
+      <description>Created the electronics system for what would have been our ASME 2020 race bike entry. &lt;em&gt;A combination of TITAN and Zephyr.&lt;/em&gt;</description>
     </item>
     
     <item>
@@ -86,6 +257,15 @@
       
       <guid>https://savobajic.ca/volunteering/frosh-games/</guid>
       <description>Organized and delivered a sporting event to over 1000 participants across 20 teams, coordinating with over 20 parties internal and external to the Orientation committee</description>
+    </item>
+    
+    <item>
+      <title>TITAN V1</title>
+      <link>https://savobajic.ca/projects/extracurricular/titan-v1/</link>
+      <pubDate>Wed, 01 May 2019 15:44:40 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/extracurricular/titan-v1/</guid>
+      <description>My first attempt at building a &amp;lsquo;steer by video&amp;rsquo; system from scratch for one of our speed bikes</description>
     </item>
     
     <item>
@@ -134,12 +314,21 @@
     </item>
     
     <item>
-      <title>Advance Co-op</title>
+      <title>Advanced Co-op</title>
       <link>https://savobajic.ca/work-experience/advance-coop/</link>
       <pubDate>Thu, 03 May 2018 01:11:10 -0500</pubDate>
       
       <guid>https://savobajic.ca/work-experience/advance-coop/</guid>
       <description>Focused on developing novel quality assurance testing schemes for an automotive component supplier.</description>
+    </item>
+    
+    <item>
+      <title>Arbiter Lighting</title>
+      <link>https://savobajic.ca/projects/extracurricular/arbiter/</link>
+      <pubDate>Sun, 14 Jan 2018 01:28:35 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/extracurricular/arbiter/</guid>
+      <description>Prepared a hardware-only lighting system based on what was planned for the team&amp;rsquo;s previous vehicle, Tempest. &lt;strong&gt;My first PCB!&lt;/strong&gt;</description>
     </item>
     
     <item>
@@ -154,10 +343,19 @@
     <item>
       <title>Kneeload Tester</title>
       <link>https://savobajic.ca/projects/work/kneeload/</link>
-      <pubDate>Thu, 04 May 2017 19:00:56 -0500</pubDate>
+      <pubDate>Sun, 04 Jun 2017 19:00:56 -0500</pubDate>
       
       <guid>https://savobajic.ca/projects/work/kneeload/</guid>
-      <description>Implemented a system to allow a legacy (pre-2000) welding robot to recieve force feedback from a modern computer.</description>
+      <description>Implemented a system to allow a legacy (pre-2000) welding robot to receive force feedback from a modern computer.</description>
+    </item>
+    
+    <item>
+      <title>Demo Show Seat</title>
+      <link>https://savobajic.ca/projects/work/showseat/</link>
+      <pubDate>Thu, 11 May 2017 11:49:37 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/work/showseat/</guid>
+      <description>Revised the existing show seat used at demos to have its set points easily reconfigured with software. &lt;strong&gt;My first embedded electronics project!&lt;/strong&gt;</description>
     </item>
     
     <item>

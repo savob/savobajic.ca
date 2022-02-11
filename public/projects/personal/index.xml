@@ -26,12 +26,30 @@
     </item>
     
     <item>
+      <title>Battery Pack Cell Replacement</title>
+      <link>https://savobajic.ca/projects/personal/battery/</link>
+      <pubDate>Fri, 01 Oct 2021 19:09:33 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/battery/</guid>
+      <description>Replaced the cells in some old battery packs for my friends</description>
+    </item>
+    
+    <item>
       <title>Bus Stop Checker</title>
       <link>https://savobajic.ca/projects/personal/buschecker/</link>
       <pubDate>Thu, 09 Jan 2020 14:25:29 -0500</pubDate>
       
       <guid>https://savobajic.ca/projects/personal/buschecker/</guid>
       <description>Made a small system to check online for buses around my home at the press of a button.</description>
+    </item>
+    
+    <item>
+      <title>Ornaments</title>
+      <link>https://savobajic.ca/projects/personal/ornaments/</link>
+      <pubDate>Wed, 20 Nov 2019 11:49:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/ornaments/</guid>
+      <description>Made some festive blinking lights to hand out. Used the 555 timer!</description>
     </item>
     
     <item>

@@ -1,54 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Zephyr</title>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Zephyr</title>
 </head>
 <body>
-	
+  
 <link rel="stylesheet" href=/css/style.css>
 
+
+<div class="wrapper">
 
 <header>
   <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-<ul>
- 
-<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
-</ul>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
 </nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects">Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/extracurricular">Extracurricular Projects</a></li>
+            		    
+				        <li class="breadcrumbs"><a class="subtitle" href="/projects/extracurricular/zephyr">Zephyr</a></li></ul>
+
+
 
 	
 	<main>
-  <section class="mainIntro">
+	<section class="mainIntro">
+  
+
+
+
 	<h1>Zephyr</h1>
 	<div class="introLine"></div>
-	<div class="subtitle"><strong>Last Modified:</strong> Saturday, Jan 8, 2022</div>
+	<div class="subtitle"><strong>Last Modified:</strong> Monday, Feb 7, 2022</div>
 	<div class="subtitle"><strong>Status:</strong> Completed</div>
-  
+
 	
-	<div class="subtitle"><strong>Period:</strong> January 2019 - April 2019</div>
+		<div class="subtitle"><strong>Period:</strong> January 2019 - April 2019</div>
 	
-	
+
 	<div class="subtitle"><strong>Client:</strong> HPVDT</div> 
 	<div class="subtitle"><strong>GitHub Repository:</strong> <a href="https://github.com/hpvdt/zypher">https://github.com/hpvdt/zypher</a></div> 
-	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/hpvdt">HPVDT</a> <a href="/tags/vehicle">vehicle</a> <a href="/tags/mobile">mobile</a> <a href="/tags/embedded">embedded</a> <a href="/tags/bluetooth">Bluetooth</a> <a href="/tags/eagle">EAGLE</a> </div>
-	
+
+	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/bluetooth">Bluetooth</a> <a href="/tags/eagle">EAGLE</a> <a href="/tags/embedded">embedded</a> <a href="/tags/hpvdt">HPVDT</a> <a href="/tags/mobile">mobile</a> <a href="/tags/vehicle">vehicle</a> </div>
+
 	<div class="introLine"></div>
+
+ 
+
+
   </section>
-  
-  
-	<section class="mainContent">
-	<h1 id="overview">Overview</h1>
-<p>For the Human Powered Vehicles Design Team&rsquo;s (HPVDT) 2019 entry to the American Society of Mechanical Engineers&rsquo;s
-(ASME) human powered vehicle competiton I was tasked as Head of Electronics to produce an electronics system to
+
+  <section class="mainContent">
+  <h1 id="overview">Overview</h1>
+<p>For the Human Powered Vehicles Design Team&rsquo;s (HPVDT) 2019 entry to the American Society of Mechanical Engineers
+(ASME) human powered vehicle competition I was tasked as Head of Electronics to produce an electronics system to
 control the lights as well as collecting and displaying data to the rider.</p>
 <p>This was achieved using a custom circuit board I designed in EAGLE that housed an Arduino Nano on the bike which
-communicated with a mobile phone over Bluetooth to transmit data for the rider to see as well as recieve commands
+communicated with a mobile phone over Bluetooth to transmit data for the rider to see as well as receive commands
 from the rider (for example &ldquo;turn on the left indicator&rdquo;).</p>
 <h2 id="requirements">Requirements</h2>
 <ul>
@@ -70,7 +110,7 @@ from the rider (for example &ldquo;turn on the left indicator&rdquo;).</p>
 <ul>
 <li>Reduce power wasted for lighting</li>
 <li>Use a mobile phone app for the primary user interface</li>
-<li>Have a gih-power mode for the front lights to act as high beams</li>
+<li>Have a high-power mode for the front lights to act as high beams</li>
 <li>Collect and display the following data to the rider
 <ul>
 <li>Ambient temperature</li>
@@ -82,7 +122,7 @@ from the rider (for example &ldquo;turn on the left indicator&rdquo;).</p>
 </ul>
 <h2 id="takeaways">Takeaways</h2>
 <p>This was my first circuit to use surface mount parts, as well as switched mode power supplies (used to drive the
-LEDs). Both of these introduced me to new and more effecient ways to utilise space and power respectively, and
+LEDs). Both of these introduced me to new and more efficient ways to utilize space and power respectively, and
 the challenges that need to be overcome to utilize them. For example the selection of passive components for the
 LED driver can drastically change the performance of the system.</p>
 <p>This was also my first foray into making a mobile app, even with the help of MIT AppInventer to aid me. Using a
@@ -90,17 +130,18 @@ mobile phone was a novel way of communicating with a system and pleasant to get 
 rider in a clear manner. I could also easily reconfigure the display with feedback. However issues with using the
 phone mid-ride as well as occasional communication interruptions make me question the true feasibility of re-using
 this interface in future projects for HPVDT.</p>
-<p><em>Also learned to double check project names before commiting to them, to avoid errors such as using &ldquo;Zypher&rdquo;
+<p><em>Also learned to double check project names before committing to them, to avoid errors such as using &ldquo;Zypher&rdquo;
 instead of &ldquo;Zephyr&rdquo; in project materials.</em></p>
-<h1 id="detail">Detail</h1>
+<h1 id="detailed-report">Detailed Report</h1>
 <p>As electronics lead it was duty to develop the electronics system for our annual entry in the American Society of
 Mechanical Engineers (ASME) human powered vehicle competition. Although the power that propels the vehicle must
 come from the rider(s) electronics are used extensively in secondary systems; such as collection and processing
 of vehicle data (e.g. speed) and lighting for safety (these lights are akin to a road-legal vehicles).</p>
-<p>Until the present the team has not any custom system for this, relying on off the shelf lights and speedometers,
-last year I managed to design a custom lighting circuit board which would allow us to properly drive the high-power
-LEDs we use for lighting by maintaining a constant current through the connected load. Looking to iterate on it
-this year I concluded it required significant redesign for two main reasons: size and efficiency.</p>
+<p>Until 2019 the team did not have any custom system for this, relying on off the shelf lights and speedometers, except the
+previous year I managed to design a custom lighting circuit board which would allow us to properly drive the high-power
+LEDs we use for lighting by maintaining a constant current through the connected load. Looking to iterate on it for Zephyr
+I concluded it required significant redesign for two main reasons: size and efficiency.</p>
+<h2 id="lighting-design">Lighting Design</h2>
 <p>The issue of size and efficiency were solved with a transition from using simple (resistors and transistors)
 through-hole components to regulate the LEDs to a switching mode power supply composed of mostly surface mount
 parts. This raised the maximum hypothetical efficiencies from 65% to over 90%, while also reducing the footprint
@@ -111,9 +152,13 @@ and another more complex one which using a potentiometer and some jumpers allowe
 adjusted without replacing any components.</p>
 <figure>
 <img src="/images/zephyr-proto-top.jpg" alt="The top of prototype boards"/>
-<img src="/images/zephyr-proto-bot.jpg" alt="The bottom of prototype boards"/>
-<figcaption>Fig. 1 and 2 - The top and bottom (respectively) sides of the prototype board used</figcaption>
+<figcaption>The top  of the prototype board used</figcaption>
 </figure>
+<figure>
+<img src="/images/zephyr-proto-bot.jpg" alt="The bottom of prototype boards"/>
+<figcaption>The bottom of the prototype board used</figcaption>
+</figure>
+<h2 id="testing-lighting">Testing Lighting</h2>
 <p>These were then assembled and tested. They both performed as expected and were able to deliver upwards of one amp
 to LEDs with incredible line regulation resulting in now current fluctuations over the expected input range. Line
 regulation is important for this system as the bike is battery powered so the voltage supplied to the system will
@@ -123,6 +168,7 @@ the turn indicators, this was achieved using the 555-timer configuration used in
 <p>With the performance of lighting system verified, I proceeded to initiate the designing our final PCB by putting
 five identical LED driver circuit to operate in parallel to drive each different set of lights (head lights, tail
 lights, high beams, left/right indicators) along with the timer circuit.</p>
+<h2 id="system-design">System Design</h2>
 <p>The remaining PCB space was allocated to data collection and processing, at the heart of this sat a removable
 Arduino Nano which was responsible for polling sensors for data. The data collected and the collection method
 are listed below:</p>
@@ -136,11 +182,7 @@ LED drivers, allowing it to control the lights, which could be dimmed using PWM 
 </ul>
 <figure>
 <img src="/images/zephyr-layout.png">
-<figcaption>Fig. 3 - Layout of Zephyr's circuit board</figcaption>
-</figure>
-<figure>
-<img src="/images/zephyr-assembled.jpg">
-<figcaption>Fig. 4 - Assembled Zephyr board</figcaption>
+<figcaption>Layout of Zephyr's circuit board</figcaption>
 </figure>
 <p>There was space allocated to three other removable modules on the PCB: a microSD card reader for data logging, a
 Bluetooth module (an HC-05) to communicate with the rider’s mobile phone and long-range communication module (an
@@ -150,16 +192,39 @@ neglected after it was discovered that logging could be performed just as easily
 communication was not implemented as it is meant to be used for a research project for me over the following summer.</p>
 <figure>
 <img src="/images/zephyr-app.png">
-<figcaption>Fig. 5 - The app designed for Zephyr</figcaption>
+<figcaption>The app designed for Zephyr</figcaption>
 </figure>
+<h2 id="assembly">Assembly</h2>
+<p>The board assembly was a new experience to me. It was my first time soldering surface mount components other than the
+protoboards for lighting. I soldered it entirely by hand with no stencils. For a first job I think it went alright.
+Looking back on it now, I can see I&rsquo;ve gotten better with time, and stencils can go a long way to making a nice board.</p>
+<figure>
+<img src="/images/zephyr-assembled.jpg">
+<figcaption>Assembled Zephyr board</figcaption>
+</figure>
+<h2 id="contingency-board">Contingency Board</h2>
+<p>I actually had concerns over whether or not the printed circuit boards would make it in time, so I had a different design
+made on campus using the board milling machine to use as a backup should they be needed.</p>
+<figure>
+<img src="/images/zephyr-milled-front.jpg">
+<figcaption>The front of the milled board</figcaption>
+</figure>
+<figure>
+<img src="/images/zephyr-milled-back.jpg">
+<figcaption>The back of the milled board</figcaption>
+</figure>
+<p>Since the proper boards arrived just in time, these were never used.</p>
+<h2 id="outcome">Outcome</h2>
+<p>The Zephyr system worked at competition. Unfortunately it didn&rsquo;t get much use, since there was no dedicated phone for the
+app so the one teammate with an Android phone needed to lend their phone if it was to be used.</p>
 
-	</section>
+  </section>
+  </main>
   
-	</main>
-  
-	<footer>
+  <footer>
      <a href="http://savobajic.ca/">Savo Bajic's Website</a>
 </footer>
+</div>
 
 </body>
 </html>

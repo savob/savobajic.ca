@@ -6,7 +6,16 @@
     <description>Recent content in toy on Savo&#39;s Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 May 2019 19:32:27 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/toy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Nov 2019 11:49:32 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/toy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ornaments</title>
+      <link>https://savobajic.ca/projects/personal/ornaments/</link>
+      <pubDate>Wed, 20 Nov 2019 11:49:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/ornaments/</guid>
+      <description>Made some festive blinking lights to hand out. Used the 555 timer!</description>
+    </item>
+    
     <item>
       <title>gameBOI</title>
       <link>https://savobajic.ca/projects/personal/gameboi/</link>

@@ -1,42 +1,77 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Research Assistant</title>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Research Assistant</title>
 </head>
-
 <body>
   
 <link rel="stylesheet" href=/css/style.css>
 
+
+<div class="wrapper">
 
 <header>
   <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-<ul>
- 
-<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
-</ul>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
 </nav>
 
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                	  <li class="breadcrumbs"><a class="subtitle" href="/work-experience">Work experience</a></li>
+				        <li class="breadcrumbs"><a class="subtitle" href="/work-experience/summer-research">Research Assistant</a></li></ul>
+
+
+
+	
+	<main>
+	<section class="mainIntro">
   
-  <main>
-  <section class="mainIntro">
-    <h1>Research Assistant</h1>
-    <div class="introLine"></div>
-    <div class="worksummary"> Contributed electro-magneto-thermal simulations and hardware design for novel hyperthermia therapy for globioblastoma. </div>
-    <div class="subtitle">Organization: Advanced Micro and Nanosystems Lab, University of Toronto</div>
-    <div class="subtitle">Term: May 2021 - September 2021</div>
-    <div class="introLine"></div>
+
+
+	<h1>Research Assistant</h1>
+	<div class="introLine"></div>
+	<div class="worksummary"> Contributed electro-magneto-thermal simulations and hardware design for novel hyperthermia therapy for globioblastoma. </div>
+	<div class="subtitle">Organization: Advanced Micro and Nanosystems Lab, University of Toronto</div>
+	<div class="subtitle">Term: May 2021 - September 2021</div>
+	<div class="introLine"></div>
+
+ 
+
+
   </section>
-     
+
   <section class="mainContent">
-  <ul>
+  <h1 id="overview">Overview</h1>
+<p>This was my first job in research, as I wanted to see what it was like working in academia compared to industry. I was
+fortunate enough to actually be approached for this position (rather than applying) by former TA of mine that had
+completed his PhD. and needed some help. My focus was pretty singular, to complete the <a href="/projects/work/magnet">magnet apparatus</a>
+he needed and the related simulations. I would summarize the work I did as follows:</p>
+<ul>
 <li>Designed and assembled a 3D magnetic field generator for testing novel Glioblastoma therapies using
 alternating magnetic fields generated from four pairs of magnetic tweezers.</li>
 <li>Conducted literature review on magneto-thermal relationships of iron nano-particles to guide in design
@@ -45,6 +80,26 @@ decision making.</li>
 forecast efficacy of treatments and sensitivity of the system.</li>
 <li>Improved magnetic field generator design to increase survey-able workspace by 50%</li>
 </ul>
+<h1 id="extra-information">Extra Information</h1>
+<p>I began working a couple of weeks after my studies were finished so I could visit my family before starting work. I began
+by reading through several papers provided to me by my supervisor and then began drafting up designs for the 3D magnetic
+field generator he tasked me with. I did the vast majority of work from home, going into the lab only to take measurements
+or assemble the hardware. I finished my term about four months later when I left to visit family in Europe.</p>
+<p>At the start of June, there was a one week IEEE International Conference on Robotics and Automation (ICRA) that was being
+organized by the head of our lab and was hosted virtually, so I attended some workshops related to my current project and
+also reminicent of the capstone I developed for the lab in my studies. This was my first time &ldquo;attending&rdquo; such a conference
+and it was really an interesting and informative experience, even when some of the material I was exposed to was nowhere
+near what I was familiar with, it still felt approachable and not alienating to be the dumbest guy in the room.</p>
+<p>I also took a couple weeks to detour from my main project to help my supervisor prepare simulations for another project he
+was contributing to. This work was investigating how one could try to increase the permiability of the blood-brain-barrier
+(BBB) where tumors attached themselves to bloodvessels by applying directed pressures on the tumor. If the permiability of
+the BBB could be increased, the uptake of pharamceuticals would be improved. My simulations for this focused on seeing how
+the tangential and compressive force trends as the alignment of the force and the stack up of tumor components was varied.</p>
+<p>From that point on my focus returned solely to completing the magnetic field generator until the end of my term mid-Spetember.</p>
+<figure>
+<img src="/images/research-desk.jpg">
+<figcaption>My little work corner where I kept things when I wasn't using them. (Don't worry I had a proper desk to work at when I was in the lab!)</figcaption>
+</figure>
 
   </section>
   </main>
@@ -52,6 +107,7 @@ forecast efficacy of treatments and sensitivity of the system.</li>
   <footer>
      <a href="http://savobajic.ca/">Savo Bajic's Website</a>
 </footer>
+</div>
 
 </body>
 </html>

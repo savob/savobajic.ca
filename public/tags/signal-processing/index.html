@@ -11,31 +11,71 @@
 <link rel="stylesheet" href=/css/style.css>
 
 
+<div class="wrapper">
+
 <header>
   <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-<ul>
- 
-<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
-</ul>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
 </nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                	  <li class="breadcrumbs"><a class="subtitle" href="/tags">Tags</a></li>
+				        
+                
+                	  <li class="breadcrumbs"><a class="subtitle" href="/tags/signal-processing">Signal processing</a></li>
+				        </ul>
+
+
 
 	
 	<main>
 	
 	
-
 	
+	
+	
+		
+
+<div class="row">
+<div class="column">
+
+
+
+
+	<a href="https://savobajic.ca/projects/academic/ocilloscope/">
 	<article>
 	
 	
 	
+		<img class="thumbnail" src="/images/scope-top-proto.jpg">
 	
 	
-	<div class="listEntry">
-	<h2 class=listEntry>
+	
+
+<h2 class=listEntry>
 	<a href="https://savobajic.ca/projects/academic/ocilloscope/">Oscilloscope</a>
 </h2>
 
@@ -43,12 +83,15 @@
 
 
 
-<div class="subtitle">Status: Completed</div>
-
-<div class="subtitle">Period: February 2019 - March 2019</div>
-
-<div class="subtitle">Client: MIE346, Analog and Digital Electronics</div> 
-<div class="subtitle"><strong>Tags:</strong> <a href="/tags/prototyping">prototyping</a> <a href="/tags/3d-printing">3D printing</a> <a href="/tags/signal-processing">signal processing</a> </div>
+	<p class="subtitle">Status: Completed</p>
+	
+	
+	<p class="subtitle">Period: February 2019 - March 2019</p>
+	
+	<p class="subtitle">Client: MIE346, Analog and Digital Electronics</p> 
+	
+	  <p class="subtitle"><strong>Tags:</strong> <a href="/tags/3d-printing">3D printing</a> <a href="/tags/prototyping">prototyping</a> <a href="/tags/signal-processing">signal processing</a> </p>
+	
 
 
 
@@ -60,23 +103,30 @@
 
 <p class="listEntry">Produced an Arduino-based USB oscilloscope capable of measuring signals up to 20kHz, with AC/DC coupling and hardware 1X/10X scaling</p>
 
-	</div>
 	
-	
-	<img class="thumbnail" src="/thumbnails/oscilloscope.jpg">
 	
 	
 		
 	</article>
+	</a>
 	
+	
+  	</div> 
+  	<div class="column">
+	
+
+
+	<a href="https://savobajic.ca/projects/personal/fob/">
 	<article>
 	
 	
 	
+		<img class="thumbnail" src="/images/fob-assembled.jpg">
 	
 	
-	<div class="listEntry">
-	<h2 class=listEntry>
+	
+
+<h2 class=listEntry>
 	<a href="https://savobajic.ca/projects/personal/fob/">Entry Fob Replication</a>
 </h2>
 
@@ -84,12 +134,15 @@
 
 
 
-<div class="subtitle">Status: Complete</div>
-
-<div class="subtitle">Period: September 2017 - September 2017</div>
-
-
-<div class="subtitle"><strong>Tags:</strong> <a href="/tags/reverse-engineering">reverse engineering</a> <a href="/tags/embedded">embedded</a> <a href="/tags/signal-processing">signal processing</a> <a href="/tags/eagle">EAGLE</a> </div>
+	<p class="subtitle">Status: Complete</p>
+	
+	
+	<p class="subtitle">Period: September 2017 - September 2017</p>
+	
+	
+	
+	  <p class="subtitle"><strong>Tags:</strong> <a href="/tags/eagle">EAGLE</a> <a href="/tags/embedded">embedded</a> <a href="/tags/reverse-engineering">reverse engineering</a> <a href="/tags/signal-processing">signal processing</a> </p>
+	
 
 
 
@@ -101,21 +154,28 @@
 
 <p class="listEntry">Reverse engineered and replicated an access fob for my residence at the time</p>
 
-	</div>
 	
-	
-	<img class="thumbnail" src="/images/fob-assembled.jpg">
 	
 	
 		
 	</article>
+	</a>
 	
+	
+  	</div> 
+  	<div class="column">
+	
+
+</div>
+</div>
+
 	
 	</main>
 	
 	<footer>
      <a href="http://savobajic.ca/">Savo Bajic's Website</a>
 </footer>
+</div>
 
 </body>
 </html>
