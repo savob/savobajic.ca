@@ -3,4 +3,4 @@
 
 Source for my website [savobajic.ca](https://savobajic.ca/), prepared using [Hugo](https://gohugo.io/), hosted on [Netlify](https://www.netlify.com/).
 
-The actual content that goes up (the html code) is in the "public" folder.
+The actual content that goes up (the html code) is in the "public" folder. 
