@@ -11,27 +11,64 @@
 <link rel="stylesheet" href=/css/style.css>
 
 
+<div class="wrapper">
+
 <header>
   <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-<ul>
- 
-<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
-</ul>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
 </nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/publications">Publications</a></li>
+            		    
+				        
+                
+                	  <li class="breadcrumbs"><a class="subtitle" href="/publications/targeted-hyperthermia-for-glioblastoma-using-multiple-magnetic-tweezer-system">Targeted hyperthermia for glioblastoma using multiple magnetic tweezer system</a></li>
+				        </ul>
+
+
 
 	
 	<main>
-  <section class="mainIntro">
-    <h1>Targeted Hyperthermia for Glioblastoma Using Multiple Magnetic Tweezer System</h1>
-    <div class="introLine"></div>
-    <div style="color:grey; font-size:16px;">Saturday, Jan 1, 2022</div>
-    <div style="color:grey; font-size:16px;"></div>
-    <div class="introLine"></div>
-  </section>
+	<section class="mainIntro">
   
+
+
+
+	<h1>Targeted Hyperthermia for Glioblastoma Using Multiple Magnetic Tweezer System</h1>
+	<div class="introLine"></div>
+	<div style="color:grey; font-size:16px;">Saturday, Jan 1, 2022</div>
+	<div style="color:grey; font-size:16px;"></div>
+	<div class="introLine"></div>
+ 
+
+
+  </section>
+
   <section class="mainContent">
   <p><em><strong>NOTE: Currently under preparation</strong></em></p>
 <p>In this publication my primary contributions were the simulations of the distributed alternating magnetic field using COMSOL Multiphysics
@@ -43,6 +80,7 @@ resulting from a coil bed I designed iteratively to improve the control and stre
   <footer>
      <a href="http://savobajic.ca/">Savo Bajic's Website</a>
 </footer>
+</div>
 
 </body>
 </html>

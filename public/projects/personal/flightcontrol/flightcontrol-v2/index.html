@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Flight Controller V2</title>
+</head>
+<body>
+  
+<link rel="stylesheet" href=/css/style.css>
+
+
+<div class="wrapper">
+
+<header>
+  <h1><a href="/">Savo's Site</a></h1>
+</header>
+
+<nav>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
+</nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects">Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/personal">Personal Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/personal/flightcontrol">Drone Flight Controller</a></li>
+            		    
+				        <li class="breadcrumbs"><a class="subtitle" href="/projects/personal/flightcontrol/flightcontrol-v2">Flight Controller V2</a></li></ul>
+
+
+
+	
+	<main>
+	<section class="mainIntro">
+  
+
+
+
+	<h1>Flight Controller V2</h1>
+	<div class="introLine"></div>
+	<div class="subtitle"><strong>Last Modified:</strong> Wednesday, Jan 26, 2022</div>
+	<div class="subtitle"><strong>Status:</strong> Development on hold for ESCs</div>
+
+	
+		<div class="subtitle"><strong>Started:</strong> May 2020</div>
+	
+
+	
+	<div class="subtitle"><strong>GitHub Repository:</strong> <a href="https://github.com/savob/drone_computer">https://github.com/savob/drone_computer</a></div> 
+
+	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/drone">drone</a> <a href="/tags/imu">imu</a> </div>
+
+	<div class="introLine"></div>
+
+ 
+
+
+  </section>
+
+  <section class="mainContent">
+  <h1 id="overview">Overview</h1>
+<p>This was my second design of a flight controller/computer, designed to be more capable than the first by using a
+higher-end microcontroller. This should enable it to run more complicated code before hitting limits such as memory or
+runtime that would cause it to fail to control the drone effectively.</p>
+<p>The microcontroller I selected to use instead of the ATmega329P in the previous one is the STM32F103CBT which has far
+more features than the ATmega but is still decently cheap and approachable for tinkers like myself, with a lot of
+community support in open-source forums and projects like Arduino.</p>
+<p>Circuit design was not too difficult, although I did have some issues with trying to layout the traces on the board to
+minimize the number of vias I needed.</p>
+<p>I have done some development on it but have not worked on it much so I could focus on my classwork and finishing the ESC.
+I look forward to getting back into it though.</p>
+<h2 id="requirements">Requirements</h2>
+<p><em>In addition to the general ones outlined for all flight controllers:</em></p>
+<ul>
+<li>Use the STM32F103CBT microcontroller as the heart of the system</li>
+</ul>
+<h2 id="takeaways">Takeaways</h2>
+<ul>
+<li>Using an actual ST-Link compared to programming over Serial is much faster</li>
+<li>Using PlatformIO over Arduino enables me to code more efficiently and allows me to do certain things I couldn&rsquo;t before.</li>
+</ul>
+<h1 id="detailed-report">Detailed Report</h1>
+<p>This was in a sense my <strong>real</strong> flight controller project, the previous was meant just as a back up if this one flops
+entirely.</p>
+<p>By using an STM32F103 it has far more computational power, from a raw clock rate of 70MHz compared to 16MHz, as well as
+being 32-bit instead of 8-bit. Furthermore it has more features such as additional communication hardware and more timers
+and counters one can use which might prove helpful when working on control programming or future additions to the drone.
+One nice feature I have been making use of is native USB support so I can connect it directly with my computer for
+debugging.</p>
+<p>Other than accommodating the change in microcontroller, very little has changed from V1 to this in terms of design.</p>
+<p>Likewise, the assembly of the boards was also a success and easier than with other boards I&rsquo;ve made for the drone since
+all components are on one side. I made two boards so I would have a backup.</p>
+<p>Development has proceeded a bit with me setting up a framework to work in PlatformIO and testing out some basic programs.
+I find myself using the ST-Link I have for programming and then the USB connection for printing debug messages. I have
+tried, but not succeeded in setting it up so that I can use the USB connection for both programming and debug messages.</p>
+<p>With the framework prepared I have gone on to start implementing some basic functions and preparing a library for
+interacting with the barometer.</p>
+<h2 id="circuit-design">Circuit Design</h2>
+<p>Although an easy change to say <em>&ldquo;I just changed the microcontroler&rdquo;</em>, I actually entailed a fair bit of revision to the
+circuit. It started with the obvious replacement of the ATmega and the circuitry needed for it operate, with the STM32
+and its needed peripheral components. This led to some knock-on changes:</p>
+<ul>
+<li>Since all ICs on the board operated at 3.3V, there was no need for 5V and thus the 5V regulator was removed
+<ul>
+<li><strong>5V is needed from an external source to the board</strong> though, it does not use the battery as a supply for the 3.3V regulator</li>
+</ul>
+</li>
+<li>Had to reroute the 3.3V I2C bus to connect to the STM32 instead of the 5V one</li>
+<li>A Mini-USB connection was added</li>
+<li>Three status LEDs were added to the design</li>
+<li>There are <strong>fewer</strong> exp[licit extra inputs/outputs broken out (as opposed to re-purposing the Serial header for example)</li>
+</ul>
+<figure>
+<img src="/images/flight-controller-v2-schematic.svg">
+<figcaption>The completed schematic for the flight controller V1 (PDF version: <a href="/pdf/flight-controller-v2.pdf">Colour</a> / <a href="/pdf/flight-controller-v2-BW.pdf">BW</a>)</figcaption>
+</figure>
+<h2 id="layout">Layout</h2>
+<p>As a result of the circuit changes the entire board had to basically be rerouted from scratch. This time the board 42mm by
+42mm, but still only two layered.</p>
+<p>This increased area helped me put all components on the top side, as well as most of the traces, leaving the bottom to be
+used primarily for the power distribution and a few traces that needed to cross others on the top. This will make
+assembly easier because I will only need to put paste and parts on one side instead of two.</p>
+<figure>
+<img src="/images/flight-controller-v2-combined-layout.png">
+<figcaption>The overall layout of the board</figcaption>
+</figure>
+<p>The top houses all the components of the board. Like with V1, I centred the microcontroller and had it fan out to the other
+parts of the circuit. On the left are the programming headers and status LEDs, the bottom is for the USB connection and I2C
+level shifters, the right houses the onboard sensors, the top for the nRF24 connector and the general purpose input/outputs.</p>
+<figure>
+<img src="/images/flight-controller-v2-top-layout.png">
+<figcaption>The layout of the output stage side</figcaption>
+</figure>
+<p>The bottom is used mainly for power distribution on the lower half, with just som miscellaneous traces on the top half and
+some informational text. <strong>I specify that the KILL signal needs to be pulled to ground to trigger</strong> this is because that
+can be easily scaled up as I add parts to the system rather than making a daisy-chained signal to break.</p>
+<figure>
+<img src="/images/flight-controller-v2-bottom-layout.png">
+<figcaption>The layout of the control and voltage regulator side</figcaption>
+</figure>
+<h2 id="assembly">Assembly</h2>
+<p>Assembly of the boards was pretty simple. Having all the components on one side made it an easier board to assemble than if
+I had put component on both side like I did for my other drone boards, even if the board was a bit more crowded on that side.</p>
+<figure>
+<img src="/images/flight-controller-v2-top-assembled.jpg">
+<figcaption>The top side of the assembled board</figcaption>
+</figure>
+<figure>
+<img src="/images/flight-controller-v2-bottom-assembled.jpg">
+<figcaption>The bottom side of the assembled board</figcaption>
+</figure>
+<h2 id="testing">Testing</h2>
+<p>I started with the usual, checking for any shorts between adjacent pins and power lines with a multimeter, then I applied
+power and verified that the regulator was working as expected, producing a steady 3.3V. I then left the system powered for
+a few minutes to monitor current draw and ensure none of the ICs were getting warm. None did.</p>
+<p>After the basic power tests were done, I started testing the STM32 by programming it. This was initially done with over the
+Serial programming connection with the Arduino IDE. The first few programs worked fine, such as the I2C bus scanner to
+verify that the sensors were responding correctly. Afterwards I burned the bootloader that would allow the STM32 to be
+programmed over USB in &ldquo;Device Firmware Upgrade&rdquo; (DFU) mode. I then verified that this worked as expected.</p>
+<p><strong>All testing to this moment has been done with exclusively the onboard components</strong>, I have yet to connect any ESCs or the
+nRF24 module to it. This will continue until I am satisfied with the board&rsquo;s ability to monitor its state properly with the
+sensors.</p>
+<p>During my work on trying to interface the sensors I grew frustrated with the limitations of the Arduino IDE so I decided to
+migrate to using PlatformIO within VS Code. This brought me many improvements in keeping my code easy to edit and work with.
+However I quickly learned that for some reason, PlatformIO could upload code using USB DFU, however it would erase the
+bootloader for DFU mode in the process. This needed me to re-burn the bootloader every time I wanted to upload code, so I
+decided to go ahead and jump (painlessly so) to using the ST-Link for programming. This worked on my first try and was
+faster in addition to enabling me to use debugging features on the microcontroller to step through code, monitor variables,
+etc.</p>
+<h1 id="developing-firmware">Developing Firmware</h1>
+<p>I started writing code in the Arduino IDE due to familiarity with the platform. Once I realized the scope of my project I
+considered using the <a href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CudeIDE</a> offered by ST, however it was
+a bit <em>too</em> professional for me so I went back and found PlatformIO which runs out of VS Code. This would allow me to use
+the Arduino framework while having access to more professional features, such as code completion and debugging on-chip. The
+main improvement was simply the ease at which I could navigate and organize my code compared to the Arduino IDE.</p>
+<p>My overall plan for the firmware is roughly:</p>
+<ol start="0">
+<li>Get a working flow to upload code</li>
+<li>Collect sensor data reliably</li>
+<li>Develop algorithm on STM32 to monitor drone state</li>
+<li>Implement wireless communication</li>
+<li>Start developing control and stabilization algorithms, <strong>with ESCs and motors connected</strong></li>
+</ol>
+<h2 id="usb-fun">USB Fun</h2>
+<p>The first step was to establish my programming flow. Originally I wanted to have it programmed over USB in DFU mode like I
+was used to with the Arduino IDE. However this was for reasons beyond me not feasible with PlatformIO (at least back in 2020)
+so I switched to using the ST-Link to upload code, and only using USB to exchange data with the computer. By using the
+ST-Link I unlocked the ability to do on chip debugging.</p>
+<p>Although I was unable to program over USB, I found that I can set the STM32&rsquo;s appearance when plugged into a computer so I
+had some fun with that, setting the vendor and device IDs and strings to my own desired values. <em>CAB0 is an approximation
+of my name in Cyrillic.</em></p>
+<pre><code>build_flags = 
+  -D PIO_FRAMEWORK_ARDUINO_ENABLE_CDC
+  -D USBCON
+  -D USBD_VID=0xCAB0
+  -D USBD_PID=0x0002
+  -D HAL_PCD_MODULE_ENABLED
+  -D USB_PRODUCT_STRING=&quot;\&quot;Flight Controller V2\&quot;&quot;
+  -D USB_MANUFACTURER_STRING=&quot;\&quot;Savo Bajic\&quot;&quot;
+</code></pre><p>Now when plugged into my computer it&rsquo;ll appear as so to the computer:</p>
+<figure>
+<img src="/images/flight-controller-v2-usb.png">
+<figcaption>The appearance of the flight controller V2 when plugged into a computer over USB</figcaption>
+</figure>
+<p>With all this set up and tested, I could confidently start working on uploading code to the board.</p>
+<h2 id="barometer">Barometer</h2>
+<p>The first sensor I set my eyes on programming a library for was the barometer, the BME280. This was because I saw it as the
+simpler and thus easier one to work with compared to the IMU since I only needed a couple of data fields from it. I wanted
+to see the effort needed to make the sort of library I was used to just importing from other people.</p>
+<p>Since I was communicating with it over I2C I built my library on top of the existing Arduino I2C library, with wrapper
+functions used to configure and communicate with it. These were successful and I was able to monitor the pressure in my
+room and see it change as I waved the board about. There seems to be a nissue currently where the readings seem to bounce a
+fair bit even when the board is held still, hopefully I can resolve this with some more code.</p>
+<h1 id="next-steps">Next Steps</h1>
+<p>My next steps for the project are roughly:</p>
+<ol>
+<li>Finish the barometer library (or use someone else&rsquo;s)</li>
+<li>Prepare a library for the IMU (or find an existing one)</li>
+<li>Prepare a sensor loop on the STM32 to monitor the drone state from the sensors</li>
+<li>Develop and test the communication protocol for the nRF24 modules</li>
+<li>Start messing with ESCs <em>(might be swapped with 4, we&rsquo;ll see)</em></li>
+</ol>
+
+  </section>
+  </main>
+  
+  <footer>
+     <a href="http://savobajic.ca/">Savo Bajic's Website</a>
+</footer>
+</div>
+
+</body>
+</html>

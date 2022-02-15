@@ -16,5 +16,14 @@
       <description>Expanded on my basic, single-axis, force feedback system to now monitor and control up to six axes and eased user configuration</description>
     </item>
     
+    <item>
+      <title>Demo Show Seat</title>
+      <link>https://savobajic.ca/projects/work/showseat/</link>
+      <pubDate>Thu, 11 May 2017 11:49:37 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/work/showseat/</guid>
+      <description>Revised the existing show seat used at demos to have its set points easily reconfigured with software. &lt;strong&gt;My first embedded electronics project!&lt;/strong&gt;</description>
+    </item>
+    
   </channel>
 </rss>

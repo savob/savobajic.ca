@@ -16,5 +16,14 @@
       <description>Produced an Arduino-based USB oscilloscope capable of measuring signals up to 20kHz, with AC/DC coupling and hardware 1X/10X scaling</description>
     </item>
     
+    <item>
+      <title>Demo Show Seat</title>
+      <link>https://savobajic.ca/projects/work/showseat/</link>
+      <pubDate>Thu, 11 May 2017 11:49:37 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/work/showseat/</guid>
+      <description>Revised the existing show seat used at demos to have its set points easily reconfigured with software. &lt;strong&gt;My first embedded electronics project!&lt;/strong&gt;</description>
+    </item>
+    
   </channel>
 </rss>

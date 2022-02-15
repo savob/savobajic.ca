@@ -1,54 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mountain Bike Suspension</title>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Mountain Bike Suspension</title>
 </head>
 <body>
-	
+  
 <link rel="stylesheet" href=/css/style.css>
 
+
+<div class="wrapper">
 
 <header>
   <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-<ul>
- 
-<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
-</ul>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
 </nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects">Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/academic">Academic Projects</a></li>
+            		    
+				        <li class="breadcrumbs"><a class="subtitle" href="/projects/academic/bike">Mountain Bike Suspension</a></li></ul>
+
+
 
 	
 	<main>
-  <section class="mainIntro">
+	<section class="mainIntro">
+  
+
+
+
 	<h1>Mountain Bike Suspension</h1>
 	<div class="introLine"></div>
-	<div class="subtitle"><strong>Last Modified:</strong> Friday, Jan 7, 2022</div>
+	<div class="subtitle"><strong>Last Modified:</strong> Tuesday, Jan 25, 2022</div>
 	<div class="subtitle"><strong>Status:</strong> Completed</div>
-  
+
 	
-	<div class="subtitle"><strong>Period:</strong> October 2018 - November 2018</div>
+		<div class="subtitle"><strong>Period:</strong> October 2018 - November 2018</div>
 	
-	
+
 	<div class="subtitle"><strong>Client:</strong> MIE301, Kinematics and Dynamic of Machines</div> 
 	
-	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/matlab">MATLAB</a> <a href="/tags/kinematics">kinematics</a> <a href="/tags/vehicle">vehicle</a> <a href="/tags/optimization">optimization</a> </div>
-	
+
+	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/kinematics">kinematics</a> <a href="/tags/matlab">matlab</a> <a href="/tags/optimization">optimization</a> <a href="/tags/vehicle">vehicle</a> </div>
+
 	<div class="introLine"></div>
+
+ 
+
+
   </section>
-  
-  
-	<section class="mainContent">
-	<h1 id="overview">Overview</h1>
+
+  <section class="mainContent">
+  <h1 id="overview">Overview</h1>
 <p>I worked on a team to contribute a MATLAB model and simulator for a four-bar mechanism to design a new
 mountain bike suspension system.</p>
 <figure>
 <img src="/images/bike-render.png" alt="Render of the final bike design">
-<figcaption>Fig. 1 - A render of the final bike design</figcaption>
+<figcaption>A render of the final bike design</figcaption>
 </figure>
 <h2 id="requirements">Requirements</h2>
 <ul>
@@ -65,7 +105,7 @@ increment towards the end of the suspension stroke would be more difficult</li>
 <p>I gained significant MATLAB practice with this. I especially developed the ability to have MATLAB sift through
 large sets of data and experimented with parallelization of scripts to limited success.</p>
 <p>I also practiced with novel data visualization strategies needed to convey the data to the team.</p>
-<h1 id="detail">Detail</h1>
+<h1 id="detailed-report">Detailed Report</h1>
 <p>This was another class project I undertook; this one was done in groups of four. The outline for the project
 was to either find an existing linkage system that can be reworked or come up with a new system altogether
 in our teams. Our instructors would then pose as our clients and specify something they wanted our design to
@@ -76,14 +116,14 @@ instructors decided that we should aim to double the possible displacement of th
 280mm) and implement an energy generation system to recharge a mobile phone from the actuation of the suspension.</p>
 <figure>
 <img src="/images/bike-old-design.png">
-<figcaption>Fig. 2 - A diagram of a conventional mountain bike suspension</figcaption>
+<figcaption>A diagram of a conventional mountain bike suspension</figcaption>
 </figure>
 <p>Our proposed general design was the result of research we conducted. it is referred to as a ‘lower-link’ shock
 and is known for being a very configurable configuration. It is also not incredibly complex to analyze/assemble
 either by being a four-bar mechanism.</p>
 <figure>
 <img src="/images/bike-proposed-design.png">
-<figcaption>Fig. 3 - The proposed design</figure>
+<figcaption>The proposed design</figure>
 </figure>
 <p>We divided up major tasks amongst group members, my role was to program the simulation and optimization systems
 in MATLAB. This system would increment various dimensions and record their effect on the displacement path of
@@ -92,13 +132,13 @@ to travel downwards to continue as this would cause the system to seize in the e
 as would be the usual case).</p>
 <figure>
 <img src="/images/bike-matlab-model.png">
-<figcaption>Fig. 4 - An example configuration with its path ploted</figcaption>
+<figcaption>An example configuration with its path ploted</figcaption>
 </figure>
 <p>Once it would process all the different cases across our ranges of interest the system was programmed to then
 output a chart displaying what configurations achieved our desired displacement (280 to 320mm).</p>
 <figure>
 <img src="/images/bike-configuration-summary.png">
-<figcaption>Fig. 5 - The summarized results from a set of simulations</figcaption>
+<figcaption>The summarized results from a set of simulations</figcaption>
 </figure>
 <p>We then would select configurations from different regions of the chart and compare their performance using another function
 I wrote that would animate a given configuration going through one shock cycle and record how the shock behaved
@@ -106,16 +146,16 @@ during this cycle. These simulation results were then compiled with the work of 
 recommendation and documenting it in our report.</p>
 <figure>
 <img src="/images/bike-shock-attributes.png">
-<figcaption>Fig. 6 - An example chart of how each configuration's reaction was characterized</figcaption>
+<figcaption>An example chart of how each configuration's reaction was characterized</figcaption>
 </figure>
 
-	</section>
+  </section>
+  </main>
   
-	</main>
-  
-	<footer>
+  <footer>
      <a href="http://savobajic.ca/">Savo Bajic's Website</a>
 </footer>
+</div>
 
 </body>
 </html>

@@ -16,5 +16,23 @@
       <description>A modular clock composed entirely out of discrete logic chips I got secondhand.</description>
     </item>
     
+    <item>
+      <title>Ornaments</title>
+      <link>https://savobajic.ca/projects/personal/ornaments/</link>
+      <pubDate>Wed, 20 Nov 2019 11:49:32 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/ornaments/</guid>
+      <description>Made some festive blinking lights to hand out. Used the 555 timer!</description>
+    </item>
+    
+    <item>
+      <title>Arbiter Lighting</title>
+      <link>https://savobajic.ca/projects/extracurricular/arbiter/</link>
+      <pubDate>Sun, 14 Jan 2018 01:28:35 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/extracurricular/arbiter/</guid>
+      <description>Prepared a hardware-only lighting system based on what was planned for the team&amp;rsquo;s previous vehicle, Tempest. &lt;strong&gt;My first PCB!&lt;/strong&gt;</description>
+    </item>
+    
   </channel>
 </rss>

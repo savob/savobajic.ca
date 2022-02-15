@@ -1,51 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hardware Clock</title>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Hardware Clock</title>
 </head>
 <body>
-	
+  
 <link rel="stylesheet" href=/css/style.css>
 
+
+<div class="wrapper">
 
 <header>
   <h1><a href="/">Savo's Site</a></h1>
 </header>
 
 <nav>
-<ul>
- 
-<li><a href="/projects/">Projects</a></li><li><a href="/about-me/">About</a></li><li><a href="/publications/">Publications</a></li><li><a href="/work-experience/">Work Experience</a></li><li><a href="/volunteering/">Volunteering</a></li><li><a href="/contact/">Contact</a></li>
-</ul>
+<div class="flex-container">
+
+<div class="navbutton"><a href="/about-me/">About Me</a></div>
+<div class="dropdown">
+	<a href="/projects/">Projects</a>
+	<div class="dropdown-content">
+		<a href="/projects/academic/">Academic</a>
+		<a href="/projects/extracurricular/">Extracurricular</a>
+		<a href="/projects/personal/">Personal</a>
+		<a href="/projects/work/">Work</a>
+	</div>
+</div>
+<div class="navbutton"><a href="/publications/">Publications</a></div>
+<div class="navbutton"><a href="/work-experience/">Employment</a></div>
+<div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
+<div class="navbutton"><a href="/contact/">Contact</a></div>
+
+<div>
 </nav>
+
+
+<ul class="breadcrumbs">
+    <li class="breadcrumbs"><a class="subtitle" href="/">Home</a></li>
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects">Projects</a></li>
+            		    
+				        
+                
+                    
+            		 	      <li class="breadcrumbs"><a class="subtitle" href="/projects/personal">Personal Projects</a></li>
+            		    
+				        <li class="breadcrumbs"><a class="subtitle" href="/projects/personal/clock">Hardware Clock</a></li></ul>
+
+
 
 	
 	<main>
-  <section class="mainIntro">
+	<section class="mainIntro">
+  
+
+
+
 	<h1>Hardware Clock</h1>
 	<div class="introLine"></div>
-	<div class="subtitle"><strong>Last Modified:</strong> Monday, Jan 10, 2022</div>
+	<div class="subtitle"><strong>Last Modified:</strong> Friday, Jan 21, 2022</div>
 	<div class="subtitle"><strong>Status:</strong> Waiting for boards</div>
-  
+
 	
-	<div class="subtitle"><strong>Started:</strong> November 2021</div>
+		<div class="subtitle"><strong>Started:</strong> November 2021</div>
 	
-	
+
 	
 	<div class="subtitle"><strong>GitHub Repository:</strong> <a href="https://github.com/savob/digital_clock">https://github.com/savob/digital_clock</a></div> 
-	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/hardware">hardware</a> <a href="/tags/clock">clock</a> <a href="/tags/kicad">KiCAD</a> </div>
-	
+
+	<div class="subtitle"><strong>Tags:</strong> <a href="/tags/clock">clock</a> <a href="/tags/hardware">hardware</a> <a href="/tags/kicad">KiCAD</a> </div>
+
 	<div class="introLine"></div>
+
+ 
+
+
   </section>
-  
-  
-	<section class="mainContent">
-	<h1 id="overview">Overview</h1>
+
+  <section class="mainContent">
+  <h1 id="overview">Overview</h1>
 <p>I have for a while wanted to take a break from microcontroller-based projects and try
-my hand at doing a projet without one. Without completely surrendering myself to the
+my hand at doing a project without one. Without completely surrendering myself to the
 world of analog, I took a stop towards this by try to do the classic hobbyist project
 of a clock, but only with discrete logic chips.</p>
 <p>The idea came to me when browsing through a cache of old electronics a friend of mine had
@@ -64,12 +104,14 @@ so I could layout PCBs. <strong>Currently waiting to have them made.</strong></p
 <li>Be accurate to within two seconds a day</li>
 </ul>
 <h2 id="takeaways">Takeaways</h2>
-<p>I&rsquo;m a bit rusty at breadboard prototyping, need to double check my connections are actually
-working as they appear they should with continuity tests.</p>
-<p>Discrete logic isn&rsquo;t as troublesome as I expected, but this also is a basic project really.
-I would look to maybe use some in future projects, especially for safety systems and such.</p>
-<p><em>Does h4x0r aesthetic == poor user experience?</em></p>
-<h1 id="detail">Detail</h1>
+<ul>
+<li>I&rsquo;m a bit rusty at breadboard prototyping, need to double check my connections are actually
+working as they appear they should with continuity tests.</li>
+<li>Discrete logic isn&rsquo;t as troublesome as I expected, but this also is a basic project really.
+I would look to maybe use some in future projects, especially for safety systems and such.</li>
+<li><em>Does h4x0r aesthetic == poor user experience?</em></li>
+</ul>
+<h1 id="detailed-report">Detailed Report</h1>
 <p>I&rsquo;ve wanted to do something without a microcontroller for a while now since that&rsquo;s been the
 common denominator in basically any project of moderate scale I&rsquo;ve undertaken thus far. During
 a visit back home I was invited by friend to check out a cache of second-hand electronic
@@ -83,7 +125,7 @@ However my other friend mentioned they wanted to make a clock so I took their id
 with it, grabbing ICs I felt would be useful for the job and a fistful of LED displays.</p>
 <p>I quickly realized that this circuit was going to have to be large to fit all the ICs,
 especially since they all came in DIP14/16 packaging. So I felt that a modular design would
-be wise to keep things (and issues) seperate. It would also help create a sort of cliché
+be wise to keep things (and issues) separate. It would also help create a sort of cliché
 &ldquo;80&rsquo;s hacker&rdquo; aesthetic when paired with all through hole components and floating jumpers.</p>
 <h2 id="module-design-and-prototyping">Module Design and Prototyping</h2>
 <p>I broke the system into modules based on function:</p>
@@ -122,12 +164,12 @@ the different modules:</p>
 <h3 id="displays">Displays</h3>
 <p>The first part I worked on prototyping and getting working was the displays since they
 would be used to debug the rest of the circuit. Once I had sorted the displays based on
-whether they were common anode or cathode, I begain to connect them to the drivers
+whether they were common anode or cathode, I began to connect them to the drivers
 and would cycle through values to display using a set of switches to ensure I had
 everything connected properly. This worked without a hitch.</p>
 <figure>
 <img src="/images/clock-decoder-test.gif">
-<figcaption>Fig. 1 - Cycling through values using a DIP switch set</figcaption>
+<figcaption>Cycling through values using a DIP switch set</figcaption>
 </figure>
 <h3 id="counters">Counters</h3>
 <p>A clock is basically one large counter composed of individual counters for each digit.
@@ -148,17 +190,17 @@ value over the set point, i.e. 11, then depending on the logic used, the system
 might not recent properly. I believe this is an acceptable error case because it
 will correct itself once the digit is reset, although it will through off the time
 in the process.</p>
-<p>Below is a demonstartion of a counter set up as described to count to 10 using the
+<p>Below is a demonstration of a counter set up as described to count to 10 using the
 external AND gate.</p>
 <figure>
 <img src="/images/clock-digit-test.gif">
-<figcaption>Fig. 2 - Cycling through a counter</figcaption>
+<figcaption>Cycling through a counter</figcaption>
 </figure>
 <p>To ensure the pulse generated to reset a counter is long enough to also increment the
 adjacent counter I performed tests on cascaded timers that were successful.</p>
 <figure>
 <img src="/images/clock-cascade-test.jpg">
-<figcaption>Fig. 3 - Cascading counters test. Note the additional counter at the bottom of the breadboard connected to the other (second chip from the top) and the AND gate between them</figcaption>
+<figcaption>Cascading counters test. Note the additional counter at the bottom of the breadboard connected to the other (second chip from the top) and the AND gate between them</figcaption>
 </figure>
 <h3 id="signal-generator">Signal Generator</h3>
 <p>The heartbeat of the clock is a steady, accurate 1Hz square wave. This square wave is
@@ -168,14 +210,14 @@ that each half the frequency fed into them. 15 of these are needed to divide the
 Hz (2^15) down to 1 Hz.</p>
 <figure>
 <img src="/images/clock-division.jpg">
-<figcaption>Fig. 4 - Division of the reference 32 768 Hz wave (blue) by a factor of 16 to generate the output (yellow)</figcaption>
+<figcaption>Division of the reference 32 768 Hz wave (blue) by a factor of 16 to generate the output (yellow)</figcaption>
 </figure>
 <p>The CD4060 was designed for this job, having a string of T flip flops needed to divide the
 signal, as well as the circuitry needed to drive the reference crystal used to provide
-the 32 768 Hz. The only isue is that it has only 14 flip flops internally, so two CD4060s
+the 32 768 Hz. The only issue is that it has only 14 flip flops internally, so two CD4060s
 are needed to divide the signal all the way down to 1 Hz.</p>
-<h4 id="protopying-issues">Protopying Issues</h4>
-<p>Making the protoype module for the clock on a breadboard was where I lost most of my time.
+<h4 id="prototyping-issues">Prototyping Issues</h4>
+<p>Making the prototype module for the clock on a breadboard was where I lost most of my time.
 I was using a reference design I found and the system would work fine, however if I left it
 running for a few minutes it would start to shift its frequency higher until it would
 eventually just stop working entirely. This is not something I wanted. I wanted to make a
@@ -185,7 +227,7 @@ crystal, changing the crystal, even the CD4060 with brand new ones to see what I
 do to improve the stability. The best I got was just about 3 minutes before failure.</p>
 <figure>
 <img src="/images/clock-crystal-trials.jpg">
-<figcaption>Fig. 5 - Results of my trials of different passives around my crystal</figcaption>
+<figcaption>Results of my trials of different passives around my crystal</figcaption>
 </figure>
 <p>In the end what turned out to be the cause of my issues is that the CD4060 did not have
 its reset pin properly grounded so it collected a charge during operation and resulted
@@ -193,7 +235,7 @@ in these intermittent resets of the chip. This was caused by a break internal to
 jumper I was using to ground it, inside the plastic head at one end.</p>
 <h2 id="circuit-boards">Circuit Boards</h2>
 <p>Once I had established the circuit for each module tested and documented, I transferred
-the schematics to KiCAD and layed out a circuit board for each module.</p>
+the schematics to KiCAD and laid out a circuit board for each module.</p>
 <p>I used edge connectors to pass the signals between them since it will also provide more
 structural stiffness compared to jumpers when hung up on a wall.</p>
 <p>For the display I added the ability for the user to set the digits using jumpers to set
@@ -204,32 +246,32 @@ more to the boards. On the plus side, I think the exposed headers will add to th
 aesthetic.</p>
 <figure>
 <img src="/images/clock-display.png">
-<figcaption>Fig. 6 - Layout of the display module</figcaption>
+<figcaption>Layout of the display module</figcaption>
 </figure>
 <p>The reset module is little more than a breakout for the two available logic ICs. Since each
 digit set may need different conditions to reset, it will be up to me to wire the logic on
 each board myself as need when I assemble them.</p>
 <figure>
 <img src="/images/clock-reset.png">
-<figcaption>Fig. 7 - Layout of the reset board</figcaption>
+<figcaption>Layout of the reset board</figcaption>
 </figure>
 <p>The only addition to the signal generator board was the power input to supply the power rails.</p>
 <figure>
 <img src="/images/clock-signal.png">
-<figcaption>Fig. 8 - Layout of the signal board</figcaption>
+<figcaption>Layout of the signal board</figcaption>
 </figure>
 <h2 id="assembly">Assembly</h2>
 <p>I have all of the components ready to go.</p>
-<p>I am currently waiting for a few other projects to be designed before commiting to one
+<p>I am currently waiting for a few other projects to be designed before committing to one
 massive PCB order which this will be part of.</p>
 
-	</section>
+  </section>
+  </main>
   
-	</main>
-  
-	<footer>
+  <footer>
      <a href="http://savobajic.ca/">Savo Bajic's Website</a>
 </footer>
+</div>
 
 </body>
 </html>

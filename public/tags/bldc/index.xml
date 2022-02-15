@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BLDC on Savo&#39;s Site</title>
+    <link>https://savobajic.ca/tags/bldc/</link>
+    <description>Recent content in BLDC on Savo&#39;s Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Aug 2021 01:46:25 -0500</lastBuildDate><atom:link href="https://savobajic.ca/tags/bldc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ESC V5</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v5/</link>
+      <pubDate>Fri, 20 Aug 2021 01:46:25 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v5/</guid>
+      <description>Newest revision to the ESC. Largely designed to use the available MOSFET drivers.</description>
+    </item>
+    
+    <item>
+      <title>ESC V4</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v4/</link>
+      <pubDate>Tue, 15 Sep 2020 02:16:24 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v4/</guid>
+      <description>Another major revision to the BLDC ESC, mainly changing to the modern ATtiny family of microcontrollers.</description>
+    </item>
+    
+    <item>
+      <title>ESC V3</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v3/</link>
+      <pubDate>Sun, 16 Aug 2020 01:03:06 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v3/</guid>
+      <description>A revision of ESV V2 with the voltage regulator removed</description>
+    </item>
+    
+    <item>
+      <title>ESC V2</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v2/</link>
+      <pubDate>Tue, 05 May 2020 12:33:12 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v2/</guid>
+      <description>My first &lt;em&gt;actual attempt&lt;/em&gt; at building an ESC. A shrunk down revision of the first.</description>
+    </item>
+    
+    <item>
+      <title>ESC V1</title>
+      <link>https://savobajic.ca/projects/personal/esc/esc-v1/</link>
+      <pubDate>Mon, 04 May 2020 12:33:08 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/esc-v1/</guid>
+      <description>My first attempt to make a sensor-less ESC for my drone</description>
+    </item>
+    
+    <item>
+      <title>Drone ESC</title>
+      <link>https://savobajic.ca/projects/personal/esc/</link>
+      <pubDate>Fri, 01 May 2020 18:49:04 -0500</pubDate>
+      
+      <guid>https://savobajic.ca/projects/personal/esc/</guid>
+      <description>Making a custom electronic speed controller for my drone&amp;rsquo;s motors</description>
+    </item>
+    
+  </channel>
+</rss>
