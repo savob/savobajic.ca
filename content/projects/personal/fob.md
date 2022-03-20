@@ -10,7 +10,7 @@ tags: ["reverse engineering", embedded, "signal processing", "EAGLE"]
 skills: ["reverse engineering", embedded, EAGLE]
 summary: "Reverse engineered and replicated an access fob for my residence at the time"
 githubLink:
-thumbnail: "/images/fob-revised.jpg"
+thumbnail: "/images/fob-v2-assembled.jpg"
 ---
 
 # Overview
