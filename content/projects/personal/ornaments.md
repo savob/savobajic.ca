@@ -68,7 +68,7 @@ component count would be kept low.
 
 <figure>
 <img src="/images/ornament-schematic.svg">
-<figcaption>The completed schematic for the flight controller V1 (PDF version: <a href="/pdf/ornament.pdf">Colour</a> / <a href="/pdf/ornament_BW.pdf">BW</a>)</figcaption>
+<figcaption>The completed schematic for ornament (PDF version: <a href="/pdf/ornament.pdf">Colour</a> / <a href="/pdf/ornament_BW.pdf">BW</a>)</figcaption>
 </figure>
 
 My choice of passives resulted in the blinking lights being on for about 1.8 seconds, and off for 1.4, which I felt was just 

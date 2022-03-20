@@ -3,14 +3,14 @@ title: "Entry Fob Replication"
 date: 2017-09-08T17:05:25-05:00
 draft: false
 started: "September 2017"
-finished: "September 2017"
-status: "Complete"
+finished: "March 2022"
+status: "Complete, revised"
 client:
 tags: ["reverse engineering", embedded, "signal processing", "EAGLE"]
 skills: ["reverse engineering", embedded, EAGLE]
 summary: "Reverse engineered and replicated an access fob for my residence at the time"
 githubLink:
-thumbnail: "/images/fob-assembled.jpg"
+thumbnail: "/images/fob-revised.jpg"
 ---
 
 # Overview
@@ -28,7 +28,6 @@ apart it became apparent it was a glorified TV remote so I set about replicating
 ## Objectives
 
 - Spoof access to other floors (fobs only allowed access to certain floors)
-- Allow for "field" reprogramming without any additional equipment
 
 ## Takeaways
 
@@ -45,18 +44,20 @@ widen the window and see the period between pulses was wider than I anticipated.
 
 ## Points of Improvement
 
-My final blaster has a few possible improvements:
-- **Use a smaller battery, mounted to the board.** 9V batteries are annoying to lug around and having it visibly dangling off the board as you use it is suspicious at best.
-- **Reduce power usage.** Currently the system polls the button to blast, I can change this to have it instead sleep and wake up on button presses, or use the button to connect power to the entire system.
-- **Increase the range.** Although the replica has a reasonable useful range for interior spaces where it is rarely further than a metre from a scanner, 
-the same could not be said if I were using it in the parking garage, even on my bike. This could be easily improved by reducing the resistor value for the LEDs.
-- **Finally develop the "field" reprogramming feature.** *Sigh...*
+There are a few points that I could try to address in a future version.
+
+- **Better battery mounting.** Currently I don't have a clip so I solder the battery directly to the board, this *certainly* damages it.
+- **Switch to entirely SMT.** The board is half surface mount, half through hole technology, committing entirely to SMT will:
+   - Reduce the vertical dimensions. No leads sticking out the bottom, lower profile packages.
+   - Likely reduce the chance of shorts from other items in a pocket because the terminals would be smaller.
 
 # Detailed Report
 
 I moved into a new condo for my second year of university with two friends, and to enter the building it required the use 
 of a fob. I was curious to see how it worked and if I could replicate it. The fob was a small black box with two bulbs 
 sticking out the front that we had to aim at little panels and a single button to blast our entry code.
+
+## Reverse Engineering
 
 I started by cracking it open carefully to avoid potentially damaging any delicate components that lay hidden within.
 With the top off, I could examine the compact and rather simple circuit contained. My main interest was in the bulbs 
@@ -100,6 +101,8 @@ I compared the data across five samples from my fob and found that it sent the s
 this by measuring my roommates' fobs to see theirs acted the same, albeit with unique messages for each fob. This 
 meant all I needed to do was was replicated this signal with a system of my own and I would have a fob clone!
 
+## Replicating the Hardware
+
 All I needed were some basic parts (microcontroller, IR LED, button, resistors, battery) and I was set. I made 
 my first prototype that was about as crude as I could get away with and went to test in the parking garage, 
 away from most traffic so I could test in peace without having to explain myself to, or alarming, anyone.
@@ -125,10 +128,89 @@ battery) on a single protoboard.
 <figcaption>Rear of the protoboard version</figcaption>
 </figure>
 
-Afterwards, a custom circuit board I prepared in EAGLE, which I used to this day when visiting!
+I used the protoboard from September 2017 to the end of 2019, at which point I made a custom circuit board in EAGLE, which 
+I used from December 2019 until February 2022 when visiting!
 
 <figure>
 <img src="/images/fob-assembled.jpg">
 <figcaption>Completed assembly (the "940" is for the wavelength of LED used)</figcaption>
 </figure>
 
+### Points of Improvement
+
+This initial blaster had a few possible improvements I could implement:
+
+- **Use a smaller battery, mounted to the board.** 9V batteries are annoying to lug around and having it visibly dangling off the board as you use it is suspicious at best.
+- **Reduce power usage.** Currently the system polls the button to blast, I can change this to have it instead sleep and wake up on button presses, or use the button to connect power to the entire system.
+- **Finally develop the "field" reprogramming feature.** *Sigh...*
+
+## Revision
+
+Although my previous version worked adequately, it did have some identified issues; the most apparent for me as a user was 
+the battery. Using a 9V battery on essentially a dongle wasn't compact which made carrying it around a chore. So I wanted to 
+address this in a redesign by changing the battery entirely from the 9V to a CR12xx series battery (3V). I did this at the 
+start of 2022.
+
+By changing to a CR12xx battery (I specifically used CR1220s) I was able to remove the on board voltage regulator since the 
+3V it supplies can be readily used by the microcontroller. This reduced circuit complexity and size, as well as the quiescent 
+current draw, extending battery life.
+
+I also aimed to address the other two issues with the original PCB I made. First, I removed support for the field programming 
+feature since I didn't see it being useful to me, which simplified the circuit. Secondly to reduce power draw I now use the 
+button not as an interrupt to wake the microcontroller, but instead as a power switch. This meant that ideally, the circuit 
+would draw absolutely no current when not pressed, thus extending battery life as long as possible!
+
+I ported the design by hand to KiCad, the resulting schematic is pretty simple. I used two 330Ω resistors instead of a 150Ω 
+one since that is what I had available on hand.
+
+<figure>
+<img src="/images/fob-v2-schematic.svg">
+<figcaption>The completed schematic for the revised entry fob (PDF version: <a href="/pdf/fob-v2.pdf">Colour</a> / <a href="/pdf/fob-v2-bw.pdf">BW</a>)</figcaption>
+</figure>
+
+I then laid out the circuit, it was a mix of both through hole and surface mount components. I was able to place all traces 
+on the top layer, so it could be made as a single layer circuit board if I really wanted to pump these out for cheap. Its 
+overall dimensions exceeded those of my previous version, largely to accommodate the new onboard battery.
+
+<figure>
+<img src="/images/fob-v2-layout.png">
+<figcaption>The revised fob layout</figcaption>
+</figure>
+
+Then came the assembly, resulting in the following *flashy* board. Nothing to note, really a standard, mixed-technology, 
+hand-soldering affair. My first purple board!
+
+<figure>
+<img src="/images/fob-v2-assembled.jpg">
+<figcaption>The revised fob board</figcaption>
+</figure>
+
+### Assessing Performance of the Revision
+
+The revised board worked as expected! Its range was a little shorter than the previous version likely owing to the lower 
+supply voltage but still a respectable 50cm or so. To get to this point I had to deal with a two minor design issues:
+
+1. **I had set up the button connections incorrectly so power was never disconnected from the system.** I fixed this by 
+cutting some traces with a knife. The schematic posted has this correction included.
+2. **I accidentally instruct users to insert the battery incorrectly on the silk screen.** This has been corrected in the 
+new layout file shown on this page and why the layout image label disagrees with the produced board's label.
+
+#### Power Draw Surprise
+
+With the design complete and correct, it worked. However when I returned to visit my friend a week after doing my initial 
+(successful) test, I was unable to use the fob. *I had to enter like a normal person, not the hacker I wanted to be!* I was 
+devastated, so I had to find the reason for this; to both improve the design and heal my ego.
+
+As I had expected the culprit was a drained battery, but I still don't know exactly why. The button was supposed to prevent 
+**any** current draw when not pressed, which it shouldn't have been in my pocket. I determined a few likely causes listed 
+below with the solutions I see to address each of them.
+
+- The button was held pressed in my pocket by something.
+   - I now have the code enter deep sleep if the button is still held after a few cycles to prevent continuous draw.
+- The battery was damaged/drained from being soldered repeatedly. *(It was soldered and de-soldered a few times in assembly.)*
+   - Replaced the battery with one that was only soldered once
+   - Long term solution would be to source a proper battery clip to not require them to be soldered in place.
+- Stray conductive objects (keys) in my pockets shorted some of the leads together allowing current to flow.
+   - Transition to an all SMT design 
+
+We'll see how these fixes pan out in the future!
