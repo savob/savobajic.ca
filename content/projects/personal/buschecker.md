@@ -1,5 +1,5 @@
 ---
-title: "Bus Stop Checker"
+title: "Basic Bus Stop Checker"
 date: 2020-01-09T14:25:29-05:00
 draft: false
 started: "January 2020"
@@ -21,6 +21,9 @@ our phones takes a minute since we need to navigate them and wait for a response
 make a system that would sit by the door and quickly serve up bus predictions.
 
 I *also* happened to have a WiFi development board that I really wanted to put to use and justify buying.
+
+In the end this was meant to be a proof of concept that I would later develop further with my 
+[TTC Check project](../ttccheck) which improved on this in several subtle ways.
 
 ## Requirements
 
@@ -60,7 +63,9 @@ to a given stop, because I found out that the numbers you use to text for predic
 match the number NextBus uses to identify stops in requests. Below is an example of one of the stops 
 along the 52 and the information provided.
 
-> `<stop tag="15003" title="Lawrence Station" lat="43.7252499" lon="-79.40225" stopId="15184"/>`
+```
+<stop tag="15003" title="Lawrence Station" lat="43.7252499" lon="-79.40225" stopId="15184"/>
+```
 
 If I were to check the buses to arrive at Lawrence Station using the TTC's SMS service, I would text the 
 `"stopId"` value, **15184**, printed on the sign there. However when performing a request on NextBus, I need 
@@ -68,13 +73,15 @@ to use the `"tag"` number, **15003**. Once I went through and recorded all the t
 information needed to make requests for buses and successfully tried it out on my browser. It would return 
 the bus predictions in this format:
 
-> `<predictions agencyTitle="Toronto Transit Commission" routeTitle="52-Lawrence West" routeTag="52" stopTitle="Lawrence Station" stopTag="15003">`
->
->  `<direction title="West - West - 52f Lawrence West towards Royal York">`
->
->  `<prediction epochTime="1641840499907" seconds="31" minutes="0" isDeparture="false" branch="52F" dirTag="52_1_52F" vehicle="8943" block="52_16_160" tripTag="43470454" />`
->
-> `...(other predictions)...`
+```
+<predictions agencyTitle="Toronto Transit Commission" routeTitle="52-Lawrence West" routeTag="52" stopTitle="Lawrence Station" stopTag="15003">
+
+<direction title="West - West - 52f Lawrence West towards Royal York">
+
+<prediction epochTime="1641840499907" seconds="31" minutes="0" isDeparture="false" branch="52F" dirTag="52_1_52F" vehicle="8943" block="52_16_160" tripTag="43470454" />
+
+...(other predictions)...
+```
 
 ### Starting on the Microcontroller
 
