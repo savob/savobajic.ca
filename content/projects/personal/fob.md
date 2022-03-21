@@ -6,7 +6,7 @@ started: "September 2017"
 finished: "March 2022"
 status: "Complete, revised"
 client:
-tags: ["reverse engineering", embedded, "signal processing", "EAGLE"]
+tags: ["reverse engineering", embedded, "signal processing", "low power", "attiny85"]
 skills: ["reverse engineering", embedded, EAGLE]
 summary: "Reverse engineered and replicated an access fob for my residence at the time"
 githubLink:
