@@ -43,7 +43,7 @@ to verify the system's functionality.
 ## Takeaways
 
 Some errors just seem to defy explanation. This MAX6675 seems to poison SPI buses, and only works with GPIO bit-banging, not 
-proper SPI busses. No clue why, but I guess I just have to deal with it.
+proper SPI buses. No clue why, but I guess I just have to deal with it.
 
 # Detailed Report
 
@@ -62,7 +62,7 @@ working on making a custom one for the last couple of years.
 
 The software has largely remained the same since the first version, only adapting to the hardware changes between versions. 
 Even the circuitry hasn't changed much, most of my work has gone into simply making the circuitry better suited to the 
-production environment by fiting inside enclosures.
+production environment by fitting inside enclosures.
 
 ## Circuit Design
 
@@ -113,15 +113,78 @@ since I was worried about trace spacing, and other potential issues like acciden
 voltage traces in their own region of the board, clearly indicated and segregated from the low-voltage control system.
 
 <figure>
-<img src="/images/blueshift-render.jpg">
-<figcaption>A render of the Blueshift's internal layout</figcaption>
+<img src="/images/oven-layout-overall.png">
+<figcaption>The overall layout of the oven system. I did include an overall boundary of what the enclosure allowed.</figcaption>
 </figure>
 
+Since these 120V lines would be carrying lots of current to the heater I used large pours on both sides for all 120V lines.
+I also marked the division between the 120V and control regions with silkscreen lines and a keepout zone for all copper.
+
+<figure>
+<img src="/images/oven-layout-front.png">
+<figcaption>The layout of the front side of the oven system</figcaption>
+</figure>
+
+<figure>
+<img src="/images/oven-layout-rear.png">
+<figcaption>The layout of the rear side of the oven system</figcaption>
+</figure>
 
 ## Assembly
 
 Unlike most of my other projects where assembly starts and ends with the circuit board, this one had me integrate not only 
-external (off-board) components, but also fit them all sensibly within an enclosure.
+external (off-board) components but also fit them all sensibly within an enclosure. The there was little to actually solder 
+on the board itself in terms of components: four capacitors, two ICs, a resistor, and a resonator - only eight (*8!*) parts!
+
+<figure>
+<img src="/images/oven-circuit-assembled.jpg">
+<figcaption>Circuit board assembled and in place, with all wires soldered too</figcaption>
+</figure>
+
+
+Well, eight if we exclude the headers and wires that directly solder to the board but still.
+
+Starting with the external/off-board modules, to provide 5V to the board I modified a standard USB wall plug to supply 5V to 
+some wires soldered to it directly rather than butchering a USB cable that may come loose inside the enclosure as it is 
+rattled about.
+
+<figure>
+<img src="/images/oven-usb-charger-gutted.jpg">
+<figcaption>The internals of the USB charger, liberated</figcaption>
+</figure>
+
+I installed that after re-assembling the charger, as well as the relay for the heater. For all the 120V lines I checked the 
+insulation rating of my wires and they were all 600V so this will be safe. I also used heat shrink to cover the charger 
+terminals. In the picture below I have the parts in their final places, however I forgot to take a photo after I secured 
+them down with zip ties.
+
+<figure>
+<img src="/images/oven-internal-layout.jpg">
+<figcaption>Internal layout of the enclosure</figcaption>
+</figure>
+
+I then connected the display and number pad using ribbon cables to their respective headers and closed it shut.
+
+The final touch I added was using one of the spare boards and cutting it to use as a label for the screw terminals. (This is 
+why I included labels for them even though I knew they would be covered when actually assembled). I used a knife and ruler 
+to score a break line.
+
+<figure>
+<img src="/images/oven-scored-board.jpg">
+<figcaption>The scored board before breaking</figcaption>
+</figure>
+
+<figure>
+<img src="/images/oven-labelled-terminals.jpg">
+<figcaption>Label in place over the screw terminals</figcaption>
+</figure>
+
+In the end, I had what is probably the project I have made that most resembles a movie bomb prop.
+
+<figure>
+<img src="/images/oven-closed-top.jpg">
+<figcaption>"I swear it's an oven controller"</figcaption>
+</figure>
 
 ## Testing
 
@@ -140,10 +203,14 @@ composites. It doesn't help that the team broke our heater anyways so we need a 
 
 # Revision
 
+To address the critical issue I have with the MAX6675 IC, I need a new board revision. Unless I decide to have a module 
+floating about inside the enclosure. With it I will move the IC to use a completely separate bus from the real SPI pins.
+I will also potentially include the addition of a buzzer to alert people to the oven's status if they aren't actively 
+looking at the screen.
+
 <figure>
 <img src="/images/oven_v2_schematic.svg">
 <figcaption>The revised schematic for the oven (PDF version: <a href="/pdf/oven_v2.pdf">Colour</a> / <a href="/pdf/oven_v2_bw.pdf">BW</a>)</figcaption>
 </figure>
 
-Perhaps add a buzzer?
-
+I hope to have this laid out and made by the end of April.
