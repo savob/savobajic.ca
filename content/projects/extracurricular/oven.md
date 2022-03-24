@@ -8,9 +8,9 @@ status: "Needs board revision."
 client: "HPVDT"
 tags: [embedded, "user experience", hpvdt]
 skills: [embedded, "user experience", KiCad]
-summary: "Made a complete general oven controller for properly curing composites in our team's hand-made oven."
+summary: "Made a complete general oven controller for properly curing composites in our team's hand-made oven. *The project I think would most likely get a bomb squad called if left unattended.*"
 githubLink: "https://github.com/hpvdt/oven"
-thumbnail:
+thumbnail: "/images/oven-closed-top.jpg"
 ---
 
 # Overview
@@ -186,15 +186,88 @@ In the end, I had what is probably the project I have made that most resembles a
 <figcaption>"I swear it's an oven controller"</figcaption>
 </figure>
 
-## Testing
+## Testing and Coding
+
+With the system assembled it began time to test the hardware and develop my code to the new hardware.
 
 ### Power Test
 
+The first test was honestly the most daunting, applying power and seeing if it holds as it should by design. This project in 
+particular was scary thanks to the 120V portion. Using a long power cable I placed it on the ground in my hallway and then I 
+went back and around a corner to plug it in. After not hearing any notable explosions of the crackling of flames for a good 
+20 seconds or so after plugging it in I went and checked it out. The system was working fine, no shorts, and a steady 5V 
+supplied to the control electronics.
+
 ### Programming
+
+For programming I mainly intended to use AVR's SPI in system programming, hence why I had exposed the header to do so, so it 
+could be accessed when the system was fully assembled for easy reprogramming on the fly. With the power on and my programmer 
+in place, I tried to burn the boot loader to the ATmega328P.
+
+*It failed*. The chip was recognized but it failed to reply with the right device signature after some code was written to 
+it. This was unexpected since I had used a chip I harvested off a working Arduino and I specifically tested SPI programming 
+before transplanting it. 
+
+#### MAX6675 Issues
+
+After some more failed attempts I thought that since the MAX6675 was sharing the same SPI bus it could be interfering in 
+some way even if it wasn't being selected. So I de-soldered it and took it off the board, and then tried programming the 
+ATmega again. This time it worked without a hitch! Odd I thought, so I installed the spare MAX6675 I had in case the 
+original one had been damaged. Before installing the new MAX chip I tested it to be sure it was functional.
+
+With the new, functioning, MAX6675 chip in place, I tried programming over SPI. Once again it failed to program properly.
+I then took the chip off and tried again in its absence, worked again. I checked the connections and they were all the same 
+as I had on my Arduino Nano that I was using for testing these MAX chips before installation so I was lost.
+
+I returned the MAX chips to their module boards and tried them with my Arduinos to see if I had somehow damaged them both 
+when transplanting them. **They *both* worked correctly on their boards!** What? I could even upload code over serial with 
+them connected, although my code for these tests had the MAX chip connect to different (non-SPI) pins on the ATmegas.
+
+I then tried to program the Arduino Nanos over SPI like I was doing with the oven board with the MAX modules attached, now 
+exactly as they were in the oven (sharing the SPI pins). Sure enough, they also failed to be programmed correctly. I then 
+moved the connections for the MAX back to the non-SPI pins I was using to test them. I tried programming over SPI again, and 
+oddly enough it failed to program again! 
+
+***THE MAX6675 WASN'T EVEN SHARING THE SIGNAL LINES!** What?!*
+
+#### MAX6675 Workarounds
+
+This really confused me, but it was clear that the only way to program this system was to have the MAX6675 removed when 
+programming the ATmega over SPI. Once a boot loader for serial programming is programmed, the MAX6675 can be introduced, but 
+not using any of the hardware SPI lines!
+
+This could not be arranged with my current board, but it will be addressed in a future revision.
 
 ### Display and Interface
 
+I prepared some basic boiler plate code for the keypad to scan it and determine what button was pressed by multiplexing the 
+rows and columns sequentially. It is not meant to handle more than one key press at a time, but is responsive otherwise. My 
+code then returns the character pressed to the main code to handle as it pleases. This mainly is to enter numbers, and 
+navigate my entry fields.
+
+The display is dependant on a library to drive the 20 by 4 character LCD called `LiquidCrystal_I2C`. 
+
+
+
+
+
+
+
+
 ### Temperature Reading
+
+Originally the system used NTC (negative thermal coefficient) thermistors to monitor temperatures. A resistive voltage 
+divider was set between these and set resistors of known values and the voltage monitored using the internal analog to 
+digital converter in the ATmega. This would then be used to infer the temperature based on the characteristics of the NTC.
+This method proved to be very tedious to calibrate and even then inaccurate at high temperatures when the difference in 
+resistance per degree change was approaching the what the ATmega's ADC could quantify with its resolution.
+
+With the MAX6675 it was super easy to read temperatures with no complicated math or processing required, just some bit 
+shifting and then dividing by four. Thanks to a modular coding approach I was able to replace the previous NTC code easily 
+with this after I ran some unit tests on it. Unfortunately I only tested using non-SPI pins for communication which led to 
+the [unforeseen issues](#max6675-issues) with programming.
+
+Currently the oven cannot read the temperature from the MAX6675 due to it being on the SPI line.
 
 ### Curing Performance
 
