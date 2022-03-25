@@ -1,7 +1,7 @@
 ---
 title: "Composite Oven Control System"
 date: 2021-06-01T23:29:55-04:00
-draft: true
+draft: false
 started: "June 2021"
 finished:
 status: "Needs board revision."
@@ -245,14 +245,21 @@ rows and columns sequentially. It is not meant to handle more than one key press
 code then returns the character pressed to the main code to handle as it pleases. This mainly is to enter numbers, and 
 navigate my entry fields.
 
-The display is dependant on a library to drive the 20 by 4 character LCD called `LiquidCrystal_I2C`. 
+The display is dependant on a library to drive the 20 by 4 character LCD called `NewLiquidCrystal_I2C`. I basically go 
+around the display and print text character by character. I prepared some basic functions to simplify the process of placing 
+text aligned to either, the left, center, or right of a given row - and used them to print the menus for the user. The first 
+two screens the user would navigate through would be to set the parameters for the bake and look roughly like this:
 
+```
+Target Temp.   [usr]
+Rise Rt. c/m   [usr]
+Hold time (m)  [usr]
+<Prev   Stg #  Next>
+```
 
-
-
-
-
-
+After the user would input their settings (shown in the respective `[usr]` fields on each stage's page), they would advance 
+to the curing screen. This displays the time elapsed, end time, and heater state (on or off). Once the oven completes, it 
+simply shows text to inform people that it is complete.
 
 ### Temperature Reading
 
