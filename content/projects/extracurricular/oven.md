@@ -285,8 +285,7 @@ composites. It doesn't help that the team broke our heater anyways so we need a 
 
 To address the critical issue I have with the MAX6675 IC, I need a new board revision. Unless I decide to have a module 
 floating about inside the enclosure. With it I will move the IC to use a completely separate bus from the real SPI pins.
-I will also potentially include the addition of a buzzer to alert people to the oven's status if they aren't actively 
-looking at the screen.
+I will also add a buzzer to alert people to the oven's status if they aren't actively looking at the screen.
 
 <figure>
 <img src="/images/oven_v2_schematic.svg">
