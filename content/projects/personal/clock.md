@@ -153,8 +153,8 @@ that each half the frequency fed into them. 15 of these are needed to divide the
 Hz (2^15) down to 1 Hz.
 
 <figure>
-<img src="/images/clock-division.jpg">
-<figcaption>Division of the reference 32 768 Hz wave (blue) by a factor of 16 to generate the output (yellow)</figcaption>
+<img src="/images/clock-signal-division.png">
+<figcaption>Division of the reference 32 768 Hz wave (yellow) by a factor of 16 to generate the output (blue)</figcaption>
 </figure>
 
 The CD4060 was designed for this job, having a string of T flip flops needed to divide the 
@@ -406,8 +406,8 @@ the boards.
 On little artistic touch I ended up doing at a friends suggestion involved my current limiting resistors for the LEDs. I was 
 originally going to only use my 5% tolerance (brown bodied) resistors but realized as I was counting them that I was going 
 to run out of them halfway through making the three display modules I wanted. This meant I was going to need to use some of 
-my 1% (blue bodied) resistors which would throw off the consistency I was looking for. I mention this to a friend and they 
-suggested that I set up an *ombré* (gradient) from one end to the other with my resistor colours.
+my 1% (blue bodied) resistors which would throw off the consistency I was looking for. I mentioned this to a friend and they 
+suggested that I set up an *ombré* (gradient) from one end of the clock to the other with my resistor colours.
 
 <figure>
 <img src="/images/clock-ombre.jpg">
@@ -425,9 +425,234 @@ directly on the board, it results in a stepped look from bottom to top.
 
 ## Testing
 
-Coming soon!
+Testing was meant to go in three basic stages. The first stage was checking that my signal generator and power supply module 
+was working as expected. This meant powering it up and checking that it was outputting 5V properly and a stable 1 Hz signal 
+on the appropriate headers with my oscilloscope, which it did.
+
+The second stage of testing was testing each display and reset module to work as expected. For this I connected each 
+display-reset module pair to keep track of the seconds to see if they kept count well, displayed all the numbers they were 
+meant to (0 to 23 or 59) and then rollover properly. All three pairs worked as needed.
+
+<figure>
+<img src="/images/clock-unit-test.jpg">
+<figcaption>The simple display-reset test setup</figcaption>
+</figure>
+
+The results of the previous two tests were basically guaranteed since they were copies of what I had done when I was bread 
+boarding the circuits before I committed the design to circuit boards. The real test for the system was "simply" being a 
+whole clock and keeping track of time properly by cascading the counts properly between digits. 
+
+### Timekeeping Test
+
+So the only real test remaining for the clock to enter service on my walls was to keep time within my desired my desired 
+tolerance of a couple seconds a day. Essentially just a verification.
+
+<figure>
+<img src="/images/clock-assembled.jpg">
+<figcaption>The fully assembled clock, just past 18:18:18, alas</figcaption>
+</figure>
+
+I was going to leave the clock running and make sure that it was keeping time well, checking it regularly against my phone 
+clock for deviation. It was helpful to use my phone to take photos of it since it would take a time-stamped photo of the 
+clock, which meant I could transcribe the exact time and the clock's reading accurately and leisurely. 
+
+The reason for these checks being regular as opposed to just one after 24 hours or so is that if my clock was not working 
+right I would see if that was due to my reference 1Hz signal being off, or improper counting resulting in additional or 
+missed rollovers. If the reference was wrong then the difference between each check would be off by a constant factor, e.g. 
+10% - however if the difference between my clock and the recorded time varied significantly that would indicate a problem 
+with my counting/rollover scheme.
+
+If either of the two issues were to appear, I would prefer the crystal since I would only need to tune one board as opposed 
+to potentially six. It also would be less likely to be caused by a design fault on my behalf and rather component 
+imperfections so I wouldn't need to alter my designs significantly.
+
+| **Real Time** | **Time Elapsed** | **Seconds Passed** | **Clock Readout** | **Clock Elapsed Time** | **Seconds Counted** | **Difference between Clock and Real** |
+| :---: | ---: | :--- | :---: | ---: | :--- | :---: | 
+| **00:41:54** | | | **00:00:16** | | |
+| **02:02:58** | 01:21:04 | 4864 | **01:21:19** | 01:21:03 | 4863 | -0.02% |
+| **09:54:19** | 07:51:21 | 28281 | **09:12:44** | 07:51:25 | 28285 | 0.01% |
+| **10:38:36** | 00:44:17 | 2657 | **10:00:00** | 00:47:16 | 2836 | 6.31% |
+| **11:46:53** | 01:08:17 | 4097 | **11:10:18** | 01:10:18 | 4218 | 2.87% |
+| **13:05:24** | 01:18:31 | 4711 | **12:31:51** | 01:21:33 | 4893 | 3.72% |
+| **14:03:17** | 00:57:53 | 3473 | **13:31:43** | 00:59:52 | 3592 | 3.31% |
+| **15:32:52** | 01:29:35 | 5375 | **15:01:20** | 01:29:37 | 5377 | 0.04% |
+| **16:44:04** | 01:11:12 | 4272 | **16:14:33** | 01:13:13 | 4393 | 2.75% |
+| **18:53:01** | 02:08:57 | 7737 | **19:27:31** | 03:12:58 | 11578 | 33.17% |
+
+Looking at this data it is pretty clear that my clock has a stable 1Hz clock since when it was accurately measuring the 
+passage of time, it was only a second or two off, which very well might have been caused to my photos' sub-second timing, 
+akin to a rounding error. **However, my clock clearly has issues with proper propagation of my roll-over/reset signals.**
+
+## Investigating the Faulty Counting
+
+The issue is clearly with the roll-over reset logic, but I needed to determine where so I could determine a remedy.
+
+### Reset Logic Outputs
+
+I started by poking around the reset circuitry to see their output waves looked since it is these waves that drive their 
+respective counters to increment or reset. My original suspicion was that these waves might have some noise to them, and if 
+this noise occurred around the threshold voltage the signal might be crossing it several times resulting in these observed 
+additional counts.
+
+I started by watching the reset signal for each of the seconds digits. The reset pulses were both about 25ns wide, and swung 
+all the way up to 5V where they held for roughly 15 to 20ns. Their lengths were dictated by the feedback delay from the 
+counter and propagation through the logic in all the chips.
+
+<figure>
+<img src="/images/clock-seconds-switching.png">
+<figcaption>Reset waveform for single seconds with no passives</figcaption>
+</figure>
+
+The tens of seconds digit's wave closely resembled the single second's signal, however it had some leading noise, probably 
+due to some noise induced by the rollover action of the single digit drawing power on their shared boards.
+
+<figure>
+<img src="/images/clock-tens-seconds-switching.png">
+<figcaption>Reset waveform for tens of seconds with no passives</figcaption>
+</figure>
+
+I moved to seeing how the minute reset signals looked. Unsurprisingly they closely matched well with the ones on the seconds 
+display, just with a bit more leading noise. Likely due to the rolling over of the seconds digits.
+
+<figure>
+<img src="/images/clock-minutes-switching.png">
+<figcaption>Reset waveform for single minutes with no passives</figcaption>
+</figure>
+
+Even the tens of minutes had similar leading noise to the tens of seconds. *Guess that's evidence of well repeated designs 
+and consistent manufacturing, sharing the same glitches.*
+
+<figure>
+<img src="/images/clock-tens-minutes-switching.png">
+<figcaption>Reset waveform for the tens of minutes with no passives</figcaption>
+</figure>
+
+**Overall, these waves look acceptable. They are relatively clean square(ish) waves with straight slopes and no observed 
+noise at any intermediate (potential threshold) voltage. They are a bit shorter than I would like but since their length is 
+dictated by the propagation time of the logic that feeds them, I believe this is fine.**
+
+### Reset Logic Noise
+
+Although the logic signals were relatively clean, when they were at either extreme there is clearly some noise, especially 
+before and after the pulse around ground. I suspected that these oscillations might be enough to mess with the counters so 
+I decided to try out adding some passives to each line to help filter this noise out. 
+
+I wanted to design a basic resistor-capacitor low-pass filter. I designed it assuming DC operating conditions, where the 
+capacitor would be charged via a resistor from the output of the logic gate. This was a nice little throwback to my first 
+year circuits class *(which ironically actually scared me away from pursuing circuits in the first place!)*, after digging 
+up my notes I started doing some math.
+
+I figured that a 5ns charge time would be enough to not impede the function of the clock, but enough to help reduce the 
+noise preceding and following the pulse. Using my spare 47pF capacitors, I needed to pair them with 22Ω resistors to get the 
+required response. *(I ended up using 33Ω instead of 22Ω since those were the closest I had.)* So I soldered them in place 
+and... *What?*
+
+<figure>
+<img src="/images/clock-over-compensated.png">
+<figcaption>My over compensated reset signal (C:47nF R: 33Ω)</figcaption>
+</figure>
+
+So it turns out I had accidentally over-compensated the system, what I thought were 47**p**F were actually 47**n**F. *Oops.* 
+So my response time was only 1000 times longer than intended, but it wasn't all for naught; I got some neat insights from 
+watching the system with these installed.
+
+- The threshold voltage for counter resets is only about 1V. I was expecting higher
+- The output current of the logic chips is about 50mA
+- The system eliminated any leading trailing noise
+- There still were impulses of noise, likely corresponding to the internal switching of the ICs
+- Noise around the threshold was certainly a cause for additional counts.
+   - With these components in place basically every time a digit incremented there was a 25% chance it would increment more than once.
+
+<figure>
+<img src="/images/clock-over-compensated-zoomed-in.png">
+<figcaption>"Zoomed in" overcompensated wave (vertical divisions are only 200mV instead of the usual 1V)</figcaption>
+</figure>
+
+Watching it for some time I observed repeating but uncommon noise on the falling edge. After some time it came to me, these 
+reset signals were captured on the single seconds, this second set of noise happened whenever the tens of seconds rolled 
+over. The timing between this last impulse and the one that precedes it (the peak) is almost identical to the period between 
+the first two periods. When the minutes digits rolled over I would see additional trailing impulses, although smaller in 
+magnitude the further they were.
+
+<figure>
+<img src="/images/clock-over-compensated-zoomed-in-cascade.png">
+<figcaption>Signal noise from cascading rollovers</figcaption>
+</figure>
+
+I did source myself some 47pF capacitors and replaced the 47nF ones. The resulting wave was quite different to either of the 
+previous cases. It eliminated the leading noise but seemed to result in significantly worse trailing noise. It did climb 
+higher, peaking at about 4V before plummeting back down.
+
+<figure>
+<img src="/images/clock-seconds-with-proper-capacitor.png">
+<figcaption>Reset signal with my planned parts attached (C:47pF R: 33Ω)</figcaption>
+</figure>
+
+Although much more stable than using the 47nF, it still wasn't the solution I needed. My tests with this setup yielded 
+similar results to the system without the passives present, honestly a little worse.
+
+### Propagation Issues?
+
+*Honestly I wasn't really expecting the RC filter to fix the issue.* I was hopeful though, and I feel it was still a neat 
+little set of experiments. 
+
+My current belief is that this issue has to do with the propagation of the short, only 20ns long, pulse generated. 20ns is 
+essentially 50MHz! So not exactly *high* speed data but still pretty darn quick especially compared to any of my work up to 
+this point. So perhaps I am about start entering the realm of actually having to design for my signals (outside the couple 
+times I put USB connectivity on boards).
+
+One thing I realized looking at my data that all the additional counts seemed to happen on only on the secondary counters, 
+the single digits, and not on the seconds. The only difference between the way these receive their increment signal compared 
+to the primary displays' counters (tens) is the length and routing of the trace from source to them. 
+
+The signal for primary increment (secondary reset) is a single path and is slightly shorter than the trace from the source 
+to the reset for the secondary. This means the signal to increment reaches it before the counter is reset so it will always 
+tick forward correctly.
+
+<figure>
+<img src="/images/clock-primary-increment-trace.png">
+<figcaption>The trace for incrementing the primary digit highlighted from the reset module.</figcaption>
+</figure>
+
+The secondary increment (primary reset) signal trace is much more complicated and long. First difference is that this signal 
+**splits and rejoins** thanks to me routing it through both headers used to connect neighbouring modules. This I think is 
+one issue. The other difference/issue is that the route to reset the primary counter triggering this signal is the shortest, 
+both paths to the secondary counter are longer, which means that cascaded counter will experience the same pulse length as 
+the one getting reset (the primary counter gets a little more time with the reset signal being high).
+
+*Note: both feature extended vertical runs on the bottom under a trace on the top.*
+
+<figure>
+<img src="/images/clock-secondary-increment-input-trace.png">
+<figcaption>The trace for receiving the signal to increment the secondary digit from the previous module.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/clock-secondary-increment-output-trace.png">
+<figcaption>The trace that outputs the signal to increment the cascaded secondary digit highlighted.</figcaption>
+</figure>
+
+I feel that the big issue is the forking and rejoining of the signal to the secondary, especially since one path is notably 
+longer than the other. What I think is happening is that pulse that goes down the shorter path reaches the counter and 
+triggers a count and then its end starts to arrive and it begins to fall, at which point the signal that took the longer 
+route begins to arrive and adds to it raising it. This occasionally happens around the threshold, which results in the 
+signal appearing as a second pulse.
+
+The longer path is about 110mm longer than the short one, dividing this by the speed of light/electricity suggests a 
+difference of only 0.363ns in arrival times. However with slewing, power division, and whatever else goes into high speed 
+communication this might mean more than it sounds like for a 23ns signal. I'll see if probing multiple points along the line 
+can give me a better idea of what's going on.
+
+### Possible Solutions?
+
+Even before I do that, I do have a couple ideas for solutions I haven't tried yet. I really hope either of the first two 
+work, since I do not want to redo all the soldering the third would entail.
+
+1. Use the reset signal to trigger a mono-stable 555 timer to deliver a timed pulse (>50ns) as the actual increment/reset signal
+2. Break the top connection for clock signals
+3. Redesign the display circuit to have the counter being incremented receive the signal directly, put a RC delay for the counter being reset.
 
 ## Revisions
 
-Coming later!
+Need to prototype and validate a solution first!
 
