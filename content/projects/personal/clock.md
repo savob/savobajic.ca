@@ -24,8 +24,9 @@ The idea came to me when browsing through a cache of old electronics a friend of
 come into and a friend mentioned they wanted to learn to make a clock with a microcontroller
 so I decided to make one of my own too.
 
-Currently I have tested all the modules on breadboards and transferred them to KiCAD 
-so I could layout PCBs. **Currently waiting to have them made.**
+Currently I have produced the modules, and verified they work at a basic level in unit testing. *However,* when put together 
+they don't work correctly. There is an issue where the counters are counting more than the should that I am currently trying 
+to find a solution for.
 
 ## Requirements
 
@@ -44,6 +45,7 @@ working as they appear they should with continuity tests.
 - Discrete logic isn't as troublesome as I expected, but this also is a basic project really. 
 I would look to maybe use some in future projects, especially for safety systems and such.
 - *Does h4x0r aesthetic == poor user experience?*
+- Specify the location for the fabricator to put their order number on the board, especially if aesthetics are a factor!
 
 # Detailed Report
 
@@ -182,49 +184,250 @@ its reset pin properly grounded so it collected a charge during operation and re
 in these intermittent resets of the chip. This was caused by a break internal to the 
 jumper I was using to ground it, inside the plastic head at one end.
 
+## Schematics
 
-## Circuit Boards
+After prototyping I transcribed my work on the bread boards to proper schematics for each module so I could advance to 
+making the circuit boards. I'll explain them starting from the simpliest.
 
-Once I had established the circuit for each module tested and documented, I transferred 
-the schematics to KiCAD and laid out a circuit board for each module.
+### Reset Module Circuit
 
-I used edge connectors to pass the signals between them since it will also provide more 
-structural stiffness compared to jumpers when hung up on a wall.
+This one is just a a collection of headers for each signal and breakouts for a set of four AND and four OR gates. It is down 
+to the user (me, *for now*) to wire the connections as needed for each reset signal they want as part of assembly with 
+jumper wires.
 
-For the display I added the ability for the user to set the digits using jumpers to set 
-a value, and then pressing a button to load it into the desired counter. Originally 
-I intended to use a more conventional and user-friendly button to increment counters but 
-the issue of debouncing and combining clock signals would have needed me to add much 
-more to the boards. On the plus side, I think the exposed headers will add to the "hacker" 
-aesthetic.
+<figure>
+<img src="/images/clock-reset-modules-schematic.svg">
+<figcaption>Schematic for the reset module (PDF version: <a href="/pdf/reset_modules.pdf">Colour</a> / <a href="/pdf/reset_modules_bw.pdf">BW</a>)</figcaption>
+</figure>
+
+For resetting/rolling over at 6 and 10, just one AND gate is needed, to do the rollover for hours (either 12 or 24 hour 
+configuration) is a whole other monster, but can be done with the logic gates available.
+
+### Signal Generator Circuit
+
+The signal generator is little more than two cascaded CD4060 chips to divide down the reference 32.768 kHz crystal signal.
+Since it is also the power source for the rest of the system, it has a USB connector and some capacitors to help smooth 
+the power received for the system.
+
+<figure>
+<img src="/images/clock-signal-generator-schematic.svg">
+<figcaption>Schematic for the signal generator (PDF version: <a href="/pdf/signal_generator.pdf">Colour</a> / <a href="/pdf/signal_generator_bw.pdf">BW</a>)</figcaption>
+</figure>
+
+### Display Module Circuit
+
+By far the most complicated module of the bunch, the display modules house two parallel counter/display systems each. The 
+left (leading) digit is the primary, the right (trailing) digit is referred to as the secondary. 
+
+The basis of each is the counter, a 74LS193 IC, which counts the number of incoming pulses to it and outputs a four bit 
+value (0 to 15 inclusive). These automatically roll-over (reset) at 16, but can be manually reset sooner. These manual 
+resets are used to trigger a reset for the desired digit value, e.g. when it reaches 6 or 10 using the external logic chips 
+which receive and return signals via the reset header. The reset of the secondary digit is used as the input clock for the 
+primary digit, the reset for the primary is passed forward.
+
+I added the ability for the user to set the digits using jumpers to set a value, and then pressing a button to load it into 
+the desired counter. Originally I intended to use a more conventional and user-friendly button to increment counters but the 
+issue of debouncing and safely combining clock signals would have needed me to add much hardware to the boards. On the plus 
+side, I think the exposed headers will add to the "hacker" aesthetic when laid out.
+
+The count from the counters is fed into the display driver ICs which decode them to drive seven segment LED displays. The 
+displays I use are standard industrial ones that fit into the DIP-14 footprint. The digits come in two formats, either 
+common anode or common cathode (CA and CC respectively), based on how their LEDs are tied together. This determines how they 
+are driven so the driving IC has to be correct. For CA digits I use the 74LS47, for CC displays I use CD4511s. I chose these 
+two since they share they can be placed interchangeably due to their identical pin allocations and input behaviour. The 
+*only* functional difference between the two for me is how they handle the ripple blanking input (RBI) on pin 5. Fortunately 
+the level this needs to be pulled to for each matches the common power level needed for their displays so I set it using a 
+single solder jumper.
+
+<figure>
+<img src="/images/clock-display-module-schematic.svg">
+<figcaption>Schematic for the display modules (PDF version: <a href="/pdf/display_module.pdf">Colour</a> / <a href="/pdf/display_module_bw.pdf">BW</a>)</figcaption>
+</figure>
+
+## Layout
+
+With my schematics wrapped up, I began the layout of each module. I used edge connectors to pass the signals between them 
+since it will provide more structural stiffness compared to wire jumpers when hung up on a wall as well as result in a more 
+compact assembly overall. A purely aesthetic choice I made was to use exclusively through hole components, this is really 
+evident on the display board with all the resistors used for the LEDs.
+
+The edge connectors between display boards and the signal generator are spaced 50mm apart.
+
+*Looking back, one thing I regret is not specifying to my board house where to put their order numbers on my boards since 
+they ended up just slapping it wherever it fit on the **front(!)** face of all my modules. Come on...*
+
+### Reset Module Layout
+
+The reset module is little more than a breakout for the two available logic ICs and the data signals from the counters. As 
+mentioned before, it is meant to be wired at assembly to produce the reset when needed so I tried to make it reasonably easy 
+to access and identify all the headers by hand without documentation.
+
+<figure>
+<img src="/images/clock-reset-layout-combined.png">
+<figcaption>Overall layout of the reset module</figcaption>
+</figure>
+
+To aid the end user in wiring the reset logic I labelled all the headers with their signal names on the silkscreen for the 
+top.
+
+<figure>
+<img src="/images/clock-reset-layout-top.png">
+<figcaption>Top layout of the reset module</figcaption>
+</figure>
+
+<figure>
+<img src="/images/clock-reset-layout-bottom.png">
+<figcaption>Bottom layout of the reset module</figcaption>
+</figure>
+
+### Signal Generator Layout
+
+Not much to really say about this one, pretty simple layout for a pretty simple circuit. The 1Hz signal and power is passed 
+out along the left edge.
+
+<figure>
+<img src="/images/clock-signal-layout-combined.png">
+<figcaption>Overall layout of the signal module</figcaption>
+</figure>
+
+<figure>
+<img src="/images/clock-signal-layout-top.png">
+<figcaption>Top layout of the signal module</figcaption>
+</figure>
+
+<figure>
+<img src="/images/clock-signal-layout-bottom.png">
+<figcaption>Bottom layout of the signal module</figcaption>
+</figure>
+
+### Display Module Layout
+
+The display module was designed to be symmetric about the vertical axis for component placement. I had the LED digits placed 
+at the top, their drivers beneath them, and lower yet the counters. Along the bottom is the digit setting system (jumpers 
+and button). The bottom edge is used for the reset module, and the count/rollover/reset signals and power are propagated 
+from the right edge to the left, just like in a normal digital clock.
+
+<figure>
+<img src="/images/clock-display-layout-combined.png">
+<figcaption>Overall layout of the display module</figcaption>
+</figure>
+
+<figure>
+<img src="/images/clock-display-layout-top.png">
+<figcaption>Top layout of the display module</figcaption>
+</figure>
+
+On the back, hidden from most observers is where the solder jumper is to set depending on if a digit is either common anode 
+or common cathode. There is some text on the rear silk screen to explain them.
+
+<figure>
+<img src="/images/clock-display-layout-bottom.png">
+<figcaption>Bottom layout of the display module</figcaption>
+</figure>
+
+### Renders
+
+Not usually something I bother posting, but I had them prepared for the GitHub page when I initially uploaded my designs 
+there before I had assembled the real boards so I figured I might as well show them here too.
 
 <figure>
 <img src="/images/clock-display.png">
-<figcaption>Layout of the display module</figcaption>
+<figcaption>Render of the display module</figcaption>
 </figure>
-
-The reset module is little more than a breakout for the two available logic ICs. Since each 
-digit set may need different conditions to reset, it will be up to me to wire the logic on 
-each board myself as need when I assemble them. 
 
 <figure>
 <img src="/images/clock-reset.png">
-<figcaption>Layout of the reset board</figcaption>
+<figcaption>Render of the reset board</figcaption>
 </figure>
-
-The only addition to the signal generator board was the power input to supply the power rails.
 
 <figure>
 <img src="/images/clock-signal.png">
-<figcaption>Layout of the signal board</figcaption>
+<figcaption>Render of the signal board</figcaption>
 </figure>
 
 ## Assembly
 
-I have all of the components ready to go.
+I received the boards at the start of March 2022 and quickly set about assembling the boards. This was my first through hole 
+heavy project that I designed and assembled since my [oscilloscope](/projects/academic/ocilloscope/) for MIE346 three years 
+ago. So it was a bit odd to suddenly find myself flipping a board and cutting excess leads so much during assembly again.
 
-I am currently waiting for a few other projects to be designed before committing to one 
-massive PCB order which this will be part of.
+<figure>
+<img src="/images/clock-bed-of-needles.jpg">
+<figcaption>Look at all those stabby bits</figcaption>
+</figure>
 
+*I wonder if I would be able to roll a balloon across these boards and their uncut leads like a high school physics demo.*
 
+### Signal Generator Assembly
+
+By far the easiest to assemble. Only needed one for my clock, just over a dozen components, and didn't have to do any jumpers.
+
+<figure>
+<img src="/images/clock-signal-module-assembled.jpg">
+<figcaption>Look at that lil' guy</figcaption>
+</figure>
+
+### Reset Modules Assembly
+
+These were the easiest *base* design to solder, with only three components in the schematic. However soldering in the 
+jumpers was a bit tougher than I expected since they moved a bit whenever I would rotate the board to solder them in place.
+
+The logic to reset the primary at 6 and the secondary at 10 was pretty simple, each digit only needed a single AND gate. 
+These were needed for the minutes and seconds since they each count up to 60.
+
+<figure>
+<img src="/images/clock-reset-module-60-assembled.jpg">
+<figcaption>A completed 60 reset logic module</figcaption>
+</figure>
+
+Since I wanted my clock to be a 24-hour clock, for the hours I needed to make a proper 24 reset module. This meant that the 
+secondary would reset at every count of 10, as well as at 4 if the primary is at 2. The primary would reset when it reaches 
+2 if the secondary is 4, as well as if it reaches 3 in the event it misses the 24 reset and gets incremented anyways. The 
+result is a *slightly* more complicated logic network.
+
+<figure>
+<img src="/images/clock-reset-module-24-assembled.jpg">
+<figcaption>A completed 24 reset logic module</figcaption>
+</figure>
+
+*Yeah a bit more...* here's a (likely redundant) side-by-side.
+
+<figure>
+<img src="/images/clock-reset-modules-side-by-side.jpg">
+<figcaption>Comparison of the 60 and 24 reset logic modules side by side. 24 on the left, 60 on the right.</figcaption>
+</figure>
+
+### Display Modules
+
+Assembling the display modules went largely by the book. I did diverge from my layout a bit by soldering DIP sockets for the 
+displays and their drivers so I could easily fool around and change them in the future instead of soldering them directly to 
+the boards.
+
+On little artistic touch I ended up doing at a friends suggestion involved my current limiting resistors for the LEDs. I was 
+originally going to only use my 5% tolerance (brown bodied) resistors but realized as I was counting them that I was going 
+to run out of them halfway through making the three display modules I wanted. This meant I was going to need to use some of 
+my 1% (blue bodied) resistors which would throw off the consistency I was looking for. I mention this to a friend and they 
+suggested that I set up an *ombré* (gradient) from one end to the other with my resistor colours.
+
+<figure>
+<img src="/images/clock-ombre.jpg">
+<figcaption>The ombre done with resistors. I wonder if any casual observers will notice.</figcaption>
+</figure>
+
+The finished module ended up looking like this individually. I noticed that although the sockets add the ability of easy 
+exchange of displays, they now protrude a fair bit from the board, about 12mm. With the drivers in a socket and the counters 
+directly on the board, it results in a stepped look from bottom to top.
+
+<figure>
+<img src="/images/clock-display-module-assembled.jpg">
+<figcaption>Display module, ready for service!</figcaption>
+</figure>
+
+## Testing
+
+Coming soon!
+
+## Revisions
+
+Coming later!
 
