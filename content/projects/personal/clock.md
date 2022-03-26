@@ -641,16 +641,82 @@ signal appearing as a second pulse.
 The longer path is about 110mm longer than the short one, dividing this by the speed of light/electricity suggests a 
 difference of only 0.363ns in arrival times. However with slewing, power division, and whatever else goes into high speed 
 communication this might mean more than it sounds like for a 23ns signal. I'll see if probing multiple points along the line 
-can give me a better idea of what's going on.
+can give me a better idea of if there are propagation issues.
 
-### Possible Solutions?
+<figure>
+<img src="/images/clock-multipoint-probing.png">
+<figcaption>The recorded waveforms from all points on the path</figcaption>
+</figure>
 
-Even before I do that, I do have a couple ideas for solutions I haven't tried yet. I really hope either of the first two 
-work, since I do not want to redo all the soldering the third would entail.
+*It didn't.* There is basically no major difference between the signals. The only minor difference is that the signals that 
+were probed further from the capacitor had a bit more swinging to them after the rising edge compared to the "base" signal 
+probed at the capacitor (yellow).
 
-1. Use the reset signal to trigger a mono-stable 555 timer to deliver a timed pulse (>50ns) as the actual increment/reset signal
-2. Break the top connection for clock signals
-3. Redesign the display circuit to have the counter being incremented receive the signal directly, put a RC delay for the counter being reset.
+<figure>
+<img src="/images/clock-multipoint-probing-zoomed-in.png">
+<figcaption>The recorded waveforms from all points on the path, focused on the reset signal portion</figcaption>
+</figure>
+
+So what now?
+
+### Extend the Pulses?
+
+The only thing left that I think can remedy this issue is **lengthening the reset pulse and ensuring that it swings the full 
+voltage range**. Essentially this means uncoupling it from being directly driven by the logic, and instead just triggered by 
+it and driven by additional logic. *Sound like a job suited for the 555!*
+
+Before I get cracking on trying this, I need to set a proper baseline number of additional counts. Also find a method of 
+running accelerated tests since I don't want to wait a day to get results.
+
+To do accelerated tested I could use my function generator to pipe in a higher frequency base clock than 1Hz. This however 
+has the issue that I can't use another clock to spot issues anymore (unless I use some specific multiples, but still). So I 
+wanted something more automated that I could leave unattended and it would keep track of failures.
+
+#### Test Mode on my Oscilloscope
+
+I knew my oscilloscope (a Rigol DS1054) had a Pass/Fail feature included, but I had never used it. After reading the manual 
+I was ready to try it out. Basically the way it works is that you feed your oscilloscope the expected output waveform on a 
+channel, you then set tolerances horizontally (timing) and vertically (value) around the wave. Once set a "no-go" or 
+"rejection" region is set around this waveform. 
+
+<figure>
+<img src="/images/clock-setting-test-mode.png">
+<figcaption>Setting the tolerances around a wave. The new boundaries are shown as a preview with the white lines, the previous region is still visible</figcaption>
+</figure>
+
+Should any future waves enter it these regions, the oscilloscope records a failure and can stop to record and display the 
+offending wave sample if desired.
+
+<figure>
+<img src="/images/clock-caught-failure.png">
+<figcaption>A captured failure. Odd that the double count is several microseconds long when the signal is 50ns total. Hrm.</figcaption>
+</figure>
+
+For my tests I set the oscilloscope to probe the ones digit of the counter since it alternates state with each count. If a 
+double count occurred, it would be immediately visible. I let the oscilloscope run for some time as I fed the clock an input 
+of several kilohertz. Over time it gradually started to catch some errors.
+
+<figure>
+<img src="/images/clock-testing-more-waves.png">
+<figcaption>The recorded waveforms from all points on the path, focused on the reset signal portion</figcaption>
+</figure>
+
+These errors were however much less frequent than I had observed previously when I let the clock run on its own, only once 
+every 2000 waves. With about 24 counts per waveform on screen, this is implying **a glitch once every 48 000 counts/minutes!**
+This is far from the roughly hourly glitches it was having under observation. So I'm glad I have this baseline. *Perhaps the 
+probes are somehow scaring the system to work?*
+
+Perhaps the glitches are too fast for the oscilloscope to catch at this time base. I'll do some more runs soon.
+
+#### Next Steps
+
+**Next I need to make a 555 timer circuit, insert it into the clock, and then test and compare.**
+
+### Alternative Solutions?
+
+The only solution I have left up my sleeves if the 555 fails me is to redesign the display circuit to have the counter being 
+incremented receive the signal directly, and put a RC delay for the counter being reset's reset pin. This should make ensure 
+that the signal swings fully.
 
 ## Revisions
 
