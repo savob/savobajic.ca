@@ -782,7 +782,134 @@ affect the board slightly and it works better as a result. Anyways, I want to re
 have a proper verification. Since I only have the 555 timer for the ones of minutes digit, I will disregard an glitches on 
 the ones of hours.
 
-## Revision
+| **Real Time** | **Time Elapsed** | **Seconds Passed** | **Clock Readout** | **Clock Elapsed Time** | **Seconds Counted** | **Difference between Clock and Real** |
+| :---: | ---: | :--- | :---: | ---: | :--- | :---: | 
+| **01:35:49** | | | **00:00:14** | | |
+| **02:26:43** | 00:50:54 | 3054 | **01:21:19** | 00:55:41 | 3341 | 8.59% |
+| **08:26:53** | 06:00:10 | 21610 | **06:56:11** | 06:00:16 | 21616 | 0.03% |
+| **08:58:15** | 00:31:22 | 1882 | **07:27:33** | 00:31:22 | 1882 | 0.00% |
 
-Looks like the 555 will be part of the design, we shall see soon enough.
+**Well shoot.** Looks like the 555 wasn't the silver bullet I needed. What I am beginning to suspect is that it is indeed 
+issues with my power supply. Until now I have been testing using my computer's USB port to supply power. Clearly it has been 
+capable of supporting the clock and its power draw that can reach up to 300mA at 5V, however the varying power draw of my 
+computer itself and the clock as it changes digits is probably causing some noise on the power line and thus glitched counts.
+
+This is why when I left the clock running overnight in both this test and the previously listed one, there was basically no 
+miscounts. I was asleep and my computer was off, so the only thing drawing power was the clock. When I was awake and using 
+my computer, that's when the issues began. To test this out I've moved the clock to have its own power supply, independent 
+of my computer and will be checking its ability to keep time. 
+
+That being said, I still believe the 555 is a good addition since the pulses were *just* long enough to trigger a reset 
+previously. So having the 555 time independently likely brings some stability, although I could do another test where I just 
+don't have the 555 but have it running off its own supply if this supply test comes back with good results.
+
+| **Real Time** | **Time Elapsed** | **Seconds Passed** | **Clock Readout** | **Clock Elapsed Time** | **Seconds Counted** | **Difference between Clock and Real** |
+| :---: | ---: | :--- | :---: | ---: | :--- | :---: | 
+| **09:15:30** | | | **00:00:17** | | |
+| **09:55:55** | 00:40:25 | 2425 | **01:09:26** | 01:09:09 | 4149 | 41.55% |
+| **10:33:33** | 06:37:38 | 2258 | **02:12:15** | 01:02:49 | 3769 | 40.09% |
+| **10:44:38** | 00:11:05 | 665 | **06:07:35** | 03:55:20 | 14120 | 95.29% |
+
+
+*Yep, definitely a power issue.* 
+
+### Power Issue
+
+Looking at the disappointing data from the standard USB supply's power I determined that this is definitely going to need a 
+revised power delivery system. After this I left the clock running but put a probe to monitor the 5V line for noise and 
+observed massive amounts of noise around when there would be digit changes, especially when these changes had glitched and 
+we accidentally had extra counts.
+
+<figure>
+<img src="/images/clock-power-test-noise-1.png">
+<figcaption>A sample of some of the switching noise</figcaption>
+</figure>
+
+*That's not great, probably causes some glitches.*
+
+<figure>
+<img src="/images/clock-power-test-noise-2.png">
+<figcaption>It sometimes gets a little worse</figcaption>
+</figure>
+
+*Oh jeez this isn't good.*
+
+<figure>
+<img src="/images/clock-power-test-noise-3.png">
+<figcaption>And occasionally gets to be this ludicrous</figcaption>
+</figure>
+
+*...$%#@%!*
+
+So clearly this system has some issues. Since the main power draw are the displays since **each illuminated segment draws 
+roughly 6.5mA**, so I figured I can try to see where the most change on power draw occurs in the system to predict these 
+issues, as well as recreate them better.
+
+| **Digit** | **Number of Segments On** | **Change from Previous (0-9)** |  **Change from Previous (0-5)** |
+| :---: | :---: | :---: | :---: |
+| 0 | 6 | +1 | +1 |
+| 1 | 2 | -4 | -4 |
+| 2 | 5 | +3 | +3 |
+| 3 | 5 | - | - |
+| 4 | 4 | -1 | -1 |
+| 5 | 5 | +1 | +1 |
+| 6 | 5 | - | N/A |
+| 7 | 3 | -2 | N/A |
+| 8 | 7 | +4 | N/A |
+| 9 | 5 | -2 | N/A |
+
+Looking at this and knowing the behaviour of the clock (being a 24-hour clock) I know that the most segments change going 
+from 09:59:59 to 10:00:00, a total of 9 segments change - however the net change in power draw is only 1 segment's worth. 
+The largest change in power draw is going from x7:59:59 to x8:00:00, where x is either 0 or 1. This has an increase on the 
+power draw worth 8 segments, which when going from 17:59:59 to 18:00:00 is **an increase of 32%!** These sharp changes in 
+power draw (up to 32%, 52mA) are likely the issue.
+
+### What can I do?
+
+Well I have a couple options I can use to try and address this issue:
+
+1. Tune the capacitors on the power supply board.
+   - They might need to be increased to help deal with this ripple
+   - They might need to be decreased since the supply might not be as capable of driving such a capacitive load
+2. Get a better USB power supply
+   - *My current one is rated for up to 2.5A though.*
+   - I could use my spare desktop supply
+3. Surrender myself to not fixing this issue and transition to making this a piece about the immaterial nature of time
+4. Compete to make the first broken clock that is right three times a day
+
+At this point I'm leaning towards trying a bit of 1, before deciding between either of 3 or 4. I will probably start by 
+reducing the capacitance and then build it up until it .
+
+### Thunder Stuck
+
+I removed the capacitors from the signal/power board and plugged it in. I checked that the oscilloscope was good and 
+monitoring the voltage lines for noise, then plopped down in my office chair.
+
+***Zap***
+
+I received a static shock, not usually notable - *BUT* I saw that at that instant noise similar to what happened before was 
+recorded on the oscilloscope. It clicked. I started scooting around in my seat and was able to generate more noise as I 
+pleased, I could even watch the minutes skip forward as I did!
+
+<figure>
+<img src="/images/clock-manual-glitching.gif">
+<figcaption>Me manually glitching the count by moving in my chair and generating static shocks</figcaption>
+</figure>
+
+It all made sense looking back:
+
+- Static shocks can only occur when I am around, hence the solid night operation
+- The noise was massive, I doubt even a faulty power supply would be able to swing 40V like that
+- The minutes were the main digits effected in this test due to the long wires picking up EMI
+- I was wearing different pants than I was previously. (Yay laundry!) 
+   - I know that the ones I was wearing then had a habit of generating shocks all winter
+   - The ones I was wearing when doing the 555 tests didn't give me as many shocks
+      - This explains the decreased baseline glitch frequency in those tests
+   - I recall wearing the offending pants back when I first assembled the boards, and first noticed the glitches
+
+## Revisions
+
+Looks like the 555 will be part of the design. Also need to work some EMI hardening, ideally without needing to remake the 
+display modules. *Maybe I can cut the top traces?*
+
 
