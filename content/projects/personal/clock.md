@@ -6,7 +6,7 @@ started: "November 2021"
 finished:
 status: "Waiting for boards"
 client:
-tags: [hardware, clock, KiCAD]
+tags: [hardware, clock, KiCad, 555]
 skills: [logic, KiCAD]
 summary: "A modular clock composed entirely out of discrete logic chips I got secondhand."
 githubLink: "https://github.com/savob/digital_clock"
@@ -698,27 +698,91 @@ of several kilohertz. Over time it gradually started to catch some errors.
 
 <figure>
 <img src="/images/clock-testing-more-waves.png">
-<figcaption>The recorded waveforms from all points on the path, focused on the reset signal portion</figcaption>
+<figcaption>The wave on the ones of minutes being tested at several kHz. Note that there have been some failures caught!</figcaption>
 </figure>
 
 These errors were however much less frequent than I had observed previously when I let the clock run on its own, only once 
-every 2000 waves. With about 24 counts per waveform on screen, this is implying **a glitch once every 48 000 counts/minutes!**
+every 2500 waves. With about 24 counts per waveform on screen, this is implying **a glitch once every 60 000 counts/minutes!**
 This is far from the roughly hourly glitches it was having under observation. So I'm glad I have this baseline. *Perhaps the 
 probes are somehow scaring the system to work?*
 
 Perhaps the glitches are too fast for the oscilloscope to catch at this time base. I'll do some more runs soon.
 
-#### Next Steps
+#### 555 Time(r)!
 
-**Next I need to make a 555 timer circuit, insert it into the clock, and then test and compare.**
+So I went ahead and made a 555 timer circuit for this purpose, a mono-stable 555 with an approximately 50 microsecond pulse 
+length. This should be long enough to register on any chip. I used components I had laying about, I probably could have 
+used a shorter period or smaller capacitor but this should work.
 
-### Alternative Solutions?
+<figure>
+<img src="/images/clock-555-schematic.png">
+<figcaption>Schematic of the 555 timer. Note: I used a 556 to be exact here, but it is just two 555s slapped together.</figcaption>
+</figure>
 
-The only solution I have left up my sleeves if the 555 fails me is to redesign the display circuit to have the counter being 
-incremented receive the signal directly, and put a RC delay for the counter being reset's reset pin. This should make ensure 
-that the signal swings fully.
+One issue I noticed immediately was that it was basically constantly firing off pulses. I had forgotten that the 555 takes 
+in "negative" logic for the trigger, so it is triggered when it the trigger pin is pulled low. This is the inverse of what 
+my reset logic outputs so I had to throw in a basic inverter to handle this. 
 
-## Revisions
+<figure>
+<img src="/images/clock-inverter-schematic.png">
+<figcaption>Basic schematic of the the inverter I added</figcaption>
+</figure>
 
-Need to prototype and validate a solution first!
+Originally I used a 10kΩ resistor to pull up the output but the output charged too slowly so multiple pulses were made, so I 
+reduced it to just 1kΩ. After some more basic tests, my test bread board was ready to get inserted into the system.
+
+<figure>
+<img src="/images/clock-555-bread-board.jpg">
+<figcaption>My 555 timer test circuit on a bread board, with the input inverting MOSFET</figcaption>
+</figure>
+
+I wired the input of the inverter to the usual logic that would reset the primary digit and increment the secondary above it, 
+and then the output to the RP header of that logic board, thus it intercepted and inserted its own reset pulse.
+
+#### Speed Testing the 555
+
+With the 555 timer circuit installed I began feeding the system a controlled reference clock from my function generator. The 
+test started excellently. I turned up the function generator to run a 120kHz base clock and left it running. I checked in on 
+it periodically for any recorded failures.
+
+<figure>
+<img src="/images/clock-555-test-setup.jpg">
+<figcaption>Setup of my 555 test</figcaption>
+</figure>
+
+<figure>
+<img src="/images/clock-555-test-start.png">
+<figcaption>The start of my test with the 555 installed</figcaption>
+</figure>
+
+Amazingly **no failures were detected in the first almost 80 thousand waves, which was 960 000 simulated minutes!** I kept 
+it going and accidentally brushed up against my table which I think created a measurement glitch. 
+
+<figure>
+<img src="/images/clock-555-test-accident.png">
+<figcaption>The start of my test with the 555 installed</figcaption>
+</figure>
+
+In the end though after almost 110 000 waves with *only one* recorded failure, I ended the test. This was equivalent to 
+1 300 596 minutes, or just under 2 and a half years! Even this one failure was likely my fault rather than a genuine circuit 
+issue.
+
+<figure>
+<img src="/images/clock-555-test-finish.png">
+<figcaption>The start of my test with the 555 installed</figcaption>
+</figure>
+
+#### Proper Testing of the 555
+
+Although the results look promising from these accelerated tests, I will conduct a test of just letting the clock run normally. 
+My reason is that when I was doing these accelerated tests, there were significantly less frequent extra counts caught on the 
+original hardware (1 in 2000) than when I had it running off the signal module (roughly 1 in 100). I don't know why this is 
+for certain; perhaps the supply is more stable from the my power supply than my computer's USB port, or maybe the probes 
+affect the board slightly and it works better as a result. Anyways, I want to repeat my original, authentic use case test to 
+have a proper verification. Since I only have the 555 timer for the ones of minutes digit, I will disregard an glitches on 
+the ones of hours.
+
+## Revision
+
+Looks like the 555 will be part of the design, we shall see soon enough.
 
