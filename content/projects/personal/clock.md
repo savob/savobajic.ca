@@ -4,13 +4,13 @@ date: 2021-11-20T14:56:48-05:00
 draft: false
 started: "November 2021"
 finished:
-status: "Waiting for boards"
+status: "Waiting for revised boards"
 client:
 tags: [hardware, clock, KiCad, 555]
 skills: [logic, KiCAD]
-summary: "A modular clock composed entirely out of discrete logic chips I got secondhand."
+summary: "A modular clock composed entirely out of discrete logic chips I got secondhand. *Significantly more debugging than expected!*"
 githubLink: "https://github.com/savob/digital_clock"
-thumbnail: "/images/clock-display.png"
+thumbnail: "/images/clock-assembled.jpg"
 ---
 
 # Overview
