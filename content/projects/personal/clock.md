@@ -46,6 +46,7 @@ working as they appear they should with continuity tests.
 I would look to maybe use some in future projects, especially for safety systems and such.
 - *Does h4x0r aesthetic == poor user experience?*
 - Specify the location for the fabricator to put their order number on the board, especially if aesthetics are a factor!
+- Electromagnetic Interference can be funky to spot
 
 # Detailed Report
 
@@ -906,10 +907,54 @@ It all made sense looking back:
    - The ones I was wearing when doing the 555 tests didn't give me as many shocks
       - This explains the decreased baseline glitch frequency in those tests
    - I recall wearing the offending pants back when I first assembled the boards, and first noticed the glitches
+- The weather was dryer compared to the previous few days when I was testing
 
 ## Revisions
 
-Looks like the 555 will be part of the design. Also need to work some EMI hardening, ideally without needing to remake the 
-display modules. *Maybe I can cut the top traces?*
+I plan to keep the 555 as part of the design. Also need to work some EMI hardening, ideally without needing to remake the 
+display modules. *Maybe I can cut the top signal traces so they only get passed through the bottom inter-connects?*
 
+### Revised Reset Module
+
+I'll incorporate the 555 timers into the reset module, using a 556 chip to provide two separate 555s to drive a pulse for 
+each of the digits per display module. In addition to this 556 timer, I have replaced the OR gates with NOR gates to provide 
+the inverted logic the 555s need to be triggered correctly.
+
+<figure>
+<img src="/images/clock-reset-module-v2-schematic.svg">
+<figcaption>Schematic for the reset module (PDF version: <a href="/pdf/reset_module_v2.pdf">Colour</a> / <a href="/pdf/reset_module_v2_bw.pdf">BW</a>)</figcaption>
+</figure>
+
+The main difference to the layout is the overall extension of the module to add the 556, as well as changing the trace for 
+the NOR chip from the OR chip it replaced.
+
+<figure>
+<img src="/images/clock-reset-module-v2-layout-combined.png">
+<figcaption>Overall layout of the revised reset module</figcaption>
+</figure>
+
+<figure>
+<img src="/images/clock-reset-module-v2-layout-top.png">
+<figcaption>Top layout of the revised reset module</figcaption>
+</figure>
+
+*This time I specificied to my manufacturer to put the order number on the bottom out of sight.*
+
+<figure>
+<img src="/images/clock-reset-module-v2-layout-bottom.png">
+<figcaption>Bottom layout of the revised reset module</figcaption>
+</figure>
+
+Since I included the renders of the other modules, why not this one too?
+
+<figure>
+<img src="/images/clock-reset-module-v2-render.png">
+<figcaption>Render of the revised reset board</figcaption>
+</figure>
+
+## Next Steps
+
+Next steps for this is to receive and test the new reset modules. Until then I might have the clock up as a quasi-random 
+number generator for my wall, at least until the conditions result in less static or I shield the system better without 
+sacrificing what little aesthetics this project possesses.
 
