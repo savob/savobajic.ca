@@ -3,8 +3,8 @@ title: "Laser-Eyed Raccoons"
 date: 2021-12-03T19:15:19-04:00
 draft: false
 started: "December 2021"
-finished: 
-status: "Almost complete."
+finished: "March 2022"
+status: "Complete"
 client: "Friends"
 tags: ["low power", "attiny85"]
 skills: [embedded, KiCad]
@@ -430,7 +430,7 @@ them properly before testing, I think it that I've solved the issue.
 <figcaption>The puddle of flux on the original board</figcaption>
 </figure>
 
-## Final Steps
+## Mass Assembly
 
 I am currently in the process of assembling the boards as I need them. Currently assembled four functional boards, and I 
 have the parts for a couple more.
@@ -440,6 +440,42 @@ have the parts for a couple more.
 <figcaption>Several completed boards.</figcaption>
 </figure>
 
-I also designed a set of basic laser-cut pieces to be assembled into a base to hold the raccoon board upright on a surface. 
-I am currently prototyping them to ensure they assemble and hold just right. Once I have those nailed down I will start to 
-send the boards out with these stands for them.
+*A group of raccoons is called a nursery or a gaze. I however feel that gang is more fitting for the little thieves.*
+
+## Making a Stand
+
+In addition to the board I wanted to make a small and simple stand to hold the boards upright for people. I wanted to make 
+it small so I could send it easier, while also being easy to manufacture and later assemble. I decided on laser cutting 
+some parts from 1/8" (3.1mm) thick plastic, since I have a few friends that can arrange this for me.
+
+My final design was a set of four interlocking pieces that the board simply slides into. Two parts hold up the board, and 
+the other two are used to hold them 50mm apart. This was my first time using FreeCAD so it took me a bit longer than I 
+would have if I was using SolidWorks or Inventor, but I think the results are nice anyways. Might need to brush up on how to 
+make nice drawings though.
+
+<figure>
+<img src="/images/raccoon-holder-part.png">
+<figcaption>Part to hold the circuit boards upright</figcaption>
+</figure>
+
+<figure>
+<img src="/images/raccoon-spacer-part.png">
+<figcaption>Part to space the two holders</figcaption>
+</figure>
+
+I made one round of prototype parts to see if the width of the slots was just right. They were a bit loose so I narrowed 
+them and the results were just right as shown below. (These final dimensions are reflected in the drawings above.)
+
+<figure>
+<img src="/images/raccoon-stand-assembled.jpg">
+<figcaption>The assembled stand</figcaption>
+</figure>
+
+## Conclusion
+
+With the stands designed, I just need to have my friends cut more pieces for me and I can start sending them out as kits!
+
+<figure>
+<img src="/images/raccoon-board-in-stand.jpg">
+<figcaption>Raccoon standing proudly, ready for a new home</figcaption>
+</figure>
