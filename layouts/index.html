@@ -52,6 +52,7 @@ find further uses for it in the future.</p>
 	<section id="recent">
 	<div class="introLine"></div>
 	<h1>Recently Updated Pages</h1>
+	<p>These are pages that I have most recently updated. Usually that means meaningful content updates but sometimes it could just be me fixing some spelling mistakes.</p>
 	
 	{{ $byLastMod :=  .Site.RegularPages.ByLastmod  }}
   {{ $recent := ($byLastMod | last 6).Reverse }}
