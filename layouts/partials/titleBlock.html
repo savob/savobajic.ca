@@ -12,7 +12,7 @@
 
 	<h1>{{.Title}}</h1>
 	<div class="introLine"></div>
-	<div class="subtitle"><strong>Last Modified:</strong> {{ dateFormat "Monday, Jan 2, 2006" .Params.lastmod }}</div>
+	<div class="subtitle"><strong>Last Updated:</strong> {{ dateFormat "January 2, 2006" .Params.lastmod }}</div>
 	<div class="subtitle"><strong>Status:</strong> {{ .Params.status }}</div>
 
 	{{ if .Params.finished }}

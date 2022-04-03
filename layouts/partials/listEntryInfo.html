@@ -3,6 +3,7 @@
 <h2 class=listEntry>
 	<a href="{{.Permalink}}">{{.Title}}</a>
 </h2>
+<p class="subtitle">Page Last Updated: {{.Lastmod.Format "January 2, 2006"}}</p>
 
 {{/* Subtitles to be decided based on the content, determined by section */}}
 
@@ -34,5 +35,6 @@
 	<p class="subtitle">{{ .Params.publication }}</p>
 	<p class="subtitle">Published: {{ .Params.publishedDate}}</p>
 {{end}}
+
 
 <p class="listEntry">{{.Summary | markdownify}}</p>
