@@ -62,7 +62,22 @@ working on making a custom one for the last couple of years.
 
 The software has largely remained the same since the first version, only adapting to the hardware changes between versions. 
 Even the circuitry hasn't changed much, most of my work has gone into simply making the circuitry better suited to the 
-production environment by fitting inside enclosures.
+production environment by fitting it inside enclosures and using proper printed circuit boards.
+
+Needless to say, we've come a long way from my first machined board which had an Arduino plug in and used some thermistors. 
+At least I used nice headers for them, mostly.
+
+<figure>
+<img src="/images/oven-original-top.jpg">
+<figcaption>The first version of the oven control board from the top</figcaption>
+</figure>
+
+*A **loooooong** way.*
+
+<figure>
+<img src="/images/oven-original-bottom.jpg">
+<figcaption>The first version of the oven control board from the bottom</figcaption>
+</figure>
 
 ## Circuit Design
 
