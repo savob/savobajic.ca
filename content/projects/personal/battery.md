@@ -21,6 +21,8 @@ cells in them for my friends since they were no longer being produced and they d
 
 Learned some new techniques and successfully replaced the cells in two of the battery packs with new ones.
 
+If you want to try giving one of them a spin, head over to their cafe, "[VR & Co.](https://en.vrandcompany.com/)".
+
 ## Takeaways
 
 - Working with batteries/cells needs extra considerations compared to circuit with no stored energy
