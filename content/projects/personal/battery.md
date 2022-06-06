@@ -182,6 +182,8 @@ battery I repaired in operation since it was doing its first full charge as I wa
 I replaced the cells that made these two batteries and learned a quite few things along the way. My friends got to enjoy 
 trying some of the repair work out for themselves.
 
-I've kept in touch with them since I've left but I'm not sure how much they're using the boards since winter arrived soon 
-after I left. Hopefully I'll get to see the batteries in action next time I visit.
+I've kept in touch with them since I've left. The batteries have been put to use and they're enjoying their new working 
+toys! Originally they had issues with balance, but that turned out to be the result of them needing to calibrate the boards 
+with a phone app they were previously unaware of. With that ironed out they've been cruising on them without issue.
+
 
