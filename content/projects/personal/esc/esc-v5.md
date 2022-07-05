@@ -79,9 +79,63 @@ pads and R2 on the left.
 
 ## Assembly
 
-I have already ordered and recieved the components I need for this project. All that I need to do is order the boards and 
-to get to it.
+I received the components and boards I needed, and started the assembly at the start of April. The final results came out 
+pretty nicely.
+
+## Porting Code from V4
+
+Since I kept the same microcontroller and largely the same pin allocations, I was able to quickly reuse most of the code I 
+developed for V4. The only changes I had to accommodate was a minor shuffling of the motor control pins, and the new status 
+LED.
+
+The changes for the motor pins was just changing some of the masks used for changing the registers.
+
+For the LED I made a basic library of some boilerplate code; `LEDSetup()`, `LEDOn()`, `LEDBlink()`, etc. The most 
+challenging aspect of this library was making a set of functions to allow for non-blocking blinking functionality. This was 
+accomplished using one function (`setNonBlockingBlink`) that sets some global variables to the number of blinks desired and 
+the period, then another (`nonBlockingLEDBlink`) that is called with each iteration of the main loop that checks these 
+global variables and operates the LED.
+
+```
+void nonBlockingLEDBlink() {
+
+  // Check if we are even blinking
+  if (nonBlockTogglesLeft > 0) {
+
+    // See if we have passed a point to blink
+    if (nonBlockToggleTime < millis()) {
+
+      LEDToggle();
+      nonBlockToggleTime = millis() + nonBlockTogglePeriod;
+      nonBlockTogglesLeft--;
+
+      if (nonBlockTogglesLeft == 0) LEDOn(); // Turn on LED at finish
+    }
+  }
+}
+
+void setNonBlockingBlink (unsigned int period, unsigned int count) {
+  LEDOff(); // Start with LED off
+
+  nonBlockTogglesLeft = (count * 2) - 1; 	// Two toggles per count, exclude staring one
+  nonBlockTogglePeriod = period;
+
+  nonBlockToggleTime = millis() + period; // Record next toggle time
+}
+```
+
+With functionality matched with V4, I got cracking on implementing new features that I didn't get to with V4.
+
+## Development and Testing
+
+
 
 ## Outcomes
 
-Nothing really yet.
+I have what I believe to be the foundation of a proper, working ESC's firmware and hardware design. I feel that I will soon 
+reach the end of this project with one more revision to address my main issues:
+
+1. Hardware revision to reduce the prevalence of transients, and to better handle them when they arise.
+2. Improve the spin-up routine to better handle high power motors. Likely with some basic current monitoring.
+
+It's a shame I lost my initial test motor, but I will not let its loss be in vain!
