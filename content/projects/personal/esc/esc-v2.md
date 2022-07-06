@@ -348,9 +348,7 @@ I managed to achieve all the baseline supporting features I needed and they pass
 motor buzzing. I eventually got the motor to spin up and then sustain rotation at full speed for extended period of time. 
 Below I have a video of the ESC spinning up a motor and having it run for 10 seconds.
 
-<div class="youtube">
-<iframe class="youtube" src="https://www.youtube.com/embed/1bNdviOC-_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+{{< youtube id="1bNdviOC-_0" title="ESC V2 Spin Up" >}}
 
 ## *... Well Kinda*
 
