@@ -4,7 +4,7 @@ date: 2020-08-16T01:03:06-05:00
 draft: false
 started: "August 2020"
 finished: "September 2020"
-status: "Complete, Never Assembled"
+status: "Completed design, never assembled"
 client:
 tags: [ESC, embedded, BLDC, drone]
 skills: [embedded, KiCAD, BLDC]

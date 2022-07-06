@@ -4,7 +4,7 @@ date: 2020-09-15T02:16:24-05:00
 draft: false
 started: "September 2020"
 finished: "August 2021"
-status: "Testing, on Pause"
+status: "Revised. Ran out of parts for testing."
 client:
 tags: [ESC, embedded, BLDC, drone]
 skills: [embedded, KiCAD, BLDC]

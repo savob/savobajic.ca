@@ -1,10 +1,10 @@
 ---
 title: "ESC V5"
 date: 2021-08-20T01:46:25-05:00
-draft: flase
+draft: false
 started: "August 2021"
-finished:
-status: "Designed, waiting for boards to arrive"
+finished: "April 2022"
+status: "Complete. Revision needed."
 client:
 tags: [ESC, embedded, BLDC, drone]
 skills: [embedded, KiCAD, BLDC]
@@ -213,7 +213,10 @@ void buzz(int periodMicros, int durationMillis) {
 
 With buzzing sorted, I could get into the meat of the ESC, actually spinning a motor. 
 
-
+Since BEMF is proportional to the rotational speed of the motor, there is none available for feedback when the motor is 
+started. For this reason the motor needs to be spun up using a different control scheme than what is used to maintain 
+rotation. The method I have used since V2 is an open-loop approach where I manually commute the motor using a gradually 
+decreasing period between steps until I hand it off to the zero-crossing system for usual operation.
 
 
 
@@ -258,6 +261,7 @@ the stall currents would exceed 100A at 12V.
 ## Motor Issues
 
 This jump in power draw quickly led to issues, for both hardware and software to contend with.
+
 
 
 
