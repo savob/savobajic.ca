@@ -418,21 +418,73 @@ cut short though.
 
 <figure>
 <img src="/images/esc-v5-out-of-sync-no-probe.png">
-<figcaption>The out of sync voltages for the outputs, probe removed.</figcaption>
+<figcaption>The out of sync voltages for the outputs, probe removed from zero point signal.</figcaption>
 </figure>
 
+Once again I suspected some foul play from the interrupts, likely due to some transients I wasn't simulating with my 
+triangle wave. In a real motor there is inductive kickback whenever a phase is changed. When disconnecting a phase from 
+either high or ground, there is a short period where the voltage on the phase shoots up to the opposite extreme as the 
+current through that phase decays.
+
+> **Note: For the next two figures the legend for the different signals/waves is:**  
+> *Wave 1 (yellow) - Phase A output voltage*  
+> *Wave 2 (cyan) - Periodic interrupt output (toggles on execution)*  
+> *Wave 3 (purple) - Comutation interrupt output (toggles on execution)*  
+> *Wave 4 (blue) - Analog comparator output*  
 
 
+<figure>
+<img src="/images/esc-v5-non-sync.png">
+<figcaption>Breakdown of the different interrupts present</figcaption>
+</figure>
 
+As one can see in the figure above, the period measurement interrupt is working fine, however it is the commutation 
+interrupt that is misbehaving. It appears that on the downward slopes the analog comparator detects the transient and this 
+triggers it to count down to commutation. The debouncing on the period measurements prevents this issue for it.
 
+To deal with this issue I used a roundabout method. Given the nature of the single shot (delayed interrupt) used for 
+commutation I was unable to implement debouncing or some other check before the timer starts counting to triggering an 
+interrupt. Instead what I did was that I have the period measuring interrupt reset the counter for the commutation when run 
+(in addition to setting the end mark for the counter). In addition to this, I have the commutation interrupt set its limit 
+to the max at the end of itself so that should it be accidentally triggered, the period measuring interrupt has the most 
+time it can have to set the commutation countdown to run properly if triggered early due to transients.
 
+The results of these minor tweaks (*only two lines of code!*) had immediate results. Even with PWM modulation the system 
+worked much better.
 
+<figure>
+<img src="/images/esc-v5-sync-partial-power.png">
+<figcaption>Waveforms at partial power with improved down slopes</figcaption>
+</figure>
 
+At full power one can basically see the voltage on phase A resemble a textbook example of an ideal BLDC voltage waveform! In 
+it the aforementioned transients are pretty clear to see as well.
 
+<figure>
+<img src="/images/esc-v5-sync-full-power.png">
+<figcaption>Phase A running at full power</figcaption>
+</figure>
 
+### Motor Success
 
+**At this point I could confidently say I had the foundation of a successful BLDC BEMF ESC!** Granted my operating speeds 
+were between ~30% and 100% PWM duty, this could probably be extended with better filtering in the BEMF stages.
 
+<figure>
+<img src="/images/esc-v5-working-baseline.png">
+<figcaption>All three phases running at full power, with the zero point voltage shown as well</figcaption>
+</figure>
 
+I recorded a video of the test motor in action! On the oscilloscope the waves match the legend below.
+
+> *Wave 1 (yellow) - Phase A output voltage*  
+> *Wave 2 (cyan) - Periodic interrupt output (toggles on execution)*  
+> *Wave 3 (purple) - Comutation interrupt output (toggles on execution)*  
+> *Wave 4 (blue) - Analog comparator output*  
+
+{{< youtube id="_z7sPCtYBoc" title="ESC V5 Spinning Test Motor at Full Power" >}}
+
+*Unfortunately I did not record a video of it with a decreased duty cycle, but it worked within the range stated above.*
 
 ### Verifying Communication Features
 
