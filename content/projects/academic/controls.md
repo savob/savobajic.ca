@@ -56,22 +56,14 @@ In our project we were only considering the motion to be along a single axis, al
 incorporated into the system. The crane system consists of a trolley, rope, and payload. These are shown modelled in the 
 figure below, where:
 
-> *m<sub>t</sub>* – mass of the trolley
-> 
-> *m<sub>l</sub>* – mass of the load
-> 
-> *x<sub>t</sub>* – horizontal displacement of the trolley
-> 
-> *x<sub>l</sub>* – horizontal displacement of the load
-> 
-> *φ* – angular displacement of the rope
-> 
-> *L* – length of the rope
-> 
-> *b<sub>t</sub>* – coefficient of friction between the trolley and the rail
-> 
-> *b<sub>l</sub>* – coefficient of friction on the load (caused by pivot joint friction and air friction)
-> 
+> *m<sub>t</sub>* – mass of the trolley  
+> *m<sub>l</sub>* – mass of the load  
+> *x<sub>t</sub>* – horizontal displacement of the trolley  
+> *x<sub>l</sub>* – horizontal displacement of the load  
+> *φ* – angular displacement of the rope  
+> *L* – length of the rope  
+> *b<sub>t</sub>* – coefficient of friction between the trolley and the rail  
+> *b<sub>l</sub>* – coefficient of friction on the load (caused by pivot joint friction and air friction)  
 > *F* – force applied to the trolley
 
 <figure>
