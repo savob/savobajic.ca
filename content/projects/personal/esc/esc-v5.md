@@ -44,7 +44,7 @@ getting the motors to work.
 
 ## Circuit Design
 
-Circuit design is basically the same as [V4](../esc-v4/#circuit-design) with only a few minor changes.
+Circuit design is basically the same as [V4]({{<ref "projects/personal/esc/esc-v4#circuit-design" >}}) with only a few minor changes.
 
 - Replaced the FAN7388/FAN7888 MOSFET driver with the IRS2334S
 - Removed the unnecessary resistor on the UDPI line (R2 in V4's schematic)
@@ -92,11 +92,31 @@ I received the components and boards I needed, and started the assembly at the s
 pretty nicely. Unfortunately I didn't think to take any nice photographs of it before I started to solder on the regulator 
 I made for the drone, and then the bank of capacitors to try and handle the transients.
 
-*So really, pictures are to come sometime in the future once I desolder these additions!*
+<figure>
+<img src="/images/esc-v5-initial-with-reg.jpg">
+<figcaption>The earliest decent photo I remembered to take, with the 5V regulator board attached already</figcaption>
+</figure>
 
-Honestly speaking though, it intentionally has the same appearance and layout of V4 as explained in layout. The only real 
-difference in the appearance of V5 from V4 is that I ordered it in a white solder mask with black silkscreen scheme, whereas 
-V4 was red and white respectively.
+I took these photos after doing all my modifications, testing, and removing the capacitor banks so there is visible proof 
+of these changes with the burn/flux marks on the boards. On the front the only real rework was adding/removing motor leads 
+and capacitors.
+
+<figure>
+<img src="/images/esc-v5-assembled-front.jpg">
+<figcaption>The almost bare front of the assembled ESC V5</figcaption>
+</figure>
+
+On the bottom face of the board there was more rework, related to the modifications done to the BEMF feedback network. There 
+is also a wire lead attached to RN3 along the top, which was used to probe the virtual zero of the motor.
+
+<figure>
+<img src="/images/esc-v5-assembled-back.jpg">
+<figcaption>The almost bare bottom of the boards.</figcaption>
+</figure>
+
+Honestly speaking, the only real difference in the appearance of V5 from V4 is that I ordered it in a white solder mask with 
+black silkscreen scheme, whereas V4 was red and white respectively. As explained in the 
+[layout]({{<ref "projects/personal/esc/esc-v5#layout">}}) section, the layout was intentional kept identical to V4.
 
 ## Porting Code from V4
 
@@ -557,26 +577,122 @@ rotate at about 22800&nbsp;RPM (380&nbsp;Hz, commutated at a rate of 4560&nbsp;H
 ~220&nbsp;us) at full power! In addition to this massive speed, the winding resistance was only about 70&nbsp;mΩ so the 
 stall currents would exceed 100&nbsp;A at 12&nbsp;V.
 
+With nothing else to really develop implement on the ESC (at least given the hardware available) I soldered the normal motor 
+in place of my test motor and got cracking on these power tests, hoping for the best.
+
+My plan for the power tests was similar to the tests I did to develop the code:
+
+1. Buzzing
+2. Spin up
+3. Spinning at full power
+4. Spinning at a lower power level using PWM
+
 ## Motor Issues
 
 This jump in power draw quickly led to issues, for both hardware and software to contend with.
 
+The most immediately visible one was the significantly increased power draw causing brownouts of the system when buzzing. 
+These brown-outs caused me to lose two ATtiny1617s, probably due to their supply voltage dropping below the voltage on some 
+of their pins (due to capacitors, likely in the BEMF feedback network). 
 
+I soldered on some more capacitors to the supply rails, raising the capacitance to 660&nbsp;uF as I saw in other reference 
+designs for ESCs. However given the non-ideal sourcing of my capacitors and their long leads, I'm fairly certain that the 
+non-idealities are piling on, inhibiting proper filtering. To counter this I tried adding more capacitors of different 
+values to try and cover a wider range of frequencies better.
 
+<figure>
+<img src="/images/esc-v5-capacitors.jpg">
+<figcaption>Look at all those happy capacitors hanging out</figcaption>
+</figure>
 
+In addition to the capacitors on the power supply, I increased the factor of division used in the BEMF feedback network. I 
+changed RN4 from 33&nbsp;kΩ to 56.2&nbsp;kΩ, changing the division of phase voltage fed into the comparator from a factor of 
+4.3 to 6.62. This will reduce the effects of voltage spike on motor phases so that the phases can reach up to 33&nbsp;V 
+without exceeding the 5V for the ATtiny. This protection does mean that in general the BEMF feedback signals will be harder 
+to distinguish.
 
+<figure>
+<img src="/images/esc-v5-rn4-close-up.png">
+<figcaption>BEMF conditioning section of the schematic highlighting RN4 (still recorded as 33 kΩ)</figcaption>
+</figure>
 
+### Power Buzzing
 
+With these hardware changes in place, it was time to attempt some software solutions, as well as more thorough monitoring of 
+the system. Beginning again with the buzzing code I probed a few points of interest (listed below). The buzzing continued to 
+cause brown-outs, but was no longer damaging the ATtiny.
 
+> **In the next few figures the waves correspond to the following signals:**  
+> *Wave 1 (yellow) - Phase A output voltage*  
+> *Wave 2 (cyan) - 5V supply line*  
+> *Wave 3 (purple) - Current draw (either through phase A or entire system)*  
+> *Wave 4 (blue) - Main supply voltage (nominally 12&nbsp;V or 13.2&nbsp;V)*  
 
+<figure>
+<img src="/images/esc-v5-buzz-no-annotation.png">
+<figcaption>The input and output voltages when attempting to buzz</figcaption>
+</figure>
 
+Looking at this we can see that the supply voltage linearly decreases with time once the buzz is started, down to about 
+11&nbsp;V which is roughly about when the under-voltage lockout is triggered on the MOSFET driver chip, disabling itself.
+This first slope takes about 25&nbsp;us, followed by a sudden rise in voltage on the supply as the current is cut to the 
+phase for a fraction of microsecond, before the phase is re-enabled for a bit under 2&nbsp;us until the MOSFET driver 
+seems to shut off prematurely again. **A normal buzz energization period is 50&nbsp;us, this is only roughly 30&nbsp;us** 
+until the system restarts.
 
+<figure>
+<img src="/images/esc-v5-buzz-first-slope.png">
+<figcaption>First slope annotated</figcaption>
+</figure>
 
+<figure>
+<img src="/images/esc-v5-buzz-second-slope.png">
+<figcaption>Second slope annotated</figcaption>
+</figure>
 
+To try and get a better idea of what was going on, I added a probe on the 5&nbsp;V supply for the ATtiny to see if it was 
+victim to some noise, and then a current probe for the current going into phase A.
 
+<figure>
+<img src="/images/esc-v5-buzz-with-current-and-5v.png">
+<figcaption>Addition of probes on the 5 V supply and current into phase A</figcaption>
+</figure>
 
+In this it is clear that the current draw is immense, reaching **over *40*&nbsp;A** before the brown-out occurs. I don't 
+have a comparison to make to my testing motor, but this is probably an order of magnitude higher of an inrush current. 
 
+My solution to get buzzing working was a little less elegant than what I probably need, but it worked. *I just reduced the 
+duration the phase was held high only 15&nbsp;us!* This avoided drawing enough power to cause brown-outs, and since this 
+motor is more powerful than the test one, even with this reduced period the buzzing is louder than before! There is also 
+less noise around switching due to the reduced energy levels, with the peak current being under 30&nbsp;A.
 
+<figure>
+<img src="/images/esc-v5-buzz-shortened.png">
+<figcaption>Shortened buzz driving period</figcaption>
+</figure>
+
+### Power Spin Up
+
+With my experience getting buzzing to work, I know that I would need to reconsider my approach to how I spun up the motor. 
+A 30&nbsp;us pulse at full power was enough to brown-out the system, there was no way I was going to be able to hold a 
+phase fully energized for several milliseconds like I did for spin up.
+
+This necessitated that I develop an improved **software soft-start** for the motor. My initial approach was to start at a 
+low duty like 15%, and then gradually increase it alongside the stepping frequency as it spun up to some end level like 50%. 
+My initial attempts were moderately successful at getting the motor to start spinning, however they were marred by 
+brown-outs whenever the motor got to step intervals of about 750&nbsp;us regardless of how gradual or sudden the spin up was 
+to that point. 
+
+<figure>
+<img src="/images/esc-v5-power-spin-up.png">
+<figcaption>A look at the PWM moderated spin up of the large motor</figcaption>
+</figure>
+
+Further testing shows that 20% PWM seems to be the upper limit of stability for the system in spin up, otherwise the current 
+draws start to exceed 40&nbsp;A which is the limit of the power supply I am using.
+
+**At this point I feel that both my hardware and software are at their limits.** I likely need to implement another feedback 
+mechanism other than BEMF to improve the spin up. This will likely take the form of a shunt resistor.
 
 ## Potential Solutions
 
@@ -600,3 +716,8 @@ reach the end of this project with one more revision to address my main issues:
 2. Improve the spin-up routine to better handle high power motors. Likely with some basic current monitoring.
 
 It's a shame I lost my initial test motor, but I will not let its loss be in vain!
+
+<figure>
+<img src="/images/esc-test-motor.jpg">
+<figcaption>R.I.P. Test motor one (????-2022)</figcaption>
+</figure>
