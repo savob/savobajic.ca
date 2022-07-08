@@ -126,7 +126,7 @@ that describe it.
 For figures I don't use the normal `![...](...)` markdown format but instead use raw HTML code in the content file so I can 
 use CSS on the image and caption together. For example, the html code for the previous figure on this page is:
 
-```
+```html
 <figure>
 <img src="/images/website-portfolio-clip.png">
 <figcaption>An section from the print portfolio</figcaption>
@@ -138,7 +138,7 @@ this, but then learned about CSS counters which can be used to dynamically numbe
 track of them anymore and can easily reshuffle them as I please. To increment this counter and add the text to each caption 
 I have the following set up in CSS:
 
-```
+```css
 figcaption::before {
   counter-increment: figure;
   content: "Figure " counter(figure) " - ";

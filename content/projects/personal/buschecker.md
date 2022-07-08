@@ -63,7 +63,7 @@ to a given stop, because I found out that the numbers you use to text for predic
 match the number NextBus uses to identify stops in requests. Below is an example of one of the stops 
 along the 52 and the information provided.
 
-```
+```xml
 <stop tag="15003" title="Lawrence Station" lat="43.7252499" lon="-79.40225" stopId="15184"/>
 ```
 
@@ -73,7 +73,7 @@ to use the `"tag"` number, **15003**. Once I went through and recorded all the t
 information needed to make requests for buses and successfully tried it out on my browser. It would return 
 the bus predictions in this format:
 
-```
+```xml
 <predictions agencyTitle="Toronto Transit Commission" routeTitle="52-Lawrence West" routeTag="52" stopTitle="Lawrence Station" stopTag="15003">
 
 <direction title="West - West - 52f Lawrence West towards Royal York">

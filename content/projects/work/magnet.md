@@ -401,7 +401,9 @@ relative magnetic permeabilities of a material. They would be used in the formul
 
 > B = μ0 * (μ' - *i*μ'') * H
 > 
-> *B, ambient magnetic field. μ0, permeability of vacuum. H, the magnetization of the material*
+> *B, ambient magnetic field*  
+> *μ0, permeability of vacuum*  
+> *H, the magnetization of the material*
 
 When ploted on a graph of B vs. H it would result in an ellipse centred on the origin. The magnetic losses per cycle can be found 
 by taking the integral of the ellipse's enclosed area.

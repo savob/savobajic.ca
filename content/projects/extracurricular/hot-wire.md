@@ -152,9 +152,7 @@ Once we had observed the expected motions on all the motors the system was moved
 were mounted to the CNC to see if they would work just as well once loaded. As you can see in the short video below, it was 
 a success!
 
-<div class="youtube">
-<iframe class="youtube" src="https://www.youtube.com/embed/-uG8cDnBC7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+{{< youtube id="-uG8cDnBC7g" title="Hotwire Test Run" >}}
 
 ## Production!
 
@@ -171,6 +169,5 @@ Once removed from the block we get a nice part.
 <img src="/images/hot-wire-cut-foam.jpg">
 <figcaption>The cut airfoil</figcaption>
 </figure>
-
 
 

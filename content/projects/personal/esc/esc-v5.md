@@ -195,7 +195,7 @@ alternating between two steps at the period requested to produce noise.
 
 Below is how the function roughly looks in code.
 
-```
+```cpp
 // Buzzer function.
 void buzz(int periodMicros, int durationMillis) { 
   

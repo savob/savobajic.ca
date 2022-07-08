@@ -391,7 +391,7 @@ the reference images. The overall process was:
 The first steps were to crop the bottom from the image since this was always occupied by the robot's structure and thus 
 useless for image matching purposes. This was done in a single line of code:
 
-```
+```cpp
 img = img(cv::Rect(0,0,640,420)); // Crop out the constant lip of the rover at the bottom
 ```
 
@@ -509,9 +509,7 @@ I even recorded a simulated run of this contest since I was so proud of it. I wo
 possible to make out most of the details. 
 
 
-<div class="youtube">
-<iframe class="youtube" src="https://www.youtube.com/embed/zvNsD12UBn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+{{< youtube id="zvNsD12UBn4" title="Contest Two Simulation" >}}
 
 *Copied from the description of the video:*
 

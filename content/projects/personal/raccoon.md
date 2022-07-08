@@ -77,13 +77,13 @@ in my power reduction efforts. For it I made use of the [TinyTouchLib](https://g
 some hardware non-idealities related to the Analog to Digital Converter to detect changes in capacitance of a line. To use 
 it in code was pretty simple, first there would be a set up called:
 
-```
+```cpp
 tinytouch_init();
 ```
 
 Then in my main code loop I would use the following to light up the eyes when a touch is detected (not a "hold").
 
-```
+```cpp
 if (tinytouch_sense() == tt_push) {
   digitalWrite(eyesPin, HIGH);
   delay(eyesOnTime);
@@ -137,7 +137,7 @@ Using the `avr/power.h` library helped me disable power to peripherals that I wa
 `__power_all_disable();` and ` __power_all_enable();`. I also wrote to some of the power management registers myself where 
 it seemed the the power library didn't have an effect.
 
-```
+```cpp
 // Reduce power use by disabling peripherals
 ACSR |= _BV(ACD); // Disable analog comparator
 DIDR0 = _BV(AIN1D) | _BV(AIN0D); // Disable digital input buffers on analog pins (we don't need digital in)
@@ -161,7 +161,7 @@ microcontroller into sleep mode, I just needed to call `sleep_mode()`, and then 
 Setting up the watchdog only took a few lines, done in the required sequence outlined in the datasheet. The interrupt it 
 triggers is empty as it only serves to pull the ATtiny out of sleep.
 
-```
+```cpp
 MCUSR &= ~_BV(WDRF); // Reset WDT
 
 // Start timed sequence to set

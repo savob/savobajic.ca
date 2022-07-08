@@ -170,8 +170,8 @@ This needed me to set up some code and use registers to configure the timer. I u
 found that timer 0 and 1 were being used for keeping track of time with `millis()` and buzzer functions which I did not want to 
 interfere with.
 
-```
-  // Set timer2 interrupt
+```cpp
+  // Reset timer 2
   TCCR2A = 0;
   TCCR2B = 0;
   TCNT2  = 0;
@@ -180,18 +180,20 @@ interfere with.
   OCR2A = 90; // = (16*10^6) / (1024 * freq) - 1 (must be <256)
   TCCR2A |= (1 << WGM21);   // turn on CTC mode (Clears on timer compare)
 
-  TCCR2B |= (B111 << CS20);   // Set CS20 and CS22 bit for 128 prescaler
-  TIMSK2 |= (1 << OCIE2A); // enable timer compare interrupt
+  TCCR2B |= (B111 << CS20); // Set CS20 and CS22 bit for 128 prescaler
+  TIMSK2 |= (1 << OCIE2A);  // enable timer compare interrupt
 ```
 
 The timer interrupt function itself was a basic `void()` function in essence, but declared as an "Interrupt subroutine", or ISR 
 for short, specifically for the timer 2 compare A event.
 
-```
+```cpp
 ISR(TIMER2_COMPA_vect) { //timer2 interrupt, displays a character on the display
+
 	...
 	*code*
 	...
+
 }
 ```
 
@@ -215,7 +217,7 @@ I reworked my code to make use of registers and an array of lookup tables for ea
 needed to show a specific character's segments (e.g. "A") given the character code in `displayedChar[]`, and the digit, 
 `currentDigit`.
 
-```
+```cpp
 ISR(TIMER2_COMPA_vect) { // Timer2 interrupt, displays a character on the display
   // Display
   // Turn off all digits and segments

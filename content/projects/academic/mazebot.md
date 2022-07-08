@@ -174,7 +174,7 @@ for the sake of simplicity when submitting we used one large script*
 A typical exchange with the rover would appear like this, with us specifying the `commandString` (`s_cmd` and `s_rply` 
 were set when the Bluetooth communication was started):
 
-```
+```matlab
 sendCommand(commandString, s_cmd, s_rply); % Just sending a command string
                                            % No interest in response, used mainly for motion
 

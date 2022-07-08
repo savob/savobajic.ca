@@ -324,7 +324,7 @@ supplied (roughly 3.3V). This conversion would then be compounded by the voltage
 slightly across the three dividers due to manufacturing tolerances. This needed me to calibrate the readings to a known 
 voltage and store them on the chip. My final code for this looked something like:
 
-```
+```cpp
 reading = float(analogRead(FBPin));   // Read ADC
 reading = reading * divFactor;        // Multiply by resistor division factor to get the actual input
 reading = reading / readingToV;       // Divide by constant to convert the ADC steps to actual volts
@@ -344,7 +344,7 @@ voltages were all going to be 3/4 that of what was described there at the same c
 To convert a voltage to a charge level, I would fit the voltage reading to the curve using linear interpolation between a 
 set of key points.
 
-```
+```cpp
 const byte level[] = {100, 99, 90, 70, 40, 30, 20, 17, 14, 9, 0}; // Percentages linked to voltages
 const float voltage[] = {10.2, 10.05, 9.975, 9.9, 9.825, 9.75, 9.675, 9.6, 9.375, 9, 7.5}; // Voltages
 
@@ -376,10 +376,8 @@ Communication with the RPis was handled over a dedicated serial line for each. T
 sending a message to the STM32, and then the STM32 responds accordingly. **The STM32 *never* initiates an exchange!** The 
 structure of the message received by the STM32 followed this format:
 
-> **1 character** - Message type (capital letters are for sending data, lowercase for requesting data)
-> 
-> **1 character** - Data length, ***n*** *(only if the RPi is sending data)*
-> 
+> **1 character** - Message type (capital letters are for sending data, lowercase for requesting data)  
+> **1 character** - Data length, ***n*** *(only if the RPi is sending data)*  
 > ***n* bytes** - Data to STM32 *(if the RPi is sending data)*
 
 If the RPi is requesting data for itself, it will simply send a lowercase letter for that field, e.g. "s" for speed. If it 
@@ -409,7 +407,7 @@ Eta Prime, however I reworked much if it for various reasons. The main reasons f
 To put the camera feed onscreen and have it recorded was actually pretty simple and accomplished in less than a dozen lines 
 of code thanks to the work of the Raspberry Pi Foundation.
 
-```
+```python
 camera = picamera.PiCamera()
 camera.resolution = (self.VIDEO_WIDTH, self.VIDEO_HEIGHT)
 camera.framerate = self.FRAMERATE
@@ -439,7 +437,7 @@ Once I had the system working, I could produce a text overlay pretty simply. I w
 as I wanted and fill them with the text I desired with some basic properties defined. These text boxes were actually drawn 
 on a temporary canvas/image, "img", initially.
 
-```
+```python
 font = ImageFont.truetype("../res/consola.ttf", size)
 draw = ImageDraw.Draw(self.img)
 draw.text(position, text, color, font)
@@ -447,7 +445,7 @@ draw.text(position, text, color, font)
 
 Once I was done drawing all the text I wanted on the canvas I would update the overlay with this canvas simply with:
 
-```
+```python
 self.overlay.update(self.img.tobytes())
 ```
 
@@ -466,7 +464,7 @@ devices I needed to operate!
 I started by starting the network and then connecting to the devices using the USB dongle. Most of this was copied directly 
 from the examples provided with the code.
 
-```
+```python
 from ant.core import driver
 from ant.core.node import Node, Network, ChannelID
 from ant.core.constants import NETWORK_KEY_ANT_PLUS, NETWORK_NUMBER_PUBLIC
@@ -486,14 +484,13 @@ print("Connecting front pedals")
 
 frontHRM.open(frontHRM, ANT_TIMEOUT)
 print("Connecting front HRM")
-
 ```
 
 Working with these examples I looked at how they worked and gained a bit of understanding about Python callbacks since they 
 are an integral part of how this library worked. Eventually I prepared my own, so that when a heart rate or power value was 
 registered, the system would share it immediately with the rest of TITAN.
 
-```
+```python
 # Functions for broadcasting data
 def front_power_data(eventCount, pedalDiff, pedalPowerRatio, cadence, accumPower, instantPower):
     microController.sendData('E', str(instantPower))

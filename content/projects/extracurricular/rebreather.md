@@ -222,7 +222,7 @@ the two lines low, then based on whether or not a segment needed to be on - sett
 the clock line and pushing the data into the registers. This was done for each bit of the displayed character for each of 
 the four displays present.
 
-```
+```cpp {hl_lines=[9]}
 // Output new segments to shift registers
 for (byte displayIndex = 0; displayIndex < numberOfDisplays; displayIndex++) {
   // For each digit output push out segments bit by bit
@@ -249,7 +249,7 @@ for the maximum (100%) reading, then another voltage set by potentiometer for ea
 so ~1V). The function used to get oxygen readings fits the voltage-oxygen line in the form of `y = mx + b` and then uses it 
 to derive what the oxygen value is by rearranging to `x = (y - b) / m`.
 
-```
+```cpp 
 float oxygenRead(byte sensor) {
   // Oxygen value calculations
   // Get analog values
@@ -280,7 +280,7 @@ the following formula, `CO₂ = ppm span * (Th - 2ms) / (Th + Tl - 4ms)`, where 
 high or low respectively. The measuring span (`ppm span`) of our model of sensor is 2000ppm. This results in the following 
 interrupt routine for the CO₂ input.
 
-```
+```cpp
 void CO2Interrupt () {
   // Based on time high and low for a PWM cycle, in milliseconds (total period ~1004ms)
 
@@ -410,7 +410,7 @@ My final fix to address this noise issue was to have interrupts disabled before 
 switching wouldn't affect it. After disabling the interrupts I have the system also wait a few microseconds to ensure that 
 any trailing noise from the switching disappears.
 
-```
+```cpp {hl_lines=["1-2", 7]}
 noInterrupts();
 delayMicroseconds(10); // A bit for noise to dissappear
 

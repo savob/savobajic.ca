@@ -119,7 +119,7 @@ to subsribe or write to. **A single module can tune into *only one channel*, on 
 but can listen to multiple**. However, they can only be acting as either a "listener" or "sender" at a time. So in my system 
 I set one Nano to run as a receiver and the other as the sender on a shared pipe with the following code.
 
-```
+```cpp
 radio.begin();
 
 radio.setChannel(100);            // Radio channel frequency used
@@ -139,7 +139,7 @@ else {
 In addition to the code configuring the roles of each circuit/module, there was also some configuration of the radio 
 hardware that needed to be done, such as output strength and bandwidth. This was the same for both ends.
 
-```
+```cpp
 radio.setPALevel(RF24_PA_MIN);   // Low power, raise if a decoupling capacitor is added
 radio.setDataRate(RF24_250KBPS);
 radio.setRetries(5, 15);         // Smallest time between retries, max no. of retries
@@ -158,7 +158,7 @@ these are automatically generated and devoid of any data themselves, however by 
 acknowledgements with their own data so the sender can read a response. This eliminated the need for me to alternate the 
 roles all the time. To get this set up it needed the following code.
 
-```
+```cpp
 radio.setAutoAck(0);            // Ensure auto-acknowledgment is disabled
 radio.enableAckPayload();       // Allow optional ack payloads
 radio.enableDynamicPayloads();  // Let me stuff acknowledgements with my own data
@@ -168,7 +168,7 @@ To send data as an acknowledgement packet, I had to use the `radio.writeAckPaylo
 the target pipe to send the acknowledgement packet on, the message itself (as a C string (null-terminated character array)), 
 and the length of the message in bytes.
 
-```
+```cpp
 radio.writeAckPayload(pipeNumber, outputMessage.c_str(), messageLength;
 ```
 
@@ -232,9 +232,7 @@ I am confident they will hit the mark.
 I have a video of me using the system to test my new C-based Heads Up Display (HUD) for Blueshift. In the video it 
 demonstrates the sending panel but the data is shown on the HUD instead of my dedicated receiving panel.
 
-<div class="youtube">
-<iframe class="youtube" src="https://www.youtube.com/embed/_cpkm76RVns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+{{< youtube id="_cpkm76RVns" title="Telemetry Demo" >}}
 
 *Note: I forgot to mention in the video but the reason the overlay appears undersized is because it is designed to be put 
 over a 720p video feed, which is the resolution used in the vehicle. However for testing the camera was outputting 1080p to 

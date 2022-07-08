@@ -352,6 +352,10 @@ pre {
 }
 pre>code {
   padding: 0; /* Needed to avoid odd indent on first line in multi-line code */
+  
+  /* Inheriting colouring so it doesn't clash with potential syntax highlighting */
+	background-color: inherit; 
+	color: inherit; 
 }
 
 /* Tables */
@@ -366,16 +370,4 @@ td {
   padding: 0 1em;
 }
 
-iframe.youtube {
-  position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-  
-}
 
-div.youtube {
-	position: relative;
-  padding-bottom: 56.25%; /* 16:9*/ 
-}

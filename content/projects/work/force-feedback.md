@@ -167,6 +167,5 @@ programming with examples.
 Below is a video demo of the upgraded kneeload tester, I included a breakdown of the video as part of its description on YouTube 
 so if you are very interested in it I would suggest watching it on their site.
 
-<div class="youtube">
-<iframe class="youtube" src="https://www.youtube.com/embed/6JYOd0CPHgE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+{{< youtube id="6JYOd0CPHgE" title="Kneeload Tester Demo" >}}
+

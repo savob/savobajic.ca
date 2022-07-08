@@ -489,9 +489,7 @@ like it was data flowing between microcontroller/processors on TITAN and Blueshi
 
 I have a video of me using the system to test my C-based overlay by feeding the system data wirelessly from my laptop.
 
-<div class="youtube">
-<iframe class="youtube" src="https://www.youtube.com/embed/_cpkm76RVns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+{{< youtube id="_cpkm76RVns" title="Blueshift Overlay Demo" >}}
 
 *Note: I forgot to mention in the video but the reason the overlay appears undersized is because it is designed to be put 
 over a 720p video feed, which is the resolution used in the vehicle. However for testing the camera was outputting 1080p to 
