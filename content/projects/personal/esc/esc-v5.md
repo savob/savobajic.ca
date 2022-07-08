@@ -134,7 +134,7 @@ accomplished using one function (`setNonBlockingBlink`) that sets some global va
 the period, then another (`nonBlockingLEDBlink`) that is called with each iteration of the main loop that checks these 
 global variables and operates the LED.
 
-```
+```cpp
 void nonBlockingLEDBlink() {
 
   // Check if we are even blinking
