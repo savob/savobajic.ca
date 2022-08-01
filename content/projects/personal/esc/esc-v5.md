@@ -15,10 +15,11 @@ thumbnail: "/images/esc-v5-assembled-front.jpg"
 
 # Overview
 
-I need a new revision of my ESC to accommodate the replacement MOSFET drivers I was able to source. I will also use this as 
-an opportunity to fix some of the minor inconveniences I face with V4.
+I needed a new revision of my ESC to accommodate the replacement MOSFET drivers I was able to source as my previous one was out of stock for the foreseeable future. I also used this as an opportunity to fix some of the minor inconveniences I faced with V4.
 
-Currently still finalizing the board and hope to order it in the coming weeks.
+This version was successful, I dare say my **first proper working ESC** - even if a bit limited in some aspects (e.g. a high-ish lower limit on speed). The test motor ran perfectly within these limits, ESC and motor remaining in sync as the PWM duty was varied. The system responded to command over both I2C and PWM input. I was confident I was ready for the proper drone motors!
+
+Issues quickly surfaced when I moved up to the larger and more powerful motor. It appears that the transients induced by the increased power were not well handled by my board: causing brownouts at best, and frying chips at worst. This however is a largely hardware problem so I don't foresee much needing to change software wise to address this.
 
 ## Takeaways
 
