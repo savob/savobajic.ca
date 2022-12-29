@@ -310,43 +310,13 @@ Some 3D renders of this board as it should be assembled. *Note: I couldn't find 
 
 ## Assembly
 
+Assembly of the boards proceeded without a hitch. For the main board I had a stencil for paste that helped with the surface mount portion, given the few parts on the daughter board I didn't purchase a stencil for it and just hand soldered those parts.
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-Assembly of the boards was pretty simple thanks to the use of only through-hole components and lots of space between most parts of the board which let me work comfortably.
-
-The main board is obvious in function due to the modules mounted. The GPS had an antenna that came off it for better reception, but I removed it for the photo.
-
-<figure>
-<img src="/images/titan-v1-main-assembled.jpg">
-<figcaption>Assembled board for main display system</figcaption>
-</figure>
-
-For the rear module I did not bother soldering the connectors for the nRF24 modules because I had recognized at this point that I would be unable to get telemetry to work in time for the competition.
-
-<figure>
-<img src="/images/titan-v1-rear-assembled.jpg">
-<figcaption>Assembled board for rear display system</figcaption>
-</figure>
-
-Since I did not solder the nRF24 connectors on the rear board, the only difference between the rear system's board and the spare/redundant one is the positions of SJ1 and SJ2.
-
-<figure>
-<img src="/images/titan-v1-spare-assembled.jpg">
-<figcaption>Assembled board for spare display system</figcaption>
-</figure>
 
 ## Coding
 
