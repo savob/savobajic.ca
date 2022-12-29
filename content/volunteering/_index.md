@@ -6,5 +6,4 @@ draft: false
 
 # Volunteer Experience
 
-These are the positions that I have held without financial compensation that have offered me the opportunity to
-exercise my skills and develop new ones.
+These are the positions that I have held without financial compensation that have offered me the opportunity to exercise my skills and develop new ones.

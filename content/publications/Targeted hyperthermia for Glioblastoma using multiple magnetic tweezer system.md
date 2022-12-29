@@ -11,5 +11,4 @@ resulting from a coil bed I designed iteratively to improve the control and stre
 
 ***NOTE: Currently under preparation***
 
-In this publication my primary contributions were the simulations of the distributed alternating magnetic field using COMSOL Multiphysics
-resulting from a coil bed I designed iteratively to improve the control and strength of the magnetic field for therapy.
+In this publication my primary contributions were the simulations of the distributed alternating magnetic field using COMSOL Multiphysics resulting from a coil bed I designed iteratively to improve the control and strength of the magnetic field for therapy.
