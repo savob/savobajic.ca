@@ -68,7 +68,7 @@ I would like to minimize the amount of scripting needed for my website, ideally 
 
 The design used is inspired (stolen) from a print portfolio of my projects that I prepared at the end of my third year studies, roughly April 2019, with the help of my sister. *(I still need to grab that font!)*
 
-{{< fig src="/images/website-portfolio-clip.png" caption="An section from the print portfolio" >}}
+{{< fig src="/images/website-portfolio-clip.png" caption="A section from the print portfolio" >}}
 
 After many rounds of tweaking of the `.html` templates and my `.css` files, I've arrived at what I can comfortably call my final layout for my site. I may fool around with making a "dark" theme or something else more experimental, but feel that layout of content itself is what I want.
 
@@ -89,7 +89,10 @@ The layout of single pages (any specific content, e.g. a job or project) is pret
 For figures I don't use the normal `![...](...)` markdown format but instead use raw HTML code in the content file so I can use CSS on the image and caption together. For example, the html code for the previous figure on this page is:
 
 ```html
-{{< fig src="/images/website-portfolio-clip.png" caption="An section from the print portfolio" >}}
+<figure>
+<img src="/images/website-portfolio-clip.png">
+<figcaption>A section from the print portfolio</figcaption>
+</figure>
 ```
 
 You can see that I *do not* actually write the figure number (i.e. "Figure 1 - ") for each figure on a page. I originally did this, but then learned about CSS counters which can be used to dynamically number content for you so I don't need to keep track of them anymore and can easily reshuffle them as I please. To increment this counter and add the text to each caption I have the following set up in CSS:
@@ -100,6 +103,24 @@ figcaption::before {
   content: "Figure " counter(figure) " - ";
 }
 ```
+
+### Making a Figure Shortcode!
+
+I use a lot of figures for my website, originally I used the HTML code shown a bit before this. However the annoying thing with using raw HTML in my Markdown files is that it made it hard to change how all my figures looked, needed me to manually add an alt text for each image (I didn't bother) and a couple other minor headaches. Most notably if the image was missing then I wouldn't be warned of an issue! For this reason I developed my own [shortcode](https://gohugo.io/content-management/shortcodes/) for figures based on HUGO's own one.
+
+This shortcode addresses my issues mentioned above, and so now to put a figure into a post I invoke the following line instead of the HTML above. There are other parameters I can pass in such as a title, or attributions and the alt text and caption for the figure are updated to reflect that. 
+
+```go
+{{</* fig src="/images/website-portfolio-clip.png" caption="A section from the print portfolio" */>}}
+```
+
+To rework my files I used the following ugly line of bash script to go through and replace my old HTML with this command. Even so I had to go through and manually work out some cases where quotation marks (") were or there were HTML links (for schematics mostly) used in the captions.
+
+```bash
+find . -type f -name '*.md' -exec sed -Ezi 's/<figure>\n/{{</* fig /g;s/<\/figure>/ */>}}/g;s/<img //g;s/<\/figcaption>\n/"/g;s/<figcaption>/caption="/g;s/" >\n/" /g;s/">\n/" /g' {} +
+```
+
+This bit of code finds all the files in a directory and then executes the `sed` command on them which is responsible for altering them. It goes through and administers a series of small rules that combine to the desired effect: removing the HTML tags, replacing them as needed with the needed shortcode portions, and putting everything on one line.
 
 ### List Pages
 
@@ -159,4 +180,11 @@ All the content for the site is prepared in markdown (`.md`) files within folder
 To prepare one article takes me usually a couple of hours, especially if it is an old project that needs me to sift through my old photos on my phone for something to use. Sometimes I also need to retake photos to make them nicer (generally on clean backgrounds). With some of my really old electronics projects that I did with EAGLE before my student license expired, I also need to import them into KiCad which I use now, and iron out the issues with this conversion process to create the media for them.
 
 Once prepared, I push a commit related to that content up to the GitHub. Once uploaded, Netlify detects the push and rebuilds the site with the new data and begins to host it immediately if there is no issue during build. HUGO is actually able to use the dates of my Git commits to determine the date a file was most recently modified automatically!
+
+### Changing the Internal Formatting of Posts
+
+Originally I wrote all my posts by breaking each line manually somewhere between every 100 and 125 characters. This made it easier to edit on my desktop where I had a large screen, however on my laptop it was awkward to edit such posts. So I have since made the executive decision to go back and remove these artificial line breaks so that I could have my editors wrap the words as I pleased on any device.
+
+
+
 
