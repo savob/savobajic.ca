@@ -98,4 +98,5 @@ Once they were assembled using a lower temperature to solder the 555s, they all 
 
 {{< fig src="/images/ornament-blinking.gif" caption="IT LIVES!" >}}
 
-*Note: I am currently in progress trying to find a picture of one in a tree! Someday soon hopefully.*
+{{< fig src="/images/ornament-in-tree.jpg" caption="Ornaments in a tree, burning bright and killing 9V batteries." >}}
+
