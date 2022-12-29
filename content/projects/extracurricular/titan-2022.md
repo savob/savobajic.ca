@@ -17,10 +17,7 @@ thumbnail: "/images/titan-crew-2022.jpg"
 
 For TITAN, our return entry to the World Human Powered Speed Competition (WHPSC) from 2019 our team needed a video system for the vehicle. This system is vital because it is the **only** way our riders can know what is outside and steer because we do not have windows - primarily to improve our aerodynamic performance. Not only was the system meant to provide a live video feed of the surroundings, but also overlay the video feed with data about the bike's state, namely speed and rider power output.
 
-<figure>
-<img src="/images/titan-crew-2022.jpg">
-<figcaption>TITAN and our crew at WHPSC 2022 (I'm third from the right!)</figcaption>
-</figure>
+{{< fig src="/images/titan-crew-2022.jpg" caption="TITAN and our crew at WHPSC 2022 (I'm third from the right!)" >}}
 
 I had already [attempted a system previously]({{<ref "projects/extracurricular/titan-v1" >}}), but I greatly revised it based on feedback from our riders and my improved understanding of embedded systems.
 
@@ -76,10 +73,7 @@ For our high performance speed bikes we pioneered the use of a video feed in pla
 
 In the place of a window, a camera (in a mast is placed outside the vehicle) and a display inside the vehicle provide the view of the surroundings for the rider(s). On TITAN the mast is the black protrusion right behind the hatch.
 
-<figure>
-<img src="/images/titan-mast.jpg">
-<figcaption>TITAN being tested (with protective jacket) at Downsview Airport</figcaption>
-</figure>
+{{< fig src="/images/titan-mast.jpg" caption="TITAN being tested (with protective jacket) at Downsview Airport" >}}
 
 The vision system is also used to relay information about the vehicle to the riders, like speed, using overlays on top of the video feeds. This makes it trivial for the rider(s) to check how the ride is going since they do not have to greatly shift their focus from the screen to do so.
 
@@ -154,10 +148,7 @@ To broadcast data out of the bike to our chase vehicle, we used nRF24L01 modules
 
 Given that the fairing is largely composed of carbon fibre (which blocks radio waves), telemetry and the GPS both had antennae that were run to the rear of the bike so that the radio waves could escape the fairing through a designated fibreglass portion which permits radio waves. This fibreglass portion is a visually distinct brown next to the black carbon fibre used for the remainder of the fairing.
 
-<figure>
-<img src="/images/titan-at-competition.jpg">
-<figcaption>TITAN and crew at 2019, prior to its paint job with the fibreglass tail section visible</figcaption>
-</figure>
+{{< fig src="/images/titan-at-competition.jpg" caption="TITAN and crew at 2019, prior to its paint job with the fibreglass tail section visible" >}}
 
 ## Circuit Design
 
@@ -165,10 +156,7 @@ Once I settled on the hardware I wanted in the system, or rather what changes I 
 
 I made two revisions for hardware corresponding with my two main periods of work on this, one in fall 2020 and another in the summer of 2022 leading up to competition to iron out some minor issues with the first. Below is the schematic for the first revision.
 
-<figure>
-<img src="/images/titan-2020-schematic.svg">
-<figcaption>The completed schematic for TITAN 2022 (PDF version: <a href="/pdf/titan-2020.pdf">Colour</a> / <a href="/pdf/titan-2020-BW.pdf">BW</a>)</figcaption>
-</figure>
+{{< fig src="/images/titan-2020-schematic.svg" caption="The completed schematic for TITAN 2022 (PDF version: [Colour](/pdf/titan-2020.pdf) / [BW](/pdf/titan-2020-BW.pdf))" >}}
 
 The circuit can be broken into a few main sections:
 
@@ -188,19 +176,13 @@ For the second version I changed a few things from the first, major changes list
 - Added SWD debugging header for STM32
 - Changed the 5V regulator (due to supply issues)
 
-<figure>
-<img src="/images/titan-2022-schematic.svg">
-<figcaption>The completed main schematic for TITAN 2022 (PDF version: <a href="/pdf/titan-2022.pdf">Colour</a> / <a href="/pdf/titan-2022-BW.pdf">BW</a>)</figcaption>
-</figure>
+{{< fig src="/images/titan-2022-schematic.svg" caption="The completed main schematic for TITAN 2022 (PDF version: [Colour](/pdf/titan-2022.pdf) / [BW](/pdf/titan-2022-BW.pdf))" >}}
 
 Overall I am satisfied with the final circuit for TITAN in 2022. **The only hardware issue encountered was that I failed to add enough capacitance to the analog circuitry for the microcontroller so ADC readings used for battery monitoring were too noisy to be used.** This was tolerable though since the batteries were only used for about 20 minutes at a time before recharging but had enough energy when fully charged to run for over 200 minutes.
 
 Below is the schematic used for the daughter board used for the rear wheel to house the IR sensor for brake disk temperature and the IR reflectometer used to track brake spokes as an encoder. It has a simple op-amp circuit used to amplify and convert the reflectometer signal into a digital one for the microcontroller, and headers to connect to the rest of the system.
 
-<figure>
-<img src="/images/titan-wheel-schematic.svg">
-<figcaption>The completed schematic for TITAN 2022's daughter board (PDF version: <a href="/pdf/titan-wheel.pdf">Colour</a> / <a href="/pdf/titan-wheel-BW.pdf">BW</a>)</figcaption>
-</figure>
+{{< fig src="/images/titan-wheel-schematic.svg" caption="The completed schematic for TITAN 2022's daughter board (PDF version: [Colour](/pdf/titan-wheel.pdf) / [BW](/pdf/titan-wheel-BW.pdf))" >}}
 
 The circuit for the daughter board worked as intended once tuned. **The only minor quirk it had was that once the brakes were engaged the IR encoder would fail to accurately monitor rotational speed.** This was due to the brake disks heating up enough that the IR emitted by them overwhelmed the sensor. This could be remedied by using a visible light sensor or a different encoder arrangement altogether. However this wasn't an issue since once the brakes are engaged on TITAN the exact speed is no longer of concern since it has finished its run and the GPS provides a rough speed until the disks cool down.
 
@@ -216,45 +198,27 @@ The HAT standard also has a recommended outline to not extend outside the footpr
 1. I removed the clearance for the display cable on the left edge since we weren't going to use it. HDMI comes out the side of the RPi.
 2. I extended the slot for the camera cable to the lower edge. This would allow the HAT to be seated to or removed from the RPi without needing to fiddle with the camera cabling.
 
-<figure>
-<img src="/images/titan-rpi-basic-hat-board.png">
-<figcaption>The basic HAT template board</figcaption>
-</figure>
+{{< fig src="/images/titan-rpi-basic-hat-board.png" caption="The basic HAT template board" >}}
 
 Here is the overall layout of TITAN for 2022. Although all the board itself does not extend outside the boundaries of the HAT standard, there are a few components that protrude beyond the edges. Namely the GPS and nRF24 modules on the right which were placed there intentionally so that they could rest atop the ports there to support their cantilevered boards. They don't protrude significantly beyond the edges of the RPi itself.
 
 I tried to place the majority of ports around the edges of the boards, and the buttons along the bottom edge to moderate success. There really isn't an obvious flow to any of their placings though which could possibly be improved on.
 
-<figure>
-<img src="/images/titan-2022-layout-overall.png">
-<figcaption>The overall layout of the board</figcaption>
-</figure>
+{{< fig src="/images/titan-2022-layout-overall.png" caption="The overall layout of the board" >}}
 
 All the hardware other than the header for the RPi resides on the top side of the board. The microcontroller is seated in the middle with the different parts it connects to placed radially around it. The power regulation and protection circuitry is in the top left quadrant since the 5V pins for the RPi are there so clustering all this there reduces the parasitics present in the power system. Introduced from the previous version, the status LEDs are placed in the centre since I wasn't too sure which side would be easiest to view when mounted in the bike, so here they would be equally visible regardless of board orientation.
 
-<figure>
-<img src="/images/titan-2022-layout-top.png">
-<figcaption>The layout of the top side</figcaption>
-</figure>
+{{< fig src="/images/titan-2022-layout-top.png" caption="The layout of the top side" >}}
 
 The majority of traces are on the top, the bottom was reserved mostly for a 3.3V plane and the odd traces that needed to use the bottom. Since it was devoid of parts I used it to record some of the boards features as well as some basic assembly instructions.
 
-<figure>
-<img src="/images/titan-2022-layout-bottom.png">
-<figcaption>The layout of the bottom side</figcaption>
-</figure>
+{{< fig src="/images/titan-2022-layout-bottom.png" caption="The layout of the bottom side" >}}
 
 Here are renders of this HAT as it should be assembled. *Note: the nRF24 and GPS modules are not modelled in KiCad nor do nice models exist online, so I just have them modelled by the headers they will be seated into.*
 
-<figure>
-<img src="/images/titan-2022-render-top.png">
-<figcaption>The render of the top side of the HATs</figcaption>
-</figure>
+{{< fig src="/images/titan-2022-render-top.png" caption="The render of the top side of the HATs" >}}
 
-<figure>
-<img src="/images/titan-2022-render-bottom.png">
-<figcaption>The render of the bottom side of the HATs</figcaption>
-</figure>
+{{< fig src="/images/titan-2022-render-bottom.png" caption="The render of the bottom side of the HATs" >}}
 
 
 ### Wheel Board Layout
@@ -263,50 +227,29 @@ The layout of the wheel board faced some geometric constraints as it needed to f
 
 I used some of the commentary layers for annotating the dimensions that the board needed to abide by for the sensor locations. This was needed so we would then know where to drill holes in the wheel brackets to mount these boards properly and have the sensor seat nicely into them. 
 
-<figure>
-<img src="/images/titan-wheel-layout-holes.png">
-<figcaption>The overall layout of the board</figcaption>
-</figure>
+{{< fig src="/images/titan-wheel-layout-holes.png" caption="The overall layout of the board" >}}
 
 I then built up the circuit around these and the other dimensions I recorded.
 
-<figure>
-<img src="/images/titan-wheel-layout-overall.png">
-<figcaption>The overall layout of the board with all annotations</figcaption>
-</figure>
+{{< fig src="/images/titan-wheel-layout-overall.png" caption="The overall layout of the board with all annotations" >}}
 
 With just the actual manufactured layers (copper, edges, silk screen, etc.) the layout is compact but not complicated. 
 
-<figure>
-<img src="/images/titan-wheel-layout-overall-circuits.png">
-<figcaption>The overall (manufactured) layout of the board </figcaption>
-</figure>
+{{< fig src="/images/titan-wheel-layout-overall-circuits.png" caption="The overall (manufactured) layout of the board " >}}
 
 Focusing on the top layers I set the test point for a ground connection to be perpendicular to the other three so it would be easier to identify. I included labelling for their purposes on the board to ease the tuning that would be needed later.
 
-<figure>
-<img src="/images/titan-wheel-layout-top.png">
-<figcaption>The layout of the top side</figcaption>
-</figure>
+{{< fig src="/images/titan-wheel-layout-top.png" caption="The layout of the top side" >}}
 
 The bottom served as a 5V plane and had traces for some connections.
 
-<figure>
-<img src="/images/titan-wheel-layout-bottom.png">
-<figcaption>The layout of the bottom side</figcaption>
-</figure>
+{{< fig src="/images/titan-wheel-layout-bottom.png" caption="The layout of the bottom side" >}}
 
 Some 3D renders of this board as it should be assembled. *Note: I couldn't find a 3D model for the IR temperature sensor with four leads included in KiCad so I used one with three.*
 
-<figure>
-<img src="/images/titan-wheel-render-bottom.png">
-<figcaption>The render of the bottom side facing the wheel</figcaption>
-</figure>
+{{< fig src="/images/titan-wheel-render-bottom.png" caption="The render of the bottom side facing the wheel" >}}
 
-<figure>
-<img src="/images/titan-wheel-render-top.png">
-<figcaption>The render of the top side facing out of the wheel well</figcaption>
-</figure>
+{{< fig src="/images/titan-wheel-render-top.png" caption="The render of the top side facing out of the wheel well" >}}
 
 ## Assembly
 
@@ -348,10 +291,7 @@ reading = reading / readingToV;       // Divide by constant to convert the ADC s
 
 Knowing the battery's true voltage wasn't enought to determin the battery level since the voltage of the battery *does not* vary linearly with charge level. Each different battery chemistry has its own characteristic discharge curve. The discharge curve of an LiFePO4 battery I used is described [here](https://www.solacity.com/how-to-keep-lifepo4-lithium-ion-batteries-happy/). Note: the batteries referred to in the article use four (4) cells in series, the ones I was using only had three (3) so my voltages were all going to be 3/4 that of what was described there at the same charge level.
 
-<figure>
-<img src="/images/titan-v1-LiFePO4-discharging.png">
-<figcaption>Discharge curve for a 4S LiFePO4 battery</figcaption>
-</figure>
+{{< fig src="/images/titan-v1-LiFePO4-discharging.png" caption="Discharge curve for a 4S LiFePO4 battery" >}}
 
 To convert a voltage to a charge level, I would fit the voltage reading to the curve using linear interpolation between a set of key points.
 
@@ -505,10 +445,7 @@ Assembling the system into TITAN was not as easy as we had anticipated, but stil
 
 There was significantly more wiring involved in this than either of my previous projects for the team, much of this was necessitated by the cameras and displays not being placed near one another. Luckily most of the wiring was able to be routed within the hollow frame/roll-cage, with the ribbon cables for cameras run along them.
 
-<figure>
-<img src="/images/titan-v1-assembly-in-titan.jpg">
-<figcaption>My teammate working on installing the electronics into the rear end of TITAN</figcaption>
-</figure>
+{{< fig src="/images/titan-v1-assembly-in-titan.jpg" caption="My teammate working on installing the electronics into the rear end of TITAN" >}}
 
 Although tedious, routing the cables wasn't the most problematic. We had issues fitting the TITAN boards nicely around the vehicle given their size and the ribbon cable between them and their RPis. Each display entailed three separate, moderately-large boards (RPi, my board, display driver) for a total of nine in TITAN.
 
