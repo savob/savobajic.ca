@@ -86,7 +86,7 @@ In the footer I reassert this is my site, but I think I may look to add theme se
 
 The layout of single pages (any specific content, e.g. a job or project) is pretty basic. Other than inserting the header and footer, all that there is to them is two sections: an intro section and the content. The intro section is what covers the brief meta details of the page at the start such as the title or tags, this is everything between the header and the second horizontal line. Anything below the second horizontal line to the footer is the content taken straight from the `.md` files that describe it.
 
-For figures I don't use the normal `![...](...)` markdown format but instead use raw HTML code in the content file so I can use CSS on the image and caption together. For example, the html code for the previous figure on this page is:
+For figures I don't use the normal `![Random image description text](/path/to/image.png)` markdown format but instead use raw HTML code in the content file so I can use CSS on the image and caption together. For example, the html code for the previous figure on this page is:
 
 ```html
 <figure>
