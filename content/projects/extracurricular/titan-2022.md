@@ -253,17 +253,95 @@ Some 3D renders of this board as it should be assembled. *Note: I couldn't find 
 
 ## Assembly
 
-Assembly of the boards proceeded without a hitch. For the main board I had a stencil for paste that helped with the surface mount portion, given the few parts on the daughter board I didn't purchase a stencil for it and just hand soldered those parts.
+Assembly of the boards proceeded without a hitch. Some small changes were made to boards regarding the headers since the team got a 0.100" pitch JST header kit which was used for most interconnects instead of the originally intended 0.100" pitch pin headers since they had builtin locking and orientation ensuring features.
 
+### Main Boards
 
+I assembled three of the main boards: two complete boards to have a spare handy, and one without a microcontroller for the rear rider system. I had a stencil for paste that helped with the surface mount portion.
 
+{{< fig src="/images/titan-main-boards.jpg" caption="Two fully assembled main boards" >}}
 
+Looking closer at the main board, not all the JST headers could physically fit in the corner for the different sensors because I designed it for pin headers, the CO2 sensor header was mounted offboard on a short cable harness. This had the minor advantage that it allowed me to use the opposite header type to the DHT sensor so that it would be impossible to plug their 3-wire cables into the wrong header, although I did have to pay attention to joint fatigue.
 
+{{< fig src="/images/titan-main-board-close-up.jpg" caption="Close up of an assembled main board" >}}
 
+Since USB wasn't likely going to be used for debugging since I now had the SWD header, I omitted their connectors at initial assembly. (These were never added later.)
+
+### Wheel Board
+
+Given the few parts on the daughter board I didn't purchase a stencil for it and just hand soldered all the parts in place. Although these original photos show the cable harness soldered directly to the board, I eventually replaced that with a JST header to minimize the strain on the wires and allow the board to be easily replaced as needed.
+
+{{< fig src="/images/titan-wheel-board-front.jpg" caption="Front face of the wheel board" >}}
+
+{{< fig src="/images/titan-wheel-board-back.jpg" caption="Back (sensor) side of the wheel board" >}}
+
+Although I originally designed the wheel board to have a pass through connection for the front thermal sensor, I decided to minimize the length of wire run through TITAN that I would instead use the cable harness to fork the required connections. I prepared a basic USB header to use as a quick connect for the front thermometer since it needed four wires, which I puttied with hot glue to prevent wire fatigue at the joints.
+
+{{< fig src="/images/titan-wheel-board-harness.jpg" caption="Completed wheel board with cable harness" >}}
+
+### Assembly into TITAN
+
+Putting the electronics in TITAN took place at the end of August 2022 in the days prior to our initial test runs at Downsview Airport, which themselves were only a couple of weeks prior to WHPSC 2022. 
+
+#### Rewiring
+
+Although the structure was the exact same as it was in 2019, I redid all the wiring with the help of some teammates. This was done so that all the wires would be routed inside the frame (they were taped to the inner surfaces in 2019) as well as to add wiring for the new sensors and improve the existing connection (namely for power). Running wires inside the frame protected them from wear from riders in addition to making the system sleeker.
+
+{{< fig src="/images/titan-mid-assembly.jpg" caption="TITAN mid assembly of the electronics systems" >}}
+
+To run wires through the frame a steel washer was tied to a piece of string and a magnet was used to pull the washer along the desired path. Then wires would be tied to the string and pulled back through. In the picture above there is excess wire visible at many of the ports in the frame (front, top, rear) that were later shortened or tucked back into the frame. 
+
+While rewiring the entire bike I decided to reposition the front display system electronics to be in the rear. In 2019 the TITAN board, RPi, and display driver board were all nested behind the front screen. This was far from ideal since it needed many wires to be run to front including the ribbon cable for the front camera which was susceptible to noise along the ribbon cable and poor intermediate connections. Moving the RPi and TITAN board to the rear meant that only a power connection and HDMI cable needed to be run from the rear to the front, so the data connection between the two RPis and most sensor was shortened including the camera. Furthermore, by placing the majority of electronics at the rear meant they were accessible from the hatch which made them easier to reach for maintenance without needing to remove the whole fairing.
+
+#### Mounting Sensors
+
+Once the majority of wiring was in place we mounted the sensors where needed.
+
+- CO2 sensor was placed near the top, between the riders' heads
+- Digital humidity and temperature sensor was placed near the air intake at the bottom
+- Front wheel brake thermometer had a hole drilled in the front wheel fairing
+- Rear wheel board was mounted inside the wheel bracket
+
+For the front brake temperature sensor cable harness a similar USB connector was prepared to what I did for the wheel harness board. I made sure to repeat the connections that were made then so any off-the-shelf Male-Male USB A cable could connect them.
+
+{{< fig src="/images/titan-temperature-sensor.jpg" caption="Front wheel temperature sensor soldered directly to wire harness" >}}
+
+Mounting the wheel board for the rear wheel was not as easy as expected. Since the board used through hole components and was mounting to metal we needed to add insulation to prevent the terminals shorting through the aluminium. Further spacing material was needed under the board to lift it since it was discovered that the IR reflectometer used as an optical encoder was making contact with the brake disk and actually getting damaged. In the end a popsicle stick under the board was used as our "precision" isolating spacer.
+
+{{< fig src="/images/titan-wheel-board-placed.jpg" caption="Wheel board nested in rear wheel bracket" >}}
+
+#### Screen Tests
+
+After installing all the sensors and wiring everything up, a basic functionality test was done on the microcontroller to ensure that it was able to communicate with all the sensors in TITAN and the RPi's to validate their connectivity and video output. All connections worked as expected!
+
+The front video system is two separate camera feeds on entirely separate display systems, with absolutely no connection between them. The upper screen is the digital camera system as hinted at by the overlay, the lower is the analog camera system. *Note: for this the analog camera is inside but not properly seated in the mast so it is partially obscured. This was remedied later prior to WHPSC.*
+
+{{< fig src="/images/titan-front-system.jpg" caption="Front TITAN video system operating" >}}
+
+The rear system is only one screen with a front-facing digital camera system. For testing I used lose hanging cameras as shown in front of the screen in the picture below instead of the ones in the mast. Slightly visible behind the screen is the electronics as I was doing initial placementrs.
+
+{{< fig src="/images/titan-rear-system.jpg" caption="Rear TITAN video system operating" >}}
 
 ## Coding
 
-There were two sets of code needed for TITAN. One set of code for the microcontroller primarily written in C++ using the Arduino IDE and another set to run on the RPis written in Python.
+Coding TITAN was a bit different to my other projects for HPVDT.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Microcontroller Firmware
 
@@ -439,17 +517,7 @@ Testing the code for these was some fun. To test the heart rate monitor I wore i
 
 I initially wanted to get some telemetry working with the nRF24 modules I found, I even had some radio libraries ready, however I didn't have the time to properly develop or test any code related to this so it was never implemented.
 
-## Assembly into TITAN
 
-Assembling the system into TITAN was not as easy as we had anticipated, but still successful.
-
-There was significantly more wiring involved in this than either of my previous projects for the team, much of this was necessitated by the cameras and displays not being placed near one another. Luckily most of the wiring was able to be routed within the hollow frame/roll-cage, with the ribbon cables for cameras run along them.
-
-{{< fig src="/images/titan-v1-assembly-in-titan.jpg" caption="My teammate working on installing the electronics into the rear end of TITAN" >}}
-
-Although tedious, routing the cables wasn't the most problematic. We had issues fitting the TITAN boards nicely around the vehicle given their size and the ribbon cable between them and their RPis. Each display entailed three separate, moderately-large boards (RPi, my board, display driver) for a total of nine in TITAN.
-
-My teammate and I had some issues setting up the optical encoder on the rear wheel. Initially we wanted to use a laser based encoder that would be interrupted by the passing spokes of the brake disk. However after some testing it was found that the laser would inevitably lose its alignment with the optical sensor. Our solution was to replace the laser with a red LED since the LED's light was much less directional than the laser and thus could tolerate more misalignment.
 
 ## Outcome
 
