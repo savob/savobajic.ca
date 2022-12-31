@@ -77,7 +77,7 @@ In the place of a window, a camera (in a mast is placed outside the vehicle) and
 
 The vision system is also used to relay information about the vehicle to the riders, like speed, using overlays on top of the video feeds. This makes it trivial for the rider(s) to check how the ride is going since they do not have to greatly shift their focus from the screen to do so.
 
-## Overall System Design
+# Overall System Design
 
 My system scope design didn't change massively from my previous design. 
 
@@ -89,19 +89,19 @@ In the end the basic block diagram was drawn up to be the following. My choices 
 
 [DIAGRAM LAYOUT]
 
-### Raspberry Pis and Pi Cams
+## Raspberry Pis and Pi Cams
 
 We used Raspberry Pi 3B+'s and Raspberry Pi camera modules for the digital camera systems. As mentioned before, in addition to outputting high resolution and frame rate video (720p at 60 frames per second) the RPis serve to overlay data on top of the video stream as well as recording the video stream for later review.
 
 I kept using these since they were easy to use, I already had some code prepared for them, and most importantly - between 2020 and 2022 we had them on hand during supply shortages of just about any electronics.
 
-### Displays
+## Displays
 
 I reused the displays used previously on TITAN since they all still met the required resolution and frame rate requirements we needed. In addition to them all accepting HDMI, they also accept analog video input so changing the redundant front screen to run off analog video did not require a new hardware (other than the camera). 
 
 These displays are some standard 5" (for the backup) and 7" brandless LCD panels with loose driver boards available from vendors on sites like AliExpress (the vendor which we purchased ours from appears to have closed up shop). We use these since they provide us the flexibility to design our own housings for them which is vital in the constrained space of TITAN.
 
-### Microcontroller
+## Microcontroller
 
 The microcontroller's purpose is to collect data (especially real time) and distribute data about TITAN as needed. I elected to continue to use the STM32F103C8B in TITAN from the previous version. My reasons for this are:
 
@@ -114,7 +114,7 @@ The microcontroller's purpose is to collect data (especially real time) and dist
 3. Plenty of reference projects online
 4. Has a designated debugging/programming interface
 
-### Sensors
+## Sensors
 
 There was a lot of types of data collected on TITAN, I'll be listing the hardware I used and what data it gathered. They all connect to the STM32 with the exception of the ANT+ module which is connected to an RPi since it needs a USB connection.
 
@@ -142,7 +142,7 @@ From the previous version of TITAN, these sensors were added:
    - Brake disk temperatures for front and rear
 - CO2 Sensor
 
-### Telemetry
+## Telemetry
 
 To broadcast data out of the bike to our chase vehicle, we used nRF24L01 modules. I had intended to use these back in 2019 but never got around to working them into the system before the competition. Since then I had done some work specifically on [this]({{<ref "projects/extracurricular/telemetry" >}}) so I now was ready to properly incorporate them into TITAN, the difference from before hardware-wise being that the module would be interfaced with the microcontroller instead of an RPi. This was done to simplify coding for the RPis as well as ideally making the system more responsive.
 
@@ -150,7 +150,7 @@ Given that the fairing is largely composed of carbon fibre (which blocks radio w
 
 {{< fig src="/images/titan-at-competition.jpg" caption="TITAN and crew at 2019, prior to its paint job with the fibreglass tail section visible" >}}
 
-## Circuit Design
+# Circuit Design
 
 Once I settled on the hardware I wanted in the system, or rather what changes I wanted from TITAN, I got going on designing the circuit.
 
@@ -166,7 +166,7 @@ The circuit can be broken into a few main sections:
 
 Most of these are based off reference designs for the respective section (e.g. the regulator chip), so there wasn't too much for me to do other than designating the connections between these. The areas where I did design some circuitry of my own were the power protection stages before the 5V regulator and the comparator for the analog input.
 
-### Revised Circuits
+## Revised Circuits
 
 For the second version I changed a few things from the first, major changes listed below. It however largely remains the same.
 
@@ -186,11 +186,11 @@ Below is the schematic used for the daughter board used for the rear wheel to ho
 
 The circuit for the daughter board worked as intended once tuned. **The only minor quirk it had was that once the brakes were engaged the IR encoder would fail to accurately monitor rotational speed.** This was due to the brake disks heating up enough that the IR emitted by them overwhelmed the sensor. This could be remedied by using a visible light sensor or a different encoder arrangement altogether. However this wasn't an issue since once the brakes are engaged on TITAN the exact speed is no longer of concern since it has finished its run and the GPS provides a rough speed until the disks cool down.
 
-## Board Layout
+# Board Layout
 
 There were two boards made, the main boards that were put on the RPis as HATs (more on that later) and the daughter boards for the wheel sensors.
 
-### Main Board Layout
+## Main Board Layout
 
 The board layout underwent a much more intense change from the previous version than the circuitry. Whereas the previous board was meant to sit completely separate of the RPis connected to them by a 40 wire ribbon cable, the new boards were meant to be mounted using the RPi Hardware on Top (HAT) standard. This eliminated the need for the ribbon cable by putting the TITAN board directly on top of the RPi with a 40-pin header which also reduced the overall footprint of the system by having the board overlap the RPi. This was first attempted with [Blueshift]({{<ref "projects/extracurricular/blueshift#layout" >}}) to reduce system size as well as reducing the chance of incorrect connection.
 
@@ -221,7 +221,7 @@ Here are renders of this HAT as it should be assembled. *Note: the nRF24 and GPS
 {{< fig src="/images/titan-2022-render-bottom.png" caption="The render of the bottom side of the HATs" >}}
 
 
-### Wheel Board Layout
+## Wheel Board Layout
 
 The layout of the wheel board faced some geometric constraints as it needed to fit inside a pocket in the wheel bracket responsible for holding the rear wheel in place. It needed to be low profile so it would avoid collisions because the rider's feet would pass right by it as they pedalled, and reasonably hardy should it be struck.
 
@@ -251,11 +251,11 @@ Some 3D renders of this board as it should be assembled. *Note: I couldn't find 
 
 {{< fig src="/images/titan-wheel-render-top.png" caption="The render of the top side facing out of the wheel well" >}}
 
-## Assembly
+# Assembly
 
 Assembly of the boards proceeded without a hitch. Some small changes were made to boards regarding the headers since the team got a 0.100" pitch JST header kit which was used for most interconnects instead of the originally intended 0.100" pitch pin headers since they had builtin locking and orientation ensuring features.
 
-### Main Boards
+## Main Boards
 
 I assembled three of the main boards: two complete boards to have a spare handy, and one without a microcontroller for the rear rider system. I had a stencil for paste that helped with the surface mount portion.
 
@@ -267,7 +267,7 @@ Looking closer at the main board, not all the JST headers could physically fit i
 
 Since USB wasn't likely going to be used for debugging since I now had the SWD header, I omitted their connectors at initial assembly. (These were never added later.)
 
-### Wheel Board
+## Wheel Board
 
 Given the few parts on the daughter board I didn't purchase a stencil for it and just hand soldered all the parts in place. Although these original photos show the cable harness soldered directly to the board, I eventually replaced that with a JST header to minimize the strain on the wires and allow the board to be easily replaced as needed.
 
@@ -279,11 +279,15 @@ Although I originally designed the wheel board to have a pass through connection
 
 {{< fig src="/images/titan-wheel-board-harness.jpg" caption="Completed wheel board with cable harness" >}}
 
-### Assembly into TITAN
+## Analog Power
+
+Although not mentioned as part of the design, the entire analog system (camera and display) are both meant to be run off a 12&nbsp;V supply. The batteries we use in TITAN are LiFePO4 batteries with a nominal voltage of 9.9&nbsp;V. Although both parts we verified to operate properly at this nominal voltage, if it dipped to around 9.6&nbsp;V the display would stop working. So to ensure stable operation of the spare screen, a boost regulator was needed to produce the needed 12&nbsp;V from the batteries. So the [Blueshift analog power board]({{< ref "projects/extracurricular/blueshift#analog-system-power" >}}) was assembled and used for this purpose in TITAN since it was designed exactly for this use.
+
+## Assembly into TITAN
 
 Putting the electronics in TITAN took place at the end of August 2022 in the days prior to our initial test runs at Downsview Airport, which themselves were only a couple of weeks prior to WHPSC 2022. 
 
-#### Rewiring
+### Rewiring
 
 Although the structure was the exact same as it was in 2019, I redid all the wiring with the help of some teammates. This was done so that all the wires would be routed inside the frame (they were taped to the inner surfaces in 2019) as well as to add wiring for the new sensors and improve the existing connection (namely for power). Running wires inside the frame protected them from wear from riders in addition to making the system sleeker.
 
@@ -293,7 +297,7 @@ To run wires through the frame a steel washer was tied to a piece of string and 
 
 While rewiring the entire bike I decided to reposition the front display system electronics to be in the rear. In 2019 the TITAN board, RPi, and display driver board were all nested behind the front screen. This was far from ideal since it needed many wires to be run to front including the ribbon cable for the front camera which was susceptible to noise along the ribbon cable and poor intermediate connections. Moving the RPi and TITAN board to the rear meant that only a power connection and HDMI cable needed to be run from the rear to the front, so the data connection between the two RPis and most sensor was shortened including the camera. Furthermore, by placing the majority of electronics at the rear meant they were accessible from the hatch which made them easier to reach for maintenance without needing to remove the whole fairing.
 
-#### Mounting Sensors
+### Mounting Sensors
 
 Once the majority of wiring was in place we mounted the sensors where needed.
 
@@ -310,7 +314,7 @@ Mounting the wheel board for the rear wheel was not as easy as expected. Since t
 
 {{< fig src="/images/titan-wheel-board-placed.jpg" caption="Wheel board nested in rear wheel bracket" >}}
 
-#### Screen Tests
+### Screen Tests
 
 After installing all the sensors and wiring everything up, a basic functionality test was done on the microcontroller to ensure that it was able to communicate with all the sensors in TITAN and the RPi's to validate their connectivity and video output. All connections worked as expected!
 
@@ -322,106 +326,193 @@ The rear system is only one screen with a front-facing digital camera system. Fo
 
 {{< fig src="/images/titan-rear-system.jpg" caption="Rear TITAN video system operating" >}}
 
-## Coding
+# Coding
 
-Coding TITAN was a bit different to my other projects for HPVDT.
+Coding TITAN was a bit different to my other projects for HPVDT, since it benefited from the long design cycle for the bike as well as iterating on the work of multiple other projects; the first iteration of [itself]({{< ref "projects/extracurricular/titan-v1#coding" >}}), [Blueshift]({{< ref "projects/extracurricular/blueshift#testing" >}}), and the [telemetry project]({{< ref "projects/extracurricular/telemetry" >}}). This greatly sped up development for TITAN in these areas. However there was still much work to be done.
 
+The codebase for TITAN comes in two halves: one set of code for the microcontroller on the main board, the other half being the code running on the RPis. Each half had it's own challenges that needed to be overcome. Each portion of code could be developed largely independently of one another. 
 
+## Microcontroller Firmware
 
+Of the two halves of TITAN's code, the microcontroller code changed the least from 2019 since its purpose was to primarily collect data and most of the sensors were reused. Thanks to the hardware for the 2020 revision of TITAN largely resembling the hardware that went into the final version much of the code for different sensors was validated well before the 2022 hardware was assembled!
 
+As in the previous iteration of TITAN, **the main purpose of the microcontroller is to collect the data from the sensors within TITAN and provide said data when requested.** However, unlike the last version of TITAN it is also responsible for handling the wireless communications. **USB communication/debugging was disabled on TITAN** to reduce the program size to fit on the microcontrollers used.
 
+The microcontroller was coded originally in C/C++ using the Arduino IDE with the needed libraries to program STM32s. As the codebase grew it became unwieldy to continue using the Arduino IDE (version 1.8.13 at the time) so I migrated the code to C++ in PlatformIO. This enabled better code organization and many other creature comforts of modern IDEs, it also had the unexpected but appreciated benefit of using a compiler that made my code smaller!
 
+### Collecting Sensor Data
 
+The microcontroller is the interface for all the sensors on TITAN, so it needs to collect and process the data from all the sources into a useful form for TITAN (e.g. a voltage reading into a battery level). To recap the [sensor selection section](#sensors) the following were used on TITAN, with the last two being additions since 2019.
 
+- **Resistor voltage dividers** to derive battery levels 
+- **Digital Humidity and Temperature (DHT)** (DHT22) to monitor ambient air conditions
+- **Optical Encoder** for wheel-based speed and distance covered
+- **GPS** ([Ultimate GPS Module](https://www.adafruit.com/product/746)) used for GPS speed and distance, precise location isn't important to us 
+- **IR Contactless Thermometers** (MLX90614) for brake disk temperatures (one for each wheel)
+- **CO2 Sensor** (MH-Z19) for internal atmospheric conditions
 
+The STM32 collects the data off these sensors by periodically polling them in the case of battery levels, brake temperature, humidity, and air temperature, or by processing data as it becomes available for the CO2 sensor, encoder, or GPS. With the exception of the encoder, all of the sensor data streams update less than once a second. This is nice so the microcontroller doesn't get overwhelmed checking all them and handling the communications with RPis and the radio module.
 
+As part of my refactoring of the TITAN code when I switched to VS Code/PlatformIO I wrote a series of small C++ files for each sensor to make the code related to each easier to read and work on. The result is that all sensors have a `setupSensor()` and `checkSensor()` function for them that is then called in the main code loop where needed. 
 
+In addition to these basic libraries I prepared for the sensors to set them up and check them, I did make use of several open-source libraries developed for our more complicated sensors like the GPS.
 
+#### Battery Level Code
 
+Monitoring battery level was coded in the same way it was for TITAN previously: reading the analog value from a resistive divider, calculating the battery voltage, looking up the charge level. For more details check out the [battery section for TITAN 2019]({{< ref "projects/extracurricular/titan-v1#battery-monitoring" >}}). 
 
-
-
-
-
-### Microcontroller Firmware
-
-The microcontroller firmware was written in C++ using the Arduino IDE. The firmware on it has two main purposes: relay data between the RPis and monitor its sensors. The main loop of code alternates between these duties forever.
-
-#### Collecting Sensor Data
-
-The microcontroller collects the data it is responsible for in different ways. It collects the level of batteries, and the humidity and temperature in the vehicle periodically every few seconds since these are not rapidly changing quantities. The GPS data is updated as it becomes available from the GPS module. The optical encoder handler is connected to an interrupt so as to not miss any encoder pulses.
-
-For the GPS and DHT module, I made use of freely available libraries for that hardware. This greatly accelerated the development of my code for these sensors since they had already handled the majority of the work. Since it was code used by countless others it was also more reliable than what I probably would have written from scratch.
-
-All the sensors and their implementations were tested unit-wise on their own before I combined them into this firmware.
-
-#### Battery Monitoring
-
-Of the four data streams I had to prepare, the **most challenging was the battery monitoring one**. For the GPS and DHT I used their libraries, so it was a trivial matter of calling the right functions. For the encoder I just incremented a counter and converted a period into rotation rate, grade school concepts really. 
-
-Monitoring the batteries was more difficult though since this needed some more complex processing and there wasn't a library I could just drop in. First there was the obvious issue of converting an analog-to-digital (ADC) reading to an actual voltage, since the ADC return an integer between 0 and 4095, with 4095 corresponding to a reading matching the reference voltage supplied (roughly 3.3V). This conversion would then be compounded by the voltage division for each battery, that would vary slightly across the three dividers due to manufacturing tolerances. This needed me to calibrate the readings to a known voltage and store them on the chip. My final code for this looked something like:
+This check is done once every few seconds even if `checkBatteries()` is called more frequently using the code below. A similar structure is used for the other periodically checked sensors.
 
 ```cpp
-reading = float(analogRead(FBPin));   // Read ADC
-reading = reading * divFactor;        // Multiply by resistor division factor to get the actual input
-reading = reading / readingToV;       // Divide by constant to convert the ADC steps to actual volts
-```
+void checkBatteries() {
+  static unsigned long batteryTime = 0;  // Stores time for next battery check
+  
+  // Check if it is time to update battery levels
+  if (millis() > batteryTime) {
+    FBatt = batteryLevel('f');
+    RBatt = batteryLevel('r');
 
-Knowing the battery's true voltage wasn't enought to determin the battery level since the voltage of the battery *does not* vary linearly with charge level. Each different battery chemistry has its own characteristic discharge curve. The discharge curve of an LiFePO4 battery I used is described [here](https://www.solacity.com/how-to-keep-lifepo4-lithium-ion-batteries-happy/). Note: the batteries referred to in the article use four (4) cells in series, the ones I was using only had three (3) so my voltages were all going to be 3/4 that of what was described there at the same charge level.
-
-{{< fig src="/images/titan-v1-LiFePO4-discharging.png" caption="Discharge curve for a 4S LiFePO4 battery" >}}
-
-To convert a voltage to a charge level, I would fit the voltage reading to the curve using linear interpolation between a set of key points.
-
-```cpp
-const byte level[] = {100, 99, 90, 70, 40, 30, 20, 17, 14, 9, 0}; // Percentages linked to voltages
-const float voltage[] = {10.2, 10.05, 9.975, 9.9, 9.825, 9.75, 9.675, 9.6, 9.375, 9, 7.5}; // Voltages
-
-// Run though set point from top to bottom
-for (byte i = 1; i <= 11; i++) {
-  if (reading > voltage[i]) {
-    // If the reading is in the region
-    float temp = 0; // Used in calculations
-
-    // Linear interpolation formula
-    temp = (reading - voltage[i]) * float(level[i - 1] - level[i]);
-    temp /= float(voltage[i - 1] - voltage[i]);
-    temp += level[i];
-
-    reading = temp; // Stores the result in the reading variable
-    break;
+    batteryTime = millis() + batteryPeriod; // Sets next check time
   }
 }
-reading = constrain(reading, 0, 100); // Constrain it to reasonable values
-
-/* Other code */ 
-
-return (reading);
 ```
 
-#### Communication with RPis
+#### Humidity and Temperature Code
 
-Communication with the RPis was handled over a dedicated serial line for each. The general flow to communication is the RPi sending a message to the STM32, and then the STM32 responds accordingly. **The STM32 *never* initiates an exchange!** The structure of the message received by the STM32 followed this format:
+This is done using the excellent [DHT library](https://github.com/adafruit/DHT-sensor-library/) from Adafruit which allows the DHT22 to be used in just a few lines of code as per their example. The only real funky business here is that in order to store the temperature and humidity to one unsigned byte I do some math to alter their values before saving them.
+
+```cpp
+void checkHDT() {
+  static unsigned long dhtTime = 0;
+
+  // Periodic DHT measurement
+  if (millis() > dhtTime) {
+    humidity = dht.readHumidity() * 2;            // Humidity reading
+    temperature = 50 + dht.readTemperature() * 2; // Temperature reading
+
+    dhtTime = millis() + dhtPeriod; // Sets next measurement time
+  }
+}
+```
+
+#### Encoder Code
+
+Although the sensor and circuit used for the encoder has changed since 2019, the interface is still the same: a digital signal that pulses with each rotation of the wheel. This triggers an interrupt in the microcontroller that determines the current rotational period and increments the count of rotations, thus the speed of the bike and the distance it covered can be calculated.
+
+There were two version of this interrupts prepared: one that used the builtin `micros()` function to track time between pulses and another that used a hardware timer. The timer-based system was meant to address the issue of if the there were competing interrupts delaying the encoder interrupt which would result in a late `micros()` relative to the actual event occurrence. The timer presented some issues in implementation due to the range of expected pulse periods so it was ultimately not used.
+
+Although the use of an interrupt negates the need for a typical "check" function for the encoder, there is a function to check for if the encoder hasn't been pulsed for a few seconds implying that the bike has come to a stop called `checkEncoderTimeout()`.
+
+#### GPS Code
+
+The GPS communicates with the microcontroller by a UART line and makes use of the [tinyGPS](https://github.com/mikalhart/TinyGPS) library by Mikal Hart to parse the data it provides as well as process it for data like distance to a point. Outside wrapping the library code in my own `checkGPS()` function, not much was done for it code-wise.
+
+#### Brake Temperature Code
+
+Much like with the DHT22, Adafruit offers a [MLX90614 library](https://github.com/adafruit/Adafruit-MLX90614-Library) for these sensors which meant I only needed to prepare a bit of code to properly make use of them. 
+
+I did include code as part of `setupBrakeThermometers()` to blink the status LEDs on the board if either sensor was not detected on boot. This was useful when booting the system after some repairs that might have disturbed their connections, especially for the front sensor since it had a few connectors along its wire.
+
+#### CO2 Sensor Code
+
+The CO2 sensor outputs the level of CO2 it detects as a 1&nbsp;Hz pulse width wave, the wider the pulse - the more CO2. So I prepared an interrupt to be executed on any change to measure the width of these pulses and do the math to convert them into a CO2 level.
+
+```cpp
+void CO2change() {
+  const bool currentState = digitalRead(CO2Pin);
+  const unsigned long currentTime = millis();
+
+  // Used to record previous edge times
+  static unsigned long lastCO2Rising = 0;
+  static unsigned long lastCO2Falling = 0;
+
+  // Determine edge type based on current state
+  if (currentState == HIGH) {
+    // Treat it as a rising edge
+
+    // Calculate CO2 level from last pulse
+    // CO2 = ppm span * (Th - 2ms) / (Th + Tl - 4ms)
+
+    unsigned long timeHigh = lastCO2Falling - lastCO2Rising;
+    unsigned long timeLow = currentTime - lastCO2Falling;
+
+    CO2ppm = CO2Span * (timeHigh - 2);
+    CO2ppm = CO2ppm / (timeHigh + timeLow - 4);
+
+    lastCO2Rising = currentTime; // Update rising time
+  }
+  else {
+    // Falling edge
+    lastCO2Falling = millis();
+  }
+}
+```
+
+Unlike the encoder, this interrupt didn't need any sort of timeout function so once the interrupt is setup on the pin the CO2 sensor doesn't need any code in the main loop.
+
+### Communication with RPis
+
+Communication with the RPis was handled over a dedicated serial line for each. The scheme from TITAN in 2019 was kept but expanded to accommodate the new sensors. This had the RPis sending a message to the STM32, and then the STM32 responds accordingly. The structure of the message received by the STM32 followed this format:
 
 > **1 character** - Message type (capital letters are for sending data, lowercase for requesting data)  
 > **1 character** - Data length, ***n*** *(only if the RPi is sending data)*  
 > ***n* bytes** - Data to STM32 *(if the RPi is sending data)*
 
-If the RPi is requesting data for itself, it will simply send a lowercase letter for that field, e.g. "s" for speed. If it has data it wants to impart on the STM32 (to pass on to the other RPi), like the ANT+ data, it will start with a capital and be followed by the data length and data itself. E.g. "D!55" would be used to set the right cadence (D) as "55" which is 2 characters long ("!" has the ASCII code of 33, but I add/subtract 31 to the lengths to keep length characters printable since the first printable character is space, " ", at 32).
+If the RPi is requesting data for itself, it will simply send a lowercase letter for that field, e.g. "s" for speed. If it has data it wants to impart on the STM32 (to pass on to the other RPi), like the ANT+ data, it will start with a capital and be followed by the data length and data itself. E.g. "D!55" would be used to set the rear cadence (D) as "55" which is 2 characters long ("!" has the ASCII code of 33, but I add/subtract 31 to the lengths to keep length characters printable since the first printable character is space, " ", at 32).
 
 When the STM32 is responding with data to a request, it replies with just the data length and data itself (*no leading message type character*).
 
-The reason I used a data length character as part of messages, rather than a fixed length or delimiting character to communicate message length is because it allows for greater flexibility than a fixed length, and it doesn't risk a delimiting character randomly occurring in exchanged data, misleading the RPi or STM32.
+### Communication with Radio Module
 
-### Raspberry Pi Code
+The radio used is an nRF24L01+ module which connects with the STM32 over SPI. For this I used the [RF24 library](https://github.com/nRF24/RF24) started by TMRh20 which helped me greatly with its examples. 
 
-Unlike the STM32, the code for the RPis was written entirely in Python. I had a basis to work off of given the work done for Eta Prime, however I reworked much if it for various reasons. The main reasons for this refactoring were:
+Most of the work needed for this I had already done with my [telemetry project]({{< ref "projects/extracurricular/telemetry" >}}), all I needed was to adjust the pin allocations and recompile the code for the STM32 and it worked. In summary, the communications over radio (once the modules are setup) are handled identically to the way the communications are with the RPis, however whereas the RPis communicate over a serial stream with the STM32 the radio messages are each distinct messages/packages. One benefit of the radio messages is that there is an interrupt pin for when complete messages are received which isn't present with the serial lines.
 
-- Different hardware configuration (Eta Prime did not have a microcontroller to help with data collection)
-- Different system needs, namely to share data across multiple RPis
-- Migrating code between Python 2 and 3
+As I was working and testing the radio communications with our base station I realized that is took tens of milliseconds for each data exchange with TITAN. So for the couple dozen fields of data each individual requested this added up to a notable amount of time on both ends. So I experimented by implementing a single condensed package that was binary encoded (as opposed to the plain text used until now), this allowed much more data to be crammed into a single data packet, I was able to get all the data needed for the base station into a 32 bytes with the usual 2 byte message header this way which allowed it to be sent as a single nRF24 message!
 
-#### Camera Feed
+To do this I copied all the data into a custom struct before sending it across the radio. To compress the data, the floating point variables like the speeds were converted to fixed point representation with integers. E.g. 78.921&nbsp;km/h would be transmitted as 78921 and be divided back when decoded at the receiver.
+
+```cpp
+bulkDataStruct dataLoad;
+dataLoad.messageType = '[';
+dataLoad.messageLength = sizeof(dataLoad) - 2 + 31;
+dataLoad.distGPS = distanceGPS * 1000;
+dataLoad.speedEncoder = 1000 * speedEncoder;
+dataLoad.speedGPS = 1000 * speedGPS;
+dataLoad.rotations = rotationCount;
+dataLoad.frontBrakeT = frontBrakeTemp * 100;
+dataLoad.rearBrakeT = rearBrakeTemp * 100;
+dataLoad.fBatt = FBatt;
+dataLoad.rBatt = RBatt;
+dataLoad.humid = humidity;
+dataLoad.temp = temperature;
+dataLoad.CO2 = CO2ppm;
+dataLoad.fhr = FHR;
+dataLoad.rhr = RHR;
+dataLoad.fcad = FCadence;
+dataLoad.rcad = RCadence;
+dataLoad.fpwr = FPower;
+dataLoad.rpwr = RPower;
+```
+
+This approach worked exactly as I had hoped, greatly reducing the communication times which allowed the STM32 to focus on other tasks. **This condensed message was later adopted for communication with the RPis as well.**
+
+#### Telemetry Issues
+
+**At WHPSC the telemetry worked, but only for short ranges with a clear line of sight. I managed steady connections only up to a range of about 80&nbsp;m.** This meant that our downlink was useless since the chase vehicle it would be in had to stay at least 150&nbsp;m behind TITAN. At the competition I chalked this up to be an issue of the carbon in the fairing still interfering even with the antenna in the fibreglass section since I managed 600&nbsp;m with clear line of sight using the same hardware. 
+
+*Looking back on my code as I write this I realized that I had forgotten to raise the power level above minimum on TITAN's radio... shoot.*
+
+One thing I would potentially change about the radio system it that instead of using it in a call and response fashion, that I would instead simply have TITAN continuously broadcast its status. 
+
+## Raspberry Pi Code
+
+The code for the RPis departed greatly from 2019. In 2019 the entirety of the RPi code was written in Python, however for 2022 the majority of it was rewritten in C with only some parts in Python. **This fundamental rework was done in the interest of improving the reliability and speed of the data overlay system for the video** which was the main reason for my previous system being removed in TITAN.
+
+### Camera Feed
+
+
+
 
 To put the camera feed onscreen and have it recorded was actually pretty simple and accomplished in less than a dozen lines of code thanks to the work of the Raspberry Pi Foundation.
 
@@ -443,29 +534,18 @@ if recording:
 
 This code would put the video feed over the entire screen as a "preview", and start recording it to a fill if desired. The settings we could manage were a stable 720p HD video, at 60 frames per second.
 
-#### Overlay
+### Overlay
 
-The overlay code needed a decent amount of rework, since a core library it depended on was written in Python 2. The library was specifically used to create the overlay image with all the data for the riders. Initially I wanted to replace it with something similar but capable of running in Python 3, however I was unable to find a suitable alternative at the time. **So instead I opted to run the entire system in Python 2 instead.**
 
-Once I had the system working, I could produce a text overlay pretty simply. I would just place text boxes around the screen as I wanted and fill them with the text I desired with some basic properties defined. These text boxes were actually drawn on a temporary canvas/image, "img", initially.
+[Blueshift]({{< ref "projects/extracurricular/blueshift#video-display-and-overlay" >}})
 
-```python
-font = ImageFont.truetype("../res/consola.ttf", size)
-draw = ImageDraw.Draw(self.img)
-draw.text(position, text, color, font)
-```
 
-Once I was done drawing all the text I wanted on the canvas I would update the overlay with this canvas simply with:
 
-```python
-self.overlay.update(self.img.tobytes())
-```
+### Communication with STM32
 
-#### Communication with STM32
+Communication protocol with the STM32 was outlined briefly in the STM32's [section on this](#communication-with-rpis). The only thing worth mentioning on the RPi side of things is that the RPi's block (wait) the program until a response is received following a request. This is why the STM32 doesn't need to specify what its response is for, the RPi already knows.
 
-Communication protocol with the STM32 was outlined briefly in the STM32's [section on this](./#communication-with-rpis). The only thing worth mentioning on the RPi side of things is that the RPi's block (wait) the program until a response is received following a request. This is why the STM32 doesn't need to specify what its response is for, the RPi already knows.
-
-#### ANT+
+### ANT+
 
 ANT+ was where a sizable chunk of my efforts went into. I found the amptly named "python-ant" library online and it supported operation on the RPi. Not only that but it had examples for a heart rate monitor and power pedal, the exact two devices I needed to operate!
 
@@ -513,9 +593,6 @@ All this was not peachy though. I had to make some adjustments to the library. T
 
 Testing the code for these was some fun. To test the heart rate monitor I wore it and would either hold my breath or begin hyperventilating to observe a change. As for the power pedals I actually had an exercise bike I would pedal on for testing. We now have additional ANT USB dongles I could use to simulate the output of a device but I feel that it'll ruin much of the fun involved in the process.
 
-#### Radio Communication
-
-I initially wanted to get some telemetry working with the nRF24 modules I found, I even had some radio libraries ready, however I didn't have the time to properly develop or test any code related to this so it was never implemented.
 
 
 
