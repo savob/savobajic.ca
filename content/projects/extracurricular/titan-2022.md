@@ -1,7 +1,7 @@
 ---
 title: "TITAN 2022"
 date: 2022-09-18T15:44:40-05:00
-draft: true
+draft: false
 started: "September 2020"
 finished: "September 2022"
 status: "Completed"
@@ -314,6 +314,10 @@ Mounting the wheel board for the rear wheel was not as easy as expected. Since t
 
 {{< fig src="/images/titan-wheel-board-placed.jpg" caption="Wheel board nested in rear wheel bracket" >}}
 
+Once installed the rear wheel sensor needed to have the optical encoder circuit tuned. This involved a couple nights of us fiddling with adding retroflective tape to the brake spokes and tuning the trimmer potentiometers on the board for the comparator. It is in this process we also learned about the aforementioned contact wear on the sensor. Nevertheless, in the end we persevered and had some nice, noise free digital signals for the STM32.
+
+{{< fig src="/images/titan-tuned-encoder.jpg" caption="Waveforms from the optical encoder. Yellow is the raw retroflector reading, blue the threshold (which is a function of output) both at 1&nbsp;V per vertical division" >}}
+
 ### Screen Tests
 
 After installing all the sensors and wiring everything up, a basic functionality test was done on the microcontroller to ensure that it was able to communicate with all the sensors in TITAN and the RPi's to validate their connectivity and video output. All connections worked as expected!
@@ -507,101 +511,218 @@ One thing I would potentially change about the radio system it that instead of u
 
 ## Raspberry Pi Code
 
-The code for the RPis departed greatly from 2019. In 2019 the entirety of the RPi code was written in Python, however for 2022 the majority of it was rewritten in C with only some parts in Python. **This fundamental rework was done in the interest of improving the reliability and speed of the data overlay system for the video** which was the main reason for my previous system being removed in TITAN.
+The code for the RPis departed greatly from 2019. In 2019 the entirety of the RPi code was written in Python, however for 2022 the majority of it was rewritten in C with only some parts in Python. **This fundamental rework was done in the interest of improving the reliability and speed of the data overlay system for the video** which was the main reason for my previous system being removed in TITAN for WHPSC 2019.
+
+On the RPis there are a few processes going on handed by different bits of code, the flow of it is as follows: on boot there is a python script that is used to determine which RPi it is (front or rear), then execute the requiste programs. These programs being the camera feed, overlay, and ANT data collection if there is an ANT module present. There are also two additional scripts executed by this boot script to monitor and handle button presses on the TITAN boards such as safely shutting down the RPi.
+
+To speedup the boot time of the system as well as making it easier for people to notice errors during boot, I had the RPis configured to boot to command line instead of a graphical user interface. This meant that anything my programs printed would appear in the terminal which occupied the entire screen.
+
+### Launcher Script 
+
+I prepared one central script in Python that would be executed once the system completed a boot. I named it `titan_startup.py` was there to then start up the other processes as described since it was easier for me to change the one script then to constantly change the system configuration to launch things on boot.
+
+By using Python I was able to make the script check for an ANT USB receiver which would inform the system if it was the front video system (with ANT USB) or not. Based on this it would launch the appropriate programs and configure the overlay since front and rear riders preferred different layouts.
+
+#### Button Scripts
+
+I prepared a two small Python scripts to handle the buttons on the TITAN boards. 
+
+The "RPi OFF" button was monitored by one script (`power_off.py`) that would trigger a shutdown of the RPi so power could be safely disconnected without damaging the RPi or the data on the SD card.
+
+When working on TITAN it was annoying to constantly blindly open the terminal and try to terminate the video process after reboots so I made a script to do that for me if I pressed the "RPi ON" button when it was already on called `go_to_desktop.py`.
 
 ### Camera Feed
 
+The camera feed was launched by a Python script as it was for TITAN in 2019 since it was the easiest method and worked as we needed it to. By running it as a seperate program/process to the overlay it means that should the overlay fail for any reason, the video will continue uninterrupted.
 
-
-
-To put the camera feed onscreen and have it recorded was actually pretty simple and accomplished in less than a dozen lines of code thanks to the work of the Raspberry Pi Foundation.
+In about a dozen lines the camera feed was up on screen and the video recorded to a file. This code would put the video feed over the entire screen as a "preview", and start recording it to a fill if desired. The settings we could manage were a stable 720p HD video, at 60 frames per second.
 
 ```python
+import picamera
+import os
+from time import sleep
 camera = picamera.PiCamera()
-camera.resolution = (self.VIDEO_WIDTH, self.VIDEO_HEIGHT)
-camera.framerate = self.FRAMERATE
-camera.brightness = self.BRIGHTNESS
-self.camera = camera
-self.camera.start_preview()
+camera.resolution = (1280, 720)
+camera.framerate = 60
 
-# Setup recording file
-self.RECORDING = recording # Record if recording or not
-if recording:
-    video_title = "{}.h264".format(time.strftime('%y%m%d-%H:%M:%S', time.localtime()))
-    self.video_title = '/home/pi/Videos/recording-' + video_title
-    self.camera.start_recording(self.video_title)
+camera.start_preview()
+
+# Get file count to append to video title
+videoDir = '/home/pi/Videos'
+fileCount = len([name for name in os.listdir(videoDir) if os.path.isfile(os.path.join(videoDir, name))])
+print(fileCount)
+recordingLocation = "{}/video{:03d}.h264".format(videoDir, fileCount)
+
+camera.start_recording(recordingLocation)
 ```
 
-This code would put the video feed over the entire screen as a "preview", and start recording it to a fill if desired. The settings we could manage were a stable 720p HD video, at 60 frames per second.
+*Note: the video file names are numbered to avoid old videos being overwritten.*
+
+The recorded videos do occasionally have jumps of a few seconds which I believe is due to a partially incorrect configuration of the recording. This is something that will need to be investigated going forward.
 
 ### Overlay
 
+The overlay is where I sank most of my efforts into, it is composed of several C files and was originally started following our work on trying a [C-based overlay for Blueshift]({{< ref "projects/extracurricular/blueshift#video-display-and-overlay" >}}). Although the main function is to put together the overlay, several other parts of code were developed to acquire and log the data needed. In summary it covered:
 
-[Blueshift]({{< ref "projects/extracurricular/blueshift#video-display-and-overlay" >}})
+- Communicating data with the microcontroller
+- Drawing the overlay
+- Receiving and forwarding the [ANT]({{< ref "#ant" >}}) data if applicable
+- Logging data to the SD card
+- Checking the performance relative to our [race simulations]({{< ref "#race-sim" >}})
 
+It had a main loop that worked though a setup for all its feature, which were selectively enabled using call parameters. For example `bike.bin fsl` to run the overlay system for the front rider (the `f`) with serial communications (`s`) and log data (`l`). The main loop's behaviour would be set to respect these options, for example if there wasn't serial communications enabled then placeholder data would be used for the overlay. This allowed me to focus on different aspects of the program without needing the entire system present or operational, like if I was just tuning the layout of the overlay for a rider and wanted to show them without needing the system to be connected to sensors.
 
+#### Drawing the Overlay
 
-### Communication with STM32
+Initially with Blueshift the we looked into using some more conventional approaches such as OpenCV to handle both the video feed and drawing the overlay atop it, however these solutions failed to reach 30 frames per second at 720p for the video, so I decided to scrap that approach. Since the Python-script "preview" worked as we wanted I decided to keep that and have the overlay once again rendered over it as a separate process.
 
-Communication protocol with the STM32 was outlined briefly in the STM32's [section on this](#communication-with-rpis). The only thing worth mentioning on the RPi side of things is that the RPi's block (wait) the program until a response is received following a request. This is why the STM32 doesn't need to specify what its response is for, the RPi already knows.
+Looking around online at other people's work I found that the Raspberry Pi 3B+'s we were using had an API for their video chip called "VideoCore" which allowed graphics to be drawn directly on the low level video buffer memories. These were a bit primitive given their low level, however they were perfect for what we needed for TITAN since we could output graphics on a layer above the video preview creating the overlay on it.
+
+The way the overlay worked was similar to the way it did with TITAN in 2019, a complete image of the overlay would be rendered, then it would be put in a graphics layer above the video feed. This is different to just updating a "textbox" or "label" in a more conventional UI.
+
+Using the examples included in the library I was able to put text in arbitrary graphics layers as well as basic shapes in a graphics object and push it to a graphics layer. By combining these examples I was able to make some basic functions that would draw textboxes around the screen as I desired so the text would have a slightly transparent background the them to improve legibility.
+
+```c
+void renderText (char text[], int x, int y, int size, char foreground[], char background[]) {
+      graphics_resource_render_text_ext(overlayImg, x, y,
+                                     GRAPHICS_RESOURCE_WIDTH,
+                                     GRAPHICS_RESOURCE_HEIGHT,
+                                     GRAPHICS_RGBA32(foreground[0],foreground[1],foreground[2],foreground[3]), /* fg */
+                                     GRAPHICS_RGBA32(background[0],background[1],background[2],background[3]), /* bg */
+                                     text, strlen(text), size);
+}
+
+void renderTextAligned(char text[], int x, int y, int size, char foreground[], char background[], char horizontal, char vertical) {
+   // Determine the rendered dimensions of text
+   uint32_t widthOfText=0, heightOfText=0; 
+   graphics_resource_text_dimensions_ext(overlayImg, text, strlen(text), &widthOfText, &heightOfText, size);
+
+   // Horizontal Justification
+   if ((horizontal == 'c') || (horizontal == 'C')) x = x - (widthOfText / 2);
+   else if ((horizontal == 'r') || (horizontal == 'R')) x = x - widthOfText;
+   // Otherwise assumes left
+   
+   // Vertical Justification
+   if ((vertical == 'c') || (vertical == 'C')) y = y - (heightOfText / 2);
+   else if ((vertical == 'b') || (vertical == 'B')) y = y - heightOfText;
+   // Otherwise assumes the top
+   
+   //printf("TEXT SIZE: %d, HEIGHT: %d",size, heightOfText);
+   renderText (text, x, y, size, foreground, background);
+}
+```
+
+To make the overlays easier to code I then made a series of wrapper functions for these functions so that I would only need to pass the values, then inside these functions it would be formatted into a nice string and the parameters relating to its position and such would be there too so it would be easy to find and tune the overlays to the request of our riders. Below is the code for rendering the speed values (wheel and GPS speed) for the front rider's overlay.
+
+```c
+void renderFSpeed(float speed, float gpsSpeed) {
+   char temp[50];
+   sprintf(temp, "SPD/GSPD: %4.1f / %4.1f", speed/KM_TO_MI, gpsSpeed/KM_TO_MI);
+   renderTextAligned(temp, 10, 10, 30, WHITE, GREY_BG,'l','t');
+}
+```
+
+Since I could change the colour of text on the fly the riders requested that some of the text change colour with the value, such as the battery levels. This was done by making a function that would receive a value and then bucket it based on a set of limits and return the appropriate colour. 
+
+```c
+char *colourByValue(float value, float lower, float upper, char low[], char mid[], char high[]) {
+   // Returns a colour based on how the value compares to two limits
+   char *resultColour;
+   
+   if (value < lower) resultColour = &low[0];
+   else if (value > upper) resultColour = &high[0];
+   else resultColour = &mid[0];
+   
+   return resultColour;
+}
+
+void renderFBatteryPercentage(int battPer) {
+   char temp[50];
+   sprintf(temp, "BATT: %3d", battPer);
+   
+   char *colourToUse = colourByValue(battPer, lowerBattLimit, upperBattLimit, RED, YELLOW, GREEN);
+   
+   renderTextAligned(temp, 1270, 715, 30, colourToUse, GREY_BG, 'r', 'b');
+}
+```
+
+These function calls for each field were then combined into larger wrapper functions for each rider to declutter the main loop.
+
+```c
+void updateOverlayFront(float spe, float dist, int pow, int cad, int hr, float perf, float fbrake, int batt, float gpsSpeed) {
+   graphics_resource_fill(overlayImg, 0, 0, widthOverlay, heightOverlay, GRAPHICS_RGBA32(0,0,0,0x00));
+      
+   renderFSpeed(spe, gpsSpeed);
+   renderFPerfPercentage(perf);
+   renderFCadence(cad);
+   renderFBatteryPercentage(batt);
+   renderFPower(pow);
+   renderFHR(hr);
+   renderFDist(dist);
+   renderFBrakeTemp(fbrake);
+        
+   graphics_update_displayed_resource(overlayImg, 0, 0, 0, 0);
+}
+```
+
+**This overlay system was great, it could be updated upwards of 10 times a second!** Since it was separate of the video feed, it would not be recorded as part of that footage, so we could make it nicer and re-add it in as we liked if we edited the videos. **The major issue with this code is that it is specific to the Raspberry Pi 3B+'s and older, it cannot be compiled as is for newer models or other microcomputers.** This is something the team will have to address in the future by moving to more hardware agnostic code.
+
+#### Communication with the STM32
+
+Communication protocol with the STM32 was outlined in the STM32's [section on this](#communication-with-rpis), to handle this I wrote a basic `serialComs` set of C-code to handle serial communication so it would be easier to use in my main loop. 
+
+There are only a few things worth mentioning on the RPi side of things. First is that the RPis block (wait) the program until a response is received following a request. This is why the STM32 doesn't need to specify what its response is for, the RPi assumes it is for the most recent request sent. 
+
+Secondly, I didn't prepare a nice function to handle the [bulk message developed with telemetry]({{< ref "#communication-with-radio-module" >}}) in the `serialComs` files and just have it decoded in its full 80+ lines in the main loop. By adapting this it also greatly improved the update rate of the overlay since each individual request took about 25&nbsp;ms to process so the overlays were only getting updated at a rate of three times a second, with this bulk message it was brought up to about 10.
+
+#### Logging
+
+All data from the microcontroller was logged in a CSV file stored on the RPi using code in the `logging` files I prepared. These simply create a new CSV file for each run and append it with data each time the overlay is updated which isn't a perfectly regular interval but close enough for our purposes.
+
+Ideally these logs would be labelled with the start time and date for a run, however since the RPis didn't have real time clocks to keep time when they were off their clocks needed to be regularly synchronized over networks. This wasn't feasible when launching TITAN in the middle of a highway at WHPSC so I instead used a count of log files to differentiate them. There was ample time for me between runs to extract the logs and name them manually to reflect which one was for which run. I left a simple switch in the code to toggle between these two naming schemes if desired in the future.
+
+#### Time Trial Code
+
+The `timetrail` code was used to monitor and report the execution time of portions of code when I was working on reducing the iteration time for the overlay to locate and address bottlenecks. *This was a set of code is only used for development.*
+
+#### Race Sim
+
+The team has designed and refined custom simulations over the years to provide us an estimate of a given vehicle's performance in a certain race given parameters like input power or aerodynamic coefficients. As part of TITAN the lead requested that we try to have some sort of "performance factor" shown to the riders. This performance factor was meant to indicate if the bike was performing better or worse than expected, and thus if we had a better or worse chance at breaking our record that run. Based on this the riders could decide to increase their efforts or conserve them for when conditions were more favourable.
+
+**The concept for deriving this performance factor was to compare the present speed of TITAN to what the simulation expected with the power put in and characteristics of the bike/track.** The factor would be the percentage the actual speed was of the expected, so if TITAN was a bit faster than expected it would be something like 102% implying favourable race conditions.
+
+I managed to port the most recent simulation from MATLAB to C code and verified that they both produced the same results. However, due to some issues relating to the collection of power data mainly from the front rider (signal issues in TITAN then the fatal failure of their power pedals) this system wasn't properly tested and used. I do expect it would, had there not been these power issues, but I guess we'll find out in the future. This is the only code that needs TITAN to be complete to be tested properly.
 
 ### ANT+
 
-ANT+ was where a sizable chunk of my efforts went into. I found the amptly named "python-ant" library online and it supported operation on the RPi. Not only that but it had examples for a heart rate monitor and power pedal, the exact two devices I needed to operate!
+Collecting the biometric data (cadence, heart rate, pedal power) from riders over the ANT+ network was probably my second biggest headache for TITAN after the overlay.
 
-I started by starting the network and then connecting to the devices using the USB dongle. Most of this was copied directly from the examples provided with the code.
+Originally I wanted to write it in C (or C++) to be included as part of the overlay binary. However, the official ANT+ libraries in C for RPis were not playing nicely with me so I decided to take an alternative approach and used a separate Python script to collect the data similarly to how it had been done on TITAN previously.
 
-```python
-from ant.core import driver
-from ant.core.node import Node, Network, ChannelID
-from ant.core.constants import NETWORK_KEY_ANT_PLUS, NETWORK_NUMBER_PUBLIC
-from ant.plus.power import *
-from ant.plus.heartrate import *
-
-device = driver.USB2Driver(log=None, debug=False, idProduct=0x1008)
-antnode = Node(device)
-antnode.start()
-network = Network(key=NETWORK_KEY_ANT_PLUS, name='N:ANT+')
-antnode.setNetworkKey(NETWORK_NUMBER_PUBLIC, network)
-
-...
-
-frontPWR.open(frontPedals, ANT_TIMEOUT)
-print("Connecting front pedals")
-
-frontHRM.open(frontHRM, ANT_TIMEOUT)
-print("Connecting front HRM")
-```
-
-Working with these examples I looked at how they worked and gained a bit of understanding about Python callbacks since they are an integral part of how this library worked. Eventually I prepared my own, so that when a heart rate or power value was registered, the system would share it immediately with the rest of TITAN.
+This script simply tried to connect to the devices in TITAN using the USB and then collected the data of interest from them, printing the most recent values for each in one line, separated by commas, twice a second to the standard output which in most cases is the terminal when launching a program from terminal. This approach allowed me to pipeline the data output from this script into the overlay program on that RPi by calling the two like so: `python ./titanant.py | ./bike.bin fcasl`. 
 
 ```python
-# Functions for broadcasting data
-def front_power_data(eventCount, pedalDiff, pedalPowerRatio, cadence, accumPower, instantPower):
-    microController.sendData('E', str(instantPower))
-    microController.sendData('C', str(cadence))
-def front_heartrate_data(computed_heartrate, event_time_ms, rr_interval_ms):
-    microController.sendData('A', str(computed_heartrate))
-
-...
-
-frontHRM = HeartRate(antnode, network, callbacks = {'onDevicePaired': hr_device_found, 'onHeartRateData': front_heartrate_data})
-frontPWR = BicyclePower(antnode, network, callbacks = {'onDevicePaired': power_device_found, 'onPowerData': front_power_data})
+#Use stdout to pipe data to another process (the display)
+stdout.write("%03d,%03d,%03d,%03d,%03d,%03d\n" % ( 
+    front_cur_hr, front_cur_cad, front_cur_pwr,
+    rear_cur_hr, rear_cur_cad, rear_cur_pwr))
 ```
 
-All this was not peachy though. I had to make some adjustments to the library. These were probably due to me running it in Python 2 rather than 3, although it has been a few years so I forget the *exact* issues. Once I had the code to just gather a few devices of interest I developed code to run this as part of the TITAN system. For example I prepared a function to ensure that all devices were connected and alerting the riders if any failed to connect if they didn't.
+This pipelining was done not only to put the data on the overlay, but because only one process could write data to the serial line at a time and I didn't want the two separate processes for ANT and the overlay to fight for communication to the STM32. This meant that the overlay would read the data from the ANT program in its standard input so it could then parse it to get the values it needed both to display and to forward to the STM32 so they could be passed further along to the other RPi or telemetry system. This did require the creation of an `antInterface` set of C code for the overlay program.
 
-Testing the code for these was some fun. To test the heart rate monitor I wore it and would either hold my breath or begin hyperventilating to observe a change. As for the power pedals I actually had an exercise bike I would pedal on for testing. We now have additional ANT USB dongles I could use to simulate the output of a device but I feel that it'll ruin much of the fun involved in the process.
+This code worked once I hard-coded the right device IDs for the riders. *When trying to get the right IDs for each device and calibrate the length of crankshafts for the pedals at WHPSC, I had more devices appear than expected so I calibrated them all as though they were ours. It turned out that these were the devices of the Italian team that had been doing the same next to us. So I guess that was my first blunder into adversarial electrical work, and I quickly apologized.*
 
+As part of our main loop we did have some code with the intent of providing a time average of power for the riders, as opposed to the instantaneous reading. This code was faulty for our first few runs; although it did average the data just fine, it accidentally had it display 0 for both powers instead of the average which caused confusion for the riders at first.
 
-
+There were some issues with the front pedals which appeared to be from signal loss since they were at the opposite end of TITAN to the ANT+ receiver (in the RPis), although it was soon after found that the pedal had failed mechanically internally so that might have been the main issue.
 
 ## Outcome
 
+The complete electronics worked to a base level when we arrived at WHPSC which was a first for the team! However, I did tune different parts of the code over the week to iron out some bugs (like the power averaging for ANT) and adjusting different things to the rider's liking like their overlays. I'd say that about three days into the competition I had ironed out all the bugs and was just working on improvements like bulk radio message. **Even with some of the bugs in the data system, the mission critical video feeds all worked without issue in all our runs.**
 
+TITAN competed well, however we had unfortunately only ran three official runs due to a crash on our third run, in which neither of the riders were seriously injured. This was likely due to some interference of the front wheel's fairing causing our front rider to lose control of the steering. It was still a great and fun learning experience for me to represent our team at the WHPSC. We are repairing and improving TITAN and hope to race it again in the future to raise the record we set for tandems with it in 2019!
 
-
-
+{{< fig src="/images/titan-savo.jpg" caption="Me with TITAN" >}}
 
 
 
