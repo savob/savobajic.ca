@@ -1,33 +1,5 @@
 :root {
-	--navBarColour: DodgerBlue;
-	--altNavBarColour: DeepSkyBlue;
-	--mainText: Black;
-	--navText: White;
-	--subtitleText: DimGrey;
-	--backgroundColour: White;
-	--altBackgroundColour: Gainsboro;
-	--unvisitedHyperlink: Blue;
-	--clickedLinks: Purple ;
-	--activeHyperlink: Red;
-	
 	font-size:18px;
-	
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--navBarColour: FireBrick;
-		--altNavBarColour: Red;
-		--mainText: White;
-		--navText: White;
-		--subtitleText: WhiteSmoke;	
-		--backgroundColour: Black;
-		--altBackgroundColour: #600000;
-		--unvisitedHyperlink: Red;
-		--clickedLinks: FireBrick ;
-		--activeHyperlink: Blue;
-	}
-	
 }
 
 @media screen and (max-width: 60em) {
@@ -42,8 +14,18 @@ html {
 }
 
 
-
 body {
+	--navBarColour: DodgerBlue;
+	--altNavBarColour: DeepSkyBlue;
+	--mainText: Black;
+	--navText: White;
+	--subtitleText: DimGrey;
+	--backgroundColour: White;
+	--altBackgroundColour: Gainsboro;
+	--unvisitedHyperlink: Blue;
+	--clickedLinks: Purple ;
+	--activeHyperlink: Red;
+	
 	font-family: Helvetica, sans-serif;
 	margin: 0;
 	color: var(--mainText);
@@ -53,6 +35,20 @@ body {
 	
 	overflow-x: hidden;
 }
+
+body.darkMode {
+	--navBarColour: FireBrick;
+	--altNavBarColour: Red;
+	--mainText: White;
+	--navText: White;
+	--subtitleText: WhiteSmoke;	
+	--backgroundColour: Black;
+	--altBackgroundColour: #600000;
+	--unvisitedHyperlink: Red;
+	--clickedLinks: FireBrick ;
+	--activeHyperlink: Blue;
+}
+
 .subtitle {
 	color: var(--subtitleText);
 	font-size: 0.8em;
