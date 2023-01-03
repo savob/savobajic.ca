@@ -6,12 +6,11 @@
 
 {{ range $i, $article :=.pagesToPost }}
 
-	<a href="{{.Permalink}}">
+
 	<article>
 	
-	
 	{{if .Params.thumbnail}}
-		<img class="thumbnail" src="{{.Params.thumbnail}}">
+		<a href="{{.Permalink}}"><img class="thumbnail" src="{{.Params.thumbnail}}"></a>
 	{{end}}
 	
 	{{ partial "listEntryInfo" . }}
@@ -24,9 +23,10 @@
 		{{end}}
 		</ul>
 	{{end}}
-		
+	
 	</article>
-	</a>
+
+	
 	
 	{{ if modBool (add $i 1) $articlesPerCol }}
   	</div> <!-- end row -->

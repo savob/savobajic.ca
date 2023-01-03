@@ -1,7 +1,7 @@
 {{ range .Site.Params.custom_css}}
 <link rel="stylesheet" href={{ . | relURL}}>
 {{else}}
-oh no no custom_css!!
+{{ errorf "oh no no custom_css!!" }}
 {{end }}
 
 <div class="wrapper">

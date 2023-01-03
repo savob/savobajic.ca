@@ -1,12 +1,32 @@
 :root {
-	--backgroundColour: DodgerBlue;
-	--altBackgroundColour: DeepSkyBlue;
-	--asideBackgroundColour: LightGrey;
+	--navBarColour: DodgerBlue;
+	--altNavBarColour: DeepSkyBlue;
 	--mainText: Black;
 	--navText: White;
 	--subtitleText: DimGrey;
+	--backgroundColour: White;
+	--altBackgroundColour: Gainsboro;
+	--unvisitedHyperlink: Blue;
+	--clickedLinks: Purple ;
+	--activeHyperlink: Red;
 	
 	font-size:18px;
+	
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--navBarColour: FireBrick;
+		--altNavBarColour: Red;
+		--mainText: White;
+		--navText: White;
+		--subtitleText: WhiteSmoke;	
+		--backgroundColour: Black;
+		--altBackgroundColour: #600000;
+		--unvisitedHyperlink: Red;
+		--clickedLinks: FireBrick ;
+		--activeHyperlink: Blue;
+	}
 	
 }
 
@@ -22,12 +42,14 @@ html {
 }
 
 
+
 body {
 	font-family: Helvetica, sans-serif;
 	margin: 0;
 	color: var(--mainText);
 	max-width: 70rem;
 	margin: 0px auto;
+	background-color: var(--backgroundColour);
 	
 	overflow-x: hidden;
 }
@@ -46,7 +68,7 @@ div.wrapper {
 header {
 	text-align: center;
 	text-transform: capitalize;
-	background-color: var(--backgroundColour);
+	background-color: var(--navBarColour);
 	
 	width: 100%;
 	position: relative;
@@ -57,7 +79,7 @@ header {
 }
 
 header h1 {margin: 0;}
-header a, footer a  {
+header a, footer a {
 	text-decoration: none; 
 	color: var(--navText);
 }
@@ -80,7 +102,7 @@ footer {
 /* Nav bar stuff */
 nav {
 	margin: 0 0 0.5em 0; 
-	background-color: var(--backgroundColour);
+	background-color: var(--navBarColour);
 	text-align: center;
 	text-transform: capitalize;
 	
@@ -113,7 +135,7 @@ nav div {
   padding: 0;
   
   justify-content: space-around;
-  background-color: var(--backgroundColour);
+  background-color: var(--navBarColour);
 }
 
 .navbutton, .dropdown {
@@ -125,14 +147,14 @@ nav div {
 	}
 }
 
-.navbutton:hover {background-color: var(--altBackgroundColour);}
-.dropdown:hover {background-color: var(--altBackgroundColour);}
+.navbutton:hover {background-color: var(--altNavBarColour);}
+.dropdown:hover {background-color: var(--altNavBarColour);}
 
 .dropdown-content {
   opacity: 0;
   position: absolute;
   background-color: Grey;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px var(--altBackgroundColour);
   z-index: 1;
   transform: translateY(-100em);
   transition: opacity 250ms ease-in-out;
@@ -148,7 +170,7 @@ nav div {
   transform: translateY(0);
 }
 
-.dropdown-content a:hover {background-color: var(--altBackgroundColour);}
+.dropdown-content a:hover {background-color: var(--altNavBarColour);}
 
 
 
@@ -164,11 +186,11 @@ nav div {
 
 ul.breadcrumbs li+li:before {
   padding: 8px;
-  color: black;
+  color: var(--subtitleText);
   content: " / ";
 }
 
-.breadcrumbs a{
+.breadcrumbs a {
 	text-decoration: none; 
 }
 .breadcrumbs a:hover {
@@ -185,7 +207,7 @@ ul.breadcrumbs li+li:before {
 /* Lists */
 
 article {
-	border: 1px solid black;
+	border: 1px solid var(--mainText);
 	margin:20px 10px;
 	padding:10px;
 	
@@ -193,7 +215,7 @@ article {
 }
 
 article:hover {
-  background-color: rgba(0,0,0,0.1);
+  background-color: var(--altBackgroundColour);
 }
 
 article p {
@@ -278,7 +300,7 @@ section.mainIntro h1 {
 div.introLine {
 	width: calc(50vw + 100%);
 	height: 8px;
-	background-color: var(--backgroundColour);
+	background-color: var(--navBarColour);
 	margin: 5px 0;
 	position: relative;
 	left: -50vw;
@@ -292,7 +314,7 @@ section.mainContent {
 
 .intro {
   display: flex;
-  background-color: var(--backgroundColour);
+  background-color: var(--navBarColour);
   padding: 0;
   height: 12em;
   margin: 2rem 0;
@@ -343,7 +365,7 @@ div.bio-bit {
 code, pre {
   border-radius: 0.3em;
 	background-color: var(--mainText);
-	color: var(--navText);
+	color: var(--backgroundColour);
 	overflow-x: auto;
   padding: 0 0.3em;
 }
@@ -368,6 +390,21 @@ th {
 }
 td {
   padding: 0 1em;
+}
+
+ /* Link */
+ /* Note: these only apply to the main body, not header/footer */
+ 
+main a:link {
+  color: var(--unvisitedHyperlink);
+}
+
+main a:visited {
+  color: var(--clickedLinks);
+}
+
+main a:active {
+  color: var(--activeHyperlink);
 }
 
 
