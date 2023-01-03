@@ -41,13 +41,13 @@ Other than updating the website with my future projects as they come, the next m
 
 After years of throwing around the idea of having a personal website I committed and purchased this domain December 30th, 2021. Just in time to ring in the new year. Originally I wanted the `savo.ca` domain but it has already been purchased and now redirects to a site about the benefits of owning a `.ca` domain. The irony is a *bit* frustrating.
 
-## Finding a Host
+# Finding a Host
 
 The next step in the process was finding a host for my website. I considered rolling my own server with some spare Raspberry Pi's or my NAS but to keep things simple for myself I decided to go with a commercial host instead.
 
 After doing some research the main concern for me was the cost, so I was trying to find the cheapest service since I [currently] do not most of the features offered to me. After asking my sister where she hosted her site and how much she pays for it, I decided to go to Netlify since the their basic plan is *free*.99.
 
-## Website Architecture
+# Website Architecture
 
 I initially intended to make the website largely, if not entirely from scratch in HTML and some potential scripting. After I started, I quickly came to realize some of the limitations of using pure HTML - namely that it was difficult to modularize one's website. This meant that in order to have a consistent header and footer I would need to either copy them into each `.html` by hand, or resort to some trickery like scripts.
 
@@ -62,7 +62,7 @@ After looking up solutions I came across the concept of Static Site Generators (
 
 In addition to the benefits of having the SSG follow templates for my content, so I could easily update shared elements, it came with several advantages I quickly began to use. Most notable for you, the user, are the "list" pages used to outline the contents in each directory. Since these are all generated and updated automatically as I modify the content on my site I don't have to think about them past setting their templates!
 
-## Website Design
+# Website Design
 
 I would like to minimize the amount of scripting needed for my website, ideally keep it at zero to ensure that the content is viewable by anyone with just an HTML parser. To that end I am try to stick to only formatting the website with CSS, and so far I have been successful at sticking to it.
 
@@ -70,9 +70,9 @@ The design used is inspired (stolen) from a print portfolio of my projects that 
 
 {{< fig src="/images/website-portfolio-clip.png" caption="A section from the print portfolio" >}}
 
-After many rounds of tweaking of the `.html` templates and my `.css` files, I've arrived at what I can comfortably call my final layout for my site. I may fool around with making a "dark" theme or something else more experimental, but feel that layout of content itself is what I want.
+After many rounds of tweaking of the `.html` templates and my `.css` files, I've arrived at what I can comfortably call my final layout for my site. 
 
-### General Layout
+## General Layout
 
 I wanted the website to have a constant header and footer on every page to help with navigation, even if the footer isn't quite utilized right now. Between these would rest the content of each page. 
 
@@ -80,9 +80,9 @@ In the header I wanted links to every section of my website, as well a drop down
 
 > "Projects" / "Personal" / "This Website"
 
-In the footer I reassert this is my site, but I think I may look to add theme settings there or contact info in the future.
+In the footer I reassert this is my site and have a toggle for light or dark mode (so it can be independent of browser settings).
 
-### Single Pages
+## Single Pages
 
 The layout of single pages (any specific content, e.g. a job or project) is pretty basic. Other than inserting the header and footer, all that there is to them is two sections: an intro section and the content. The intro section is what covers the brief meta details of the page at the start such as the title or tags, this is everything between the header and the second horizontal line. Anything below the second horizontal line to the footer is the content taken straight from the `.md` files that describe it.
 
@@ -122,13 +122,13 @@ find . -type f -name '*.md' -exec sed -Ezi 's/<figure>\n/{{</* fig /g;s/<\/figur
 
 This bit of code finds all the files in a directory and then executes the `sed` command on them which is responsible for altering them. It goes through and administers a series of small rules that combine to the desired effect: removing the HTML tags, replacing them as needed with the needed shortcode portions, and putting everything on one line.
 
-### List Pages
+## List Pages
 
 List pages are used whenever there is sub-pages, for example the [personal projects page]({{< ref "projects/personal" >}}) to show all these sub-pages. They are similar to single pages, with the use of a header, footer, and inserting content from `.md` files, however they also have the list appended to them. This is why most of the lists have a description from short like on the personal projects page, to longer when describing an overarching project like with the [ESC project]({{< ref "projects/personal/esc" >}}).
 
 I made two types of list, a basic list where each entry is one after another, which I use for my work and volunteer experience pages to appear more like a CV. And another where the content is split into two columns for a more interesting and fun layout for other places where chronological order isn't as pressing, namely projects, although it is used on the home page too.
 
-### Designing for Mobile
+## Designing for Mobile
 
 I have been designing this website on my computer so I didn't really worry about the size of figures or how the layout of my header and lists would be affected when using a narrower window. However once I started running my site and people were accessing it on their phones I was soon told of some of the issues and poor user experience they were having. These issues included:
 
@@ -154,7 +154,7 @@ Font based units found their main use in making sure that elements "felt" the ri
 
 This process really helped me improve my user experience on both mobile and desktop.
 
-### Designing my Homepage
+## Designing my Homepage
 
 My [homepage]({{< ref "/" >}}) is completely different to the rest of the website so I actually prepare it as its own html template.
 
@@ -173,7 +173,92 @@ As for the two lists, I reuse the multi-column list structure I prepared but pas
 
 I feel that by showing these projects on the main pages, especially my hand selected ones makes the website feel much more of complete website. I have received feedback from friends that even though they weren't originally seeking some of the projects that are featured they still visited the pages because it was shown to them and it sparked their curiosity.
 
-## Adding Content
+## Dark/Night Mode
+
+I added a dark/night mode theme for my website after some feedback from friends. I went for a red/white colour scheme and that wasn't too difficult given that I had already made most of my CSS use variables for colours *(there were a few places I found I had hard-coded a colour but these were addressed)*. I simple made a different class for the root to have the dark theme colours and that was it. I made a media query in CSS check if the user's browser had a preference for dark mode and if it did it would activate this class.
+
+```css
+@media (prefers-color-scheme: dark) {
+	:root {
+		--navBarColour: FireBrick;
+		--altNavBarColour: Red;
+		--mainText: White;
+		--navText: White;
+		--subtitleText: WhiteSmoke;	
+		--backgroundColour: Black;
+		--altBackgroundColour: #600000;
+		--unvisitedHyperlink: Red;
+		--clickedLinks: FireBrick ;
+		--activeHyperlink: Blue;
+	}
+}
+```
+
+*Note: I have since moved these variables into the `<body>` tag since I felt that having them at `root` was a bit too high.*
+
+This worked fine, however I wanted the visitor to be able to toggle the setting manually if they wanted to and then have that setting persist over visits. So I had to get into some scripting.
+
+### Scripting a Dark Mode Switch
+
+I had avoided scripting until now with the website since I largely didn't have a need for it. However after looking up some examples online for how to do exactly this I found one example for how to toggle and save the user's theme preference, and another to record the initial preference from the browser on their first visit. By combining them I could achieve exactly what I wanted. Fortunately the code was about a dozen lines each so combining them wasn't too difficult. 
+
+To store the user's preferences between visits I use the `localStorage` system which I just store a variable for if the theme should be dark or not. On loading a page this is read and acted on. If it is not present (likely a first time visitor) then the browser's preference for a dark mode is checked and then acted on accordingly.
+
+```js
+var body = document.body;
+
+// Check if there is a preference present
+if ('darkMode' in localStorage) {
+  // There is a stored preference, maintain user preference on page reload
+  if (localStorage.getItem('darkMode')) {
+    body.classList.add('darkMode');
+  }
+}
+else {
+  // No preference present, determine from user's browser preferences
+  
+  var match = window.matchMedia('(prefers-color-scheme: dark)');
+  
+  // If there are matches or not
+  if (match.matches == 0) {
+  	// No matches, user doesn't prefer dark mode, use lightmode
+  	body.classList.remove('darkMode');
+    localStorage.setItem('darkMode', 'false');
+  }
+  else {
+  	localStorage.setItem('darkMode', 'true');
+  	body.classList.add('darkMode');
+  }
+}
+```
+
+To toggle the theme manually I have an element on the page with a specific ID. When it is clicked then a short script toggles the theme and records it.
+
+```js
+window.onload = function() {
+// Click on dark mode toggle. Add dark mode classes and wrappers. Store user preference through sessions
+const switcher = document.getElementById("darkModeToggleSwitch");
+
+switcher.addEventListener("click", function() {
+		
+		//If dark mode is selected
+		if (localStorage.getItem('darkMode') == 'true') {
+			body.classList.remove('darkMode');
+			localStorage.setItem('darkMode', 'false');
+		}
+		else {
+			localStorage.setItem('darkMode', 'true');
+			body.classList.add('darkMode');
+		}
+})
+}
+```
+
+I did encounter issues with the manual toggle code at first. This was because I was originally having it run *prior* to the page being loaded so the toggle element wasn't yet rendered. This was remedied by enclosing the relevant code in the `window.onload = function () {..}` statement.
+
+**The toggle for the theme is currently a hyperlink in the footer.** I'll look to maybe put it somewhere easier to find in the future but I feel it is fine there for now.
+
+# Adding Content
 
 All the content for the site is prepared in markdown (`.md`) files within folders that match the structure of the website, as per HUGO guidelines. Media and such are uploaded to the "static" directory, also as per HUGO guidelines. For more detail about how these are then synthesized into HTML, please refer to the HUGO documentation [here](https://gohugo.io/documentation/).
 
@@ -181,7 +266,7 @@ To prepare one article takes me usually a couple of hours, especially if it is a
 
 Once prepared, I push a commit related to that content up to the GitHub. Once uploaded, Netlify detects the push and rebuilds the site with the new data and begins to host it immediately if there is no issue during build. HUGO is actually able to use the dates of my Git commits to determine the date a file was most recently modified automatically!
 
-### Changing the Internal Formatting of Posts
+## Changing the Internal Formatting of Posts
 
 Originally I wrote all my posts by breaking each line manually somewhere between every 100 and 125 characters. This made it easier to edit on my desktop where I had a large screen, however on my laptop it was awkward to edit such posts. So I have since made the executive decision to go back and remove these artificial line breaks so that I could have my editors wrap the words as I pleased on any device.
 

@@ -4,6 +4,8 @@
 {{ errorf "oh no no custom_css!!" }}
 {{end }}
 
+<script src="/nightmode.js"></script>
+
 <div class="wrapper">
 
 <header>
@@ -33,4 +35,5 @@
 
 {{ if not .IsHome }}
 {{ partial "breadcrumb" . }}
+
 {{end}}
