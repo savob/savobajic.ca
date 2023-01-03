@@ -7,7 +7,7 @@ draft: false
 
 {{< fig src="/images/headshot.jpg" caption="Bajic, Savo Bajic" >}}
 
-Hi! My name is Savo Bajic and I'm a Canadian engineer in training. Although I graduated with honours from the mechanical engineering program at the University of Toronto, my main interest is pursuing embedded electronics as a career and my hobby. I made this website to present both myself and my projects to anyone interested.
+Hi! My name is Savo Bajic and I'm a Canadian engineer (*engineer in training, legally speaking*), currently studying electrical engineering for a master's program. I graduated undergrad with honours from the mechanical engineering program at the University of Toronto, my main interest is pursuing embedded electronics as a career and my hobby. I made this website to present both myself and my projects to anyone interested.
 
 Born and raised a first generation Canadian in the outskirts of Windsor, Ontario to my parents who were immigrants from Czechia and Serbia. As result I am fluent in Czech and Serbian, in addition to English as a third language. When I was 11 we moved to Shanghai, China due to my dad's work and lived there for five years. We returned to our childhood home and I attended our local public high school for two years before leaving to study engineering at the University of Toronto.
 
@@ -19,9 +19,15 @@ Although I was enthralled by the idea of building and designing things from a yo
 
 At university I joined a few student design teams, in the end deciding to dedicate myself to the [Human Powered Vehicle Design Team](https://hpvdt.skule.ca/). I began primarily interested in learning how we designed the aerodynamic fairings and the holistic engineering process related to the employment of composite materials. However after having the opportunity to work on a lighting project for one vehicle in second year and a vacancy at the start of third year, I became the team's Head of Electronics, a role I still am responsible for.
 
+{{< fig src="/images/titan-savo.jpg" caption="Me with TITAN in 2022, our team's main entry to the World Human Powered Speed Challenge in 2019 and 2022" >}}
+
 In my spare time I have been regularly working on a variety of projects, primarily a custom quad-copter drone over the last year. When not working on some pet project I will often read some Sci-Fi novels or play some video games with friends.
 
 ## Education
+
+***Masters of Engineering (M.Eng.), Electrical Engineering*** | University of Toronto, *2022-Present.*
+- Focus on integrated circuit design process and methodologies
+- Working on a project in computational imaging research with the [Intelligent Sensory Microsystems Laboratory](https://www.eecg.utoronto.ca/~roman/lab/index.html)
 
 ***Bachelors of Applied Science (B.A.Sc.), Mechanical Engineering*** | University of Toronto, *2016-2021.*
 - Specialized in manufacturing and mechatronics.
