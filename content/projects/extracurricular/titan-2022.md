@@ -87,7 +87,7 @@ For the digital camera systems I reused the Raspberry Pi 3B+'s and Raspberry Pi 
 
 In the end the basic block diagram was drawn up to be the following. My choices will be explained in greater detail in the sections that follow.
 
-[DIAGRAM LAYOUT]
+{{< fig src="/images/titan-diagram.png" caption="Block diagram of TITAN's electronics" >}}
 
 ## Raspberry Pis and Pi Cams
 
@@ -156,7 +156,7 @@ Once I settled on the hardware I wanted in the system, or rather what changes I 
 
 I made two revisions for hardware corresponding with my two main periods of work on this, one in fall 2020 and another in the summer of 2022 leading up to competition to iron out some minor issues with the first. Below is the schematic for the first revision.
 
-{{< fig src="/images/titan-2020-schematic.svg" caption="The completed schematic for TITAN 2022 (PDF version: [Colour](/pdf/titan-2020.pdf) / [BW](/pdf/titan-2020-BW.pdf))" >}}
+{{< fig src="/images/titan-2020-schematic.svg" caption="The completed schematic for TITAN's 2020 revision (PDF version: [Colour](/pdf/titan-2020.pdf) / [BW](/pdf/titan-2020-BW.pdf))" >}}
 
 The circuit can be broken into a few main sections:
 
