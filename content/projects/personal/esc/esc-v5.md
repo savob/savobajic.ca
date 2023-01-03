@@ -47,7 +47,7 @@ Circuit design is basically the same as [V4]({{<ref "projects/personal/esc/esc-v
 - Rearranged the MOSFET driver signals such that all the low side signals are on one port. (Done to simplify/optimize coding for commutations)
 - Added a status LED on the last unused pin
 
-{{< fig src="/images/esc-v5-schematic.svg" caption="The completed schematic for the ESC V5 (PDF version: [Colour](/pdf/ESC_V5.pdf) / [BW](/pdf/ESC_V5_BW.pdf))" >}}
+{{< fig src="/images/esc-v5-schematic.svg" caption="The completed schematic for the ESC V5 (PDF version: [Colour](/pdf/ESC_V5.pdf) / [BW](/pdf/ESC_V5_BW.pdf))" class="schematic" >}}
 
 ## Layout
 

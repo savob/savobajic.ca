@@ -276,6 +276,19 @@ figure img {
 	display: block;
 }
 
+figure.schematic img {
+	max-height: 100%;
+	background-color: White;
+}
+
+figure.blackBackground img {
+	background-color: Black;
+}
+
+figure.whiteBackground img {
+	background-color: White;
+}
+
 figcaption::before {
 	counter-increment: figure;
   content: "Figure " counter(figure) " - ";

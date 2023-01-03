@@ -137,7 +137,7 @@ For some reason I needed to manually disable the ADC using its control register,
 
 The circuit design was pretty simple, I basically transcribed the working configuration I had for my hardware during the firmware development process, making minor modifications to include a battery for power and a programming header.
 
-{{< fig src="/images/raccoon-schematic.svg" caption="The completed schematic for the raccoon board (PDF version: [Colour](/pdf/raccoon.pdf) / [BW](/pdf/raccoon_BW.pdf))" >}}
+{{< fig src="/images/raccoon-schematic.svg" caption="The completed schematic for the raccoon board (PDF version: [Colour](/pdf/raccoon.pdf) / [BW](/pdf/raccoon_BW.pdf))" class="schematic" >}}
 
 ## Board Design
 

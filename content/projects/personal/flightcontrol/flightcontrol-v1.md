@@ -45,7 +45,7 @@ Since the main purpose of this board is to shuffle around data I made sure to pr
 
 The only exception being the level shifter, which although a standard reference design, I needed to select the exact MOSFETs to use for the job.
 
-{{< fig src="/images/flight-controller-v1-schematic.svg" caption="The completed schematic for the flight controller V1 (PDF version: [Colour](/pdf/flight-controller-V1.pdf)/ [BW](/pdf/flight-controller-V1-BW.pdf))" >}}
+{{< fig src="/images/flight-controller-v1-schematic.svg" caption="The completed schematic for the flight controller V1 (PDF version: [Colour](/pdf/flight-controller-V1.pdf)/ [BW](/pdf/flight-controller-V1-BW.pdf))" class="schematic" >}}
 
 There isn't much unique electronically about this board compared to the outline I had for the the flight controllers in general.
 

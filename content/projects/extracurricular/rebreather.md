@@ -57,7 +57,7 @@ The circuit design and layout was completed in EAGLE. For the circuit design I h
 
 The overall system design is centered on an ATmega328P microcontroller, the same used in Arduino Nanos. Fanning out from it are the circuits responsible for conditioning the oxygen sensor signals, the CO₂ signal and then the displays. The entire system is powered off a shared 5V supply generated from a linear regulator stepping down the supplied battery voltage.
 
-{{< fig src="/images/axios-schematic.png" caption="The completed schematic for the hot wire cutter ([PDF version](/pdf/rebreather-schematic.pdf))" >}}
+{{< fig src="/images/axios-schematic.png" caption="The completed schematic for the hot wire cutter ([PDF version](/pdf/rebreather-schematic.pdf))" class="schematic" >}}
 
 The ATmega was chosen for both our familiarity with it and having just the right amount of features we needed for this. It has an internal analog to digital converter for the oxygen sensors, interrupt pins for the CO₂ sensor, and timers needed for driving the displays. Both SPI ISP headers and serial headers for programming were put on the board.
 
@@ -127,7 +127,7 @@ The board is programmed entirely in the Arduino IDE as an Arduino Nano. Its code
 
 ### Display Code
 
-The display code is based off what I did for the [scoreboard project](../scoreboard#display-code). However instead of controlling the segments directly from pins of the microcontroller, the microcontroller would be passing settings to the shift registers that controlled the segments for each display.
+The display code is based off what I did for the [scoreboard project]({{< ref "projects/extracurricular/scoreboard#display-code" >}}). However instead of controlling the segments directly from pins of the microcontroller, the microcontroller would be passing settings to the shift registers that controlled the segments for each display.
 
 To communicate the microcontroller would operate the data and clock lines for the shift registers. It would start by setting the two lines low, then based on whether or not a segment needed to be on - setting the data line, before finally raising the clock line and pushing the data into the registers. This was done for each bit of the displayed character for each of the four displays present.
 

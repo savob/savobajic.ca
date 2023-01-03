@@ -52,7 +52,7 @@ After doing some looking around I found the [grbl 4 axis project for Arduino Meg
 
 The only hardware I "needed" to design was a breakout board to make it easier for us to connect everything to the Mega without making a mistake. After digging through the firmware source and reading the documentation I deduced the pins it used and made the following schematic.
 
-{{< fig src="/images/hot-wire-schematic.svg" caption="The completed schematic for the hot wire cutter (PDF version: [Colour](/pdf/hotwireboard.pdf) / [BW](/pdf/hotwireboard-BW.pdf))" >}}
+{{< fig src="/images/hot-wire-schematic.svg" caption="The completed schematic for the hot wire cutter (PDF version: [Colour](/pdf/hotwireboard.pdf) / [BW](/pdf/hotwireboard-BW.pdf))" class="schematic" >}}
 
 
 ## Layout

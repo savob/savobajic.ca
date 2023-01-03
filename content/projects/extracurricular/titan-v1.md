@@ -1,5 +1,5 @@
 ---
-title: "TITAN V1"
+title: "TITAN 2019"
 date: 2019-05-01T15:44:40-05:00
 draft: false
 started: "May 2019"
@@ -144,7 +144,7 @@ With the parts selected I moved on to designing the actual circuit. Since I made
 
 *TITAN was designed in EAGLE, the files have only been imported into KiCAD to generate the figures related to the circuitry.*
 
-{{< fig src="/images/titan-schematic.svg" caption="The completed schematic for TITAN (PDF version: [Colour](/pdf/titan-v1.pdf) / [BW](/pdf/titan-v1-BW.pdf)" >}}
+{{< fig src="/images/titan-schematic.svg" caption="The completed schematic for TITAN (PDF version: [Colour](/pdf/titan-v1.pdf) / [BW](/pdf/titan-v1-BW.pdf)" class="schematic" >}}
 
 The largest difficulty with this circuit was determining how to make the same board usable for all three roles since I did not want to design or pay for three separate designs. To achieve this I used two solder jumpers, SJ1 and SJ2 to route a signal to either the RPi (for the rear) or the battery status LEDs (for the redundant front system).
 

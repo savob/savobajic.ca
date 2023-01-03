@@ -156,7 +156,7 @@ Once I settled on the hardware I wanted in the system, or rather what changes I 
 
 I made two revisions for hardware corresponding with my two main periods of work on this, one in fall 2020 and another in the summer of 2022 leading up to competition to iron out some minor issues with the first. Below is the schematic for the first revision.
 
-{{< fig src="/images/titan-2020-schematic.svg" caption="The completed schematic for TITAN's 2020 revision (PDF version: [Colour](/pdf/titan-2020.pdf) / [BW](/pdf/titan-2020-BW.pdf))" >}}
+{{< fig src="/images/titan-2020-schematic.svg" caption="The completed schematic for TITAN's 2020 revision (PDF version: [Colour](/pdf/titan-2020.pdf) / [BW](/pdf/titan-2020-BW.pdf))" class="schematic" >}}
 
 The circuit can be broken into a few main sections:
 
@@ -176,13 +176,13 @@ For the second version I changed a few things from the first, major changes list
 - Added SWD debugging header for STM32
 - Changed the 5V regulator (due to supply issues)
 
-{{< fig src="/images/titan-2022-schematic.svg" caption="The completed main schematic for TITAN 2022 (PDF version: [Colour](/pdf/titan-2022.pdf) / [BW](/pdf/titan-2022-BW.pdf))" >}}
+{{< fig src="/images/titan-2022-schematic.svg" caption="The completed main schematic for TITAN 2022 (PDF version: [Colour](/pdf/titan-2022.pdf) / [BW](/pdf/titan-2022-BW.pdf))" class="schematic" >}}
 
 Overall I am satisfied with the final circuit for TITAN in 2022. **The only hardware issue encountered was that I failed to add enough capacitance to the analog circuitry for the microcontroller so ADC readings used for battery monitoring were too noisy to be used.** This was tolerable though since the batteries were only used for about 20 minutes at a time before recharging but had enough energy when fully charged to run for over 200 minutes.
 
 Below is the schematic used for the daughter board used for the rear wheel to house the IR sensor for brake disk temperature and the IR reflectometer used to track brake spokes as an encoder. It has a simple op-amp circuit used to amplify and convert the reflectometer signal into a digital one for the microcontroller, and headers to connect to the rest of the system.
 
-{{< fig src="/images/titan-wheel-schematic.svg" caption="The completed schematic for TITAN 2022's daughter board (PDF version: [Colour](/pdf/titan-wheel.pdf) / [BW](/pdf/titan-wheel-BW.pdf))" >}}
+{{< fig src="/images/titan-wheel-schematic.svg" caption="The completed schematic for TITAN 2022's daughter board (PDF version: [Colour](/pdf/titan-wheel.pdf) / [BW](/pdf/titan-wheel-BW.pdf))" class="schematic" >}}
 
 The circuit for the daughter board worked as intended once tuned. **The only minor quirk it had was that once the brakes were engaged the IR encoder would fail to accurately monitor rotational speed.** This was due to the brake disks heating up enough that the IR emitted by them overwhelmed the sensor. This could be remedied by using a visible light sensor or a different encoder arrangement altogether. However this wasn't an issue since once the brakes are engaged on TITAN the exact speed is no longer of concern since it has finished its run and the GPS provides a rough speed until the disks cool down.
 

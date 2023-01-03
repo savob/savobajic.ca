@@ -49,7 +49,7 @@ The basic units of this design were descried the year prior in a nice PDF docume
 
 The basis of the circuit is a MOSFET constant current circuit similar to (a) in the figure below, with one used for each line LEDs. The basic fuctional principle is that MOSFET's gate (Q2) is initially pulled up and it begins to allow current through the LEDs into the resistor, R3. As the current increases so does the voltage across R3 until it passes the threshold for the NPN transistor, Q1, to begin allowing current to flow across it as well. This pulls down the voltage on the MOSFET's gate until the current decreases enough through Q2 that Q1 stops pulling it down any further. This balance is set by R3's value so it determines the current supplied to the LEDs.
 
-{{< fig src="/images/arbiter-brief.png" caption="The basic circuits propsed for use in Tempest" >}}
+{{< fig src="/images/arbiter-brief.png" caption="The basic circuits propsed for use in Tempest" class="schematic" >}}
 
 Other than changing some parts due to availabilities of the transistors origianlly mentioned in Tempest's outline, and then some of the resistors to compensate for the different characteristics of these new transistors, the design remained fundamentally the same for these into the final design
 

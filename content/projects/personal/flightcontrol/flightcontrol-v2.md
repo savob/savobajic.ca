@@ -15,9 +15,9 @@ thumbnail: "/images/flight-controller-v2-top-assembled.jpg"
 
 # Overview
 
-This was my second design of a flight controller/computer, designed to be more capable than the first by using a higher-end microcontroller. This should enable it to run more complicated code before hitting limits such as memory or runtime that would cause it to fail to control the drone effectively.
+This was my second design of a flight controller/computer, designed to be more capable than the [first]({{< ref "projects/personal/flightcontrol/flightcontrol-v1" >}}) by using a higher-end microcontroller. This should enable it to run more complicated code before hitting limits such as memory or runtime that would cause it to fail to control the drone effectively.
 
-The microcontroller I selected to use instead of the ATmega329P in the previous one is the STM32F103CBT which has far more features than the ATmega but is still decently cheap and approachable for tinkers like myself, with a lot of community support in open-source forums and projects like Arduino.
+The microcontroller I selected to use instead of the ATmega328P in the previous one is the STM32F103CBT which has far more features than the ATmega but is still decently cheap and approachable for tinkers like myself, with a lot of community support in open-source forums and projects like Arduino.
 
 Circuit design was not too difficult, although I did have some issues with trying to layout the traces on the board to minimize the number of vias I needed.
 
@@ -59,7 +59,7 @@ Although an easy change to say *"I just changed the microcontroler"*, I actually
 - Three status LEDs were added to the design
 - There are **fewer** exp[licit extra inputs/outputs broken out (as opposed to re-purposing the Serial header for example)
 
-{{< fig src="/images/flight-controller-v2-schematic.svg" caption="The completed schematic for the flight controller V1 (PDF version: [Colour](/pdf/flight-controller-v2.pdf) / [BW](/pdf/flight-controller-v2-BW.pdf))" >}}
+{{< fig src="/images/flight-controller-v2-schematic.svg" caption="The completed schematic for the flight controller V1 (PDF version: [Colour](/pdf/flight-controller-v2.pdf) / [BW](/pdf/flight-controller-v2-BW.pdf))" class="schematic" >}}
 
 ## Layout
 

@@ -52,7 +52,7 @@ I wanted to have a dozen LEDs on the ornament, with half always on and the other
 
 All that remained to design was the blinking system, so I turned to everyone's favourite IC, the old reliable 555 set to run in astable (free-running, oscillating) mode. Not only was the 555 timer a good choice for keeping the circuit simple and reliable, it also was able to drive the "high" power output directly so no additional transistors were needed. Thus the component count would be kept low. 
 
-{{< fig src="/images/ornament-schematic.svg" caption="The completed schematic for ornament (PDF version: [Colour](/pdf/ornament.pdf) / [BW](/pdf/ornament_BW.pdf))" >}}
+{{< fig src="/images/ornament-schematic.svg" caption="The completed schematic for ornament (PDF version: [Colour](/pdf/ornament.pdf) / [BW](/pdf/ornament_BW.pdf))" class="schematic" >}}
 
 My choice of passives resulted in the blinking lights being on for about 1.8 seconds, and off for 1.4, which I felt was just the right rate to not be too attention grabbing nor too "slow".
 

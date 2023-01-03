@@ -15,7 +15,7 @@ thumbnail: "/images/esc-v3-top-assembled.jpg"
 
 # Overview
 
-A minor revision of [V2](../esc-v2), primarily to try preventing the issues I had with multiple voltage rails repeating. **I did not change anything related to the microcontroller** so I could theoretically use the same code from V2 and drop it into V3, and vice versa. Yes, that means my PWM issues would still be present on this one.
+A minor revision of [V2]({{< ref "projects/personal/esc/esc-v2" >}}), primarily to try preventing the issues I had with multiple voltage rails repeating. **I did not change anything related to the microcontroller** so I could theoretically use the same code from V2 and drop it into V3, and vice versa. Yes, that means my PWM issues would still be present on this one.
 
 In addition to these power related changes, I added two status LEDs. One to light up when there is power applied to the board and another to be controlled by the microcontroller.
 
@@ -44,7 +44,7 @@ Since this is the basically the same as V2 (and thus V1), please refer to [V1's 
 - The addition of two status LEDs. **D4** for the microcontroller and **D5** for power indication.
 - The rearrangement of how the RESET signal for the microcontroller is routed for programming.
 
-{{< fig src="/images/esc-v3-schematic.svg" caption="The completed schematic for the ESC V3 (PDF version: [Colour](/pdf/ESC_V3.pdf) / [BW](/pdf/ESC_V3_BW.pdf))" >}}
+{{< fig src="/images/esc-v3-schematic.svg" caption="The completed schematic for the ESC V3 (PDF version: [Colour](/pdf/ESC_V3.pdf) / [BW](/pdf/ESC_V3_BW.pdf))" class="schematic" >}}
 
 ## Layout
 

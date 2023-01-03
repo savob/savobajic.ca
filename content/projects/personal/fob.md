@@ -108,7 +108,7 @@ I also aimed to address the other two issues with the original PCB I made. First
 
 I ported the design by hand to KiCad, the resulting schematic is pretty simple. I used two 330Ω resistors instead of a 150Ω one since that is what I had available on hand.
 
-{{< fig src="/images/fob-v2-schematic.svg" caption="The completed schematic for the revised entry fob (PDF version: [Colour](/pdf/fob-v2.pdf) / [BW](/pdf/fob-v2-bw.pdf))" >}}
+{{< fig src="/images/fob-v2-schematic.svg" caption="The completed schematic for the revised entry fob (PDF version: [Colour](/pdf/fob-v2.pdf) / [BW](/pdf/fob-v2-bw.pdf))" class="schematic" >}}
 
 I then laid out the circuit, it was a mix of both through hole and surface mount components. I was able to place all traces on the top layer, so it could be made as a single layer circuit board if I really wanted to pump these out for cheap. Its overall dimensions exceeded those of my previous version, largely to accommodate the new onboard battery.
 

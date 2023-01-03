@@ -42,7 +42,7 @@ The circuit has functionally has four main sections: microcontroller, headers, o
 - The **feedback network** (labelled as "BEMF Dividers" in the schematic) is responsible for preparing the signals from the motor for the microcontroller
 - **Headers** are needed for connecting the ESC to either the rest of a system or for programming/debugging.
 
-{{< fig src="/images/esc-v4-schematic.svg" caption="The completed schematic for the ESC V4 (PDF version: [Colour](/pdf/ESC_V4.pdf)/ [BW](/pdf/ESC_V4_BW.pdf))" >}}
+{{< fig src="/images/esc-v4-schematic.svg" caption="The completed schematic for the ESC V4 (PDF version: [Colour](/pdf/ESC_V4.pdf)/ [BW](/pdf/ESC_V4_BW.pdf))" class="schematic" >}}
 
 ### Microcontroller
 

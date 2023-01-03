@@ -44,7 +44,7 @@ In the end I was able to achieve most of what I had set out to. **I fell short o
 
 Since this is the basically the same as V1, please refer to [its section]({{< ref "projects/personal/esc/esc-v1#circuit-design" >}}) on the circuit's design. My only change is using the ATmega328P**B** in place of a ATmega328P, the PB is a direct upgrade for the P model so the connections and code can remain the same.
 
-{{< fig src="/images/esc-v2-schematic.svg" caption="The completed schematic for the ESC V2 (PDF version: [Colour](/pdf/ESC_V2.pdf) / [BW](/pdf/ESC_V2_BW.pdf))" >}}
+{{< fig src="/images/esc-v2-schematic.svg" caption="The completed schematic for the ESC V2 (PDF version: [Colour](/pdf/ESC_V2.pdf) / [BW](/pdf/ESC_V2_BW.pdf))" class="schematic" >}}
 
 ***Note: there is a connection from the RST on the ISP header (pin 5 - J1) directly to RESET on the ATmega (pin 29 - U1) that was not present in V1 or V2.*** This was put in to reflect the bodge wire I needed to use so they would bypass C8 on the board, hence why this schematic is revision **2.1**, not 2. (The appending letters change on U1 are just to designate package, it remains the same internally (ATmega328P)).
 

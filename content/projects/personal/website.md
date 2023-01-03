@@ -234,7 +234,7 @@ else {
 
 To toggle the theme manually I have an element on the page with a specific ID. When it is clicked then a short script toggles the theme and records it.
 
-```js
+```js {hl_lines=[1, 17]}
 window.onload = function() {
 // Click on dark mode toggle. Add dark mode classes and wrappers. Store user preference through sessions
 const switcher = document.getElementById("darkModeToggleSwitch");
@@ -254,7 +254,7 @@ switcher.addEventListener("click", function() {
 }
 ```
 
-I did encounter issues with the manual toggle code at first. This was because I was originally having it run *prior* to the page being loaded so the toggle element wasn't yet rendered. This was remedied by enclosing the relevant code in the `window.onload = function () {..}` statement.
+I did encounter issues with the manual toggle code at first. This was because I was originally having it run *prior* to the page being loaded so the toggle element wasn't yet rendered. This was remedied by enclosing the relevant code in the `window.onload = function () {..}` statement highlighted above.
 
 **The toggle for the theme is currently a hyperlink in the footer.** I'll look to maybe put it somewhere easier to find in the future but I feel it is fine there for now.
 

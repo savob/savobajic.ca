@@ -77,7 +77,7 @@ To control the heater I used a commercial solid state relay to cut or provide po
 
 Combining all these parts into one schematic produces this. Note that I have added connections for a USB charger to provide the system 5 VDC from 120 VAC, as well as a grounding connection for the metal enclosure used.
 
-{{< fig src="/images/oven_schematic.svg" caption="The original schematic for the oven (PDF version: [Colour](/pdf/oven.pdf) / [BW](/pdf/oven_bw.pdf))" >}}
+{{< fig src="/images/oven_schematic.svg" caption="The original schematic for the oven (PDF version: [Colour](/pdf/oven.pdf) / [BW](/pdf/oven_bw.pdf))" class="schematic" >}}
 
 ## Layout
 
@@ -184,6 +184,6 @@ Unfortunately due to the issues with reading temperature on the current board, I
 
 To address the critical issue I have with the MAX6675 IC, I need a new board revision. Unless I decide to have a module floating about inside the enclosure. With it I will move the IC to use a completely separate bus from the real SPI pins. I will also add a buzzer to alert people to the oven's status if they aren't actively looking at the screen.
 
-{{< fig src="/images/oven_v2_schematic.svg" caption="The revised schematic for the oven (PDF version: [Colour](/pdf/oven_v2.pdf) / [BW](/pdf/oven_v2_bw.pdf))" >}}
+{{< fig src="/images/oven_v2_schematic.svg" caption="The revised schematic for the oven (PDF version: [Colour](/pdf/oven_v2.pdf) / [BW](/pdf/oven_v2_bw.pdf))" class="schematic" >}}
 
 I hope to have this laid out and made by the end of April.

@@ -58,7 +58,7 @@ Other than the ESP32 and its programming circuitry, there is the hardware for us
 
 Power is supplied using standard USB with an onboard 3.3V regulator for the ESP32.
 
-{{< fig src="/images/ttc-sign-v1.1-schematic.svg" caption="The completed schematic for the TTC Check board (PDF version: [Colour](/pdf/ttc-sign-v1.1.pdf) / [BW](/pdf/ttc-sign-v1.1-bw.pdf))" >}}
+{{< fig src="/images/ttc-sign-v1.1-schematic.svg" caption="The completed schematic for the TTC Check board (PDF version: [Colour](/pdf/ttc-sign-v1.1.pdf) / [BW](/pdf/ttc-sign-v1.1-bw.pdf))" class="schematic" >}}
 
 Although not visibly reflected in the schematic I did select all my parts to be surface mount, with the exception of the display. I did this to minimize potential damage done to the walls behind when buttons are pressed.
 
@@ -252,7 +252,7 @@ Although the system is feature complete for what I needed from it, there a few t
 
 Firstly I can make a new hardware revision to address my issues with the board I currently have. For now I have added my desired changes as a set of notes in the margins so I can implement them when I get around to it. The main issues I want to address with this future revision would be the pull-up resistors for all buttons and moving to some SMT displays.
 
-{{< fig src="/images/ttc-sign-v1.2-schematic.svg" caption="The start of the revised schematic (PDF version: [Colour](/pdf/ttc-sign-v1.2.pdf) / [BW](/pdf/ttc-sign-v1.2-bw.pdf))" >}}
+{{< fig src="/images/ttc-sign-v1.2-schematic.svg" caption="The start of the revised schematic (PDF version: [Colour](/pdf/ttc-sign-v1.2.pdf) / [BW](/pdf/ttc-sign-v1.2-bw.pdf))" class="schematic" >}}
 
 ### Software Features
 

@@ -46,7 +46,7 @@ The result was a small (35mm by 100mm) circuit board that had 32 LEDs (in two ro
 
 The circuit design is straightforward, the heart of it is the ATMega microcontroller which processes the button inputs on its interrupt pins, and controls the LEDs using a serial interface to four discrete shift registers (each controlling a group of 8 LEDs). Below is most of the schematic, one shift register and its LEDs have been left out.
 
-{{< fig src="/images/gameboi-schematic.png" caption="gameBOI schematic" >}}
+{{< fig src="/images/gameboi-schematic.png" caption="gameBOI schematic" class="schematic" >}}
 
 This was then turned into a printed circuit board layout without much difficulty due to the repeated parts of the circuit and few branching signals allowing most of the signals to be routed on the top layer.
 

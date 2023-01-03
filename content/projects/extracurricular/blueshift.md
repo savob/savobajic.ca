@@ -78,7 +78,7 @@ I had a teammate interested in helping with the project, so I had them prepare a
 
 The design of the board centres on an STM32F103 development board and RPi pair which do all the data collection, fanning out from the STM32 lie all the same sensors used on TITAN (DHT, battery dividers, encoder, etc.), one immediate difference is that the nRF24L01 modulke used for telemetry is connected to the STM32 - not the RPi like in TITAN. On the right of the schematic are the four light line regulators controlled from the STM32. Along the bottom is the power protection circuitry I wanted to introduce and the 5V regulator.
 
-{{< fig src="/images/blueshift-v3-schematic.svg" caption="The completed schematic for the Blueshift V3 (PDF version: [Colur](/pdf/blueshift-v3.pdf) / [BW](/pdf/blueshift-v3-BW.pdf))" >}}
+{{< fig src="/images/blueshift-v3-schematic.svg" caption="The completed schematic for the Blueshift V3 (PDF version: [Colur](/pdf/blueshift-v3.pdf) / [BW](/pdf/blueshift-v3-BW.pdf))" class="schematic" >}}
 
 ### Microcontroller
 
@@ -88,7 +88,7 @@ It has a wealth of features that make it more suited to this than something like
 
 ### Sensors
 
-All the [sensors from TITAN](../titan-v1#sensors) were reused in Blueshift. The only change was that with only one RPi, the ANT+ dongle used for monitoring rider power and heart rate would be in the main (and only) RPi.
+All the [sensors from TITAN]({{< ref "projects/extracurricular/titan-v1#sensors" >}}) were reused in Blueshift. The only change was that with only one RPi, the ANT+ dongle used for monitoring rider power and heart rate would be in the main (and only) RPi.
 
 - Resistor voltage dividers
    - Battery levels - Used to divide the different battery voltages down to safe levels for the STM32 to measure
@@ -145,7 +145,7 @@ These weren't the only protection circuits present through the system though. Th
 
 Other than the main Blueshift board there was a 12V regulator we designed to supply steady power to all three peripheral video systems. It was a simple board, using the reference design for a boost regulator to generate 12V from our battery's nominal 10V. Other than this regulator, there were only the connectors for each of the three cameras and displays to connect to and the battery to feed it. 
 
-{{< fig src="/images/blueshift-analog-pdb-schematic.svg" caption="The completed schematic for the Blueshift V3 (PDF version: [Colour](/pdf/blueshift-analog-pdb.pdf) / [BW](/pdf/blueshift-analog-pdb-BW.pdf))" >}}
+{{< fig src="/images/blueshift-analog-pdb-schematic.svg" caption="The completed schematic for the analog power board in Blueshift (PDF version: [Colour](/pdf/blueshift-analog-pdb.pdf) / [BW](/pdf/blueshift-analog-pdb-BW.pdf))" class="schematic" >}}
 
 ## Layout
 
@@ -262,7 +262,7 @@ Data collection was kept the same from TITAN since we were using all the same se
 - **DHT** - Used a library
 - **Encoders** (wheel and crank) - Used interrupts to record their rotational periods/speeds and number of rotations
 - **Battery levels** - Used internal analog to digital converter on STM32 to determine battery voltage and thus level 
-   - *Refer to [TITAN's section](../titan-v1#battery-monitoring) on this for more detail*
+   - Refer to [TITAN's section]({{< ref "projects/extracurricular/titan-v1#battery-monitoring" >}}) on this for more detail
 
 ### Light Control
 
@@ -276,7 +276,7 @@ Finally, I had them add new commands to the established data exchange structure 
 
 ### Data Exchange
 
-This again was taken basically whole from [my work on TITAN](../titan-v1#communication-with-rpis). Communication between the RPi and STM32 was done over a serial line using predefined message structures, explained below.
+This again was taken basically whole from [my work on TITAN]({{< ref "projects/extracurricular/titan-v1#communication-with-rpis" >}}). Communication between the RPi and STM32 was done over a serial line using predefined message structures, explained below.
 
 > **1 character** - Message type (capital letters are for sending data, lowercase for requesting data)
 > 
@@ -290,13 +290,13 @@ The reason I used a data length character as part of messages, rather than a fix
 
 ### ANT+ Data Collection
 
-Just like on TITAN a USB receiver for ANT+ signals was used on the RPi to collect the power, cadence, and heart rate data for the rider. I reused the [python code from TITAN](../titan-v1#ant), although I trimmed it down to only monitor one set of rider devices rather than two. The RPi would still update the STM32 with this information as it got updated should telemetry be achieved.
+Just like on TITAN a USB receiver for ANT+ signals was used on the RPi to collect the power, cadence, and heart rate data for the rider. I reused the [python code from TITAN]({{< ref "projects/extracurricular/titan-v1#ant" >}}), although I trimmed it down to only monitor one set of rider devices rather than two. The RPi would still update the STM32 with this information as it got updated should telemetry be achieved.
 
 **My teammates were unable to get a C/C++ version of ANT+ operational, so the Python version was kept for competition.**
 
 ### Video Display and Overlay
 
-The code for this was also copied from TITAN and was essentially the same, just that I removed the different "front" or "rear" code since there was only going to be one rider and display for this so it was redundant. The [feed shown](../titan-v1#camera-feed) to the rider was still a "preview" of the RPi camera with a data-loaded heads up display [overlaid](../titan-v1#overlay).
+The code for this was also copied from TITAN and was essentially the same, just that I removed the different "front" or "rear" code since there was only going to be one rider and display for this so it was redundant. The [feed shown]({{< ref "projects/extracurricular//titan-v1#camera-feed" >}}) to the rider was still a "preview" of the RPi camera with a data-loaded heads up display [overlaid]({{< ref "projects/extracurricular/titan-v1#overlay" >}}).
 
 Although my teammates had come success with putting up a video feed with C-based code using OpenCV, there was a noticeable latency and decreased frame rate compared to my original Python-based approach, which only got worse when they applied an overlay to it. **So this was scrapped and we intended to keep the Python video system for Blueshift at competition.**
 
@@ -304,7 +304,7 @@ I did keep working on this myself after the cancellation of the competition in t
 
 ### Telemetry
 
-Over the year leading up to Blueshift I had been doing some research into how we could finally achieve telemetry with the nRF24 modules I had purchased. I have a [telemetry page](../telemetry) dedicated to my work on it, so I will summarize it by stating I was greatly helped by the libraries available for it, and that I made functions to easily exchange data wirelessly like it was data flowing between microcontroller/processors on TITAN and Blueshift.
+Over the year leading up to Blueshift I had been doing some research into how we could finally achieve telemetry with the nRF24 modules I had purchased. I have a [telemetry page]({{< ref "projects/extracurricular/telemetry" >}}) dedicated to my work on it, so I will summarize it by stating I was greatly helped by the libraries available for it, and that I made functions to easily exchange data wirelessly like it was data flowing between microcontroller/processors on TITAN and Blueshift.
 
 **I am not certain I would have had it in time for the competition, but Blueshift would be able to race even without it.**
 
@@ -332,6 +332,6 @@ I went back and prepared a new schematic to remedy most of my issues with the de
 - Moved the voltage divider for the auxiliary battery on board
 - Added protection diodes for axillary battery level line
 
-{{< fig src="/images/blueshift-v4-schematic.svg" caption="The schematic for a hypothetical V4 (PDF version: [Colour](/pdf/blueshift-v4.pdf) / [BW](/pdf/blueshift-v4-BW.pdf))" >}}
+{{< fig src="/images/blueshift-v4-schematic.svg" caption="The schematic for a hypothetical V4 (PDF version: [Colour](/pdf/blueshift-v4.pdf) / [BW](/pdf/blueshift-v4-BW.pdf))" class="schematic" >}}
 
 **Although this wouldn't be made, I still made this since when someone would look back on this project, be it myself or someone else - I would like this to be the schematic they draw from rather than the real but incorrect Blueshift schematic used.**

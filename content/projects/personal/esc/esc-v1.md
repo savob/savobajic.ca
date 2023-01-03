@@ -35,7 +35,7 @@ I started this design based on ELECTRONOOB's work with his [first ESC](http://el
 
 The circuit design was basically taken from his first version, with the modifications made to basically feature match his third version. This meant removing the parts related to the USB and the buzzer. In addition some parts relating to the MOSFETs were changed to ones I could readily find.
 
-{{< fig src="/images/esc-v1-schematic.svg" caption="The completed schematic for the ESC V1 (PDF version: [Colour](/pdf/ESC_V1.pdf) / [BW](/pdf/ESC_V1_BW.pdf))" >}}
+{{< fig src="/images/esc-v1-schematic.svg" caption="The completed schematic for the ESC V1 (PDF version: [Colour](/pdf/ESC_V1.pdf) / [BW](/pdf/ESC_V1_BW.pdf))" class="schematic" >}}
 
 ### Brains
 

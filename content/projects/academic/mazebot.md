@@ -85,7 +85,7 @@ To release the block, the system would simply be driven in reverse.
 
 I designed the entire proposed circuit to drive our rover. At the heart of is was an Arduino Mega, used for its numerous inputs and outputs available to us. This would allow us to write code that would operate the entire robot from a single microcontroller.
 
-{{< fig src="/images/mazebot-schematic.png" caption="My propsed circuit ([PDF version](/pdf/MIE444_Schematic.pdf))" >}}
+{{< fig src="/images/mazebot-schematic.png" caption="My propsed circuit ([PDF version](/pdf/MIE444_Schematic.pdf))" class="schematic" >}}
 
 #### Inputs
 

@@ -121,7 +121,7 @@ After prototyping I transcribed my work on the bread boards to proper schematics
 
 This one is just a a collection of headers for each signal and breakouts for a set of four AND and four OR gates. It is down to the user (me, *for now*) to wire the connections as needed for each reset signal they want as part of assembly with jumper wires.
 
-{{< fig src="/images/clock-reset-modules-schematic.svg" caption="Schematic for the reset module (PDF version: [Colour](/pdf/reset_modules.pdf) / [BW](/pdf/reset_modules_bw.pdf))" >}}
+{{< fig src="/images/clock-reset-modules-schematic.svg" caption="Schematic for the reset module (PDF version: [Colour](/pdf/reset_modules.pdf) / [BW](/pdf/reset_modules_bw.pdf))" class="schematic" >}}
 
 For resetting/rolling over at 6 and 10, just one AND gate is needed, to do the rollover for hours (either 12 or 24 hour configuration) is a whole other monster, but can be done with the logic gates available.
 
@@ -129,7 +129,7 @@ For resetting/rolling over at 6 and 10, just one AND gate is needed, to do the r
 
 The signal generator is little more than two cascaded CD4060 chips to divide down the reference 32.768 kHz crystal signal. Since it is also the power source for the rest of the system, it has a USB connector and some capacitors to help smooth the power received for the system.
 
-{{< fig src="/images/clock-signal-generator-schematic.svg" caption="Schematic for the signal generator (PDF version: [Colour](/pdf/signal_generator.pdf) / [BW](/pdf/signal_generator_bw.pdf))" >}}
+{{< fig src="/images/clock-signal-generator-schematic.svg" caption="Schematic for the signal generator (PDF version: [Colour](/pdf/signal_generator.pdf) / [BW](/pdf/signal_generator_bw.pdf))" class="schematic" >}}
 
 ### Display Module Circuit
 
@@ -141,7 +141,7 @@ I added the ability for the user to set the digits using jumpers to set a value,
 
 The count from the counters is fed into the display driver ICs which decode them to drive seven segment LED displays. The displays I use are standard industrial ones that fit into the DIP-14 footprint. The digits come in two formats, either common anode or common cathode (CA and CC respectively), based on how their LEDs are tied together. This determines how they are driven so the driving IC has to be correct. For CA digits I use the 74LS47, for CC displays I use CD4511s. I chose these two since they share they can be placed interchangeably due to their identical pin allocations and input behaviour. The *only* functional difference between the two for me is how they handle the ripple blanking input (RBI) on pin 5. Fortunately the level this needs to be pulled to for each matches the common power level needed for their displays so I set it using a single solder jumper.
 
-{{< fig src="/images/clock-display-module-schematic.svg" caption="Schematic for the display modules (PDF version: [Colour](/pdf/display_module.pdf) / [BW](/pdf/display_module_bw.pdf))" >}}
+{{< fig src="/images/clock-display-module-schematic.svg" caption="Schematic for the display modules (PDF version: [Colour](/pdf/display_module.pdf) / [BW](/pdf/display_module_bw.pdf))" class="schematic" >}}
 
 ## Layout
 
@@ -526,7 +526,7 @@ I plan to keep the 555 as part of the design. Also need to work some EMI hardeni
 
 I'll incorporate the 555 timers into the reset module, using a 556 chip to provide two separate 555s to drive a pulse for each of the digits per display module. In addition to this 556 timer, I have replaced the OR gates with NOR gates to provide the inverted logic the 555s need to be triggered correctly.
 
-{{< fig src="/images/clock-reset-module-v2-schematic.svg" caption="Schematic for the reset module (PDF version: [Colour](/pdf/reset_module_v2.pdf) / [BW](/pdf/reset_module_v2_bw.pdf))" >}}
+{{< fig src="/images/clock-reset-module-v2-schematic.svg" caption="Schematic for the reset module (PDF version: [Colour](/pdf/reset_module_v2.pdf) / [BW](/pdf/reset_module_v2_bw.pdf))" class="schematic" >}}
 
 The main difference to the layout is the overall extension of the module to add the 556, as well as changing the trace for the NOR chip from the OR chip it replaced.
 

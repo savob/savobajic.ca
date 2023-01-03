@@ -54,7 +54,7 @@ Basic DC motors use mechanical commutation methods like the brushes in the anima
 
 Instead of having the coils attached to the rotating shaft to induce force on it due to the fixed ambient field from the permanent magnets, they reverse this setup and have the motors on the shaft and windings stationary. Thus no brushes are present and the motors are instead controlled using a three phase scheme. To do this the voltage on one of the wires must pulled low, and high on another, while the third one is disconnected from either extreme. The supply of power must be quickly and reliably changed to generate the needed rotation. This supply of power and commutation timing is what is handled by the ESC.
 
-{{< fig src="/images/esc-bldc-motor.gif" caption="An animation of a brush-less DC motor. Courtesy of [embitel](https://www.embitel.com/blog/embedded-blog/brushless-dc-motor-vs-pmsm-how-these-motors-and-motor-control-solutions-work)" >}}
+{{< fig src="/images/esc-bldc-motor.gif" caption="An animation of a brush-less DC motor. Courtesy of [embitel](https://www.embitel.com/blog/embedded-blog/brushless-dc-motor-vs-pmsm-how-these-motors-and-motor-control-solutions-work)" class="whiteBackground">}}
 
 Since most motors used on drones are meant to be compact and cheap, they usually lack any sensors on them to aid the controller in properly knowing the position of the rotor, thus when it is optimal to commutate. However, there is a trick that can be employed to derive the position of the rotor! Due to the generally rapid rotation of the rotor, there is a **back electro-motive force (BEMF)** exerted on the coils in the stator, which can be monitored using the disconnected phase of the motor.
 
