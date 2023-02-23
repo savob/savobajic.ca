@@ -8,7 +8,7 @@ status: "Complete"
 client: "Friends"
 tags: ["low power", "attiny85"]
 skills: [embedded, KiCad]
-summary: "Built a low-power capacitive sensing, artful circuit board, as a gift for friends and family."
+summary: "Built a low-power capacitive sensing, artful circuit board, as a gift for friends and family. My entry to [Hackaday's 2023 Low Power Challenge](https://hackaday.io/contest/189286-2023-hackadayio-low-power-challenge)."
 githubLink: "https://github.com/savob/raccoon"
 thumbnail: "/images/raccoon-hand-soldered.jpg"
 ---
@@ -319,3 +319,12 @@ With the stands designed, I had my friends cut the remaining pieces for me and I
 ### Reflections
 
 As I write this, it has been almost a full year since I made the first boards in March of 2022. As far as I am aware, none have required a battery replacement yet! So I think my estimates were pretty good. Here's to hoping these raccoons don't need a change anytime soon. I'm updating this article largely due to my submission to [Hackaday's 2023 Low Power Challenge](https://hackaday.io/contest/189286-2023-hackadayio-low-power-challenge) where I noticed some mistakes and updates needed addressing in this article.
+
+#### Look Ma, I'm on the Newsletter!
+
+After my submission to the challenge my project was featured in the Hackaday newsletter for February 15th (2023)! This felt amazing, and I hope to make it back on it again in the future!
+
+{{< fig src="/images/raccoon-newsletter.png" caption="Snippet from the Hackaday newsletter for February 15th 2023" >}}
+
+*My sister was a bit miffed that all credit seems to go to me.*
+
