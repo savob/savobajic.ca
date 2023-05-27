@@ -1,5 +1,5 @@
 ---
-title: "Basic Bus Stop Checker"
+title: "Prototype Bus Stop Checker"
 date: 2020-01-09T14:25:29-05:00
 draft: false
 started: "January 2020"
@@ -8,7 +8,7 @@ status: "Finished"
 client: "My roommates"
 tags: [wifi, ESP32, embedded, XML]
 skills: [wifi, EAGLE, XML]
-summary: "Made a small system to check online for buses around my home at the press of a button."
+summary: "Proof of concept to check for busses around my home. **Base for TTC Check board project.**"
 githubLink: "https://github.com/savob/buscheck"
 thumbnail: "/images/bus-board.jpg"
 ---
