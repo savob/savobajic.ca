@@ -52,8 +52,8 @@ The commands and interactions are described in the following [PDF](https://retro
 If I were to check the buses to arrive at Lawrence Station using the TTC's SMS service, I would text the `"stopId"` value, **15184**, printed on the sign there. However when performing a request on NextBus, I need to use the `"tag"` number, **15003**. Once I went through and recorded all the tags I needed I had all the information needed to make requests for buses and successfully tried it out on my browser. It would return the bus predictions in this format:
 
 ```xml
-<predictions agencyTitle="Toronto Transit Commission" routeTitle="52-Lawrence West" routeTag="52" stopTitle="Lawrence Station" stopTag="15003" 
-<direction title="West - West - 52f Lawrence West towards Royal York" 
+<predictions agencyTitle="Toronto Transit Commission" routeTitle="52-Lawrence West" routeTag="52" stopTitle="Lawrence Station" stopTag="15003" />
+<direction title="West - West - 52f Lawrence West towards Royal York" />
 <prediction epochTime="1641840499907" seconds="31" minutes="0" isDeparture="false" branch="52F" dirTag="52_1_52F" vehicle="8943" block="52_16_160" tripTag="43470454" />
 
 ...(other predictions)...
