@@ -19,7 +19,7 @@ The friends I was staying at when I was visiting Paris had recently acquired som
 
 Learned some new techniques and successfully replaced the cells in two of the battery packs with new ones.
 
-If you want to try giving one of them a spin, head over to their cafe, "[VR & Co.](https://en.vrandcompany.com/)".
+~~If you want to try giving one of them a spin, head over to their cafe, "VR & Co.".~~ *Unfortunately they have closed down as of fall 2022.*
 
 ## Takeaways
 
