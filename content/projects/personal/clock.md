@@ -3,8 +3,8 @@ title: "Hardware Clock"
 date: 2021-11-20T14:56:48-05:00
 draft: false
 started: "November 2021"
-finished:
-status: "Waiting for revised boards"
+finished: "June 2023"
+status: "Finished. Distracting visitors."
 client:
 tags: [hardware, clock, KiCad, 555]
 skills: [logic, KiCAD]
@@ -38,6 +38,7 @@ Currently I have produced the modules, and verified they work at a basic level i
 - *Does h4x0r aesthetic == poor user experience?*
 - Specify the location for the fabricator to put their order number on the board, especially if aesthetics are a factor!
 - Electromagnetic Interference can be funky to spot
+   - **Decoupling capacitors are needed on for all ICs and in all circuits regardless of complexity/speed!**
 
 # Detailed Report
 
@@ -68,7 +69,7 @@ Limiting myself to the chips available in the cache, I selected the following ch
 - Reset logic
   - 74LS32 quad OR gate
   - 74LS08 quad AND gate
-- Clock divider (for 32.768 kHz crystal to 1Hz base)
+- Clock divider (for 32.768&nbsp;kHz crystal to 1&nbsp;Hz base)
   - CD4060
   
 ### Displays
@@ -97,11 +98,11 @@ To ensure the pulse generated to reset a counter is long enough to also incremen
 
 ### Signal Generator
 
-The heartbeat of the clock is a steady, accurate 1Hz square wave. This square wave is generated using the same system used in most digital watches and real-time clocks (RTCs), dividing a 32 768 Hz signal down to 1 Hz. This is done by using a chain of T flip-flops that each half the frequency fed into them. 15 of these are needed to divide the 32 768 Hz (2^15) down to 1 Hz.
+The heartbeat of the clock is a steady, accurate 1&nbsp;Hz square wave. This square wave is generated using the same system used in most digital watches and real-time clocks (RTCs), dividing a 32&nbsp;768&nbsp;Hz signal down to 1&nbsp;Hz. This is done by using a chain of T flip-flops that each half the frequency fed into them. 15 of these are needed to divide the 32&nbsp;768&nbsp;Hz (2^15) down to 1&nbsp;Hz.
 
-{{< fig src="/images/clock-signal-division.png" caption="Division of the reference 32 768 Hz wave (yellow) by a factor of 16 to generate the output (blue)" >}}
+{{< fig src="/images/clock-signal-division.png" caption="Division of the reference 32&nbsp;768&nbsp;Hz wave (yellow) by a factor of 16 to generate the output (blue)" >}}
 
-The CD4060 was designed for this job, having a string of T flip flops needed to divide the signal, as well as the circuitry needed to drive the reference crystal used to provide the 32 768 Hz. The only issue is that it has only 14 flip flops internally, so two CD4060s are needed to divide the signal all the way down to 1 Hz.
+The CD4060 was designed for this job, having a string of T flip flops needed to divide the signal, as well as the circuitry needed to drive the reference crystal used to provide the 32&nbsp;768&nbsp;Hz. The only issue is that it has only 14 flip flops internally, so two CD4060s are needed to divide the signal all the way down to 1 Hz.
 
 #### Prototyping Issues
 
@@ -127,7 +128,7 @@ For resetting/rolling over at 6 and 10, just one AND gate is needed, to do the r
 
 ### Signal Generator Circuit
 
-The signal generator is little more than two cascaded CD4060 chips to divide down the reference 32.768 kHz crystal signal. Since it is also the power source for the rest of the system, it has a USB connector and some capacitors to help smooth the power received for the system.
+The signal generator is little more than two cascaded CD4060 chips to divide down the reference 32.768&nbsp;kHz crystal signal. Since it is also the power source for the rest of the system, it has a USB connector and some capacitors to help smooth the power received for the system.
 
 {{< fig src="/images/clock-signal-generator-schematic.svg" caption="Schematic for the signal generator (PDF version: [Colour](/pdf/signal_generator.pdf) / [BW](/pdf/signal_generator_bw.pdf))" class="schematic" >}}
 
@@ -147,7 +148,7 @@ The count from the counters is fed into the display driver ICs which decode them
 
 With my schematics wrapped up, I began the layout of each module. I used edge connectors to pass the signals between them since it will provide more structural stiffness compared to wire jumpers when hung up on a wall as well as result in a more compact assembly overall. A purely aesthetic choice I made was to use exclusively through hole components, this is really evident on the display board with all the resistors used for the LEDs.
 
-The edge connectors between display boards and the signal generator are spaced 50mm apart.
+The edge connectors between display boards and the signal generator are spaced 50&nbsp;mm apart.
 
 *Looking back, one thing I regret is not specifying to my board house where to put their order numbers on my boards since they ended up just slapping it wherever it fit on the **front(!)** face of all my modules. Come on...*
 
@@ -165,7 +166,7 @@ To aid the end user in wiring the reset logic I labelled all the headers with th
 
 ### Signal Generator Layout
 
-Not much to really say about this one, pretty simple layout for a pretty simple circuit. The 1Hz signal and power is passed out along the left edge.
+Not much to really say about this one, pretty simple layout for a pretty simple circuit. The 1&nbsp;Hz signal and power is passed out along the left edge.
 
 {{< fig src="/images/clock-signal-layout-combined.png" caption="Overall layout of the signal module" >}}
 
@@ -197,7 +198,7 @@ Not usually something I bother posting, but I had them prepared for the GitHub p
 
 ## Assembly
 
-I received the boards at the start of March 2022 and quickly set about assembling the boards. This was my first through hole heavy project that I designed and assembled since my [oscilloscope]({{< ref "/projects/academic/ocilloscope" >}}) for MIE346 three years ago. So it was a bit odd to suddenly find myself flipping a board and cutting excess leads so much during assembly again.
+I received the boards at the start of March 2022 and quickly set about assembling the boards. This was my first through hole heavy project that I designed and assembled since my [oscilloscope]({{< ref "/projects/academic/ocilloscope" >}}) for MIE346 three years before this. So it was a bit odd to suddenly find myself flipping a board and cutting excess leads so much during assembly again.
 
 {{< fig src="/images/clock-bed-of-needles.jpg" caption="Look at all those stabby bits" >}}
 
@@ -233,13 +234,13 @@ On little artistic touch I ended up doing at a friends suggestion involved my cu
 
 {{< fig src="/images/clock-ombre.jpg" caption="The ombre done with resistors. I wonder if any casual observers will notice." >}}
 
-The finished module ended up looking like this individually. I noticed that although the sockets add the ability of easy exchange of displays, they now protrude a fair bit from the board, about 12mm. With the drivers in a socket and the counters directly on the board, it results in a stepped look from bottom to top.
+The finished module ended up looking like this individually. I noticed that although the sockets add the ability of easy exchange of displays, they now protrude a fair bit from the board, about 12&nbsp;mm. With the drivers in a socket and the counters directly on the board, it results in a stepped look from bottom to top.
 
 {{< fig src="/images/clock-display-module-assembled.jpg" caption="Display module, ready for service!" >}}
 
 ## Testing
 
-Testing was meant to go in three basic stages. The first stage was checking that my signal generator and power supply module was working as expected. This meant powering it up and checking that it was outputting 5V properly and a stable 1 Hz signal on the appropriate headers with my oscilloscope, which it did.
+Testing was meant to go in three basic stages. The first stage was checking that my signal generator and power supply module was working as expected. This meant powering it up and checking that it was outputting 5&nbsp;V properly and a stable 1 Hz signal on the appropriate headers with my oscilloscope, which it did.
 
 The second stage of testing was testing each display and reset module to work as expected. For this I connected each display-reset module pair to keep track of the seconds to see if they kept count well, displayed all the numbers they were meant to (0 to 23 or 59) and then rollover properly. All three pairs worked as needed.
 
@@ -255,7 +256,7 @@ So the only real test remaining for the clock to enter service on my walls was t
 
 I was going to leave the clock running and make sure that it was keeping time well, checking it regularly against my phone clock for deviation. It was helpful to use my phone to take photos of it since it would take a time-stamped photo of the clock, which meant I could transcribe the exact time and the clock's reading accurately and leisurely. 
 
-The reason for these checks being regular as opposed to just one after 24 hours or so is that if my clock was not working right I would see if that was due to my reference 1Hz signal being off, or improper counting resulting in additional or missed rollovers. If the reference was wrong then the difference between each check would be off by a constant factor, e.g. 10% - however if the difference between my clock and the recorded time varied significantly that would indicate a problem with my counting/rollover scheme.
+The reason for these checks being regular as opposed to just one after 24 hours or so is that if my clock was not working right I would see if that was due to my reference 1&nbsp;Hz signal being off, or improper counting resulting in additional or missed rollovers. If the reference was wrong then the difference between each check would be off by a constant factor, e.g. 10% - however if the difference between my clock and the recorded time varied significantly that would indicate a problem with my counting/rollover scheme.
 
 If either of the two issues were to appear, I would prefer the crystal since I would only need to tune one board as opposed to potentially six. It also would be less likely to be caused by a design fault on my behalf and rather component imperfections so I wouldn't need to alter my designs significantly.
 
@@ -272,7 +273,7 @@ If either of the two issues were to appear, I would prefer the crystal since I w
 | **16:44:04** | 01:11:12 | 4272 | **16:14:33** | 01:13:13 | 4393 | 2.75% |
 | **18:53:01** | 02:08:57 | 7737 | **19:27:31** | 03:12:58 | 11578 | 33.17% |
 
-Looking at this data it is pretty clear that my clock has a stable 1Hz clock since when it was accurately measuring the passage of time, it was only a second or two off, which very well might have been caused to my photos' sub-second timing, akin to a rounding error. **However, my clock clearly has issues with proper propagation of my roll-over/reset signals.**
+Looking at this data it is pretty clear that my clock has a stable 1&nbsp;Hz clock since when it was accurately measuring the passage of time, it was only a second or two off, which very well might have been caused to my photos' sub-second timing, akin to a rounding error. **However, my clock clearly has issues with proper propagation of my roll-over/reset signals.**
 
 ## Investigating the Faulty Counting
 
@@ -282,7 +283,7 @@ The issue is clearly with the roll-over reset logic, but I needed to determine w
 
 I started by poking around the reset circuitry to see their output waves looked since it is these waves that drive their respective counters to increment or reset. My original suspicion was that these waves might have some noise to them, and if this noise occurred around the threshold voltage the signal might be crossing it several times resulting in these observed additional counts.
 
-I started by watching the reset signal for each of the seconds digits. The reset pulses were both about 25ns wide, and swung all the way up to 5V where they held for roughly 15 to 20ns. Their lengths were dictated by the feedback delay from the counter and propagation through the logic in all the chips.
+I started by watching the reset signal for each of the seconds digits. The reset pulses were both about 25&nbsp;ns wide, and swung all the way up to 5&nbsp;V where they held for roughly 15 to 20&nbsp;ns. Their lengths were dictated by the feedback delay from the counter and propagation through the logic in all the chips.
 
 {{< fig src="/images/clock-seconds-switching.png" caption="Reset waveform for single seconds with no passives" >}}
 
@@ -306,36 +307,36 @@ Although the logic signals were relatively clean, when they were at either extre
 
 I wanted to design a basic resistor-capacitor low-pass filter. I designed it assuming DC operating conditions, where the capacitor would be charged via a resistor from the output of the logic gate. This was a nice little throwback to my first year circuits class *(which ironically actually scared me away from pursuing circuits in the first place!)*, after digging up my notes I started doing some math.
 
-I figured that a 5ns charge time would be enough to not impede the function of the clock, but enough to help reduce the noise preceding and following the pulse. Using my spare 47pF capacitors, I needed to pair them with 22Ω resistors to get the required response. *(I ended up using 33Ω instead of 22Ω since those were the closest I had.)* So I soldered them in place and... *What?*
+I figured that a 5&nbsp;ns charge time would be enough to not impede the function of the clock, but enough to help reduce the noise preceding and following the pulse. Using my spare 47&nbsp;pF capacitors, I needed to pair them with 22&nbsp;Ω resistors to get the required response. *(I ended up using 33&nbsp;Ω instead of 22&nbsp;Ω since those were the closest I had.)* So I soldered them in place and... *What?*
 
-{{< fig src="/images/clock-over-compensated.png" caption="My over compensated reset signal (C:47nF R: 33Ω)" >}}
+{{< fig src="/images/clock-over-compensated.png" caption="My over compensated reset signal (C:47&nbsp;nF R: 33&nbsp;Ω)" >}}
 
-So it turns out I had accidentally over-compensated the system, what I thought were 47**p**F were actually 47**n**F. *Oops.* So my response time was only 1000 times longer than intended, but it wasn't all for naught; I got some neat insights from watching the system with these installed.
+So it turns out I had accidentally over-compensated the system, what I thought were 47&nbsp;**p**F were actually 47&nbsp;**n**F. *Oops.* So my response time was only 1000 times longer than intended, but it wasn't all for naught; I got some neat insights from watching the system with these installed.
 
-- The threshold voltage for counter resets is only about 1V. I was expecting higher
-- The output current of the logic chips is about 50mA
+- The threshold voltage for counter resets is only about 1&nbsp;V. I was expecting higher
+- The output current of the logic chips is about 50&nbsp;mA
 - The system eliminated any leading trailing noise
 - There still were impulses of noise, likely corresponding to the internal switching of the ICs
 - Noise around the threshold was certainly a cause for additional counts.
    - With these components in place basically every time a digit incremented there was a 25% chance it would increment more than once.
 
-{{< fig src="/images/clock-over-compensated-zoomed-in.png" caption="'Zoomed in' overcompensated wave (vertical divisions are only 200mV instead of the usual 1V)" >}}
+{{< fig src="/images/clock-over-compensated-zoomed-in.png" caption="'Zoomed in' overcompensated wave (vertical divisions are only 200&nbsp;mV instead of the usual 1&nbsp;V)" >}}
 
 Watching it for some time I observed repeating but uncommon noise on the falling edge. After some time it came to me, these reset signals were captured on the single seconds, this second set of noise happened whenever the tens of seconds rolled over. The timing between this last impulse and the one that precedes it (the peak) is almost identical to the period between the first two periods. When the minutes digits rolled over I would see additional trailing impulses, although smaller in magnitude the further they were.
 
 {{< fig src="/images/clock-over-compensated-zoomed-in-cascade.png" caption="Signal noise from cascading rollovers" >}}
 
-I did source myself some 47pF capacitors and replaced the 47nF ones. The resulting wave was quite different to either of the previous cases. It eliminated the leading noise but seemed to result in significantly worse trailing noise. It did climb higher, peaking at about 4V before plummeting back down.
+I did source myself some 47pF capacitors and replaced the 47&nbsp;nF ones. The resulting wave was quite different to either of the previous cases. It eliminated the leading noise but seemed to result in significantly worse trailing noise. It did climb higher, peaking at about 4&nbsp;V before plummeting back down.
 
-{{< fig src="/images/clock-seconds-with-proper-capacitor.png" caption="Reset signal with my planned parts attached (C:47pF R: 33Ω)" >}}
+{{< fig src="/images/clock-seconds-with-proper-capacitor.png" caption="Reset signal with my planned parts attached (C:47&nbsp;pF R: 33&nbsp;Ω)" >}}
 
-Although much more stable than using the 47nF, it still wasn't the solution I needed. My tests with this setup yielded similar results to the system without the passives present, honestly a little worse.
+Although much more stable than using the 47&nbsp;nF, it still wasn't the solution I needed. My tests with this setup yielded similar results to the system without the passives present, honestly a little worse.
 
 ### Propagation Issues?
 
 *Honestly I wasn't really expecting the RC filter to fix the issue.* I was hopeful though, and I feel it was still a neat little set of experiments. 
 
-My current belief is that this issue has to do with the propagation of the short, only 20ns long, pulse generated. 20ns is essentially 50MHz! So not exactly *high* speed data but still pretty darn quick especially compared to any of my work up to this point. So perhaps I am about start entering the realm of actually having to design for my signals (outside the couple times I put USB connectivity on boards).
+My current belief is that this issue has to do with the propagation of the short, only 20&nbsp;ns long, pulse generated. 20&nbsp;ns is essentially 50&nbsp;MHz! So not exactly *high* speed data but still pretty darn quick especially compared to any of my work up to this point. So perhaps I am about start entering the realm of actually having to design for my signals (outside the couple times I put USB connectivity on boards).
 
 One thing I realized looking at my data that all the additional counts seemed to happen on only on the secondary counters, the single digits, and not on the seconds. The only difference between the way these receive their increment signal compared to the primary displays' counters (tens) is the length and routing of the trace from source to them. 
 
@@ -353,7 +354,7 @@ The secondary increment (primary reset) signal trace is much more complicated an
 
 I feel that the big issue is the forking and rejoining of the signal to the secondary, especially since one path is notably longer than the other. What I think is happening is that pulse that goes down the shorter path reaches the counter and triggers a count and then its end starts to arrive and it begins to fall, at which point the signal that took the longer route begins to arrive and adds to it raising it. This occasionally happens around the threshold, which results in the signal appearing as a second pulse.
 
-The longer path is about 110mm longer than the short one, dividing this by the speed of light/electricity suggests a difference of only 0.363ns in arrival times. However with slewing, power division, and whatever else goes into high speed communication this might mean more than it sounds like for a 23ns signal. I'll see if probing multiple points along the line can give me a better idea of if there are propagation issues.
+The longer path is about 110&nbsp;mm longer than the short one, dividing this by the speed of light/electricity suggests a difference of only 0.363&nbsp;ns in arrival times. However with slewing, power division, and whatever else goes into high speed communication this might mean more than it sounds like for a 23&nbsp;ns signal. I'll see if probing multiple points along the line can give me a better idea of if there are propagation issues.
 
 {{< fig src="/images/clock-multipoint-probing.png" caption="The recorded waveforms from all points on the path" >}}
 
@@ -369,7 +370,7 @@ The only thing left that I think can remedy this issue is **lengthening the rese
 
 Before I get cracking on trying this, I need to set a proper baseline number of additional counts. Also find a method of running accelerated tests since I don't want to wait a day to get results.
 
-To do accelerated tested I could use my function generator to pipe in a higher frequency base clock than 1Hz. This however has the issue that I can't use another clock to spot issues anymore (unless I use some specific multiples, but still). So I wanted something more automated that I could leave unattended and it would keep track of failures.
+To do accelerated tested I could use my function generator to pipe in a higher frequency base clock than 1&nbsp;Hz. This however has the issue that I can't use another clock to spot issues anymore (unless I use some specific multiples, but still). So I wanted something more automated that I could leave unattended and it would keep track of failures.
 
 #### Test Mode on my Oscilloscope
 
@@ -379,13 +380,13 @@ I knew my oscilloscope (a Rigol DS1054) had a Pass/Fail feature included, but I 
 
 Should any future waves enter it these regions, the oscilloscope records a failure and can stop to record and display the offending wave sample if desired.
 
-{{< fig src="/images/clock-caught-failure.png" caption="A captured failure. Odd that the double count is several microseconds long when the signal is 50ns total. Hrm." >}}
+{{< fig src="/images/clock-caught-failure.png" caption="A captured failure. Odd that the double count is several microseconds long when the signal is 50&nbsp;ns total. Hrm." >}}
 
 For my tests I set the oscilloscope to probe the ones digit of the counter since it alternates state with each count. If a double count occurred, it would be immediately visible. I let the oscilloscope run for some time as I fed the clock an input of several kilohertz. Over time it gradually started to catch some errors.
 
 {{< fig src="/images/clock-testing-more-waves.png" caption="The wave on the ones of minutes being tested at several kHz. Note that there have been some failures caught!" >}}
 
-These errors were however much less frequent than I had observed previously when I let the clock run on its own, only once every 2500 waves. With about 24 counts per waveform on screen, this is implying **a glitch once every 60 000 counts/minutes!** This is far from the roughly hourly glitches it was having under observation. So I'm glad I have this baseline. *Perhaps the probes are somehow scaring the system to work?*
+These errors were however much less frequent than I had observed previously when I let the clock run on its own, only once every 2500 waves. With about 24 counts per waveform on screen, this is implying **a glitch once every 60&nbsp;000 counts/minutes!** This is far from the roughly hourly glitches it was having under observation. So I'm glad I have this baseline. *Perhaps the probes are somehow scaring the system to work?*
 
 Perhaps the glitches are too fast for the oscilloscope to catch at this time base. I'll do some more runs soon.
 
@@ -399,7 +400,7 @@ One issue I noticed immediately was that it was basically constantly firing off 
 
 {{< fig src="/images/clock-inverter-schematic.png" caption="Basic schematic of the the inverter I added" >}}
 
-Originally I used a 10kΩ resistor to pull up the output but the output charged too slowly so multiple pulses were made, so I reduced it to just 1kΩ. After some more basic tests, my test bread board was ready to get inserted into the system.
+Originally I used a 10&nbsp;kΩ resistor to pull up the output but the output charged too slowly so multiple pulses were made, so I reduced it to just 1&nbsp;kΩ. After some more basic tests, my test bread board was ready to get inserted into the system.
 
 {{< fig src="/images/clock-555-bread-board.jpg" caption="My 555 timer test circuit on a bread board, with the input inverting MOSFET" >}}
 
@@ -407,17 +408,17 @@ I wired the input of the inverter to the usual logic that would reset the primar
 
 #### Speed Testing the 555
 
-With the 555 timer circuit installed I began feeding the system a controlled reference clock from my function generator. The test started excellently. I turned up the function generator to run a 120kHz base clock and left it running. I checked in on it periodically for any recorded failures.
+With the 555 timer circuit installed I began feeding the system a controlled reference clock from my function generator. The test started excellently. I turned up the function generator to run a 120&nbsp;kHz base clock and left it running. I checked in on it periodically for any recorded failures.
 
 {{< fig src="/images/clock-555-test-setup.jpg" caption="Setup of my 555 test" >}}
 
 {{< fig src="/images/clock-555-test-start.png" caption="The start of my test with the 555 installed" >}}
 
-Amazingly **no failures were detected in the first almost 80 thousand waves, which was 960 000 simulated minutes!** I kept it going and accidentally brushed up against my table which I think created a measurement glitch. 
+Amazingly **no failures were detected in the first almost 80 thousand waves, which was 960&nbsp;000 simulated minutes!** I kept it going and accidentally brushed up against my table which I think created a measurement glitch. 
 
 {{< fig src="/images/clock-555-test-accident.png" caption="The start of my test with the 555 installed" >}}
 
-In the end though after almost 110 000 waves with *only one* recorded failure, I ended the test. This was equivalent to 1 300 596 minutes, or just under 2 and a half years! Even this one failure was likely my fault rather than a genuine circuit issue.
+In the end though after almost 110&nbsp;000 waves with *only one* recorded failure, I ended the test. This was equivalent to 1 300 596 minutes, or just under 2 and a half years! Even this one failure was likely my fault rather than a genuine circuit issue.
 
 {{< fig src="/images/clock-555-test-finish.png" caption="The start of my test with the 555 installed" >}}
 
@@ -432,7 +433,7 @@ Although the results look promising from these accelerated tests, I will conduct
 | **08:26:53** | 06:00:10 | 21610 | **06:56:11** | 06:00:16 | 21616 | 0.03% |
 | **08:58:15** | 00:31:22 | 1882 | **07:27:33** | 00:31:22 | 1882 | 0.00% |
 
-**Well shoot.** Looks like the 555 wasn't the silver bullet I needed. What I am beginning to suspect is that it is indeed issues with my power supply. Until now I have been testing using my computer's USB port to supply power. Clearly it has been capable of supporting the clock and its power draw that can reach up to 300mA at 5V, however the varying power draw of my computer itself and the clock as it changes digits is probably causing some noise on the power line and thus glitched counts.
+**Well shoot.** Looks like the 555 wasn't the silver bullet I needed. What I am beginning to suspect is that it is indeed issues with my power supply. Until now I have been testing using my computer's USB port to supply power. Clearly it has been capable of supporting the clock and its power draw that can reach up to 300&nbsp;mA at 5&nbsp;V, however the varying power draw of my computer itself and the clock as it changes digits is probably causing some noise on the power line and thus glitched counts.
 
 This is why when I left the clock running overnight in both this test and the previously listed one, there was basically no miscounts. I was asleep and my computer was off, so the only thing drawing power was the clock. When I was awake and using my computer, that's when the issues began. To test this out I've moved the clock to have its own power supply, independent of my computer and will be checking its ability to keep time. 
 
@@ -450,7 +451,7 @@ That being said, I still believe the 555 is a good addition since the pulses wer
 
 ### Power Issue
 
-Looking at the disappointing data from the standard USB supply's power I determined that this is definitely going to need a revised power delivery system. After this I left the clock running but put a probe to monitor the 5V line for noise and observed massive amounts of noise around when there would be digit changes, especially when these changes had glitched and we accidentally had extra counts.
+Looking at the disappointing data from the standard USB supply's power I determined that this is definitely going to need a revised power delivery system. After this I left the clock running but put a probe to monitor the 5&nbsp;V line for noise and observed massive amounts of noise around when there would be digit changes, especially when these changes had glitched and we accidentally had extra counts.
 
 {{< fig src="/images/clock-power-test-noise-1.png" caption="A sample of some of the switching noise" >}}
 
@@ -464,7 +465,7 @@ Looking at the disappointing data from the standard USB supply's power I determi
 
 *...$%#@%!*
 
-So clearly this system has some issues. Since the main power draw are the displays since **each illuminated segment draws roughly 6.5mA**, so I figured I can try to see where the most change on power draw occurs in the system to predict these issues, as well as recreate them better.
+So clearly this system has some issues. Since the main power draw are the displays since **each illuminated segment draws roughly 6.5&nbsp;mA**, so I figured I can try to see where the most change on power draw occurs in the system to predict these issues, as well as recreate them better.
 
 | **Digit** | **Number of Segments On** | **Change from Previous (0-9)** |  **Change from Previous (0-5)** |
 | :---: | :---: | :---: | :---: |
@@ -479,7 +480,7 @@ So clearly this system has some issues. Since the main power draw are the displa
 | 8 | 7 | +4 | N/A |
 | 9 | 5 | -2 | N/A |
 
-Looking at this and knowing the behaviour of the clock (being a 24-hour clock) I know that the most segments change going from 09:59:59 to 10:00:00, a total of 9 segments change - however the net change in power draw is only 1 segment's worth. The largest change in power draw is going from x7:59:59 to x8:00:00, where x is either 0 or 1. This has an increase on the power draw worth 8 segments, which when going from 17:59:59 to 18:00:00 is **an increase of 32%!** These sharp changes in power draw (up to 32%, 52mA) are likely the issue.
+Looking at this and knowing the behaviour of the clock (being a 24-hour clock) I know that the most segments change going from 09:59:59 to 10:00:00, a total of 9 segments change - however the net change in power draw is only 1 segment's worth. The largest change in power draw is going from x7:59:59 to x8:00:00, where x is either 0 or 1. This has an increase on the power draw worth 8 segments, which when going from 17:59:59 to 18:00:00 is **an increase of 32%!** These sharp changes in power draw (up to 32%, 52&nbsp;mA) are likely the issue.
 
 ### What can I do?
 
@@ -489,7 +490,7 @@ Well I have a couple options I can use to try and address this issue:
    - They might need to be increased to help deal with this ripple
    - They might need to be decreased since the supply might not be as capable of driving such a capacitive load
 2. Get a better USB power supply
-   - *My current one is rated for up to 2.5A though.*
+   - *My current one is rated for up to 2.5&nbsp;A though.*
    - I could use my spare desktop supply
 3. Surrender myself to not fixing this issue and transition to making this a piece about the immaterial nature of time
 4. Compete to make the first broken clock that is right three times a day
@@ -542,7 +543,19 @@ Since I included the renders of the other modules, why not this one too?
 
 {{< fig src="/images/clock-reset-module-v2-render.png" caption="Render of the revised reset board" >}}
 
-## Next Steps
+# Conclusion
 
-Next steps for this is to receive and test the new reset modules. Until then I might have the clock up as a quasi-random number generator for my wall, at least until the conditions result in less static or I shield the system better without sacrificing what little aesthetics this project possesses.
+I did end up ordering the 556-based reset modules, however I did not bother to assemble them since I felt that the issue had more to do with a lack of ESD protection across the board. So I opted to add in 100&nbsp;nF decoupling capacitors for all the ICs that I neglected to include them on since I figured this would harden the entire board against ESD. 
+
+{{< fig src="/images/clock-added-decoupling-caps.jpg" caption="Bodged in decoupling capacitors" >}}
+
+*This repair seemed to work!* I now have it mounted on my wall and it's been working well. My only comment is that the leftmost digit is a bit dimmer than the others, and using jumpers is not the easiest way to set the time, but otherwise the clock is doing fine and will probably remain as is. 
+
+{{< fig src="/images/clock-on-wall.jpg" caption="Clock in place on my wall. *(It's more legible in person!)*" >}}
+
+We'll see if the static issues return in the winter! It's hard to generate the same level of static in the middle of summer as I write this.
+
+### Final Comments
+
+If I were to do this again I would properly integrate the decoupling capacitors on the boards. In addition, since I've observed the counters having internal pullups on the data load pins I would switch the headers for setting digits to switches that would pull them down as needed to make setting it easier. I originally went with the jumpers since I didn't want to include pullup or pulldown resistors on the boards.
 
