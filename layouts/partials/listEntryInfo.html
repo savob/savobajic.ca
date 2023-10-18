@@ -24,7 +24,7 @@
 {{end}}
 
 {{/* Experience */}}
-{{ if or (eq .Section "work experience") (eq .Section "volunteering") }}
+{{ if or (eq .Section "employment") (eq .Section "volunteering") }}
 	<p class="subtitle">{{ .Params.company }}</p>
 	<p class="subtitle">{{ .Params.period }}</p>
 {{end}}

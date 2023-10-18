@@ -40,6 +40,6 @@ In my spare time I have been regularly working on a variety of projects, primari
 
 ## Other
 
-You may find my [work experience]({{< ref "/work experience/_index.md">}}), [volunteer work]({{< ref "/volunteering/_index.md">}}), and [publications]({{< ref "/publications/_index.md">}}) on their own pages to avoid a massive page with everything in one heap.
+You may find my [work experience]({{< ref "/employment/_index.md">}}), [volunteer work]({{< ref "/volunteering/_index.md">}}), and [publications]({{< ref "/publications/_index.md">}}) on their own pages to avoid a massive page with everything in one heap.
 
 I've collected my contact information [here]({{< ref "/contact/_index.md">}}).

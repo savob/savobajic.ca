@@ -14,7 +14,7 @@
 	{{.Content}}
 	
 	
-	{{ if or (eq .Section "work experience") (eq .Section "volunteering") }}
+	{{ if or (eq .Section "employment") (eq .Section "volunteering") }}
 		{{ partial "experienceList" . }}
 	{{ else}}
 		{{ partial "columnContent" (dict "context" . "pagesToPost" .Pages)}}
