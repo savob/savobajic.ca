@@ -1,7 +1,7 @@
 ---
 title: "ATtiny1617 Dev Board"
 date: 2023-10-18T01:06:57+02:00
-draft: true
+draft: false
 started: "September 2020"
 finished: "July 2023"
 status: "Complete"
@@ -10,7 +10,7 @@ tags: [hardware, KiCad, attiny]
 skills: [KiCad]
 summary: "Made a small breakout board for ATtiny development"
 githubLink:
-thumbnail: "/images/placeholder.png"
+thumbnail: "/images/attiny-complete.jpg"
 ---
 
 # Overview
@@ -35,21 +35,17 @@ The circuit is pretty simple since the ATtiny1617 which I primarily intend to us
 
 This was simple thanks to the simple circuit and it was almost a single layer board! To facilitate an easier fan out of the GPIO connections of the ATtiny I placed it on a 45° orientation at the centre of the board. The connectors for power and programming were placed at opposite ends, while the GPIO headers ran along the length of the sides with labels for each pin.
 
-{{< fig src="/images/placeholder.png" caption="Layout of the development board" >}}
+{{< fig src="/images/attiny-layout.png" caption="Layout of the development board" >}}
 
 # Assembly 
 
 The boards were sponsored by [PCBWay](https://www.pcbway.com/), my first time getting sponsored like this and also trying out their services! Since this was a relatively basic project I opted to hand assemble the breakout boards, without a stencil for the solder paste. So I just asked for the boards to be made.
 
-{{< fig src="/images/placeholder.png" caption="Boards from PCBWay" >}}
+{{< fig src="/images/attiny-boards.jpg" caption="Boards from PCBWay" >}}
 
-I started with the surface mount parts which needed me to hand dispense the solder paste on the required pads. This was easy to do and with minimal effort I was able to solder all the parts without any shorts thanks to the solder mask.
+I started with the surface mount parts which needed me to hand dispense the solder paste on the required pads. This was easy to do and with minimal effort I was able to solder all the parts without any shorts thanks to the solder mask. Soldering the through hole headers was a breeze too with the pads wetting easily.
 
-{{< fig src="/images/placeholder.png" caption="Surface mount parts in place" >}}
-
-Soldering the through hole headers was a breeze too with the pads wetting easily.
-
-{{< fig src="/images/placeholder.png" caption="Completed board" >}}
+{{< fig src="/images/attiny-complete.jpg" caption="Completed board" >}}
 
 # Programming and Testing
 
