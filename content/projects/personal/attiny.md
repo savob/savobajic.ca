@@ -39,13 +39,15 @@ This was simple thanks to the simple circuit and it was almost a single layer bo
 
 # Assembly 
 
-The boards were sponsored by [PCBWay](https://www.pcbway.com/), my first time getting sponsored like this and also trying out their services! Since this was a relatively basic project I opted to hand assemble the breakout boards, without a stencil for the solder paste. So I just asked for the boards to be made.
+The boards were sponsored by [PCBWay](https://www.pcbway.com/), my first time getting sponsored like this and also trying out their services! Since this was a relatively basic project I opted to hand assemble the breakout boards, without a stencil for the solder paste. So I just asked for the boards to be made. From order to delivery service was good and fast, the boards arrived less than 10 days after I ordered them.
 
 {{< fig src="/images/attiny-boards.jpg" caption="Boards from PCBWay" >}}
 
 I started with the surface mount parts which needed me to hand dispense the solder paste on the required pads. This was easy to do and with minimal effort I was able to solder all the parts without any shorts thanks to the solder mask. Soldering the through hole headers was a breeze too with the pads wetting easily.
 
 {{< fig src="/images/attiny-complete.jpg" caption="Completed board" >}}
+
+Overall, these are great quality boards and they deliver on my expectations. I look forward to trying out [PCBWay](https://www.pcbway.com/) for more complicated projects down the line!
 
 # Programming and Testing
 
