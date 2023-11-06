@@ -59,7 +59,7 @@ div.wrapper {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	margin: 0 1.5em;
+	margin: 0 1em;
 }
 
 /* Header and footer config */
@@ -72,7 +72,7 @@ header {
 	position: relative;
 	left: -50vw;
 	
-	padding: 0 50vw;
+	padding: 0.5em 50vw 0;
 	margin:0;
 }
 
@@ -320,6 +320,13 @@ section.mainContent {
 	
 }
 
+section.mainContent ul {
+  padding-left: 1.5em
+}
+
+section.mainContent ol {
+  padding-left: 1.5em
+}
 
 /* Home page */
 
