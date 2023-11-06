@@ -239,11 +239,11 @@ Putting it all together to form an encoder block resulted in a nice squarish blo
 
 {{< fig src="/images/ic-encoder-layout.png" caption="Layout of a complete encoder block" >}}
 
-My partner took these and arranged the eight we needed in a ring with the other core logic in the middle. By placing the logic in the centre and fanning it out from there to the encoder block we minimized the phase delay difference between different encoder blocks. The core layout was approximately 240&nbsp;um by 260&nbsp;um.
+My partner took these and arranged the eight we needed in a ring with the other core logic in the middle. By placing the logic and multiplexers in the centre and distributing the signals out from there to each of the encoder block, we minimized the phase delay difference between different encoder blocks. The core layout was approximately 240&nbsp;um by 260&nbsp;um.
 
 {{< fig src="/images/ic-core-layout-labelled.png" caption="The completed core layout, with some sections labelled by function" >}}
 
-We were pleasantly surprized with how well everything fit together without wasting much space on the die. My partner than placed the core into the padframe he designed, and we got to witness our final design! 
+We were pleasantly surprized with how well everything fit together without wasting much space on the die. My partner then placed the core into the padframe he designed, and we got to witness our final design! 
 
 {{< fig src="/images/ic-complete-layout-labelled.png" caption="The complete die design, with labelled pads" >}}
 
