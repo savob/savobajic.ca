@@ -9,7 +9,7 @@
 <div class="wrapper">
 
 <header>
-  <h1><a href="/">Savo's Site</a></h1>
+  <h1><a href="{{ .Site.Home.Permalink }}">Savo's Site</a></h1>
 </header>
 
 <nav>
@@ -30,7 +30,7 @@
 <div class="navbutton"><a href="/volunteering/">Volunteering</a></div>
 <div class="navbutton"><a href="/contact/">Contact</a></div>
 
-<div>
+</div>
 </nav>
 
 {{ if not .IsHome }}
