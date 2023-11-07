@@ -11,9 +11,11 @@ points: ["Determining technical project scope from discussion with client.", "De
 
 # Starting Out
 
-It's always been a bit of a dream for me to do embedded system design as my job, and I finally got my start in it as I was wrapping my Master's studies. I've completed one project thus far, and am looking to do more, so if you're looking to hire me, check out my [contact page]({{< ref "contact" >}}) to reach out!
+It's always been a bit of a dream for me to do embedded system design as my job, and I finally got my start in it as I was wrapping up my Master's studies. I've completed one project thus far, and am looking to do more, so **if you're looking to hire me, check out my [contact page]({{< ref "contact" >}}) to reach out!**
 
-What I do:
+# My Services
+
+Although I can't discuss exactly the work I've done thus far, I will share what I have done:
 
 - Determine the technical scope of a project based on non-technical discussion with client(s)
 - Perform component selection and sourcing to optimize for cost
@@ -23,3 +25,7 @@ What I do:
 - Document my code and design files so that my work can be easily maintained and developed by others
 
 {{< fig src="/images/nda-meme.png" caption="The unfortunate reality of my freelance projects so far" >}}
+
+# Hire Me!
+
+Once again, if you're looking to hire me, my contact information is [here]({{< ref "contact" >}})!
