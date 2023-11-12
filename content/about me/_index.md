@@ -7,7 +7,7 @@ draft: false
 
 {{< fig src="/images/headshot.jpg" caption="Bajic, Savo Bajic" >}}
 
-Hi! My name is Savo Bajic and I'm a Canadian engineer (*engineer in training, legally speaking*), currently studying electrical engineering for a master's program. I graduated undergrad with honours from the mechanical engineering program at the University of Toronto, my main interest is pursuing embedded electronics as a career and my hobby. I made this website to present both myself and my projects to anyone interested.
+Hi! My name is Savo Bajic and I'm a Canadian engineer (*engineer in training, legally speaking*) with a masters degree in electrical engineering. I graduated undergrad with honours from the mechanical engineering program at the University of Toronto, my main interest is pursuing embedded electronics both as my [current career]({{<ref "/employment/freelance" >}}) and my hobby. I made this website to present both myself and my projects to anyone interested.
 
 Born and raised a first generation Canadian in the outskirts of Windsor, Ontario to my parents who were immigrants from Czechia and Serbia. As result I am fluent in Czech and Serbian, in addition to English as a third language. When I was 11 we moved to Shanghai, China due to my dad's work and lived there for five years. We returned to our childhood home and I attended our local public high school for two years before leaving to study engineering at the University of Toronto.
 
@@ -25,9 +25,10 @@ In my spare time I have been regularly working on a variety of projects, primari
 
 ## Education
 
-***Masters of Engineering (M.Eng.), Electrical Engineering*** | University of Toronto, *2022-Present.*
+***Masters of Engineering (M.Eng.), Electrical Engineering*** | University of Toronto, *2022-2023.*
 - Focus on integrated circuit design process and methodologies
-- Working on a project in computational imaging research with the [Intelligent Sensory Microsystems Laboratory](https://www.eecg.utoronto.ca/~roman/lab/index.html)
+- Learned and practiced digital systems design, especially in video processing contexts
+- Worked on a project in computational imaging research with the [Intelligent Sensory Microsystems Laboratory](https://www.eecg.utoronto.ca/~roman/lab/index.html)
 
 ***Bachelors of Applied Science (B.A.Sc.), Mechanical Engineering*** | University of Toronto, *2016-2021.*
 - Specialized in manufacturing and mechatronics.
