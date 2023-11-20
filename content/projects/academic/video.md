@@ -16,7 +16,6 @@ thumbnail: /images/video-pip.png
 # Overview
 
 
-
 ## Requirements
 
 ## Objectives
