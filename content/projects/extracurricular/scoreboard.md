@@ -9,7 +9,7 @@ client: "Blue and Cold Committee"
 tags: [embedded, EAGLE, Arduino]
 skills: [timers, embedded, EAGLE]
 summary: "Made a small display board to keep score of a game"
-githubLink:
+githubLink: "https://github.com/savob/scoreboard"
 thumbnail: "/images/scoreboard-front.jpg"
 ---
 
@@ -55,7 +55,7 @@ The display used was a four digit, 7-segment display that needed each of the com
 
 For general purpose inputs/outputs for the Arduino I made two sets of headers, one with the two interrupt pins on the Arduino and another with the remaining unused pins. It was actually one of these headers that I used for the buzzer since that was an we had after I had the boards made! I also left several pins to connect external systems to the power lines of the scoreboard.
 
-{{< fig src="/images/scoreboard-schematic.svg" caption="The completed schematic for the ESC V1 (PDF version: [Colour](/pdf/scoreboard.pdf) / [BW](/pdf/scoreboard_BW.pdf))" >}}
+{{< fig src="/images/scoreboard-schematic.svg" caption="The completed schematic for the scoreboard (PDF version: [Colour](/pdf/scoreboard.pdf) / [BW](/pdf/scoreboard_BW.pdf))" class="schematic">}}
 
 ## Layout
 
