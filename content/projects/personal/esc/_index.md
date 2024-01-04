@@ -9,7 +9,7 @@ client:
 tags: [ESC, embedded, BLDC, KiCAD, drone]
 skills: [embedded, BLDC, KiCAD]
 summary: "Making a custom electronic speed controller for my drone's motors"
-githubLink:
+githubLink: "https://github.com/savob/esc"
 thumbnail: "/images/esc-test-motor.jpg"
 ---
 
@@ -23,7 +23,7 @@ Most of my software development for features was done with my second version. In
 
 When I moved to my fourth revision I needed to re-write much of my code again because I made extensive use of hardware and registers that were different between the two microcontrollers.
 
-***Current Status:* I am currently waiting to order and assemble my fifth revision boards to continue developing their firmware.**
+***Current Status:* I am able to [control small motors]({{< ref "projects/personal/esc/esc-v5#motor-success" >}}) with the fifth version! However larger motors damage and eventually destroy my boards so I am redesigning my circuit to be able to handle the stresses imposed by larger motors.**
 
 ## Requirements
 

@@ -9,7 +9,7 @@ client:
 tags: [ESC, embedded, BLDC, drone]
 skills: [embedded, KiCAD, BLDC]
 summary: "A revision of ESV V2 with the voltage regulator removed"
-githubLink:
+githubLink: "https://github.com/savob/esc"
 thumbnail: "/images/esc-v3-top-assembled.jpg"
 ---
 
