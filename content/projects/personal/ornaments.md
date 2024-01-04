@@ -9,7 +9,7 @@ client: "Friends and family"
 tags: [hardware, toy, 555]
 skills: [hardware, layout]
 summary: "Made some festive blinking lights to hand out. Used the 555 timer!"
-githubLink:
+githubLink: "https://github.com/savob/ornaments"
 thumbnail: "/images/ornament-assembled.jpg"
 ---
 
