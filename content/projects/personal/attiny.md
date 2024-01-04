@@ -9,7 +9,7 @@ client:
 tags: [hardware, KiCad, attiny]
 skills: [KiCad]
 summary: "Made a small breakout board for ATtiny development"
-githubLink:
+githubLink: "https://github.com/savob/attinyXX17_dev_board"
 thumbnail: "/images/attiny-complete.jpg"
 ---
 
