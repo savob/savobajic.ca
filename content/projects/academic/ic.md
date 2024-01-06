@@ -1,6 +1,6 @@
 ---
 title: "Hamming Code IC"
-date: 2023-11-02T21:49:30-04:00
+date: 2022-09-28T21:49:30-04:00
 draft: false
 started: "September 2022"
 finished: "December 2022"

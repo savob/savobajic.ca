@@ -1,6 +1,6 @@
 ---
 title: "StatOpt in Python"
-date: 2023-11-06T22:21:34-05:00
+date: 2023-02-06T22:21:34-05:00
 draft: false
 started: February 2023
 finished: April 2023
