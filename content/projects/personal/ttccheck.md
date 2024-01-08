@@ -9,7 +9,7 @@ client: "My roommate and I"
 tags: [wifi, ESP32, SSL, embedded]
 skills: [wifi, SSL, debugging]
 summary: "Developed a dedicated embedded system to serve me predictions for when buses would arrive at selected stops."
-githubLink: "https://github.com/savob/buscheck"
+githubLink: "https://github.com/savob/ttc_check"
 thumbnail: "/images/ttc-sign-display-mounted.jpg"
 ---
 

@@ -9,7 +9,7 @@ client: "My roommates"
 tags: [wifi, ESP32, embedded, XML]
 skills: [wifi, EAGLE, XML]
 summary: "Proof of concept to check for busses around my home. **Base for TTC Check board project.**"
-githubLink: "https://github.com/savob/buscheck"
+githubLink: "https://github.com/savob/ttc_check"
 thumbnail: "/images/bus-board.jpg"
 ---
 
