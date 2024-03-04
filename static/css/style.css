@@ -345,13 +345,17 @@ ul, ol {
   flex-shrink: 0;
   height: 100%;
   margin: 0 auto;
-  object-fit: none;
+  object-fit: cover;
 }
 
 
 div.bio-bit {
   padding: 0 2rem;
   margin: 1rem 0 0 0;
+}
+
+div.bio-bit a:visited, div.bio-bit a:link {
+  color: var(--mainText);
 }
 
 #recent, #featured {

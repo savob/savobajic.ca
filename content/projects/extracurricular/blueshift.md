@@ -296,7 +296,7 @@ Just like on TITAN a USB receiver for ANT+ signals was used on the RPi to collec
 
 ### Video Display and Overlay
 
-The code for this was also copied from TITAN and was essentially the same, just that I removed the different "front" or "rear" code since there was only going to be one rider and display for this so it was redundant. The [feed shown]({{< ref "projects/extracurricular//titan-v1#camera-feed" >}}) to the rider was still a "preview" of the RPi camera with a data-loaded heads up display [overlaid]({{< ref "projects/extracurricular/titan-v1#overlay" >}}).
+The code for this was also copied from TITAN and was essentially the same, just that I removed the different "front" or "rear" code since there was only going to be one rider and display for this so it was redundant. The [feed shown]({{< ref "projects/extracurricular/titan-v1#camera-feed" >}}) to the rider was still a "preview" of the RPi camera with a data-loaded heads up display [overlaid]({{< ref "projects/extracurricular/titan-v1#overlay" >}}).
 
 Although my teammates had come success with putting up a video feed with C-based code using OpenCV, there was a noticeable latency and decreased frame rate compared to my original Python-based approach, which only got worse when they applied an overlay to it. **So this was scrapped and we intended to keep the Python video system for Blueshift at competition.**
 

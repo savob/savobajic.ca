@@ -8,30 +8,22 @@
 </head>
 
 <body>
-  {{ partial "header" . }}
-    
-  <main>
+    {{ partial "header" . }}
+
+    <main>
   
-  
-<div class="intro">
+    <div class="intro">
+        <div class="bio-bit">
+            {{.Content}}
+        </div>
 
-<div class="bio-shot">
-<img class="bio-shot" src="/images/headshot-small.jpg">
-</div>
-
-<div class="bio-bit">
+        <div class="bio-shot">
+        <img class="bio-shot" src="/images/headshot.jpg">
+    </div>
 
 
-<h1>Hi There!</h1>
-
-<p>This is a website for Savo Bajic (me!). It covers my projects and work acting like a digital CV, and maybe I'll 
-find further uses for it in the future.</p>
-
-</div>
-</div>
-
-  {{.Content}}	
-
+    </div>
+	
 	<section id="featured">
 	<div class="introLine"></div>
 	<h1>Featured Projects</h1>
@@ -40,7 +32,7 @@ find further uses for it in the future.</p>
 	<!-- Get the featured article list as pages -->
 	{{ $pagesInterested := slice "" }}
 	{{ range .Params.featuredLinks }}
-	  {{ $pagesInterested = $pagesInterested | append (($.GetPage .))}}
+        {{ $pagesInterested = $pagesInterested | append (($.GetPage .))}}
 	{{end}}
 	{{ $pagesInterested = after 1 ($pagesInterested)}}
 
@@ -55,7 +47,7 @@ find further uses for it in the future.</p>
 	<p>These are pages that I have most recently updated. Usually that means meaningful content updates but sometimes it could just be me fixing some spelling mistakes.</p>
 	
 	{{ $byLastMod :=  .Site.RegularPages.ByLastmod  }}
-  {{ $recent := ($byLastMod | last 6).Reverse }}
+    {{ $recent := ($byLastMod | last 6).Reverse }}
 	
 	{{ partial "columnContent" (dict "context" . "pagesToPost" $recent)}}
 	
