@@ -4,7 +4,7 @@ date: 2024-05-15T22:41:13-04:00
 draft: false
 period: "May 2024 - Present"
 company: "Engineering Design Lab (EDL)"
-thumbnail: "edl-logo.png"
+thumbnail: "/images/edl-logo.png"
 summary: "Primary electrical designer for a Toronto-based engineering consulting firm"
 points: ["Determining technical project scope from discussion with clients.", "Design and assembly of custom circuits to meet client needs.", "Filtered, interviewed, and selected staff for electronics team.", "Managing multiple project resources and timelines."]
 ---
