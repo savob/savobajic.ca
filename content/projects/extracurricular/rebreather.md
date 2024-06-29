@@ -57,7 +57,7 @@ The circuit design and layout was completed in EAGLE. For the circuit design I h
 
 The overall system design is centered on an ATmega328P microcontroller, the same used in Arduino Nanos. Fanning out from it are the circuits responsible for conditioning the oxygen sensor signals, the CO₂ signal and then the displays. The entire system is powered off a shared 5V supply generated from a linear regulator stepping down the supplied battery voltage.
 
-{{< fig src="/images/axios-schematic.png" caption="The completed schematic for the hot wire cutter ([PDF version](/pdf/rebreather-schematic.pdf))" class="schematic" >}}
+{{< fig src="/images/axios-schematic.png" caption="The completed schematic for the rebreather circuit ([PDF version](/pdf/rebreather-schematic.pdf))" class="schematic" >}}
 
 The ATmega was chosen for both our familiarity with it and having just the right amount of features we needed for this. It has an internal analog to digital converter for the oxygen sensors, interrupt pins for the CO₂ sensor, and timers needed for driving the displays. Both SPI ISP headers and serial headers for programming were put on the board.
 
