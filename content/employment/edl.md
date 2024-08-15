@@ -11,6 +11,6 @@ points: ["Determining technical project scope from discussion with clients.", "D
 
 {{< fig src="/images/edl-logo.png" caption="Engineering Design Lab's logo, it's on a lot of my emails now!" >}}
 
-I joined [Engineering Design Lab](https://www.engdesignlab.com/), EDL, after being a freelance consultant for them for several months. Still getting started up but it's been intersting, and hopefully I can share some of the work I'm doing in the future!
+I joined [Engineering Design Lab](https://www.engdesignlab.com/), EDL, after being a freelance consultant for them for several months. Still getting started up but it's been super exciting and interesting, and hopefully I can share some of the work I'm doing in the future!
 
-Much of my role aligns with what I was doing previously as a [freelancer]({{< ref "employment/freelance" >}}) for them; determining technical scopes, delivering complete systems and firmware - but with some newer roles and responsibilities added as EDL seeks to expand their capabilities in electronics. Already I've had the experience of selecting my first summer intern, which really only has one day less senoirity at EDL than me!
+Much of my role aligns with what I was doing previously as a [freelancer]({{< ref "employment/freelance" >}}) for them; determining technical scopes, delivering complete systems and firmware - but with some newer roles and responsibilities added as EDL seeks to expand their capabilities in electronics. Already I've had the experience of selecting my first summer intern, which really only has one day less seniority at EDL than me!
