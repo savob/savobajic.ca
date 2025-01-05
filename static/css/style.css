@@ -418,15 +418,15 @@ td {
  /* Link */
  /* Note: these only apply to the main body, not header/footer */
  
-main>section a:link {
+main a:link {
   color: var(--unvisitedHyperlink);
 }
 
-main>section a:visited {
+main a:visited {
   color: var(--clickedLinks);
 }
 
-main>section a:active {
+main a:active {
   color: var(--activeHyperlink);
 }
 
