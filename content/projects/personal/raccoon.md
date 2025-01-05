@@ -286,7 +286,7 @@ Adjusting the check frequency is a direct compromise between responsiveness and 
 
 $$ I_{Average} = I_{Sleep} + (I_{Active} * P_{Active}) $$
 
-I started with a baseline of checking every second. So \(I_{Sleep}\) was roughly 4.5&nbsp;uA, \(I_{Active}\) was 7.2&nbsp;mA, with a \(P_{Active}\) of 0.01 (10&nbsp;ms per second), which yielded an average current of 76.5&nbsp;uA. At this current draw the CR2032 cell's 340&nbsp;mAh would be expended in 185&nbsp;days, or half a year. So I simply halved the check frequency to once every other second to extend this to approximately a year.
+I started with a baseline of checking every second. So \\(I_{Sleep}\\) was roughly 4.5&nbsp;uA, \\(I_{Active}\\) was 7.2&nbsp;mA, with a \\(P_{Active}\\) of 0.01 (10&nbsp;ms per second), which yielded an average current of 76.5&nbsp;uA. At this current draw the CR2032 cell's 340&nbsp;mAh would be expended in 185&nbsp;days, or half a year. So I simply halved the check frequency to once every other second to extend this to approximately a year.
 
 ### Mass Assembly
 

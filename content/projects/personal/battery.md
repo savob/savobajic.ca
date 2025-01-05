@@ -86,7 +86,7 @@ After completing the first battery pack and letting it charge for a little we we
 
 This was great, however we made a fatal mistake. By not letting all the cells charge fully, the cells were not balanced before use. This meant some cells started at a lower voltage than the rest, and as the battery was discharged they were drained to below their stable voltages before the under-voltage protection kicked in.
 
-In a balanced battery, all the cells have the same voltage, so the under-voltage threshold is about 48&nbsp;V (3.0&nbsp;V * 16). However in an unbalanced battery with two cells a volt lower than the rest, they can fall into critical undercharge levels without triggering the under-voltage. If we keep the threshold at 48&nbsp;V, we can solve for the healthy cell voltage (\(v\)) with two cells a volt lower than the others, that it take to be at 48&nbsp;V.
+In a balanced battery, all the cells have the same voltage, so the under-voltage threshold is about 48&nbsp;V (3.0&nbsp;V * 16). However in an unbalanced battery with two cells a volt lower than the rest, they can fall into critical undercharge levels without triggering the under-voltage. If we keep the threshold at 48&nbsp;V, we can solve for the healthy cell voltage (\\(v\\)) with two cells a volt lower than the others, that it take to be at 48&nbsp;V.
 
 $$ 14v + 2(v - 1) = 48 $$
 $$ 14v + 2v - 2 = 48 $$

@@ -23,8 +23,8 @@ This is still my largest design project have done for work.
 ## Requirements
 
 - Regulate the force on six axes
-  - Three linear forces (\(F_x\), \(F_y\), and \(F_z\))
-  - Three torques (\(T_x\), \(T_y\), and \(T_z\))
+  - Three linear forces (\\(F_x\\), \\(F_y\\), and \\(F_z\\))
+  - Three torques (\\(T_x\\), \\(T_y\\), and \\(T_z\\))
 - Implement this on the existing KUKA robots on site
 - Train test technicians to operate the completed system
 

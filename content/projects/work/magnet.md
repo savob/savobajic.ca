@@ -239,15 +239,15 @@ So began by simply playing around with the values of the simulation to see if I 
 
 I decided to start by working on the first two questions since I believed they would be the foundation needed to address the other questions properly. 
 
-In the magnetic losses simulation of COMSOL, a differential formula is used to determine the magnetic hysteresis loop of a given material and thus the magnetic losses. This formula needs two parameters to characterize a material, \(μ'\) and \(μ''\), these are the relative magnetic permeabilities of a material. They would be used in the formula below.
+In the magnetic losses simulation of COMSOL, a differential formula is used to determine the magnetic hysteresis loop of a given material and thus the magnetic losses. This formula needs two parameters to characterize a material, \\(μ'\\) and \\(μ''\\), these are the relative magnetic permeabilities of a material. They would be used in the formula below.
 
 $$ B = μ_0 * (μ' - iμ'') * H $$
 
-> \(B\), ambient magnetic field  
-> \(μ_0\), permeability of vacuum  
-> \(H\), the magnetization of the material
+> \\(B\\), ambient magnetic field  
+> \\(μ_0\\), permeability of vacuum  
+> \\(H\\), the magnetization of the material
 
-When ploted on a graph of \(B\) vs. \(H\) it would result in an ellipse centred on the origin. The magnetic losses per cycle can be found by taking the integral of the ellipse's enclosed area.
+When ploted on a graph of \\(B\\) vs. \\(H\\) it would result in an ellipse centred on the origin. The magnetic losses per cycle can be found by taking the integral of the ellipse's enclosed area.
 
 These parameters are highly dependant on the application of a material and thus rarely stated in data sheets. So I began researching to determine them for myself, either through other people's research or additional simulations. After some digging through COMSOL's documentation, I found an application note describing how to use other simulations to gather the data one would need and then the operations needed to convert this data into the two parameters to use.
 

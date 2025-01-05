@@ -264,8 +264,8 @@ Our compression algorithm followed a couple of steps to properly convert the ima
 
 1. Sum all the pixel intensities in 17&nbsp;by&nbsp;17&nbsp;pixel blocks to create a 28&nbsp;by&nbsp;28 grid. Pixels outside this region in the original image are discarded.
 2. Find the maximum and minimum sums in this region. E.g. 100 and 1600.
-3. Scale the values of the sums so that those at the minimum are 0, those at the maximum are at 15. \(x = \frac{x - x_{min}}{x_{max} - x_{min}} * 15\), so using the example values 200 would become 1. *This allows us to maintain the dynamic range of the image.*
-4. Invert the scale, since the training data used white on black digits while we were using black on white. \(x = 15 - x\)
+3. Scale the values of the sums so that those at the minimum are 0, those at the maximum are at 15. \\(x = \frac{x - x_{min}}{x_{max} - x_{min}} * 15\\), so using the example values 200 would become 1. *This allows us to maintain the dynamic range of the image.*
+4. Invert the scale, since the training data used white on black digits while we were using black on white. \\(x = 15 - x\\)
 5. Compare values to a threshold, if below the threshold floor the value to 0. This was to combat the background being non-uniform due "vignetting" where the edges of an image are darker compared to the center.
 
 {{< fig src="/images/video-compression.png" caption="A diagram of how the VGA image was sampled for compression" >}}

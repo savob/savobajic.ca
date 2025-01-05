@@ -48,26 +48,26 @@ In my fourth year control systems class, MIE404: Control Systems, our course pro
 In our project we were only considering the motion to be along a single axis, although an additional one can be easily incorporated into the system. The crane system consists of a trolley, rope, and payload. These are shown modelled in the figure below, where:
 
 > \\(m_t\\) – mass of the trolley  
-> \(m_l\) – mass of the load  
-> \(x_t\) – horizontal displacement of the trolley  
-> \(x_l\) – horizontal displacement of the load  
-> \(v_t\) – horizontal velocity of the trolley (\(x_t'\))  
-> \(v_l\) – horizontal velocity of the load (\(x_l'\))  
-> \(\phi\) – angular displacement of the rope  
-> \(L\) – length of the rope  
-> \(b_t\) – coefficient of friction between the trolley and the rail  
-> \(b_l\) – coefficient of friction on the load (caused by pivot joint friction and air friction)  
-> \(F\) – force applied to the trolley
+> \\(m_l\\) – mass of the load  
+> \\(x_t\\) – horizontal displacement of the trolley  
+> \\(x_l\\) – horizontal displacement of the load  
+> \\(v_t\\) – horizontal velocity of the trolley (\\(x_t'\\))  
+> \\(v_l\\) – horizontal velocity of the load (\\(x_l'\\))  
+> \\(\phi\\) – angular displacement of the rope  
+> \\(L\\) – length of the rope  
+> \\(b_t\\) – coefficient of friction between the trolley and the rail  
+> \\(b_l\\) – coefficient of friction on the load (caused by pivot joint friction and air friction)  
+> \\(F\\) – force applied to the trolley
 
 {{< fig src="/images/controls-system-model.png" caption="The simplified system model" >}}
 
 ## Fundamentals
 
-This task had us list several potential input and output variable pairings for a feedback system from how the crane was described, for example \(F\) as an input and \(\phi\) as an output. We then had to explain the purpose of such a closed-loop system and how they would improve the crane's efficiency. This came down to stating that we needed a closed-loop control system because we were aiming to control \(\phi\), but it cannot be controlled directly, only as the result of other system features.
+This task had us list several potential input and output variable pairings for a feedback system from how the crane was described, for example \\(F\\) as an input and \\(\phi\\) as an output. We then had to explain the purpose of such a closed-loop system and how they would improve the crane's efficiency. This came down to stating that we needed a closed-loop control system because we were aiming to control \\(\phi\\), but it cannot be controlled directly, only as the result of other system features.
 
-In addition to outlining our fundamental understanding of the control system we needed to develop, we had to prove it by making a generic block diagram of one input-output variable pair, showing a potential disturbing signal and other typical components of a flow diagram. I selected to do \(F-x_t\).
+In addition to outlining our fundamental understanding of the control system we needed to develop, we had to prove it by making a generic block diagram of one input-output variable pair, showing a potential disturbing signal and other typical components of a flow diagram. I selected to do \\(F-x_t\\).
 
-{{< fig src="/images/controls-disturbed-flow.png" caption="My generalized block diagram for \(F-x_t\)" >}}
+{{< fig src="/images/controls-disturbed-flow.png" caption="My generalized block diagram for \\(F-x_t\\)" >}}
 
 ## Modelling
 
@@ -77,35 +77,35 @@ $$ x_l = x_t - L sin(\phi) $$
 $$ g\phi m_l = x''_l m_l + x'_l b_l $$
 $$ F = x_t m_l + x_t b_t + gm_l tan(\phi) $$
 
-To make things easier for us as we made the transform functions, we were allowed to linearize our models by assuming that \(\phi\) would in most cases be approximately zero, thus \(sin(\phi) = \phi\) and \(cos(\phi) = 1\). Our new model was:
+To make things easier for us as we made the transform functions, we were allowed to linearize our models by assuming that \\(\phi\\) would in most cases be approximately zero, thus \\(sin(\phi) = \phi\\) and \\(cos(\phi) = 1\\). Our new model was:
 
 $$ x_l = x_t - L\phi $$
 $$ g\phi m_l = x''_l m_l + x'_l b_l $$
 $$ F = x_t m_l + x_t b_t + g\phi m_l $$
 
-My generalized transfer function for \(\phi(s)/x_l(s)\):
+My generalized transfer function for \\(\phi(s)/x_l(s)\\):
 
 $$ \frac{s^2m_l + sb_l}{s^2Lm_l + sLb_l + gm_l} $$
 
-My generalized transfer function for \(\phi(s)/v_t(s)\):
+My generalized transfer function for \\(\phi(s)/v_t(s)\\):
 
 $$ \frac{sm_l + b_l}{s^2Lm_l + sLb_l + gm_l} $$
 
 I then entered the values I supposed to use for the various constants to get my final answer for each transfer function. After all these hand derivations, I then turned to the last component for this task, generating a Simulink model of the crane based on input force.
 
-{{< fig src="/images/controls-simulink-model.png" caption="My block diagram for \(F-\phi\) in Simulink based on the mathematical model" >}}
+{{< fig src="/images/controls-simulink-model.png" caption="My block diagram for \\(F-\phi\\) in Simulink based on the mathematical model" >}}
 
 ## Transient Time Response
 
-This was a short task that focused on having us simulating the transient response of \(\phi(s)/v_t(s)\) to a step and ramp input, with an open loop and negative unity feedback, for a total of four responses plotted.
+This was a short task that focused on having us simulating the transient response of \\(\phi(s)/v_t(s)\\) to a step and ramp input, with an open loop and negative unity feedback, for a total of four responses plotted.
 
-{{< fig src="/images/controls-phi-step.png" caption="Open-loop \(\phi\) response to a step input of \(v_t\)" >}}
+{{< fig src="/images/controls-phi-step.png" caption="Open-loop \\(\phi\\) response to a step input of \\(v_t\\)" >}}
 
-{{< fig src="/images/controls-phi-ramp.png" caption="Open-loop \(\phi\) response to a ramp input of \(v_t\)" >}}
+{{< fig src="/images/controls-phi-ramp.png" caption="Open-loop \\(\phi\\) response to a ramp input of \\(v_t\\)" >}}
 
-{{< fig src="/images/controls-phi-step-comp.png" caption="Negative unity \(\phi\) response to a step input of \(v_t\)" >}}
+{{< fig src="/images/controls-phi-step-comp.png" caption="Negative unity \\(\phi\\) response to a step input of \\(v_t\\)" >}}
 
-{{< fig src="/images/controls-phi-ramp-comp.png" caption="Negative unity \(\phi\) response to a ramp input of \(v_t\)" >}}
+{{< fig src="/images/controls-phi-ramp-comp.png" caption="Negative unity \\(\phi\\) response to a ramp input of \\(v_t\\)" >}}
 
 As we can see, implementing a unity feedback did effect the output. However I feel that this is not an appropriate feedback system since we are doing a difference of two different units to get an error signal, speed and angle.
 
@@ -115,7 +115,7 @@ The final part of this task required us to suggest a location for a controller i
 
 ## Design
 
-The final stage of this project was to top all our effort off with a properly designed controller for the system. First I needed to determine the stability of the system using the Routh-Hurwitz criterion, and then go forth to design the controller using a root-locus plot. **My final proposal needed to maintain a percent over shoot (POS) less than 1%, and a settling time (\(T_s\)) less than 0.45&nbsp;seconds.**
+The final stage of this project was to top all our effort off with a properly designed controller for the system. First I needed to determine the stability of the system using the Routh-Hurwitz criterion, and then go forth to design the controller using a root-locus plot. **My final proposal needed to maintain a percent over shoot (POS) less than 1%, and a settling time (\\(T_s\\)) less than 0.45&nbsp;seconds.**
 
 ### Stability Check
 
@@ -127,9 +127,9 @@ This transfer function generates the following Routh table. Going down the first
 
 | **s** |  |  | 
 | :---: | :---: | :---: |
-| \(s^2\) | 0.3 | 3.562 |
-| \(s^1\) | 2.6 | 0 |
-| \(s^0\) | 3.562 | 0 |
+| \\(s^2\\) | 0.3 | 3.562 |
+| \\(s^1\\) | 2.6 | 0 |
+| \\(s^0\\) | 3.562 | 0 |
 
 ### Actually Designing a Controller
 

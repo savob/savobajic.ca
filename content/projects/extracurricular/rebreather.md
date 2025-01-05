@@ -153,7 +153,7 @@ for (byte displayIndex = 0; displayIndex < numberOfDisplays; displayIndex++) {
 
 ### Oxygen Reading
 
-Oxygen readings are generated from some linear interpolations. The interpolation line is set with one point just below 5&nbsp;V for the maximum (100%) reading, then another voltage set by potentiometer for each sensor at atmospheric conditions (~21%, so ~1&nbsp;V). The function used to get oxygen readings fits the voltage-oxygen line in the form of \(y = mx + b\) and then uses it to derive what the oxygen value is by rearranging to \(x = (y - b) / m\).
+Oxygen readings are generated from some linear interpolations. The interpolation line is set with one point just below 5&nbsp;V for the maximum (100%) reading, then another voltage set by potentiometer for each sensor at atmospheric conditions (~21%, so ~1&nbsp;V). The function used to get oxygen readings fits the voltage-oxygen line in the form of \\(y = mx + b\\) and then uses it to derive what the oxygen value is by rearranging to \\(x = (y - b) / m\\).
 
 ```cpp 
 float oxygenRead(byte sensor) {
@@ -177,7 +177,7 @@ float oxygenRead(byte sensor) {
 
 The carbon dioxide reading is PWM based, so the width of the output high phase corresponds to the concentration of CO₂ detected by the sensor. This wave is connected to an interrupt pin on the ATmega which toggles on *any* state change so it marks both the start and end of a PWM wave.
 
-The signal has a period of about a second according the the manufacturer's data sheet, and the CO₂ level is encoded using the following formula, \(CO₂ = ppm span * (T_h - 2ms) / (T_h + T_l - 4ms)\), where \(T_h\) and \(T_l\) are the periods the wave was high or low respectively. The measuring span (`ppm span`) of our model of sensor is 2000&nbsp;ppm. This results in the following interrupt routine for the CO₂ input.
+The signal has a period of about a second according the the manufacturer's data sheet, and the CO₂ level is encoded using the following formula, \\(CO₂ = ppm span * (T_h - 2ms) / (T_h + T_l - 4ms)\\), where \\(T_h\\) and \\(T_l\\) are the periods the wave was high or low respectively. The measuring span (`ppm span`) of our model of sensor is 2000&nbsp;ppm. This results in the following interrupt routine for the CO₂ input.
 
 ```cpp
 void CO2Interrupt () {
