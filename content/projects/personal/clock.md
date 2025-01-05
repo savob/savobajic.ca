@@ -553,7 +553,9 @@ I did end up ordering the 556-based reset modules, however I did not bother to a
 
 {{< fig src="/images/clock-on-wall.jpg" caption="Clock in place on my wall. *(It's more legible in person!)*" >}}
 
-We'll see if the static issues return in the winter! It's hard to generate the same level of static in the middle of summer as I write this.
+~~We'll see if the static issues return in the winter! It's hard to generate the same level of static in the middle of summer as I write this.~~
+
+*EDIT (2025-01-05): Decoupling capacitors seem to have done the trick, ticking along steady regardless of season or outfit!*
 
 ### Final Comments
 
