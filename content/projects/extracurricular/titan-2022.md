@@ -19,7 +19,7 @@ For TITAN, our return entry to the World Human Powered Speed Competition (WHPSC)
 
 {{< fig src="/images/titan-crew-2022.jpg" caption="TITAN and our crew at WHPSC 2022 (I'm third from the right!)" >}}
 
-I had already [attempted a system previously]({{<ref "projects/extracurricular/titan-v1" >}}), but I greatly revised it based on feedback from our riders and my improved understanding of embedded systems.
+I had already [attempted a system previously]({{< ref "projects/extracurricular/titan-v1" >}}), but I greatly revised it based on feedback from our riders and my improved understanding of embedded systems.
 
 Unlike 2019, I went with the team to help compete at the competition! Although the system had some minor issues in our first few runs which I hadn't experienced in development, I was able to iron out most issues between each set of runs. Unfortunately we suffered a crash on our third run which ended our participation for the remainder of the competition.
 
@@ -144,7 +144,7 @@ From the previous version of TITAN, these sensors were added:
 
 ## Telemetry
 
-To broadcast data out of the bike to our chase vehicle, we used nRF24L01 modules. I had intended to use these back in 2019 but never got around to working them into the system before the competition. Since then I had done some work specifically on [this]({{<ref "projects/extracurricular/telemetry" >}}) so I now was ready to properly incorporate them into TITAN, the difference from before hardware-wise being that the module would be interfaced with the microcontroller instead of an RPi. This was done to simplify coding for the RPis as well as ideally making the system more responsive.
+To broadcast data out of the bike to our chase vehicle, we used nRF24L01 modules. I had intended to use these back in 2019 but never got around to working them into the system before the competition. Since then I had done some work specifically on [this]({{< ref "projects/extracurricular/telemetry" >}}) so I now was ready to properly incorporate them into TITAN, the difference from before hardware-wise being that the module would be interfaced with the microcontroller instead of an RPi. This was done to simplify coding for the RPis as well as ideally making the system more responsive.
 
 Given that the fairing is largely composed of carbon fibre (which blocks radio waves), telemetry and the GPS both had antennae that were run to the rear of the bike so that the radio waves could escape the fairing through a designated fibreglass portion which permits radio waves. This fibreglass portion is a visually distinct brown next to the black carbon fibre used for the remainder of the fairing.
 
@@ -192,7 +192,7 @@ There were two boards made, the main boards that were put on the RPis as HATs (m
 
 ## Main Board Layout
 
-The board layout underwent a much more intense change from the previous version than the circuitry. Whereas the previous board was meant to sit completely separate of the RPis connected to them by a 40 wire ribbon cable, the new boards were meant to be mounted using the RPi Hardware on Top (HAT) standard. This eliminated the need for the ribbon cable by putting the TITAN board directly on top of the RPi with a 40-pin header which also reduced the overall footprint of the system by having the board overlap the RPi. This was first attempted with [Blueshift]({{<ref "projects/extracurricular/blueshift#layout" >}}) to reduce system size as well as reducing the chance of incorrect connection.
+The board layout underwent a much more intense change from the previous version than the circuitry. Whereas the previous board was meant to sit completely separate of the RPis connected to them by a 40 wire ribbon cable, the new boards were meant to be mounted using the RPi Hardware on Top (HAT) standard. This eliminated the need for the ribbon cable by putting the TITAN board directly on top of the RPi with a 40-pin header which also reduced the overall footprint of the system by having the board overlap the RPi. This was first attempted with [Blueshift]({{< ref "projects/extracurricular/blueshift#layout" >}}) to reduce system size as well as reducing the chance of incorrect connection.
 
 The HAT standard also has a recommended outline to not extend outside the footprint of the RPi (65&nbsp;by&nbsp;56&nbsp;mm), mounting holes to seat nicely on the RPi, and spaces for the different interfaces that might need to pass through; RPi display and RPi camera cables. The default HAT board is shown below, I made two changes to the outline visible when looking at my layouts later: 
 1. I removed the clearance for the display cable on the left edge since we weren't going to use it. HDMI comes out the side of the RPi.

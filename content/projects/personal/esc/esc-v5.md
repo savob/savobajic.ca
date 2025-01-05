@@ -40,7 +40,7 @@ My goal is to keep the board as similar to V4 so that my code doesn't have to be
 
 ## Circuit Design
 
-Circuit design is basically the same as [V4]({{<ref "projects/personal/esc/esc-v4#circuit-design" >}}) with only a few minor changes.
+Circuit design is basically the same as [V4]({{< ref "projects/personal/esc/esc-v4#circuit-design" >}}) with only a few minor changes.
 
 - Replaced the FAN7388/FAN7888 MOSFET driver with the IRS2334S
 - Removed the unnecessary resistor on the UDPI line (R2 in V4's schematic)
@@ -79,7 +79,7 @@ On the bottom face of the board there was more rework, related to the modificati
 
 {{< fig src="/images/esc-v5-assembled-back.jpg" caption="The almost bare bottom of the boards." >}}
 
-Honestly speaking, the only real difference in the appearance of V5 from V4 is that I ordered it in a white solder mask with black silkscreen scheme, whereas V4 was red and white respectively. As explained in the [layout]({{<ref "projects/personal/esc/esc-v5#layout">}}) section, the layout was intentional kept identical to V4.
+Honestly speaking, the only real difference in the appearance of V5 from V4 is that I ordered it in a white solder mask with black silkscreen scheme, whereas V4 was red and white respectively. As explained in the [layout]({{< ref "projects/personal/esc/esc-v5#layout">}}) section, the layout was intentional kept identical to V4.
 
 ## Porting Code from V4
 

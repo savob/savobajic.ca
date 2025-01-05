@@ -127,9 +127,9 @@ This transfer function generates the following Routh table. Going down the first
 
 | **s** |  |  | 
 | :---: | :---: | :---: |
-| s<sup>2</sup> | 0.3 | 3.562 |
-| s<sup>1</sup> | 2.6 | 0 |
-| s<sup>0</sup> | 3.562 | 0 |
+| \(s^2\) | 0.3 | 3.562 |
+| \(s^1\) | 2.6 | 0 |
+| \(s^0\) | 3.562 | 0 |
 
 ### Actually Designing a Controller
 

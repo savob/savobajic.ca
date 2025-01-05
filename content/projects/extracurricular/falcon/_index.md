@@ -15,7 +15,7 @@ thumbnail:
 
 # Overview
 
-This is by far my most complicated project I have undertaken and led for the University of Toronto (UofT) Human Powered Vehicle Design Team (HPVDT), a human powered aircraft. Granted it wasn't going to be powered by electric motors but there was a lot of data that needed to be collected and procesed in a reasonable amount of time, as well as implementing a digital control system for the aircraft!
+This is by far my most complicated project I have undertaken and led for the University of Toronto (UofT) Human Powered Vehicle Design Team (HPVDT), a human powered aircraft. Granted it wasn't going to be powered by electric motors but there was a lot of data that needed to be collected and processed in a reasonable amount of time, as well as implementing a digital control system for the aircraft!
 
 Overall there were three main systems operating aboard the aircraft:
 
@@ -29,7 +29,7 @@ This project coincided with an influx of members interested in electronics for t
 
 # Embedded System
 
-The embedded system is the combination of the control and sensor system. It's composed of several circuit boards designed for specific purposes placed around the aircraft to collect data or actuate our control surfaces. Below is a block diagram of the entire embedded system, in it the white blocks are modules used to aquire or relay data, yellow is for microcontrollers that we will program with our own firmware, and black for other systems outside the scope of the embedded system.
+The embedded system is the combination of the control and sensor system. It's composed of several circuit boards designed for specific purposes placed around the aircraft to collect data or actuate our control surfaces. Below is a block diagram of the entire embedded system, in it the white blocks are modules used to acquire or relay data, yellow is for microcontrollers that we will program with our own firmware, and black for other systems outside the scope of the embedded system.
 
 {{< fig src="/images/falcon-embedded-diagram.jpg" caption="Block diagram of the entire embedded system ([PDF](/pdf/falcon-embedded-diagram.pdf))" width=100% >}}
 
@@ -45,7 +45,7 @@ To communicate among themselves these boards use a separate I2C bus and point to
 
 The main control board has a couple other minor tasks it fulfills. Firstly, it serves as the main power regulator for the embedded system, providing up to 2&nbsp;A on 3.3&nbsp;V and 5&nbsp;V rails. This way if the connection between it and the sensor system is severed, it will be able to continue operation without them.
 
-By having access to the main communication bus, the control board can also potentially tap into these sensors directly to allow us to develop self-leveling or heading holding control algorithms to simplify things for our pilots down the line. This is not considered for any of our initial flights though! Those will just have direct flight stick to control surface relations.
+By having access to the main communication bus, the control board can also potentially tap into these sensors directly to allow us to develop self-levelling or heading holding control algorithms to simplify things for our pilots down the line. This is not considered for any of our initial flights though! Those will just have direct flight stick to control surface relations.
 
 ## Sensor System
 
@@ -76,7 +76,7 @@ At the present the following data is collected by this system:
 
 *This is something I've not been too heavily involved in yet to be frank.*
 
-Since this aircraft is based off the design for [TITAN]({{<ref "projects/extracurricular/titan-2022" >}}) the pilot configuration does not offer a convenient view port for them. There are no ruled surfaces that would make a physical window easy to manufacture, and even if there was, their heads are not located somewhere that would suit them surveying their surroundings. So as a result of this, and the possibility of pursuing remote controlled test flights a digital vision system is necessary.
+Since this aircraft is based off the design for [TITAN]({{ <ref "projects/extracurricular/titan-2022" >}}) the pilot configuration does not offer a convenient view port for them. There are no ruled surfaces that would make a physical window easy to manufacture, and even if there was, their heads are not located somewhere that would suit them surveying their surroundings. So as a result of this, and the possibility of pursuing remote controlled test flights a digital vision system is necessary.
 
 The basis of the system's function would be akin to TITAN: show the outside and overlay it with data. The major departure though is that TITAN, and all of HPVDT's previous vehicles for that matter, have only offered a fixed camera perspective on a fixed screen inside. For the aircraft it was made immediately clear that the video system would need to be 360 degree and head tracking to maximize situational awareness and to minimize the potential motion sickness induced by a video system. This was needed as a minimum for the main pilot, but ideally both pilots would have access to this system.
 
