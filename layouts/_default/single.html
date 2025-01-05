@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title>{{ .Title }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ .Title }}</title>
+     
+    {{ if .Param "math" }}
+        {{ partialCached "math.html" . }}
+    {{ end }}
+
 </head>
 <body>
-  {{ partial "header" . }}
-	
-	<main>
-	<section class="mainIntro">
-  {{ partial "titleBlock" . }}
-  </section>
+    {{ partial "header" . }}
+	  
+	  <main>
+	  <section class="mainIntro">
+    {{ partial "titleBlock" . }}
+    </section>
 
-  <section class="mainContent">
-  {{.Content}}
-  </section>
-  </main>
-  
-  {{ partial "footer" . }}
+    <section class="mainContent">
+    {{.Content}}
+    </section>
+    </main>
+    
+    {{ partial "footer" . }}
 </body>
 </html>

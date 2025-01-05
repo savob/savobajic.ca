@@ -5,11 +5,9 @@ enableGitInfo = true
 
 
 [params]
-custom_css = ["css/style.css"]
+  custom_css = ["css/style.css"]
+  math = true
 
-[markup.goldmark.renderer]
-      unsafe = true
-      
 [frontmatter]
   lastmod = ["lastmod", ":git", "date", "publishDate"]
 
@@ -27,3 +25,15 @@ custom_css = ["css/style.css"]
   [privacy.youtube]
     disable = false
     privacyEnhanced = true
+    
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+       unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
