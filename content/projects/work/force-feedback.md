@@ -23,8 +23,8 @@ This is still my largest design project have done for work.
 ## Requirements
 
 - Regulate the force on six axes
-  - Three linear forces (Fx, Fy, and Fz)
-  - Three torques (Tx, Ty, and Tz)
+  - Three linear forces (\(F_x\), \(F_y\), and \(F_z\))
+  - Three torques (\(T_x\), \(T_y\), and \(T_z\))
 - Implement this on the existing KUKA robots on site
 - Train test technicians to operate the completed system
 
@@ -46,7 +46,7 @@ Although my communication protocol works as needed, using more purpose built har
 
 This was the focus of my second time working at IGB Automotive. This project focused on implementing force feedback routines into old refurbished robotic arms to have them administer durability tests. This was built off some of the work I did the previous summer I was there, implementing a much more basic system.
 
-The robots had to follow paths that were defined by the clients, with set points that were expected to administer a desired force on the seat, for example 500N downwards on the cushion, and repeat these cycles several thousand times. The problem with this is that the robots had no internal force feedback/adjustment system; they were designed to merely go from point to point. This meant that a robot going to a point may apply a force of 500N the first dozen times, however as the seat deforms from this cyclic loading it may only apply 400N at the same position in a few hundred cycles.
+The robots had to follow paths that were defined by the clients, with set points that were expected to administer a desired force on the seat, for example 500&nbsp;N downwards on the cushion, and repeat these cycles several thousand times. The problem with this is that the robots had no internal force feedback/adjustment system; they were designed to merely go from point to point. This meant that a robot going to a point may apply a force of 500&nbsp;N the first dozen times, however as the seat deforms from this cyclic loading it may only apply 400&nbsp;N at the same position in a few hundred cycles.
 
 Therefore, force feedback was vital to the system as it allowed technicians to properly configure the robots before starting the test to meet these requirements and would allow the robots to self-correct their paths if force targets were not met mid-test.
 
@@ -94,7 +94,7 @@ These extra parallel bits also helped keep the systems synchronized with a "hand
 5. Robot detects the lowering of the PC's handshake output and lowers its handshake.
 6. The process begins anew once another batch of data needs exchanging
 
-Each step in this cycle took about a second or so because the KRL on the robots doesn't have instructions to wait less than a second so that was the minium timing I could used for these transfers.
+Each step in this cycle took about a second or so because the KRL on the robots doesn't have instructions to wait less than a second so that was the minimum timing I could used for these transfers.
 
 ## Putting it all Together
 

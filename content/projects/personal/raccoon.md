@@ -40,7 +40,7 @@ Overall I am very satisfied with the way these came out, with the stands they're
 
 Making nice circuit boards takes a bit of research to decipher the process, but is relatively simple to do once you decide on a method. I look forward to trying this again!
 
-It takes some effort to snuff out the last remaining peripherals that are using power to really bring a microcontroller down to a level where it is sipping power (*sub 5uA!!*) and it leads to some obvious trade-offs in terms of system responsiveness. However even minor changes such as reducing clock rates or just driving unused pins to ground can have a noticeable impact on power draw, without impacting performance.
+It takes some effort to snuff out the last remaining peripherals that are using power to really bring a microcontroller down to a level where it is sipping power (*sub 5&nbsp;uA!!*) and it leads to some obvious trade-offs in terms of system responsiveness. However even minor changes such as reducing clock rates or just driving unused pins to ground can have a noticeable impact on power draw, without impacting performance.
 
 # Detailed Report
 
@@ -78,9 +78,9 @@ Once I had the capacitive touch sensing code working reliable I began to work on
 
 **For reference, I planned to use CR2032 batteries, which provide 3&nbsp;V with a capacity of around 340&nbsp;mAh.**
 
-{{< fig src="/images/raccoon-delay-based-sleep-draw.png" caption="Current draw when using delay() to idle for 10 seconds at a time. (5V, 8MHz)" >}}
+{{< fig src="/images/raccoon-delay-based-sleep-draw.png" caption="Current draw when using delay() to idle for 10 seconds at a time. (5&nbsp;V, 8&nbsp;MHz)" >}}
 
-With the ATtiny85 running at its default 8&nbsp;MHz internal clock at 5&nbsp;V, the current draw averaged about **7.2&nbsp;mA**. This would kill a CR2032 in just under 48 hours. Although not super relevant to the project, it was odd to see a noticeable saw-tooth pattern to to current draw as it steadly increased during the `delay()` call. I wonder why that was.
+With the ATtiny85 running at its default 8&nbsp;MHz internal clock at 5&nbsp;V, the current draw averaged about **7.2&nbsp;mA**. This would kill a CR2032 in just under 48&nbsp;hours. Although not super relevant to the project, it was odd to see a noticeable saw-tooth pattern to to current draw as it steadily increased during the `delay()` call. I wonder why that was.
 
 With this (horrible) baseline I went about doing two simple things. First I lowered my supply voltage to match the expected 3&nbsp;V it would have in system (instead of 5&nbsp;V), and then lowered the clock of the microcontroller from 8&nbsp;MHz to 1&nbsp;MHz. These corresponded to a 33% and 75% reduction in power draw, down to about **1.4&nbsp;mA** with both in effect.
 
@@ -88,7 +88,7 @@ Then I began to change my code to save power. First I started by following the r
 
 {{< fig src="/images/raccoon-driving-pins.png" caption="The difference in current draw when unused pins are driven low (start and end) compared to them being left floating (middle)." >}}
 
-Idling at about 1.4&nbsp;mA of draw, meant that the system would last about 10 days. Still far off the several months I needed, let alone the year I wanted. I knew the ATtiny could do better since they advertised a sleep current of only 1.8&nbsp;uA at 1&nbsp;MHz and 1.8&nbsp;V. So I started looking into how to properly disable peripherals and put the microcontroller into sleep modes, rather than just using `delay()`.
+Idling at about 1.4&nbsp;mA of draw, meant that the system would last about 10&nbsp;days. Still far off the several months I needed, let alone the year I wanted. I knew the ATtiny could do better since they advertised a sleep current of only 1.8&nbsp;uA at 1&nbsp;MHz and 1.8&nbsp;V. So I started looking into how to properly disable peripherals and put the microcontroller into sleep modes, rather than just using `delay()`.
 
 #### Power Management Library
 
@@ -133,7 +133,7 @@ Regardless of putting the ATtiny into the deepest of sleep where all peripherals
 
 ### Bringing it all Together
 
-With sleep and the power reduction code implemented, the idle current draw of the system was brought down to... **4.4&nbsp;uA!** *(This draw varied slightly board to board, and with the voltage supplied, but never exceeded 5&nbsp;uA.)* At this draw it will last about 3000 days, or roughly **eight years** on a single CR2032. Granted it will likely be much lower because it consumes several mA when running the capacitance check for a few milliseconds each couple of seconds, and then several mA for a few seconds when a touch is detected. Even so I don't think it would be unreasonable to expect these to operate for over a year under normal use (lighting up a couple of times a day).
+With sleep and the power reduction code implemented, the idle current draw of the system was brought down to... **4.4&nbsp;uA!** *(This draw varied slightly board to board, and with the voltage supplied, but never exceeded 5&nbsp;uA.)* At this draw it will last about 3000&nbsp;days, or roughly **eight years** on a single CR2032. Granted it will likely be much lower because it consumes several mA when running the capacitance check for a few milliseconds each couple of seconds, and then several mA for a few seconds when a touch is detected. Even so I don't think it would be unreasonable to expect these to operate for over a year under normal use (lighting up a couple of times a day).
 
 {{< fig src="/images/raccoon-final-current-draw.png" caption="Final current draw of the raccoon board (when checking capacitance every two seconds)" >}}
 
@@ -262,7 +262,7 @@ Even though I could continue using the Arduino as an ISP, I wanted to use my pro
 
 ### Power Draw Issues
 
-Once I was able to reliably upload code to the raccoon boards I went ahead to check the power draw of the boards met what I was expecting, roughly 5uA at 3V, when in deep sleep. After uploading my previously prepared code to the microcontroller, I started monitoring the power draw and... *it was off the charts!* The maximum draw was supposed to be roughly 10&nbsp;mA when the LEDs were on, but this board was drawing over 20&nbsp;mA with them off!
+Once I was able to reliably upload code to the raccoon boards I went ahead to check the power draw of the boards met what I was expecting, roughly 5&nbsp;uA at 3&nbsp;V, when in deep sleep. After uploading my previously prepared code to the microcontroller, I started monitoring the power draw and... *it was off the charts!* The maximum draw was supposed to be roughly 10&nbsp;mA when the LEDs were on, but this board was drawing over 20&nbsp;mA with them off!
 
 This honestly scared me, since this was way above what I expected. However I tested it and the system worked, reacting to my finger as expected, just gobbling up way more power than expected. The power draw seemed to vary over time, rising and lowering to the tune of several mA, which struck me as odd since its behaviour was constant. So I left it to run for a while after maybe 15 minutes unsupervised, I saw that that the power draw had been steadily rising and had **reached 160&nbsp;mA at 3&nbsp;V!** This shocked me so I reached for the board to see how the ATtiny was holding up, since with that much current it was likely going to be warm to the touch, *but it wasn't*, and that confused me even more.
 
@@ -298,9 +298,9 @@ I assembled all the boards as I had (save for the one I accidentally ruined when
 
 ### Making a Stand
 
-In addition to the board I wanted to make a small and simple stand to hold the boards upright for people. I wanted to make it small so I could send it easier, while also being easy to manufacture and later assemble. I decided on laser cutting some parts from 1/8" (3.1mm) thick plastic, since I have a few friends that can arrange this for me.
+In addition to the board I wanted to make a small and simple stand to hold the boards upright for people. I wanted to make it small so I could send it easier, while also being easy to manufacture and later assemble. I decided on laser cutting some parts from 1/8" (3.1&nbsp;mm) thick plastic, since I have a few friends that can arrange this for me.
 
-My final design was a set of four interlocking pieces that the board simply slides into. Two parts hold up the board, and the other two are used to hold them 50mm apart. This was my first time using FreeCAD so it took me a bit longer than I would have if I was using SolidWorks or Inventor, but I think the results are nice anyways. Might need to brush up on how to make nice drawings though.
+My final design was a set of four interlocking pieces that the board simply slides into. Two parts hold up the board, and the other two are used to hold them 50&nbsp;mm apart. This was my first time using FreeCAD so it took me a bit longer than I would have if I was using SolidWorks or Inventor, but I think the results are nice anyways. Might need to brush up on how to make nice drawings though.
 
 {{< fig src="/images/raccoon-holder-part.png" caption="Part to hold the circuit boards upright" >}}
 

@@ -108,7 +108,7 @@ My original approach to multiplexing the digits and displaying characters was to
 
 Looking around for a solution to this I found some guides on how to use timers and periodic interrupts for exactly this, which seemed to be exactly the ticket out of this.
 
-The premise of timers is that they run in parallel with the rest of the system, counting up and once a threshold value is struck, a specific interrupt function takes temporary precedence over any other operation and is run. So I set one of these up to run at about 500Hz and display a digit so the display would be refreshed at an effective 125Hz.
+The premise of timers is that they run in parallel with the rest of the system, counting up and once a threshold value is struck, a specific interrupt function takes temporary precedence over any other operation and is run. So I set one of these up to run at about 500&nbsp;Hz and display a digit so the display would be refreshed at an effective 125&nbsp;Hz.
 
 This needed me to set up some code and use registers to configure the timer. I used timer 2 since I read the documentation and found that timer 0 and 1 were being used for keeping track of time with `millis()` and buzzer functions which I did not want to interfere with.
 
@@ -138,11 +138,11 @@ ISR(TIMER2_COMPA_vect) { //timer2 interrupt, displays a character on the display
 }
 ```
 
-Although this did work, the rest of the system became very sluggish. This was due to both the frequency and duration of these interrupts combining to occupy the majority of the chip's runtime. I felt that I could do work to reduce the duration of these functions instead of sacrificing refresh rate (even if 125Hz might be excessive).
+Although this did work, the rest of the system became very sluggish. This was due to both the frequency and duration of these interrupts combining to occupy the majority of the chip's runtime. I felt that I could do work to reduce the duration of these functions instead of sacrificing refresh rate (even if 125&nbsp;Hz might be excessive).
 
 In the original code I had for the interrupt, it would essentially go through a loop of all eight segment pins individually. Each iteration would have the microcontroller extract the needed state for that pin from a byte, then go and use the standard `digitalWrite()` function on said pin before going to the next. I figured if there was some way to speed this up, ideally by bypassing the `digitalWrite()` with something less abstract and/or removing the loop I could save significant time.
 
-I managed to achieve both these goals by using look up tables and writing directly to the output (port) registers! On the Arduino (and most other microcontrollers) pins are grouped into "ports" which are controlled using registers one can read or write to in code. This is what Arduino and many other languages help the user by abstracting, although it costs performance. Using registers directly allows one to bypass the abstractions saving time per pin. Npot only that but because each register affects all the pins on a port, it allows multiple pins to be modified with a single instruction, thus addressing both my desires in a single swoop!
+I managed to achieve both these goals by using look up tables and writing directly to the output (port) registers! On the Arduino (and most other microcontrollers) pins are grouped into "ports" which are controlled using registers one can read or write to in code. This is what Arduino and many other languages help the user by abstracting, although it costs performance. Using registers directly allows one to bypass the abstractions saving time per pin. Not only that but because each register affects all the pins on a port, it allows multiple pins to be modified with a single instruction, thus addressing both my desires in a single swoop!
 
 I reworked my code to make use of registers and an array of lookup tables for each port. These arrays would store the settings needed to show a specific character's segments (e.g. "A") given the character code in `displayedChar[]`, and the digit, `currentDigit`.
 

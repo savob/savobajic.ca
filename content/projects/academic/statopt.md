@@ -290,7 +290,7 @@ In addition to this, I had to pay attention to Python passing objects by referen
 
 ## Porting the User Configuration
 
-User configuration porting was pretty simple. I learned and exercised Python concepts about object building and made use of pre-defined classes for certain components like equalizers or noise parameter classes. Given that Python and MATLAB have similar syntax for hardcoding objects and their attributes, the settings functions used as examples needed almost no effort to transition!
+User configuration porting was pretty simple. I learned and exercised Python concepts about object building and made use of pre-defined classes for certain components like equalizers or noise parameter classes. Given that Python and MATLAB have similar syntax for hard coding objects and their attributes, the settings functions used as examples needed almost no effort to transition!
 
 The functions that followed to set limits and check them were also largely straightforward to port as well. There was only some minor issues regarding the comparison of divided values since it seems that MATLAB accepts very minute differences in value (due to floating point representation) while Python does not so I manually added a slight margin of acceptable deviation when checking floats for equality.
 
@@ -300,7 +300,7 @@ Porting the simulation was difficult for the initial few stages where the influe
 
 The first equivalent I depended on was for reading in the channel data from the Touchstone files. For this I used [scikit-rf](https://scikit-rf.org/) to gather the S-parameter data and then some math to derive the frequency response plot. 
 
-Immediately after this, my second major hurdle was to get the pusle response. This originally required the script to approximate the discrete channel response data with a continuous function. In MATLAB there was a function that would provide a rational fit which was then immediately passed into the linear simulation code for pulse responses. I however could not find an equivalent rational fit function or library to use, after some discussion with a friend I followed their suggestion and migrated to the discrete domain instead. This was quite a fundamental change to the way StatOpt functioned but I believe it made the system more accurate in the end and I explain why in [that section](#moving-to-the-discrete-domain).
+Immediately after this, my second major hurdle was to get the pulse response. This originally required the script to approximate the discrete channel response data with a continuous function. In MATLAB there was a function that would provide a rational fit which was then immediately passed into the linear simulation code for pulse responses. I however could not find an equivalent rational fit function or library to use, after some discussion with a friend I followed their suggestion and migrated to the discrete domain instead. This was quite a fundamental change to the way StatOpt functioned but I believe it made the system more accurate in the end and I explain why in [that section](#moving-to-the-discrete-domain).
 
 Although my system was now able to calculate realistic and similar pulse responses to the MATLAB, they were not identical so this made testing the code that followed more challenging since they would be acting on different data. To get around this I simply started saving interim results from MATLAB to load into the Python script during development to ensure later stages matched the functionality of the source code.
 

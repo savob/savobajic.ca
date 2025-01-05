@@ -59,7 +59,7 @@ I'm looking forward to revising the system and using my gained experience in oth
 
 # Detailed Report
 
-For our high performance speed bikes we pioneered the use of a video feed in place of a conventional window to see out of our vehicles. This approach provides us with a couple of advantages, namely improving our aerodynamics by allowing more recumbent riding positions for our riders (closer to laying down than sitting) which decreases our frontal cross section, and the removal of a window removes numerous seams that could contribute to disturbing laminar flow over the remainder of the fairing increasing drag. Thanks to optimizations like this, we are able to have **our speed bikes exceed speeds of 120 km/h!** Eta Prime currently holds our record at a hair over 130 km/h!
+For our high performance speed bikes we pioneered the use of a video feed in place of a conventional window to see out of our vehicles. This approach provides us with a couple of advantages, namely improving our aerodynamics by allowing more recumbent riding positions for our riders (closer to laying down than sitting) which decreases our frontal cross section, and the removal of a window removes numerous seams that could contribute to disturbing laminar flow over the remainder of the fairing increasing drag. Thanks to optimizations like this, we are able to have **our speed bikes exceed speeds of 120&nbsp;km/h!** Eta Prime currently holds our record at a hair over 130&nbsp;km/h!
 
 In the place of a window a camera in a mast is placed outside the vehicle and the camera's view is relayed to a display inside the vehicle for the rider(s). On TITAN the mast is the white protrusion midway along the top, Eta Prime the black mast towards the end along the top.
 
@@ -100,10 +100,9 @@ All the displays ordered had HDMI support and I found through testing that they 
 
 ### Batteries
 
-The project manager requested that I design the system to run off 
-[LiFePO4 chemistry-based batteries](https://en.wikipedia.org/wiki/Lithium_iron_phosphate_battery) instead of the more conventional Li-ion variety. His reasoning for the request was primarily that these batteries fail in less catastrophic ways and he would like to ensure the safety of the rider(s) as much as possible in the enclosed fairing.
+The project manager requested that I design the system to run off [LiFePO4 chemistry-based batteries](https://en.wikipedia.org/wiki/Lithium_iron_phosphate_battery) instead of the more conventional Li-ion variety. His reasoning for the request was primarily that these batteries fail in less catastrophic ways and he would like to ensure the safety of the rider(s) as much as possible in the enclosed fairing.
 
-This required no effort for me to accodate in the design since all systems directly supplied by the 11.1V Li-ions we previously used, would also accept the 9.9V LiFePO4s I selected.
+This required no effort for me to accodate in the design since all systems directly supplied by the 11.1&nbsp;V Li-ions we previously used, would also accept the 9.9&nbsp;V LiFePO4s I selected.
 
 ### Microcontroller
 
@@ -134,13 +133,13 @@ There was a lot of types of data collected on TITAN, I'll be listing the hardwar
 
 ### Telemetry
 
-The system was designed to accommodate an nRF24 transceiver for communication. I had purchases a few with the intent to start using them in our projects, starting with TITAN. They used SPI to communicate at 3.3V so they were perfect to control with an RPi.
+The system was designed to accommodate an nRF24 transceiver for communication. I had purchases a few with the intent to start using them in our projects, starting with TITAN. They used SPI to communicate at 3.3&nbsp;V so they were perfect to control with an RPi.
 
 I put this to be part of the rear system because it would be closer to the radio transparent portion of the tail made of white fibre glass. If it were more central in TITAN, the carbon fibre that composed most of the fairing would prevent the signal from escaping.
 
 ## Hardware Design
 
-With the parts selected I moved on to designing the actual circuit. Since I made use of modules, there was very little other than connections between them on the board, with the exception of the 5V regulator and the resistor dividers for monitoring battery levels.
+With the parts selected I moved on to designing the actual circuit. Since I made use of modules, there was very little other than connections between them on the board, with the exception of the 5&nbsp;V regulator and the resistor dividers for monitoring battery levels.
 
 *TITAN was designed in EAGLE, the files have only been imported into KiCAD to generate the figures related to the circuitry.*
 
@@ -148,13 +147,13 @@ With the parts selected I moved on to designing the actual circuit. Since I made
 
 The largest difficulty with this circuit was determining how to make the same board usable for all three roles since I did not want to design or pay for three separate designs. To achieve this I used two solder jumpers, SJ1 and SJ2 to route a signal to either the RPi (for the rear) or the battery status LEDs (for the redundant front system).
 
-The 5V regulator was selected by me, however another team member wanted to try designing circuits and learning EAGLE so I had them prepare its schematic and layout.
+The 5&nbsp;V regulator was selected by me, however another team member wanted to try designing circuits and learning EAGLE so I had them prepare its schematic and layout.
 
 I used USB connectors for inter-board connections since USB cables are cheap and durable, and have the four connectors I needed between the boards. There is an Ethernet port used to connect to an off-board nRF24 module if needed (USB did not offer enough connectors for this).
 
 ## Layout
 
-The layout was similarly straight forward to the circuit design. The boards were designed to be taped down in TITAN so there was no need for any mounting bolt holes. Since all the modules were fairly bulky the board was large but sparsely populated except for the voltage regulator corner. The final board was about 100mm by 81mm.
+The layout was similarly straight forward to the circuit design. The boards were designed to be taped down in TITAN so there was no need for any mounting bolt holes. Since all the modules were fairly bulky the board was large but sparsely populated except for the voltage regulator corner. The final board was about 100&nbsp;by&nbsp;81&nbsp;mm.
 
 {{< fig src="/images/titan-v1-combined-layout.png" caption="The overall layout of the board" >}}
 
@@ -202,7 +201,7 @@ All the sensors and their implementations were tested unit-wise on their own bef
 
 Of the four data streams I had to prepare, the **most challenging was the battery monitoring one**. For the GPS and DHT I used their libraries, so it was a trivial matter of calling the right functions. For the encoder I just incremented a counter and converted a period into rotation rate, grade school concepts really. 
 
-Monitoring the batteries was more difficult though since this needed some more complex processing and there wasn't a library I could just drop in. First there was the obvious issue of converting an analog-to-digital (ADC) reading to an actual voltage, since the ADC return an integer between 0 and 4095, with 4095 corresponding to a reading matching the reference voltage supplied (roughly 3.3V). This conversion would then be compounded by the voltage division for each battery, that would vary slightly across the three dividers due to manufacturing tolerances. This needed me to calibrate the readings to a known voltage and store them on the chip. My final code for this looked something like:
+Monitoring the batteries was more difficult though since this needed some more complex processing and there wasn't a library I could just drop in. First there was the obvious issue of converting an analog-to-digital (ADC) reading to an actual voltage, since the ADC return an integer between 0 and 4095, with 4095 corresponding to a reading matching the reference voltage supplied (roughly 3.3&nbsp;V). This conversion would then be compounded by the voltage division for each battery, that would vary slightly across the three dividers due to manufacturing tolerances. This needed me to calibrate the readings to a known voltage and store them on the chip. My final code for this looked something like:
 
 ```cpp
 reading = float(analogRead(FBPin));   // Read ADC
@@ -210,7 +209,7 @@ reading = reading * divFactor;        // Multiply by resistor division factor to
 reading = reading / readingToV;       // Divide by constant to convert the ADC steps to actual volts
 ```
 
-Knowing the battery's true voltage wasn't enought to determin the battery level since the voltage of the battery *does not* vary linearly with charge level. Each different battery chemistry has its own characteristic discharge curve. The discharge curve of an LiFePO4 battery I used is described [here](https://www.solacity.com/how-to-keep-lifepo4-lithium-ion-batteries-happy/). Note: the batteries referred to in the article use four (4) cells in series, the ones I was using only had three (3) so my voltages were all going to be 3/4 that of what was described there at the same charge level.
+Knowing the battery's true voltage wasn't enough to determine the battery level since the voltage of the battery *does not* vary linearly with charge level. Each different battery chemistry has its own characteristic discharge curve. The discharge curve of an LiFePO4 battery I used is described [here](https://www.solacity.com/how-to-keep-lifepo4-lithium-ion-batteries-happy/). Note: the batteries referred to in the article use four (4) cells in series, the ones I was using only had three (3) so my voltages were all going to be 3/4 that of what was described there at the same charge level.
 
 {{< fig src="/images/titan-v1-LiFePO4-discharging.png" caption="Discharge curve for a 4S LiFePO4 battery" >}}
 
@@ -310,7 +309,7 @@ Communication protocol with the STM32 was outlined briefly in the STM32's [secti
 
 #### ANT+
 
-ANT+ was where a sizable chunk of my efforts went into. I found the amptly named "python-ant" library online and it supported operation on the RPi. Not only that but it had examples for a heart rate monitor and power pedal, the exact two devices I needed to operate!
+ANT+ was where a sizable chunk of my efforts went into. I found the aptly named "python-ant" library online and it supported operation on the RPi. Not only that but it had examples for a heart rate monitor and power pedal, the exact two devices I needed to operate!
 
 I started by starting the network and then connecting to the devices using the USB dongle. Most of this was copied directly from the examples provided with the code.
 
@@ -396,7 +395,4 @@ When they returned I collected their feedback and identified several suggestions
    - Reduces number of potential failure point
    - Simplifies circuit
    - Cheaper?
-
-
-
 

@@ -137,7 +137,7 @@ This transfer function generates the following Routh table. Going down the first
 
 To use the tools in MATLAB and Simulink to help me tune my system I had to start by inputting my system's transfer function into MATLAB and then call **Sisotool** to allow us to view and edit Root locus diagrams. This was done with the code below.
 
-```
+```matlab
 s = tf('s'); % Used to define function
 
 % Define transfer function and output to terminal
@@ -156,7 +156,7 @@ This would generate the familiar step response of the system...
 
 With sisotool started, I added the design requirements to the root locus graph. This added shaded regions that the **dominant roots needed to be out of** to satisfy.
 
-{{< fig src="/images/controls-proposed-root-locus.png" caption="Root-locus of system with gain (K) of 20 and regions where we <b>do not</b> want our roots overlaid" >}}
+{{< fig src="/images/controls-proposed-root-locus.png" caption="Root-locus of system with gain (K) of 20 and regions where we **do not** want our roots overlaid" >}}
 
 I arbitrarily selected 20 as the gain to see if it would meet these criteria. Lucky for me it did, and below we can see the unit step response for the system when **K** is 20. *Although I had a working answer I did play around with K to see how the roots would more and the transient response change.*
 

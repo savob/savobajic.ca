@@ -243,7 +243,7 @@ I felt that I had reached far enough with the system operating at full power, so
 
 #### Extending the Measurement Period
 
-The timers used for period capture and commutation are type B timer/counters (TCBx), the timer used for PWM is type A (TCA0). TCBs are 16-bit meaning that they can count up to 65535, which at the ATtiny's 20 MHz internal clock would mean that they can count to about 3.3&nbsp;ms before they overflow, which limits the ESC to commutating at rates no lower than 300&nbsp;Hz or about 25 rotations a second for a typical 12 winding motor. I was worried that this would not be a long enough of a period for slower spinning motors, especially when throttled, so I worked to extend this.
+The timers used for period capture and commutation are type B timer/counters (TCBx), the timer used for PWM is type A (TCA0). TCBs are 16-bit meaning that they can count up to 65535, which at the ATtiny's 20&nbsp;MHz internal clock would mean that they can count to about 3.3&nbsp;ms before they overflow, which limits the ESC to commutating at rates no lower than 300&nbsp;Hz or about 25 rotations a second for a typical 12 winding motor. I was worried that this would not be a long enough of a period for slower spinning motors, especially when throttled, so I worked to extend this.
 
 The TCB's were both originally set to run off the clock signal for TCA because their pre-scaling is limited compared to that which TCA can (TCB's can only run directly off the core clock, TCA's clock, or halve the core clock). This way I could pre-scale the 20&nbsp;MHz the ATtiny was running on down to a frequency that would allow TCB's to observe longer events. The drawback of this was that the PWM period would be proportionally extended and thus be more perceptible for the feedback network for BEMF.
 
@@ -383,7 +383,7 @@ I soldered on some more capacitors to the supply rails, raising the capacitance 
 
 {{< fig src="/images/esc-v5-capacitors.jpg" caption="Look at all those happy capacitors hanging out" >}}
 
-In addition to the capacitors on the power supply, I increased the factor of division used in the BEMF feedback network. I changed RN4 from 33&nbsp;kΩ to 56.2&nbsp;kΩ, changing the division of phase voltage fed into the comparator from a factor of 4.3 to 6.62. This will reduce the effects of voltage spike on motor phases so that the phases can reach up to 33&nbsp;V without exceeding the 5V for the ATtiny. This protection does mean that in general the BEMF feedback signals will be harder to distinguish.
+In addition to the capacitors on the power supply, I increased the factor of division used in the BEMF feedback network. I changed RN4 from 33&nbsp;kΩ to 56.2&nbsp;kΩ, changing the division of phase voltage fed into the comparator from a factor of 4.3 to 6.62. This will reduce the effects of voltage spike on motor phases so that the phases can reach up to 33&nbsp;V without exceeding the 5&nbsp;V for the ATtiny. This protection does mean that in general the BEMF feedback signals will be harder to distinguish.
 
 {{< fig src="/images/esc-v5-rn4-close-up.png" caption="BEMF conditioning section of the schematic highlighting RN4 (still recorded as 33 kΩ)" >}}
 
@@ -407,7 +407,7 @@ Looking at this we can see that the supply voltage linearly decreases with time 
 
 To try and get a better idea of what was going on, I added a probe on the 5&nbsp;V supply for the ATtiny to see if it was victim to some noise, and then a current probe for the current going into phase A.
 
-{{< fig src="/images/esc-v5-buzz-with-current-and-5v.png" caption="Addition of probes on the 5 V supply and current into phase A" >}}
+{{< fig src="/images/esc-v5-buzz-with-current-and-5v.png" caption="Addition of probes on the 5&nbsp;V supply and current into phase A" >}}
 
 In this it is clear that the current draw is immense, reaching **over *40*&nbsp;A** before the brown-out occurs. I don't have a comparison to make to my testing motor, but this is probably an order of magnitude higher of an inrush current. 
 

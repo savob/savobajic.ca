@@ -26,7 +26,7 @@ In addition to the design of the IC, we also needed to deliver a few presentatio
 ## Requirements
 
 - Use the TSMC 65&nbsp;nm technology node, in Cadence
-- Occupy less than 2&nbsp;x&nbsp;2&nbsp;mm of die area
+- Occupy less than 2&nbsp;by&nbsp;2&nbsp;mm of die area
 - Output Hamming (128, 120, 1) code for input data
 - Implement 1:8 interleaving scheme
 - Achieve speeds of at least 1&nbsp;Gb/s
@@ -34,7 +34,7 @@ In addition to the design of the IC, we also needed to deliver a few presentatio
 ## Objectives
 
 - Use less than 5&nbsp;mW of power at maximum data rate 
-- Occupy less than 1&nbsp;x&nbsp;1&nbsp;mm of die area
+- Occupy less than 1&nbsp;by&nbsp;1&nbsp;mm of die area
 
 ## Takeaways
 

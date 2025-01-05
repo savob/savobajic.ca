@@ -39,7 +39,7 @@ I lead a team with a few other teammates to develop this system. I focused on th
 - Control four sets of lights
    - Front
    - Rear
-   - Left/right turning indicators (blink at about 1Hz)
+   - Left/right turning indicators (blink at about 1&nbsp;Hz)
 
 ## Objectives
 
@@ -68,7 +68,7 @@ There was going to be only one rider in this vehicles, but we wanted to have fou
 
 The basic design of this started by using TITAN as a template; each view would be handled a separate Raspberry Pi (RPi) with their own display and RPi camera. However since all the views would be seen by the same rider, only one needed to be overlaid with data, the front-facing one since it would be their primary display.
 
-Since the other three only needed a video display, and not necessarily a great one either since they were going to be used to check for obstructions, I decided to instead use **traditional analog cameras feeding directly into the displays**, no middle man. This brought several benefits: lower cost, simpler system both in hardware and software, smaller system volume, and lower power draw. The hardware I bought for this was a set of automotive backup camera displays and wide view drone cameras, both of which worked at 12V and had analog video interfaces.
+Since the other three only needed a video display, and not necessarily a great one either since they were going to be used to check for obstructions, I decided to instead use **traditional analog cameras feeding directly into the displays**, no middle man. This brought several benefits: lower cost, simpler system both in hardware and software, smaller system volume, and lower power draw. The hardware I bought for this was a set of automotive backup camera displays and wide view drone cameras, both of which worked at 12&nbsp;V and had analog video interfaces.
 
 This left the main display to be similar to TITAN, or really Eta Prime where there was only one display. This single RPi system would have a board of our that would help it monitor all the relevant information from the vehicle as well as control the lights we needed.
 
@@ -76,7 +76,7 @@ This left the main display to be similar to TITAN, or really Eta Prime where the
 
 I had a teammate interested in helping with the project, so I had them prepare a design block for the new light driver circuit I wanted to implement. Other than these blocks, the rest of the circuitry is my own design. The third iteration of the design is what we committed to using in Blueshift. 
 
-The design of the board centres on an STM32F103 development board and RPi pair which do all the data collection, fanning out from the STM32 lie all the same sensors used on TITAN (DHT, battery dividers, encoder, etc.), one immediate difference is that the nRF24L01 modulke used for telemetry is connected to the STM32 - not the RPi like in TITAN. On the right of the schematic are the four light line regulators controlled from the STM32. Along the bottom is the power protection circuitry I wanted to introduce and the 5V regulator.
+The design of the board centres on an STM32F103 development board and RPi pair which do all the data collection, fanning out from the STM32 lie all the same sensors used on TITAN (DHT, battery dividers, encoder, etc.), one immediate difference is that the nRF24L01 modulke used for telemetry is connected to the STM32 - not the RPi like in TITAN. On the right of the schematic are the four light line regulators controlled from the STM32. Along the bottom is the power protection circuitry I wanted to introduce and the 5&nbsp;V regulator.
 
 {{< fig src="/images/blueshift-v3-schematic.svg" caption="The completed schematic for the Blueshift V3 (PDF version: [Colur](/pdf/blueshift-v3.pdf) / [BW](/pdf/blueshift-v3-BW.pdf))" class="schematic" >}}
 
@@ -115,7 +115,7 @@ For wireless communication I wanted us to try using nRF24L01 modules. These modu
 
 The lighting driver circuits were designed by another teammate based on the reference designs for the driver chip I selected, the [AP3031](https://www.diodes.com/part/view/AP3031/) from Diodes Incorporated. These are DC/DC converters that would boost the voltage from the supplied battery voltage to what was needed to drive the LED chains with a constant current. 
 
-This current was monitored by measuring the voltage across a feedback resistor and trying to keep it at about 200mV. So the current was set using the resistor value (`V/I = R`). For our brightest lights we needed 1A, so a 200mΩ resistor was used, the rest of the lights generally needed only 250mA so they had resistors of about 800mΩ. This is why both are present in the schematic, although only the one needed would actually be installed during assembly.
+This current was monitored by measuring the voltage across a feedback resistor and trying to keep it at about 200&nbsp;mV. So the current was set using the resistor value (\(V/I = R\)). For our brightest lights we needed 1&nbsp;A, so a 200&nbsp;mΩ resistor was used, the rest of the lights generally needed only 250&nbsp;mA so they had resistors of about 800&nbsp;mΩ. This is why both are present in the schematic, although only the one needed would actually be installed during assembly.
 
 These lighting drivers were controlled by PWM signals from the STM32 which let us dim the lights as we pleased. Thus the rider's buttons did *not* directly control the lights. Instead the STM32 would monitor the buttons and adjust the lights as needed. This scheme allowed for the automatic or even remote operation of lights, e.g. turning them all on when starting the system.
 
@@ -123,11 +123,11 @@ In addition to using PWM to dim the lights, we added a potentiometer to dial in 
 
 ### Power Supply
 
-The lighting system and main display could accept the battery voltage (~10V) as is, however the data collection side cannot. However, for the sensitive electronics side well-regulated 3.3V and 5V lines were needed. 
+The lighting system and main display could accept the battery voltage (~10&nbsp;V) as is, however the data collection side cannot. However, for the sensitive electronics side well-regulated 3.3&nbsp;V and 5&nbsp;V lines were needed. 
 
-The Raspberry Pi needed 5V with a potential draw of up to 3A under load. This high power, needed an efficient conversion so a DC/DC switched mode regulator was used in a buck configuration to step down the voltage from the battery. The system I implemented on the board claimed efficiency of over 85% given our input voltage and output load.
+The Raspberry Pi needed 5&nbsp;V with a potential draw of up to 3&nbsp;A under load. This high power, needed an efficient conversion so a DC/DC switched mode regulator was used in a buck configuration to step down the voltage from the battery. The system I implemented on the board claimed efficiency of over 85% given our input voltage and output load.
 
-To provide the 3.3V for the majority of the board, I used the 3.3V generated by the RPi. This made my circuit simpler since I didn't need to include a dedicated 3.3V regulator but also prevented any issues arising from a potential 3.3V mismatch between my board and the RPi that could ruin one or the other.
+To provide the 3.3&nbsp;V for the majority of the board, I used the 3.3&nbsp;V generated by the RPi. This made my circuit simpler since I didn't need to include a dedicated 3.3&nbsp;V regulator but also prevented any issues arising from a potential 3.3&nbsp;V mismatch between my board and the RPi that could ruin one or the other.
 
 ### Power Protection
 
@@ -143,19 +143,19 @@ These weren't the only protection circuits present through the system though. Th
 
 ### Analog System Power
 
-Other than the main Blueshift board there was a 12V regulator we designed to supply steady power to all three peripheral video systems. It was a simple board, using the reference design for a boost regulator to generate 12V from our battery's nominal 10V. Other than this regulator, there were only the connectors for each of the three cameras and displays to connect to and the battery to feed it. 
+Other than the main Blueshift board there was a 12&nbsp;V regulator we designed to supply steady power to all three peripheral video systems. It was a simple board, using the reference design for a boost regulator to generate 12&nbsp;V from our battery's nominal 10&nbsp;V. Other than this regulator, there were only the connectors for each of the three cameras and displays to connect to and the battery to feed it. 
 
 {{< fig src="/images/blueshift-analog-pdb-schematic.svg" caption="The completed schematic for the analog power board in Blueshift (PDF version: [Colour](/pdf/blueshift-analog-pdb.pdf) / [BW](/pdf/blueshift-analog-pdb-BW.pdf))" class="schematic" >}}
 
 ## Layout
 
-*Note: the boards were originally laid out in EAGLE, they were imported into KiCAD to generate these figures. So there may be some small oddities present.*
+*Note: the boards were originally laid out in EAGLE, they were imported into KiCad to generate these figures. So there may be some small oddities present.*
 
 My teammate had prepared the layout for the light drivers as part of her work to make the design blocks for them. Other than those, the rest of the layout I did myself.
 
 The main thing to note with the layout of this system is that **it was designed to be a RPi HAT (Hardware Added on Top), that would be seated directly on top of the RPi** instead of connected by a ribbon cable to the RPi like TITAN V1 was. This was better because it decreased the footprint the system would occupy, as well as preventing potentially incorrect connections related to the use of a ribbon cable.
 
-There is no general "flow" to the board, instead it is segmented by purpose. In the top right quadrant is where all the data processing occurs between the RPi and STM32 Bluepill. Beneath it, in the bottom right quadrant lie the nRF24 module and the power protection circuitry. To the left of the centre is where the main 5V regulator was, with the GPS module hanging over it. On the extreme left is where the LED drivers were.
+There is no general "flow" to the board, instead it is segmented by purpose. In the top right quadrant is where all the data processing occurs between the RPi and STM32 Bluepill. Beneath it, in the bottom right quadrant lie the nRF24 module and the power protection circuitry. To the left of the centre is where the main 5&nbsp;V regulator was, with the GPS module hanging over it. On the extreme left is where the LED drivers were.
 
 {{< fig src="/images/blueshift-v3-layout-combined.png" caption="The combined layout" >}}
 
@@ -215,17 +215,17 @@ To ensure the safety of the board and the modules that would eventually connect 
 
 The first tests I did were with the board's power protection and supply system to ensure they worked. I followed it through the steps below which corresponded to the faith I had in the system operating properly in each condition, ranked highest to lowest faith.
 
-1. **Normal conditions.** Supplied the expected 10V. The system generated the proper 5V and no error LEDs lit up. Good.
-2. **Under voltage.** Supplied 8V. The "UV" LED lit up and the 5V supply was disabled. Good.
-3. **Reverse polarity.** Supplied -10V. The "RP" LED lit up and no power made it to the system. Good.
-4. **Over voltage.** Supplied 15V. No error LEDs lit up, power reaching the system, 5V supply operating. **Bad.**
-   - *Note: 15V was still tolerated by all parts present during this test so no damage occurred other.*
+1. **Normal conditions.** Supplied the expected 10V. The system generated the proper 5&nbsp;V and no error LEDs lit up. Good.
+2. **Under voltage.** Supplied 8&nbsp;V. The "UV" LED lit up and the 5&nbsp;V supply was disabled. Good.
+3. **Reverse polarity.** Supplied -10&nbsp;V. The "RP" LED lit up and no power made it to the system. Good.
+4. **Over voltage.** Supplied 15&nbsp;V. No error LEDs lit up, power reaching the system, 5&nbsp;V supply operating. **Bad.**
+   - *Note: 15&nbsp;V was still tolerated by all parts present during this test so no damage occurred other.*
 
 Looking at my schematic I identified the problem. When I was placing the MOSFET on the power line (G2) I had copied and pasted the MOSFET used for reverse polarity (G1). I had forgotten that it was placed "in-reverse" for reverse polarity protection and left it. This meant that as long as the polarity of the system was correct the MOSFET would conduct either through its body diode or normal means, so it was unable to cut power to the system. 
 
-I noted the failure of the over voltage system down for correction in a future revision. I also realized that my under voltage protection system was naive, since it only disabled the 5V supply (turning off the data collection circuitry) but there was still power on the rail for the main display and lights to still use which could drain or kill the battery. To remedy this, I would have the comparator cut power into the system using a MOSFET as I had done with the other two stages.
+I noted the failure of the over voltage system down for correction in a future revision. I also realized that my under voltage protection system was naive, since it only disabled the 5&nbsp;V supply (turning off the data collection circuitry) but there was still power on the rail for the main display and lights to still use which could drain or kill the battery. To remedy this, I would have the comparator cut power into the system using a MOSFET as I had done with the other two stages.
 
-Neither of these issues would prevent the system from operating under normal conditions as established with test 1, so I simply made a note to make sure we were dilligent about the batteries we used and changed them regularly.
+Neither of these issues would prevent the system from operating under normal conditions as established with test 1, so I simply made a note to make sure we were diligent about the batteries we used and changed them regularly.
 
 ### Lighting Tests
 
@@ -327,7 +327,7 @@ Even so, it served as an excellent design exercise and let me figure out some th
 I went back and prepared a new schematic to remedy most of my issues with the design of V3. The issues addressed were:
 
 - Incorrect configuration of the over voltage MOSFET
-- I have the under voltage protection system cut power to the entire system using a MOSFET, not just disable the 5V regulator. 
+- I have the under voltage protection system cut power to the entire system using a MOSFET, not just disable the 5&nbsp;V regulator. 
    - This will prevent the display or lights from continuing to drain the battery if under voltage occurs.
 - Moved the voltage divider for the auxiliary battery on board
 - Added protection diodes for axillary battery level line

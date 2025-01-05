@@ -54,9 +54,9 @@ Although I still had the design files for the previous project, they were prepar
 
 I started with the circuit design. At the heart of it the system is the ESP32 module, specifically an ESP32-WROOM-32D. This module provides a microcontroller with a bunch of flash space and wireless communication features (Bluetooth and WiFi) along with an on-board antenna for communication. To program the ESP32, serial communication is used along with a special reset circuit taken from their reference design for "auto-programming".
 
-Other than the ESP32 and its programming circuitry, there is the hardware for user input (buttons) and output (display). The buttons are connected to the GPIO pins and use internal internal pull up resistors on all the pins (*[sike](#pull-up-issues)*). The display system is a bit more complicated, it uses a shift register to drive the segments of each digit so more current is available than if the ESP32 directly drive them itself, however this shift register is operating on the 5V supply so a level shifter is included in the design for safe communication between the ESP32 operating at 3.3V, and the shift register at 5V. The ESP32 however remains in direct control of the transistors to select the digit to display.
+Other than the ESP32 and its programming circuitry, there is the hardware for user input (buttons) and output (display). The buttons are connected to the GPIO pins and use internal internal pull up resistors on all the pins (*[sike](#pull-up-issues)*). The display system is a bit more complicated, it uses a shift register to drive the segments of each digit so more current is available than if the ESP32 directly drive them itself, however this shift register is operating on the 5&nbsp;V supply so a level shifter is included in the design for safe communication between the ESP32 operating at 3.3&nbsp;V, and the shift register at 5V. The ESP32 however remains in direct control of the transistors to select the digit to display.
 
-Power is supplied using standard USB with an onboard 3.3V regulator for the ESP32.
+Power is supplied using standard USB with an onboard 3.3&nbsp;V regulator for the ESP32.
 
 {{< fig src="/images/ttc-sign-v1.1-schematic.svg" caption="The completed schematic for the TTC Check board (PDF version: [Colour](/pdf/ttc-sign-v1.1.pdf) / [BW](/pdf/ttc-sign-v1.1-bw.pdf))" class="schematic" >}}
 
@@ -145,7 +145,7 @@ However I had issues with the system on my board, even though it followed the re
 
 {{< fig src="/images/ttc-sign-devkit-disassembled.jpg" caption="The sacrificial development board losing its ESP32" >}}
 
-I used some 1Ω resistors to form the connections I needed for programming directly to the ESP32 since my wires were a bit too thick to do it nicely. For data lines 1Ω is negligible so it didn't really matter. I also removed the transistor from my board's auto-reset circuit so they wouldn't interfere with the development board's system. I wouldn't say it was *completely* deadbugged, since the development board was still right side up, but it is pretty close.
+I used some 1&nbsp;Ω resistors to form the connections I needed for programming directly to the ESP32 since my wires were a bit too thick to do it nicely. For data lines 1&nbsp;Ω is negligible so it didn't really matter. I also removed the transistor from my board's auto-reset circuit so they wouldn't interfere with the development board's system. I wouldn't say it was *completely* deadbugged, since the development board was still right side up, but it is pretty close.
 
 {{< fig src="/images/ttc-sign-brain-transplant.jpg" caption="The development board, 'securely' connected to the board beneath it" >}}
 

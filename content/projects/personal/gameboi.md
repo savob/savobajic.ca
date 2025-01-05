@@ -42,7 +42,7 @@ In the end I had a system with 32 LEDs acting as a display, with the user's inpu
 
 This was a little handheld game console, where two rows of 16 LEDs each are used as a display and the user has two buttons for input. This was a project I undertook largely out of interest, but it also served as a good introduction to basic embedded microcontroller design and surface mount circuit design and assembly.
 
-The result was a small (35mm by 100mm) circuit board that had 32 LEDs (in two rows) as a display and two buttons for user input. The system was controlled using an ATMega328P microcontroller, the power is delivered by an external source which goes through a 5V linear regulator. On the software side of this project, the system currently has 7 different game modes, the ability to store high scores in non-volatile memory and enter low power sleep states.
+The result was a small (35mm by 100mm) circuit board that had 32 LEDs (in two rows) as a display and two buttons for user input. The system was controlled using an ATMega328P microcontroller, the power is delivered by an external source which goes through a 5&nbsp;V linear regulator. On the software side of this project, the system currently has 7 different game modes, the ability to store high scores in non-volatile memory and enter low power sleep states.
 
 The circuit design is straightforward, the heart of it is the ATMega microcontroller which processes the button inputs on its interrupt pins, and controls the LEDs using a serial interface to four discrete shift registers (each controlling a group of 8 LEDs). Below is most of the schematic, one shift register and its LEDs have been left out.
 

@@ -74,6 +74,6 @@ Assembly was simple and I faced no issues.
 
 ## Testing
 
-I checked for shorts between adjacent pins with a multimeter as well as power lines, then I applied power and verified that the regulators were also working as expected, producing a steady 5V and 3.3V. I then left the system powered for a few minutes to monitor current draw and ensure none of the ICs were getting warm, which they didn't.
+I checked for shorts between adjacent pins with a multimeter as well as power lines, then I applied power and verified that the regulators were also working as expected, producing a steady 5&nbsp;V and 3.3&nbsp;V. I then left the system powered for a few minutes to monitor current draw and ensure none of the ICs were getting warm, which they didn't.
 
 After the basic power tests were done I was able to burn the bootloader on the ATmega328P to program it over Serial like a normal Arduino without issue. Other than a basic I2C bus scan to check the sensors were responsive, nothing has been done with the board.

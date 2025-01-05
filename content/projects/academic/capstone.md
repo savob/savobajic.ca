@@ -94,7 +94,7 @@ Overall, our goal for the capstone was to have a system capable of taking in a m
 ### Objectives
 
 - Minimize tip collisions with vessel walls during navigation
-- Maintain position of tip to an accuracy of 0.1mm and 0.1°
+- Maintain position of tip to an accuracy of 0.1&nbsp;mm and 0.1°
 - Require only one attempt to navigate the target system
 
 ## Control System Work

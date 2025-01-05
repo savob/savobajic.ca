@@ -69,17 +69,17 @@ Both boards have built in linear regulators to generate the voltages needed to r
 
 ### Communication
 
-THe method of communication I intend to use on these boards is digital communication at 2.4GHz provided by standalone nRF24L01 modules from Nordic Semiconductors. These house all the radio black magic on a separate board that is interacted with over SPI from the main microcontroller. I gained familiarity with these from my telemetry work for HPVDT. In addition to the SPI pins shared between the microcontroller and the module, there is a line used to flag the flight controller of a received transmission which I have prepared to be used as an interrupt on the flight controller.
+The method of communication I intend to use on these boards is digital communication at 2.4&nbsp;GHz provided by standalone nRF24L01 modules from Nordic Semiconductors. These house all the radio black magic on a separate board that is interacted with over SPI from the main microcontroller. I gained familiarity with these from my telemetry work for HPVDT. In addition to the SPI pins shared between the microcontroller and the module, there is a line used to flag the flight controller of a received transmission which I have prepared to be used as an interrupt on the flight controller.
 
-These modules I have purchased are rated for low bandwidth (~1 kb/s) at ranges of around 1km with direct line of sight. This is good for me as I intend to operate this drone (for now) exclusively with direct line of sight and up to a few hundred meters at most.
+These modules I have purchased are rated for low bandwidth (~100&nbsp;kb/s) at ranges of around 1&nbsp;km with direct line of sight. This is good for me as I intend to operate this drone (for now) exclusively with direct line of sight and up to a few hundred meters at most.
 
 ### Sensors
 
-There are two primary sensors ICs on each board use I2C to communicate with the microcontroller. They are the IMU and barometer. This I2C bus needs to be operated at 3.3V since both chips operate at this level. Thi requires a level shifter from the 5V I2C bus for the ESC to these.
+There are two primary sensors ICs on each board use I2C to communicate with the microcontroller. They are the IMU and barometer. This I2C bus needs to be operated at 3.3&nbsp;V since both chips operate at this level. This requires a level shifter from the 5&nbsp;V I2C bus for the ESC to these.
 
 #### IMU
 
-The boards use the same inertial measurement unit, an [ICM-20600](https://invensense.tdk.com/products/motion-tracking/6-axis/icm-20600/) which monitors six axes of motion: linear and rotational acceleration around the three Cartesian axes (X, Y, Z) relative to the IC. They are capable of monitoring ±16g of acceleration and ±2000°/sec of rotation at their full scale, but this can be decreased in exchange for improved accuracy in the measurements.
+The boards use the same inertial measurement unit, an [ICM-20600](https://invensense.tdk.com/products/motion-tracking/6-axis/icm-20600/) which monitors six axes of motion: linear and rotational acceleration around the three Cartesian axes (X, Y, Z) relative to the IC. They are capable of monitoring ±16&nbsp;G of acceleration and ±2000&nbsp;°/sec of rotation at their full scale, but this can be decreased in exchange for improved accuracy in the measurements.
 
 These will be used to help the drone deduce its current orientation based on the integrals of these readings. 
 

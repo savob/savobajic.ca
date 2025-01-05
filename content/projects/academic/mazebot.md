@@ -52,7 +52,7 @@ In addition to delivering a design proposal and control algorithm (written in MA
 For one of my courses in my final year of undergrad I took MIE444 - Mechatronics Principles. This class had a project that was to build and program an autonomous rover to navigate a maze and retrieve a block in groups of up to four (I worked in a group of three). The project was broken down into five assignments: two reports and three contests for functionality. The order of which were:
 
 1. **Rover design proposal** (report).
-2. **Obstacle avoidance**. We had to move the robot about 7m within the maze, losing points per collision or for not covering all 7m in the time frame.
+2. **Obstacle avoidance**. We had to move the robot about 7&nbsp;m within the maze, losing points per collision or for not covering all 7&nbsp;m in the time frame.
 3. **Localization and path finding**. Rover would be placed in the maze, need to localize and navigate to a predefined location.
 4. **Block retrieval**. Robot would be put in the maze, need to localize, navigate to the block zone, pick up the block, and take it to the designated end zone.
 5. **Final report**.
@@ -85,7 +85,7 @@ To release the block, the system would simply be driven in reverse.
 
 I designed the entire proposed circuit to drive our rover. At the heart of is was an Arduino Mega, used for its numerous inputs and outputs available to us. This would allow us to write code that would operate the entire robot from a single microcontroller.
 
-{{< fig src="/images/mazebot-schematic.png" caption="My propsed circuit ([PDF version](/pdf/MIE444_Schematic.pdf))" class="schematic" >}}
+{{< fig src="/images/mazebot-schematic.png" caption="My proposed circuit ([PDF version](/pdf/MIE444_Schematic.pdf))" class="schematic" >}}
 
 #### Inputs
 
@@ -138,7 +138,7 @@ sendCommand(commandString, s_cmd, s_rply); % Just sending a command string
 readings = sendCommand(commandString, s_cmd, s_rply); % Record the response to 'readings', used for sensors
 ```
 
-The command string format was a two character command type, followed by a quantity, seperated by a dash ("-"). For example the command to read all ultrasonic sensors five times and return the average reading for each was `ua-5` or to rotate 45° left was `r1--45` (negative 45 since left was marked as negative, right was positive).
+The command string format was a two character command type, followed by a quantity, separated by a dash ("-"). For example the command to read all ultrasonic sensors five times and return the average reading for each was `ua-5` or to rotate 45° left was `r1--45` (negative 45 since left was marked as negative, right was positive).
 
 All the embedded, rover-side programming was handled by the teaching team, so we only worked on these algorithms to navigate, and not low level stuff like the process of collecting ultrasonic readings.
 
@@ -162,7 +162,7 @@ Generally most teams would have two scheduled runs a day and then there was free
 
 The first milestone simply required us to get the robot to move though 20 blocks (20') within our 8 minute limit, there were no designated points for it to visit as it wandered.
 
-For this task the general flow of the program was to have the rover aligh itself with either primary axis of the maze, and simply move forward until it could no more, then turn left, right, or backwards depending on which was available, repeating until it was stopped.
+For this task the general flow of the program was to have the rover align itself with either primary axis of the maze, and simply move forward until it could no more, then turn left, right, or backwards depending on which was available, repeating until it was stopped.
 
 ### Alignment
 

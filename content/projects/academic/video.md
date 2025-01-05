@@ -131,7 +131,7 @@ Originally I (and the rest of my team) anticipated that the VGA portion would be
 
 We anticipated that since our camera was marked as a "VGA" camera, with a resolution of 640 by 480 pixels, that it would output a video stream that could be readily displayed on a monitor that accepted VGA. The betrayal was that the camera had a VGA resolution - *but not framerate*. VGA monitors require a 60&nbsp;fps input at that resolution, but the camera only output at 30&nbsp;fps. So when we first tried to feed the camera data directly to a monitor it failed to be recognized as a video feed. 
 
-**We would need a frame buffer to show each frame twice to bring the framerate up to 60.** Not only that, but also we needed to do it right otherwise there would be visible artifacts if we were reading from the buffer as it was being partially written to ("screen tares"). This would need there to be two full frame buffers that we would alternate between reading and writing to, a **"ping-pong"** buffer arrangement. We did the math to see how much memory was needed to accomodate this: 12-bit colour depth, 640 by 480 (307&nbsp;200) pixels, so 3&nbsp;686&nbsp;400 bits per frame. The FPGA had only a smidgen over 6&nbsp;Mb so it would be unable to hold the frames, so it needed to go off-chip into the Dynamic RAM (DRAM).
+**We would need a frame buffer to show each frame twice to bring the framerate up to 60.** Not only that, but also we needed to do it right otherwise there would be visible artifacts if we were reading from the buffer as it was being partially written to ("screen tares"). This would need there to be two full frame buffers that we would alternate between reading and writing to, a **"ping-pong"** buffer arrangement. We did the math to see how much memory was needed to accommodate this: 12-bit colour depth, 640&nbsp;by&nbsp;480 (307&nbsp;200) pixels, so 3&nbsp;686&nbsp;400 bits per frame. The FPGA had only a smidgen over 6&nbsp;Mb so it would be unable to hold the frames, so it needed to go off-chip into the Dynamic RAM (DRAM).
 
 To compound the complexity introduced in moving data off-cip, DRAM is mapped memory (each read/write needs an address), however the pixel data was provided as a stream and the VGA module expected a stream input so I would need to convert between these two methods of data transfer. Luckily there was an IP available to me from Xilinx which helped simplify the job for me, amply named `DataMover`. So I built out the expanded VGA system around it as the core.
 
@@ -171,7 +171,7 @@ This was a Xilinx IP and it connected directly to the DRAM interface/pins on the
 
 The purpose of these two modules was to move data from an AXI stream into a part of AXI mapped memory while reading part of mapped memory back into a stream. This was actually the express purpose of the DataMover IP, however the DataMover needed something to issue it commands on where to move data so that's where my module came in. The commands the DataMover expected were pretty simple, they boiled down to essentially *"Read/write **X** bytes to/from the AXI stream, starting at address **Y** in mapped memory"*, simple enough eh?
 
-I assigned two regions in the DRAM for the frame buffers and then started on laying out my logic for issuing these commands. There were two halves that operated almost entirely independantly, Stream to Memory Mapped (S2MM) for putting video data into the frame buffer, and the Memory Mapped to Stream (MM2S) which then retrieved it for the VGA system. The only data exchanged across the halves was where the S2MM was writing to trigger frame buffer swaps. The logic for each half was similar and could be summarized as follows:
+I assigned two regions in the DRAM for the frame buffers and then started on laying out my logic for issuing these commands. There were two halves that operated almost entirely independently, Stream to Memory Mapped (S2MM) for putting video data into the frame buffer, and the Memory Mapped to Stream (MM2S) which then retrieved it for the VGA system. The only data exchanged across the halves was where the S2MM was writing to trigger frame buffer swaps. The logic for each half was similar and could be summarized as follows:
 
 - Wait until the stream buffer in/out of the DataMover is ready for a transfer
     - S2MM would wait until there was enough data was available for a complete transfer to DRAM (buffer *not* empty)
@@ -258,11 +258,11 @@ I personally wasn't super involved in the development of this portion as I was s
 
 ## Image Compression
 
-Compressing a video frame from full VGA resolution, 640 by 480 pixels, down to 28 by 28 pixel image prior to conducting the digit recognition allowed us to use a much smaller neural model without sacrificing accuracy. The reason we chose 28 by 28 specifically was that our model would be trained using the MNIST database for written digits which used this resolution (more on that in the [neural network](#neural-network) section).
+Compressing a video frame from full VGA resolution, 640&nbsp;by&nbsp;480 pixels, down to 28&nbsp;by&nbsp;28&nbsp;pixel image prior to conducting the digit recognition allowed us to use a much smaller neural model without sacrificing accuracy. The reason we chose 28&nbsp;by&nbsp;28 specifically was that our model would be trained using the MNIST database for written digits which used this resolution (more on that in the [neural network](#neural-network) section).
 
 Our compression algorithm followed a couple of steps to properly convert the image into something to be processed:
 
-1. Sum all the pixel intensities in 17 by 17 pixel blocks to create a 28 by 28 grid. Pixels outside this region in the original image are discarded.
+1. Sum all the pixel intensities in 17&nbsp;by&nbsp;17&nbsp;pixel blocks to create a 28&nbsp;by&nbsp;28 grid. Pixels outside this region in the original image are discarded.
 2. Find the maximum and minimum sums in this region. E.g. 100 and 1600.
 3. Scale the values of the sums so that those at the minimum are 0, those at the maximum are at 15. `newVal = ((originalSum - min) / (max - min)) * 15)`, so using the example values 200 would become 1. *This allows us to maintain the dynamic range of the image.*
 4. Invert the scale, since the training data used white on black digits while we were using black on white. `new = 15 - old`
@@ -290,7 +290,7 @@ My teammates used gradient descent to train the network parameters, which they r
 
 {{< fig src="/images/video-training.png" caption="Training and validation loss with training iterations" >}}
 
-At this point we had to begin adjusting how the neural network would operate to work better on the FPGA. Firstly we decided to use 10 by 10 matrices for the intermediate layers instead of 20 by 20 since that would have quadrupled the memory requirements but only improved accuracy by about 3%.
+At this point we had to begin adjusting how the neural network would operate to work better on the FPGA. Firstly we decided to use 10&nbsp;by&nbsp;10 matrices for the intermediate layers instead of 20&nbsp;by&nbsp;20 since that would have quadrupled the memory requirements but only improved accuracy by about 3%.
 
 With the trained model prepared and selected, we began by converting the weights from floating point numbers (e.g. 12.674) to 16-bit integers for easier multiplication and accumulation in the FPGA. 16 bits were chosen since this balanced accuracy with speed on the FPGA since we wanted to make use of the Digital Signal Processing (DSP) blocks which accelerate multiplication and they can only take in integers up to 16 bits wide. Converting the floating point values to integers has one main issue, it discards information after the decimal point which can result in a loss of accuracy. To minimize this loss my team aimed to space out the factors so that casting them to integers would not result in a loss of accuracy, while staying within the bounds of 16 bit signed integers (-32&nbsp;768 to +32&nbsp;767 inclusive). To accomplish this my team made use of two tricks:
 
@@ -309,7 +309,7 @@ The multiplication for the first layer was done per pixel sequentially, requirin
 
 ## Digit Preview
 
-To aid with the testing and operation of the digit recognition system I contributed a system to preview what the digit processing model was being provided. This was a up-scaled version of the compressed image overlaid over the live video feed in the top left corner if enabled, so we could see how well the digit looked and if any thresholds needed adjustment. The reason for upscaling was to make it more legible since 28 pixels is quite small even at VGA resolution. Given the way it looked, I referred to it as "picture in picture" or PIP for short.
+To aid with the testing and operation of the digit recognition system I contributed a system to preview what the digit processing model was being provided. This was a up-scaled version of the compressed image overlaid over the live video feed in the top left corner if enabled, so we could see how well the digit looked and if any thresholds needed adjustment. The reason for upscaling was to make it more legible since 28&nbsp;pixels is quite small even at VGA resolution. Given the way it looked, I referred to it as "picture in picture" or PIP for short.
 
 {{< fig src="/images/video-pip.png" caption="Demonstration of the preview working over a live video feed" >}}
 

@@ -83,7 +83,7 @@ When it came to assigning pins it was very helpful to use the very configurable 
 
 The connectors and headers are used to interact with the board, of the three headers, two are for mainly just for development purposes, the third for control in the drone.
 
-The programming headers have additional passives to enable programming. The UPDI header has a 470Ω resistor used to allow the chip to be programmed using a USB-to-Serial adapter with some some tricks with [pyUPDI](https://github.com/mraardvark/pyupdi). (This 470Ω resistor was revealed in revised documentation to be the wrong value). The Serial (UART) header is used for more conventional Arduino-like programming once a bootloader is flashed to the chip.
+The programming headers have additional passives to enable programming. The UPDI header has a 470Ω resistor used to allow the chip to be programmed using a USB-to-Serial adapter with some some tricks with [pyUPDI](https://github.com/mraardvark/pyupdi). (This 470&nbsp;Ω resistor was revealed in revised documentation to be the wrong value). The Serial (UART) header is used for more conventional Arduino-like programming once a bootloader is flashed to the chip.
 
 ### Output Stage
 
@@ -91,9 +91,9 @@ The output stage to drive the motor is fundamentally the same as the one present
 
 There are some minor differences in this iteration though, related to the value of the passive present.
 
-- Gate resistors, RN1 and RN2 in all versions, were reduced from 100Ω to 20Ω. This will allow them to charge the gates as fast as they safely can.
+- Gate resistors, RN1 and RN2 in all versions, were reduced from 100&nbsp;Ω to 20&nbsp;Ω. This will allow them to charge the gates as fast as they safely can.
 - Bootstrapping resistors, RN3 in previous versions, were removed entirely as they were not truly needed.
-- Bootstrapping capacitors, C2-4 in previous versions, C3-5 in V4, were reduced from 4.7uF to 1uF as 4.7uF was excessive.
+- Bootstrapping capacitors, C2-4 in previous versions, C3-5 in V4, were reduced from 4.7&nbsp;uF to 1&nbsp;uF as 4.7&nbsp;uF was excessive.
 
 The calculations and resaoning for these changes I found in onsemi's application notes [AN-6076](https://www.onsemi.com/pub/Collateral/AN-6076.pdf) and [AN-9052](https://www.onsemi.com/pub/collateral/an-9052.pdf) which cover the design and component selection of bootstrap circuits respectively.
 
@@ -145,7 +145,7 @@ I had never encountered UDPI before this project. So when I was looking up open-
 
 UDPI stands for Unified Program and Debug Interface, an it uses a single pin on the target microcontroller to achieve all this. pyUDPI uses a standard USB to Serial adapter and a couple of resistors to interface with the target chip, and then some python scripting on the host PC to simulate the communication protocol.
 
-Initially I followed an outdated guide that instructed me to use a 470Ω resistor between the UDPI pin on the target and the programmer as well as a 4.7kΩ resistor on the TX line from the Serial adapter. *This did **not** work*. After some more testing and eventually finding a more up to date guide, I revised my design to the new recommended version with just a single 1kΩ resistor between TX and the other pins. 
+Initially I followed an outdated guide that instructed me to use a 470&nbsp;Ω resistor between the UDPI pin on the target and the programmer as well as a 4.7&nbsp;kΩ resistor on the TX line from the Serial adapter. *This did **not** work*. After some more testing and eventually finding a more up to date guide, I revised my design to the new recommended version with just a single 1&nbsp;kΩ resistor between TX and the other pins. 
 
 {{< fig src="/images/esc-v4-udpi-schematic.png" caption="Different versions of my pyUDPI interface schematic. Power connections are omitted for simplicity as they were simply Vcc to Vcc and GND to GND." >}}
 
@@ -159,7 +159,7 @@ Our time together was not meant to last, and I grew frustrated with the upload t
 
 {{< fig src="/images/esc-v4-amtel-ice-udpi.jpg" caption="My ATMEL-ICE and adapter for my UPDI header" >}}
 
-The upgrade in tooling spoke for itself *immediately!* My programming times were a fraction of what they were using my pyUDPI arrangement (<2 seconds compared to >30 with pyUPDI), and since it was isolated from the board's power I didn't need to worry about leaving it plugged into the board when I shut down power. **For future revisions I may reinstate a small (linear) 5V regulator to power the ESC control again.** With a provision to easily switch to an central 5V supply as desired.
+The upgrade in tooling spoke for itself *immediately!* My programming times were a fraction of what they were using my pyUDPI arrangement (<2 seconds compared to >30 with pyUPDI), and since it was isolated from the board's power I didn't need to worry about leaving it plugged into the board when I shut down power. **For future revisions I may reinstate a small (linear) 5&nbsp;V regulator to power the ESC control again.** With a provision to easily switch to an central 5&nbsp;V supply as desired.
 
 ### Motor Testing
 

@@ -270,6 +270,3 @@ Once prepared, I push a commit related to that content up to the GitHub. Once up
 
 Originally I wrote all my posts by breaking each line manually somewhere between every 100 and 125 characters. This made it easier to edit on my desktop where I had a large screen, however on my laptop it was awkward to edit such posts. So I have since made the executive decision to go back and remove these artificial line breaks so that I could have my editors wrap the words as I pleased on any device.
 
-
-
-

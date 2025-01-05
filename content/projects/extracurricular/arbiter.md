@@ -25,7 +25,7 @@ Even though I did do some part selections and slight modifications, the system w
   - Front, rear, left, and right light banks individually
 - Allow the user to easily control the lights as needed while riding
 - Blink the turning indicators when used at a frequency of about 1Hz
-- Run using a nominal supply voltage of 11.1V
+- Run using a nominal supply voltage of 11.1&nbsp;V
 
 ## Objectives
 
@@ -53,7 +53,7 @@ The basis of the circuit is a MOSFET constant current circuit similar to (a) in 
 
 Other than changing some parts due to availabilities of the transistors origianlly mentioned in Tempest's outline, and then some of the resistors to compensate for the different characteristics of these new transistors, the design remained fundamentally the same for these into the final design
 
-There was also a design in the outline, instructing how one could use a 555 timer IC to generate the regular pulses needed for the turn indicators, so I followed this design without any modification needed. Looking back, the 555 is a perfect choice for this due to the fact it could operate in the system's power domain of 11.1V with no regulators of level shifters needed.
+There was also a design in the outline, instructing how one could use a 555 timer IC to generate the regular pulses needed for the turn indicators, so I followed this design without any modification needed. Looking back, the 555 is a perfect choice for this due to the fact it could operate in the system's power domain of 11.1&nbsp;V with no regulators of level shifters needed.
 
 With these subcircuits designed and connected, I moved to prepare the circuit board using EAGLE. The first step was to prepare a schematic in EAGLE, which was not too difficult once I learned how to navigate the part library propely. Afterwards I began laying out the circuit board. Given the high currents going through the system (if all lights were on simultaniously, more than 10A would be drawn!) I increased the width of the main power traces accordingly.
 

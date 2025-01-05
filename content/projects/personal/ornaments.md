@@ -17,7 +17,7 @@ thumbnail: "/images/ornament-assembled.jpg"
 
 I wanted to make something small and simple (*read: cheap*) to hand out to friends and family for the holidays, and I felt that a small blinking ornament would be perfect for this. LEDs and resistors are cheap and hardy, batteries and a basic control system would be manageable.
 
-In the end the circuit was nothing more than a basic 555 timer based blinker running off a 9V battery. I ordered panelized boards to have plenty to hand out and hand soldered them all.
+In the end the circuit was nothing more than a basic 555 timer based blinker running off a 9&nbsp;V battery. I ordered panelized boards to have plenty to hand out and hand soldered them all.
 
 The reception was good all round, so I might redo these again!
 
@@ -34,7 +34,7 @@ The reception was good all round, so I might redo these again!
 ## Takeaways
 
 - Trinkets are good way to show off to non-technical people in your life.
-- 9V batteries are convenient power sources, but bulky, heavy, and unsightly really - which is not desirable for hanging in a tree.
+- 9&nbsp;V batteries are convenient power sources, but bulky, heavy, and unsightly really - which is not desirable for hanging in a tree.
 - Bright lights are good, but batteries have a finite amount of energy so I should have made them dimmer. 
    - Batteries only lasted about two days.
    - Could have string LEDs in series to use the same current.
@@ -48,13 +48,13 @@ I also wanted to make a present for a bunch of my friends so I had the idea to k
 
 ## Circuit Design
 
-I wanted to have a dozen LEDs on the ornament, with half always on and the other half blinking away at some slow frequency. I wanted to use the common "gum drop" through hole type of LEDs common with DIY kits since I believed they would look nicer and cozier than some SMT ones. I also decided that a 9V battery would be used for the power since it was a common battery that supplied a decent voltage in a single unit. 
+I wanted to have a dozen LEDs on the ornament, with half always on and the other half blinking away at some slow frequency. I wanted to use the common "gum drop" through hole type of LEDs common with DIY kits since I believed they would look nicer and cozier than some SMT ones. I also decided that a 9&nbsp;V battery would be used for the power since it was a common battery that supplied a decent voltage in a single unit. 
 
 All that remained to design was the blinking system, so I turned to everyone's favourite IC, the old reliable 555 set to run in astable (free-running, oscillating) mode. Not only was the 555 timer a good choice for keeping the circuit simple and reliable, it also was able to drive the "high" power output directly so no additional transistors were needed. Thus the component count would be kept low. 
 
 {{< fig src="/images/ornament-schematic.svg" caption="The completed schematic for ornament (PDF version: [Colour](/pdf/ornament.pdf) / [BW](/pdf/ornament_BW.pdf))" class="schematic" >}}
 
-My choice of passives resulted in the blinking lights being on for about 1.8 seconds, and off for 1.4, which I felt was just the right rate to not be too attention grabbing nor too "slow".
+My choice of passives resulted in the blinking lights being on for about 1.8&nbsp;seconds, and off for 1.4, which I felt was just the right rate to not be too attention grabbing nor too "slow".
 
 ## Layout
 
@@ -74,7 +74,7 @@ I kept the bottom bare of components so that I could easily leave a message in t
 
 ## Panelization
 
-I did not do this myself. I ordered the PCBs to be panelized by the manufacturer, JLCPCB. I did this so I could get many more boards at basically the same price since the ornaments were 45mm in diameter and any board up to 100mm by 100mm costs the same.
+I did not do this myself. I ordered the PCBs to be panelized by the manufacturer, JLCPCB. I did this so I could get many more boards at basically the same price since the ornaments were 45&nbsp;mm in diameter and any board up to 100&nbsp;mm by 100&nbsp;mm costs the same.
 
 ## Assembly
 
@@ -90,7 +90,7 @@ I did not order a stencil to administer solder paste for this board, since I fig
 
 After assembling my first one I tried to power it on and have it blink. Unfortunately it didn't, the LEDs the 555 controlled never lit up. I tried to make a second, but this time the LEDs the 555 controlled we held perpetually high. So I started to investigate what I was doing wrong.
 
-My first suspicion was that I was **over heating the 555s** when I was soldering them, since I was running my iron at 350°C (~660°F) to melt my lead-free solder and applying heat for a long period time to drag solder its leads. To see if this was true I made a ornament using leaded solder and running my soldering iron at a lower temperature of 300°C (~570°F). This did the trick, and I was able to assemble the rest of my boards without issue like this.
+My first suspicion was that I was **over heating the 555s** when I was soldering them, since I was running my iron at 350&nbsp;°C (~660&nbsp;°F) to melt my lead-free solder and applying heat for a long period time to drag solder its leads. To see if this was true I made a ornament using leaded solder and running my soldering iron at a lower temperature of 300&nbsp;°C (~570&nbsp;°F). This did the trick, and I was able to assemble the rest of my boards without issue like this.
 
 ## Deployment
 

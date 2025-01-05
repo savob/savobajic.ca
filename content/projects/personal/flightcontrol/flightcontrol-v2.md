@@ -38,7 +38,7 @@ I have done some development on it but have not worked on it much so I could foc
 
 This was in a sense my **real** flight controller project, the previous was meant just as a back up if this one flops entirely. 
 
-By using an STM32F103 it has far more computational power, from a raw clock rate of 70MHz compared to 16MHz, as well as being 32-bit instead of 8-bit. Furthermore it has more features such as additional communication hardware and more timers and counters one can use which might prove helpful when working on control programming or future additions to the drone. One nice feature I have been making use of is native USB support so I can connect it directly with my computer for debugging.
+By using an STM32F103 it has far more computational power, from a raw clock rate of 70&nbsp;MHz compared to 16&nbsp;MHz, as well as being 32-bit instead of 8-bit. Furthermore it has more features such as additional communication hardware and more timers and counters one can use which might prove helpful when working on control programming or future additions to the drone. One nice feature I have been making use of is native USB support so I can connect it directly with my computer for debugging.
 
 Other than accommodating the change in microcontroller, very little has changed from V1 to this in terms of design.
 
@@ -52,9 +52,9 @@ With the framework prepared I have gone on to start implementing some basic func
 
 Although an easy change to say *"I just changed the microcontroler"*, I actually entailed a fair bit of revision to the circuit. It started with the obvious replacement of the ATmega and the circuitry needed for it operate, with the STM32 and its needed peripheral components. This led to some knock-on changes:
 
-- Since all ICs on the board operated at 3.3V, there was no need for 5V and thus the 5V regulator was removed
-  - **5V is needed from an external source to the board** though, it does not use the battery as a supply for the 3.3V regulator
-- Had to reroute the 3.3V I2C bus to connect to the STM32 instead of the 5V one
+- Since all ICs on the board operated at 3.3&nbsp;V, there was no need for 5&nbsp;V and thus the 5&nbsp;V regulator was removed
+  - **5&nbsp;V is needed from an external source to the board** though, it does not use the battery as a supply for the 3.3&nbsp;V regulator
+- Had to reroute the 3.3&nbsp;V I2C bus to connect to the STM32 instead of the 5&nbsp;V one
 - A Mini-USB connection was added
 - Three status LEDs were added to the design
 - There are **fewer** exp[licit extra inputs/outputs broken out (as opposed to re-purposing the Serial header for example)
@@ -63,7 +63,7 @@ Although an easy change to say *"I just changed the microcontroler"*, I actually
 
 ## Layout
 
-As a result of the circuit changes the entire board had to basically be rerouted from scratch. This time the board 42mm by 42mm, but still only two layered.
+As a result of the circuit changes the entire board had to basically be rerouted from scratch. This time the board 42&nbsp;by&nbsp;42&nbsp;mm, but still only two layered.
 
 This increased area helped me put all components on the top side, as well as most of the traces, leaving the bottom to be used primarily for the power distribution and a few traces that needed to cross others on the top. This will make assembly easier because I will only need to put paste and parts on one side instead of two.
 
@@ -88,7 +88,7 @@ Assembly of the boards was pretty simple. Having all the components on one side 
 
 ## Testing
 
-I started with the usual, checking for any shorts between adjacent pins and power lines with a multimeter, then I applied power and verified that the regulator was working as expected, producing a steady 3.3V. I then left the system powered for a few minutes to monitor current draw and ensure none of the ICs were getting warm. None did.
+I started with the usual, checking for any shorts between adjacent pins and power lines with a multimeter, then I applied power and verified that the regulator was working as expected, producing a steady 3.3&nbsp;V. I then left the system powered for a few minutes to monitor current draw and ensure none of the ICs were getting warm. None did.
 
 After the basic power tests were done, I started testing the STM32 by programming it. This was initially done with over the Serial programming connection with the Arduino IDE. The first few programs worked fine, such as the I2C bus scanner to verify that the sensors were responding correctly. Afterwards I burned the bootloader that would allow the STM32 to be programmed over USB in "Device Firmware Upgrade" (DFU) mode. I then verified that this worked as expected.
 

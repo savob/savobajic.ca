@@ -15,7 +15,7 @@ thumbnail: "/images/esc-v2-top-assembled.jpg"
 
 # Overview
 
-This was my successful attempt at miniaturizing my previous ESC, from 65mm x 35mm to 40mm x 25mm. It is completely electronically identical to V1.
+This was my successful attempt at miniaturizing my previous ESC, from 65&nbsp;by&nbsp;35&nbsp;mm to 40&nbsp;by&nbsp;25&nbsp;mm. It is completely electronically identical to V1.
 
 Unlike V1 I actually went ahead and not only built one proper, but developed and ran code on it. Eventually actually managing to properly spin a BLDC motor, albeit only at 100% due to hardware constraints of the microcontroller used.
 
@@ -34,7 +34,7 @@ Unlike V1 I actually went ahead and not only built one proper, but developed and
 
 # Detailed Report
 
-The goal of this revision was to miniaturize the previous version to something that would fit more easily into the drone's frame. So although the circuit remains the same, the layout was completely redone from scratch, using more compact versions of components. The resulting board was 40mm x 25mm, down from 65mm by 35mm.
+The goal of this revision was to miniaturize the previous version to something that would fit more easily into the drone's frame. So although the circuit remains the same, the layout was completely redone from scratch, using more compact versions of components. The resulting board was 40&nbsp;by&nbsp;25&nbsp;mm, down from 65&nbsp;by&nbsp;35&nbsp;mm.
 
 The boards were purchased and assembled so development could be done with them. The code is where I started to really deviate from the work of [ELECTRONOOBS](http://electronoobs.com/eng_arduino_tut91_code1.php) that I was following. I ended up rewriting much of his code to suit my system (I changed the purpose of some pins on the ATmega) and my desires (e.g. I2C). **I then made significant alterations to his code to correct his handling of zero-crossings and commutations!**
 
@@ -50,7 +50,7 @@ Since this is the basically the same as V1, please refer to [its section]({{< re
 
 ## Layout
 
-This is where the difference is made between the versions. To reduce the overall size of the board to 40mm by 25mm, I had to make several changes to the way I laid out the boards. I decided to no longer have all the inverter components on one side and the rest on the other, instead, I put components on a alternating sides based on their stage in the control cycle.
+This is where the difference is made between the versions. To reduce the overall size of the board to 40&nbsp;by&nbsp;25&nbsp;mm, I had to make several changes to the way I laid out the boards. I decided to no longer have all the inverter components on one side and the rest on the other, instead, I put components on a alternating sides based on their stage in the control cycle.
 
 1. Microcontroller (top)
 2. MOSFET driver (bottom)
@@ -59,7 +59,7 @@ This is where the difference is made between the versions. To reduce the overall
 
 In doing this I made it easier for me to make clean traces since most connections needed a via, and I could place these vias such that I could change the "order" of traces when changing layers which was needed on several occasions.
 
-In addition to changing the organization of parts to make routing more manageable, I also changed some parts for equivalent, but smaller form factor versions. This was mainly done with the resistor networks, but I also changed the ATmega to use the QFN-32 package that is smaller (5mm by 5mm) than the TQFP-32 (7mm by 7mm).
+In addition to changing the organization of parts to make routing more manageable, I also changed some parts for equivalent, but smaller form factor versions. This was mainly done with the resistor networks, but I also changed the ATmega to use the QFN-32 package that is smaller (5&nbsp;by&nbsp;5&nbsp;mm) than the TQFP-32 (7&nbsp;by&nbsp;7&nbsp;mm).
 
 {{< fig src="/images/esc-v2-combined-layout.png" caption="The overall layout of the board" >}}
 
@@ -67,7 +67,7 @@ The bottom of the board housed the MOSFET driving circuitry and most of the resi
 
 {{< fig src="/images/esc-v2-bottom-layout.png" caption="The layout of the bottom side" >}}
 
-In addition to the aforementioned microcontroller and MOSFETs, the 5V regulator was also put on the top side in the top right corner of the board. Unlike the first version where I had a clear "input" and "output" end for power lines, I shortened the power rails to basically the bare minimum and will now be soldering the power supply wires closer to MOSFETs. Not only does this reduce space needed, but also resistive losses in the system.
+In addition to the aforementioned microcontroller and MOSFETs, the 5&nbsp;V regulator was also put on the top side in the top right corner of the board. Unlike the first version where I had a clear "input" and "output" end for power lines, I shortened the power rails to basically the bare minimum and will now be soldering the power supply wires closer to MOSFETs. Not only does this reduce space needed, but also resistive losses in the system.
 
 {{< fig src="/images/esc-v2-top-layout.png" caption="The layout of the top side" >}}
 
@@ -109,7 +109,7 @@ First off I had to burn the Arduino bootloader so I could develop programs using
 
 This approach ended up costing me a MOSFET driver chip because although I was supplying power to the microcontroller, there was no supplied power to the driver. Thus when the pins used for both programming and controlling the driver were driven high, this high was several volts over the "supplied" voltage to the driver and caused it to fry.
 
-Thinking I had solved the issue I disconnected the 5V connection from my Arduino to the ESC, powered it properly so it was running off its own 5V supply and tried reprogramming it again. Somehow at this point, I assume due to the mismatch of "5V" supplies, I had fried a microcontroller. 
+Thinking I had solved the issue I disconnected the 5&nbsp;V connection from my Arduino to the ESC, powered it properly so it was running off its own 5&nbsp;V supply and tried reprogramming it again. Somehow at this point, I assume due to the mismatch of "5&nbsp;V" supplies, I had fried a microcontroller. 
 
 ### New Commandments, New System
 
@@ -117,7 +117,7 @@ Thinking I had solved the issue I disconnected the 5V connection from my Arduino
 
 Frustrated with issues, I wrote down some *"New ESC Commandments"*. These were pointers that I would use going forward to avoid the same mistakes when working on this revision and what to address with future ones.
 
-- Removing the 5V regulator. The drone will have a central one that will also be specifically designed to remove noise from motor operation
+- Removing the 5&nbsp;V regulator. The drone will have a central one that will also be specifically designed to remove noise from motor operation
 - Add LEDs for status of power lines and general use
 - Supply battery voltage **before** connecting programmer
 - Try to use separate pins for programming and driver control
@@ -141,11 +141,11 @@ I avoided having a motor installed in the system to be driven until I was comfor
 
 For example, I used an oscilloscope to monitor the (unloaded) output of inverter phases to see that I was stepping through the commutation cycle correctly. When it came to testing the zero-point crossing detection, I used potentiometers to manually swing the voltages.
 
-Once it came to the point I needed to actually test with a motor, I decided to start with a smaller, inexpensive (free) motor than the ones I purchased and intended to actually use in the drone. The motor I used for my tests was salvaged from an old floppy disk drive which I soldered power resistors to. These resistors not only acted as a convenient contacts for each phase but also as a way to decrease the potential stall current of the system. The power resistors and the windings of the motor sum to roughly 3.8Ω of resistance for any given stage of the commutation cycle, so when running at the nominal 12V, the system would stall with roughly 3A which all components could sustain for extended periods of time.
+Once it came to the point I needed to actually test with a motor, I decided to start with a smaller, inexpensive (free) motor than the ones I purchased and intended to actually use in the drone. The motor I used for my tests was salvaged from an old floppy disk drive which I soldered power resistors to. These resistors not only acted as a convenient contacts for each phase but also as a way to decrease the potential stall current of the system. The power resistors and the windings of the motor sum to roughly 3.8&nbsp;Ω of resistance for any given stage of the commutation cycle, so when running at the nominal 12&nbsp;V, the system would stall with roughly 3&nbsp;A which all components could sustain for extended periods of time.
 
 {{< fig src="/images/esc-test-motor.jpg" caption="The test motor with the power resistors" >}}
 
-The browning in the middle of the power resistors are indeed burns from continued use from tests I was doing above the usual 12V. I also added wires to bypass the resistors when I wanted to do full power tests, I removed these for the figure above, but the solder joints bracketing the resistor when they were are visible.
+The browning in the middle of the power resistors are indeed burns from continued use from tests I was doing above the usual 12&nbsp;V. I also added wires to bypass the resistors when I wanted to do full power tests, I removed these for the figure above, but the solder joints bracketing the resistor when they were are visible.
 
 *Fun little tidbit: During motor tests, especially at at the beginning when the motor was stalling a lot I would move my system to the fridge to cool quicker so I could continue testing. No, condensation **was not** an issue.*
 
@@ -190,7 +190,7 @@ I tested my code for this to great success with some potentiometers as mention i
 
 This is where I spent a good portion of my time, as I needed to reteach myself and reassure myself what I was doing was right in terms of BLDC control. The reason I had developed doubt was because when I was looking at ELECTRONOOB's code for this, he would commutate his motor right after passing the zero-crossing, however if we look back at the [theory of BLDC commutation]({{< ref "projects/personal/esc#motor-theory" >}}) one can see that zero-crossing is halfway in the step, thus the system needs to wait another half-step before it commutates. At high speeds this half step would be roughly 100 to 300 microseconds.
 
-ELECTRONOOBS seems to have dodged this due to his use of a for loop in the interrupt that checks 10 times every 10us if the zero has been indeed crossed which leaves a delay of 100us which in combination with other factors related to code execution probably generates a delay of between 150us and 200us between zero-crossing and commutation, which is tolerable in most circumstances.
+ELECTRONOOBS seems to have dodged this due to his use of a for loop in the interrupt that checks 10 times every 10&nbsp;us if the zero has been indeed crossed which leaves a delay of 100&nbsp;us which in combination with other factors related to code execution probably generates a delay of between 150&nbsp;us and 200&nbsp;us between zero-crossing and commutation, which is tolerable in most circumstances.
 
 I wanted to approach this in a more proper way, using an additional counter/timer. At the start of each commutation step it would be reset and start counting up. Once the zero crossing was reached, the counter's value would be doubled to estimate the exact time to commutate. Once the counter reached this threshold a software interrupt would execute to commutate the motor, resetting this recycle.
 

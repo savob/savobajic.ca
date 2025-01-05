@@ -75,7 +75,7 @@ To control the heater I used a commercial solid state relay to cut or provide po
 
 ### The Resulting Schematic
 
-Combining all these parts into one schematic produces this. Note that I have added connections for a USB charger to provide the system 5 VDC from 120 VAC, as well as a grounding connection for the metal enclosure used.
+Combining all these parts into one schematic produces this. Note that I have added connections for a USB charger to provide the system 5&nbsp;VDC from 120&nbsp;VAC, as well as a grounding connection for the metal enclosure used.
 
 {{< fig src="/images/oven_schematic.svg" caption="The original schematic for the oven (PDF version: [Colour](/pdf/oven.pdf) / [BW](/pdf/oven_bw.pdf))" class="schematic" >}}
 
@@ -101,11 +101,11 @@ Unlike most of my other projects where assembly starts and ends with the circuit
 
 Well, eight if we exclude the headers and wires that directly solder to the board but still.
 
-Starting with the external/off-board modules, to provide 5V to the board I modified a standard USB wall plug to supply 5V to some wires soldered to it directly rather than butchering a USB cable that may come loose inside the enclosure as it is rattled about.
+Starting with the external/off-board modules, to provide 5&nbsp;V to the board I modified a standard USB wall plug to supply 5&nbsp;V to some wires soldered to it directly rather than butchering a USB cable that may come loose inside the enclosure as it is rattled about.
 
 {{< fig src="/images/oven-usb-charger-gutted.jpg" caption="The internals of the USB charger, liberated" >}}
 
-I installed that after re-assembling the charger, as well as the relay for the heater. For all the 120V lines I checked the insulation rating of my wires and they were all 600V so this will be safe. I also used heat shrink to cover the charger terminals. In the picture below I have the parts in their final places, however I forgot to take a photo after I secured them down with zip ties.
+I installed that after re-assembling the charger, as well as the relay for the heater. For all the 120&nbsp;V lines I checked the insulation rating of my wires and they were all 600&nbsp;V so this will be safe. I also used heat shrink to cover the charger terminals. In the picture below I have the parts in their final places, however I forgot to take a photo after I secured them down with zip ties.
 
 {{< fig src="/images/oven-internal-layout.jpg" caption="Internal layout of the enclosure" >}}
 
@@ -127,7 +127,7 @@ With the system assembled it began time to test the hardware and develop my code
 
 ### Power Test
 
-The first test was honestly the most daunting, applying power and seeing if it holds as it should by design. This project in particular was scary thanks to the 120V portion. Using a long power cable I placed it on the ground in my hallway and then I went back and around a corner to plug it in. After not hearing any notable explosions of the crackling of flames for a good 20 seconds or so after plugging it in I went and checked it out. The system was working fine, no shorts, and a steady 5V supplied to the control electronics.
+The first test was honestly the most daunting, applying power and seeing if it holds as it should by design. This project in particular was scary thanks to the 120&nbsp;V portion. Using a long power cable I placed it on the ground in my hallway and then I went back and around a corner to plug it in. After not hearing any notable explosions of the crackling of flames for a good 20 seconds or so after plugging it in I went and checked it out. The system was working fine, no shorts, and a steady 5&nbsp;V supplied to the control electronics.
 
 ### Programming
 

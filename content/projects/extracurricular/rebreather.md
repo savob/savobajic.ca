@@ -55,13 +55,13 @@ Not only does the system need to accurately reflect the composition of the air i
 
 The circuit design and layout was completed in EAGLE. For the circuit design I had the teammate design the circuit in modules based on purpose that were then combined for the final design.
 
-The overall system design is centered on an ATmega328P microcontroller, the same used in Arduino Nanos. Fanning out from it are the circuits responsible for conditioning the oxygen sensor signals, the CO₂ signal and then the displays. The entire system is powered off a shared 5V supply generated from a linear regulator stepping down the supplied battery voltage.
+The overall system design is centered on an ATmega328P microcontroller, the same used in Arduino Nanos. Fanning out from it are the circuits responsible for conditioning the oxygen sensor signals, the CO₂ signal and then the displays. The entire system is powered off a shared 5&nbsp;V supply generated from a linear regulator stepping down the supplied battery voltage.
 
 {{< fig src="/images/axios-schematic.png" caption="The completed schematic for the rebreather circuit ([PDF version](/pdf/rebreather-schematic.pdf))" class="schematic" >}}
 
 The ATmega was chosen for both our familiarity with it and having just the right amount of features we needed for this. It has an internal analog to digital converter for the oxygen sensors, interrupt pins for the CO₂ sensor, and timers needed for driving the displays. Both SPI ISP headers and serial headers for programming were put on the board.
 
-A linear regulator was used to supply the 5V instead of a more efficient switched mode one to minimize the noise on the supply line which may affect the amplification and reading of the oxygen sensors' small signals.
+A linear regulator was used to supply the 5&nbsp;V instead of a more efficient switched mode one to minimize the noise on the supply line which may affect the amplification and reading of the oxygen sensors' small signals.
 
 ### Display Modules
 
@@ -75,19 +75,19 @@ Each display uses a shift register to control the segments that are illuminated,
 
 ### Oxygen Sensor System
 
-Our oxygen sensors used for the submarine are basically open air chemical cells that produce a voltage linearly proportional to the oxygen present in the air, between **10mV at 0% and 65mV at 100%**. The problem is that this signal is much too small for a typical ATmega328 to meaningfully read given the resolution of its ADC (10 bits, 1024 increments), even when using the 1.1V reference instead of the 5V. 
+Our oxygen sensors used for the submarine are basically open air chemical cells that produce a voltage linearly proportional to the oxygen present in the air, between **10&nbsp;mV at 0% and 65&nbsp;mV at 100%**. The problem is that this signal is much too small for a typical ATmega328 to meaningfully read given the resolution of its ADC (10 bits, 1024 increments), even when using the 1.1&nbsp;V reference instead of the 5&nbsp;V. 
 
 To address this, the signal from the sensors is amplified to a larger range before being read by the microcontroller, using an operational amplifier in a non-inverting configuration.
 
-Since the characteristics of each sensor will vary due to manufacturing and change over time with use as the chemicals are expended, the gain needs to be easily adjusted. This is done by using a potentiometer as part of the feedback loop for the amplifier allowing the gain to be increased or decreased as needed so that 100% oxygen would correspond to the maximum reading of about 5V.
+Since the characteristics of each sensor will vary due to manufacturing and change over time with use as the chemicals are expended, the gain needs to be easily adjusted. This is done by using a potentiometer as part of the feedback loop for the amplifier allowing the gain to be increased or decreased as needed so that 100% oxygen would correspond to the maximum reading of about 5&nbsp;V.
 
 The gain isn't the only thing that requires calibration, a low point calibration is also needed. This is because the no oxygen doesn't produce an output on the sensor of zero volts, but rather some intermediate voltage. So a second calibration point is set using the atmospheric concentration of oxygen (about 21%) using potentiometer to produce a reference voltage for this level on each sensor. This second point is a convenient calibration point since we want to keep Axios' environment as similar to atmospheric as possible, so by calibrating to it we can be confident the values near it will be accurate.
 
 ### Carbon Dioxide Sensor Interface
 
-The carbon dioxide sensor selected for use in the submarine outputs a PWM signal which expresses the CO₂ levels it measured, all it needs from the system in return is a pair of power connections (0 and 5V). However the PWM signal cannot be fed into the ATmega directly because the sensor outputs a 3.3V wave, so it wouldn't register properly on its 5V logic.
+The carbon dioxide sensor selected for use in the submarine outputs a PWM signal which expresses the CO₂ levels it measured, all it needs from the system in return is a pair of power connections (0 and 5&nbsp;V). However the PWM signal cannot be fed into the ATmega directly because the sensor outputs a 3.3&nbsp;V wave, so it wouldn't register properly on its 5&nbsp;V logic.
 
-To accommodate this difference, a level-shifter is needed to convert this 3.3V signal into a 5V one. A basic one is used for Axios, just a transistor controlled by the sensor PWM that pulls down on pin on the ATmega when the PWM is high. The only inconvenience to this simple arrangements is that the signal will get inverted so the PWM highs will be output as lows, and vice versa.
+To accommodate this difference, a level-shifter is needed to convert this 3.3&nbsp;V signal into a 5&nbsp;V one. A basic one is used for Axios, just a transistor controlled by the sensor PWM that pulls down on pin on the ATmega when the PWM is high. The only inconvenience to this simple arrangements is that the signal will get inverted so the PWM highs will be output as lows, and vice versa.
 
 ## Layout 
 
@@ -239,11 +239,11 @@ The test design was simple: connect some controlled voltage source to the system
 
 Right off the bat I had some issues, when I connected my voltage source for the oxygen sensors, the system read 0. After a bit of review, I found out that we had **accidentally reversed the labelling of input polarity**. Luckily the input was only a few dozen millivolts so no damage occurred to the system. Once I reversed the wires, the system was working but there was significant noise to the readings.
 
-With the inputs connected properly, I tried to adjust the gain since it was a too low. The gain topped out much lower than I expected, after checking the schematic everything was assembled correctly. However I had **set the trimmer to be 10kΩ instead of 100kΩ** which is why the gain achievable was an order of magnitude lower than expected. After replacing the 10kΩ trimmers with 100kΩ I was able to amplify the signal properly.
+With the inputs connected properly, I tried to adjust the gain since it was a too low. The gain topped out much lower than I expected, after checking the schematic everything was assembled correctly. However I had **set the trimmer to be 10&nbsp;kΩ instead of 100&nbsp;kΩ** which is why the gain achievable was an order of magnitude lower than expected. After replacing the 10&nbsp;kΩ trimmers with 100&nbsp;kΩ I was able to amplify the signal properly.
 
 #### Noise Issues
 
-Initially I used a function generator outputting a DC signal directly in the tens of millivolts for this, but it had several millivolts of noise to it that made it hard to monitor properly. So I switched to using a 9V battery with a resistor voltage divider (*in hindsight I realize I could have done the same with the function generator, alas*.) This provided a rather smooth input for the system. This reduced the noise on the reading but there was significant lingering noise.
+Initially I used a function generator outputting a DC signal directly in the tens of millivolts for this, but it had several millivolts of noise to it that made it hard to monitor properly. So I switched to using a 9&nbsp;V battery with a resistor voltage divider (*in hindsight I realize I could have done the same with the function generator, alas*.) This provided a rather smooth input for the system. This reduced the noise on the reading but there was significant lingering noise.
 
 I was curious what the values the system was reading were so I set the system to show the raw ADC reading for the input on the top display, the raw input of the calibration trimmer reading on the second, and then the calculated oxygen percentage on the third. The bottom screen showed the digital state of the CO₂ line.
 
@@ -283,7 +283,7 @@ I have identified a couple issues with my tested that could be rectified with a 
 
 - Use a proper and common MOSFET on the board for PWM level shift for the CO₂ sensor
 - Add 100nF decoupling capacitors to each IC
-- Specify the right trimmer potentiometer value for gain (100kΩ)
+- Specify the right trimmer potentiometer value for gain (100&nbsp;kΩ)
 - Fix the labelling of the oxygen sensor pins
 - Re-arrange the layout
   - Move sensor connections to the edges of the board

@@ -26,9 +26,9 @@ In the end I was able to deliver a completely assembled design with my simulatio
 - Use iron nanoparticles between 200nm and 5um diameter
 - Generate a controlled 3D magnetic field with a strength exceeding 20mT across the work volume
 - Use the lab standard coil driver
-  - ±50V, 5A output capability
+  - ±50&nbsp;V, 5&nbsp;A output capability
   - Use an analog voltage input that is magnified
-  - Output frequency limited to 30kHz
+  - Output frequency limited to 30&nbsp;kHz
 - Create and verify simulation models of the following in COMSOL Multiphysics:
   - The generated 3D magnetic field
   - The interaction of nanoparticles with varying alternating magnetic fields
@@ -39,7 +39,7 @@ In the end I was able to deliver a completely assembled design with my simulatio
 ## Objectives
 
 - Be able to focus the magnetic field within targeted parts of the brain
-- Generate and maintain a temperature between 43°C and 45°C in a sample
+- Generate and maintain a temperature between 43&nbsp;°C and 45&nbsp;°C in a sample
 - Apparatus should fit within the microscopes generally used by the lab
 - Complete the design and assembly of the system by the middle of summer
 - Use the remainder of summer to verify the design and perform tests on samples
@@ -67,7 +67,7 @@ anyways. Here is a short list of what I handed over to those taking over after m
 
 # Detailed Report
 
-My main task to aid in the development of an alternative hyperthermia-based therapy for glioblastoma as part of of the Advanced Micro and Nanosystems Lab (AMNL) at the University of Toronto was to develop and verify the design for an apparatus that can generate an alternating, 3D magnetic field and determine how to best generate heat from ferromagnetic nanoparticles inside the field. This heat would be used to raise the temperature of the brain (focused on the tumour region) above 43°C to begin killing the cancer cells, while not exceeding 45°C which would result in damage for healthy cells.
+My main task to aid in the development of an alternative hyperthermia-based therapy for glioblastoma as part of of the Advanced Micro and Nanosystems Lab (AMNL) at the University of Toronto was to develop and verify the design for an apparatus that can generate an alternating, 3D magnetic field and determine how to best generate heat from ferromagnetic nanoparticles inside the field. This heat would be used to raise the temperature of the brain (focused on the tumour region) above 43&nbsp;°C to begin killing the cancer cells, while not exceeding 45&nbsp;°C which would result in damage for healthy cells.
 
 In addition to the design I was asked to provide supporting simulations to justify my designs and help predict its behaviour, as well as simulations to help us predict the behaviour of nanoparticles when exposed to these fields, and how this heat would affect the tissue around them.
 
@@ -81,7 +81,7 @@ The topic that I spent the most time researching by far was magneto-thermal inte
 
 To get specific, the magneto-thermal interactions at micro-scale are quite different to those at the macro-scale. At the macro-scale frequencies in the lower 10's of kHz range are used which are used to induce eddy currents into the material which then generate heat through resistive losses in the material. On the nano-scale however, there is simply not enough bulk in the particles to generate any usable currents and instead the primary mechanism to generate heat is through hysteresis losses and/or particle relaxation as the particle is alternatingly magnetized, which is generally done in the low 100's of kHz.
 
-Even with this literature investigating and codifying the relationships at each end, our work feel into a middle ground that I couldn't find much similar work to compare our efforts to. Most nanoparticle heating research was done with particles between 10nm and 20nm in diameter, compared to ours that started at 200nm. They used frequencies generally between 120kHz and 250kHz, while due to the equipment we had we were limited to about 30kHz. Being these orders of magnitudes off made me very cautious with the results of any simulation and I stepped carefully though any calculation I performed myself.
+Even with this literature investigating and codifying the relationships at each end, our work feel into a middle ground that I couldn't find much similar work to compare our efforts to. Most nanoparticle heating research was done with particles between 10&nbsp;nm and 20&nbsp;nm in diameter, compared to ours that started at 200&nbsp;nm. They used frequencies generally between 120&nbsp;kHz and 250&nbsp;kHz, while due to the equipment we had we were limited to about 30&nbsp;kHz. Being these orders of magnitudes off made me very cautious with the results of any simulation and I stepped carefully though any calculation I performed myself.
 
 # Making the Magnet Apparatus
 
@@ -99,11 +99,11 @@ The design needed to fit within the Nikon microscopes used by the lab and allow 
 
 {{< fig src="/images/magnet-microscope.jpg" caption="My notes of some key dimensions" >}}
 
-In addition to measuring the physical dimensions of the microscope I also had to determine the frequency response of the standard coil driver used in the AMNL, since I was going to be using it for this project. These were designed to drive coils with a slowly changing, basically steady current, not the rapidly oscillating current as we were intending to use them for. So I performed a frequency sweep starting at 1kHz and raising it until the output was useless, either due to attenuation or other wave alteration.
+In addition to measuring the physical dimensions of the microscope I also had to determine the frequency response of the standard coil driver used in the AMNL, since I was going to be using it for this project. These were designed to drive coils with a slowly changing, basically steady current, not the rapidly oscillating current as we were intending to use them for. So I performed a frequency sweep starting at 1&nbsp;kHz and raising it until the output was useless, either due to attenuation or other wave alteration.
 
-{{< fig src="/images/magnet-30khz.png" caption="The output wave (blue) imposed over the input (yellow) at 30kHz. Note: the output magnitude is approximately 10 times the input." >}}
+{{< fig src="/images/magnet-30khz.png" caption="The output wave (blue) imposed over the input (yellow) at 30&nbsp;kHz. Note: the output magnitude is approximately 10 times the input." >}}
 
-My findings from this sweep were that our driver boards were producing acceptable outputs up to about 30kHz. Above that and attenuation, clipping, and other effects make the waves unusable. This didn't surprise us given that the output stage of the design was using high-end audio-grade transistors for amplification, so performance above 20kHz for them is not necessary.
+My findings from this sweep were that our driver boards were producing acceptable outputs up to about 30&nbsp;kHz. Above that and attenuation, clipping, and other effects make the waves unusable. This didn't surprise us given that the output stage of the design was using high-end audio-grade transistors for amplification, so performance above 20&nbsp;kHz for them is not necessary.
 
 ### Mechanical Design and CAD
 
@@ -121,9 +121,9 @@ Once the details related to the coils were set, I created supports and had an in
 
 Simulations were done in parallel with the CAD of the apparatus to see how changes in the design would affect the expected field it would produce. All simulations done for the design of the apparatus were done in COMSOL.
 
-My simulations were generally set up to focus on all of the coils operating at maximum current (5A), this would reveal the expected maximum field strength attainable should the system be built. These tests would start as single configuration (I guess "standard" simulations) until I was confident in my results, at which point I began to use parametric sweeps in COMSOL to quickly iterate through various configurations and then compare the results across them afterwards easily. Below is an example of the results I could see from a parametric sweep where I changed the distance the coils were from the boundary of the workspace. Each line represents the strength of magnetic field from one end of the workspace to the other.
+My simulations were generally set up to focus on all of the coils operating at maximum current (5&nbsp;A), this would reveal the expected maximum field strength attainable should the system be built. These tests would start as single configuration (I guess "standard" simulations) until I was confident in my results, at which point I began to use parametric sweeps in COMSOL to quickly iterate through various configurations and then compare the results across them afterwards easily. Below is an example of the results I could see from a parametric sweep where I changed the distance the coils were from the boundary of the workspace. Each line represents the strength of magnetic field from one end of the workspace to the other.
 
-{{< fig src="/images/magnet-sim-axis-analysis.png" caption="The magnetic field strength on the axis between a pair of coils as the distance from the coils to the edge of the work area is varied from 10mm to 20mm" >}}
+{{< fig src="/images/magnet-sim-axis-analysis.png" caption="The magnetic field strength on the axis between a pair of coils as the distance from the coils to the edge of the work area is varied from 10&nbsp;mm to 20&nbsp;mm" >}}
 
 Once I had settled on a design of interest I would look to quantify the individual contributions of a single pair of coils to the overall field. This would allow me to see if that setup had regions that were clearly controlled by only one set of coils and thus "localized" (this was preferred) or if each pair's contributions were almost indistinguishable in the whole. In the figure below, one can see that this configuration has rather localized contributions to the field in the workspace. The highest strength is clearly in the quadrants closest to the tweezers, while they barely contribute past the boundaries of their respective quadrants.
 
@@ -157,9 +157,9 @@ I finished my final version of my initial design around the end of July. This wa
 
 The physical structure of the apparatus I designed (platform, holders, cores) were all going to be made by the machine shop in China our group had worked with before. However, before they could produce the parts there was an outbreak of COVID-19 in their province of China so all businesses were required to stop for three weeks. As a result of this we changed course and paid for the work to be done in the University's machine shop instead. They laser cut the platform and machine the cores for the coils, we 3D-printed the holders on our own. *This was completed approximately three weeks before the Chinese parts finally arrived!*
 
-Although the lab had a device that could wind cores automatically for us, my cores were too small and lacked the geometry to work with it, so I had to hand-wind all the coils. Originally I was supposed to use 18 AWG wire, however it proved to be very difficult to work with by hand given it's stiffness so we moved down to 24 AWG. This brought the benefit of it not only being easier to wind, but also allowing more windings in the same volume thanks to its smaller cross-section. This meant that if we were able to pass an equivalent current through these coils, the field generated would be stronger. 
+Although the lab had a device that could wind cores automatically for us, my cores were too small and lacked the geometry to work with it, so I had to hand-wind all the coils. Originally I was supposed to use 18&nbsp;AWG wire, however it proved to be very difficult to work with by hand given it's stiffness so we moved down to 24&nbsp;AWG. This brought the benefit of it not only being easier to wind, but also allowing more windings in the same volume thanks to its smaller cross-section. This meant that if we were able to pass an equivalent current through these coils, the field generated would be stronger. 
 
-**The original coils were meant to have about 150 turns each. With 24 AWG wire I was able to wind roughly 300 turns on each!**
+**The original coils were meant to have about 150 turns each. With 24&nbsp;AWG wire I was able to wind roughly 300 turns on each!**
 
 {{< fig src="/images/magnet-wound-coils.jpg" caption="Wound coils around their cores. Ruler for scale at the bottom." >}}
 
@@ -179,7 +179,7 @@ Since I assembled the circuit boards first as I wanted for the other parts to be
 
 The same could not be said of the magnet generator. Although all the parts fit together perfectly on it, once I *tried* to install it on the microscope two things became immediately evident:
 
-1. I had somehow messed up the length of the platform plate. *(I traced this back to a note that I accidentally wrote 255mm instead of 235mm)*
+1. I had somehow messed up the length of the platform plate. *(I traced this back to a note that I accidentally wrote 255&nbsp;mm instead of 235&nbsp;mm)*
 2. There was unforeseen interference with the bottom side and the frame. This was somehow missed with the fit check.
 
 I took measurement of the entire frame of the microscope, not just the optics so I could see how much work needed to be redone or if there was some hacky way around it. *Boy did I have my work cut out for me.*
@@ -200,11 +200,11 @@ Even with a non-fitting apparatus, I could start to work on calibrating the magn
 
 My work to do this was pretty simple, I would operate the system under a known and stable condition and then record the magnetic field strength throughout the work volume.
 
-To measure at a set of known points in the 3D workspace I resorted to imposing a grid of regularly spaced points on a drawing of the apparatus (normal to the plane I was trying to calibrate on). I then would print these out at 100% scale, cut them, and then tape them into place in the apparatus. For my calibrations, I used a 5mm grid spacing for points on a plane.
+To measure at a set of known points in the 3D workspace I resorted to imposing a grid of regularly spaced points on a drawing of the apparatus (normal to the plane I was trying to calibrate on). I then would print these out at 100% scale, cut them, and then tape them into place in the apparatus. For my calibrations, I used a 5&nbsp;mm grid spacing for points on a plane.
 
 {{< fig src="/images/magnet-calibration-sheet.jpg" caption="The printed sheet installed in the apparatus" >}}
 
-Using a Gaussmeter, I would probe the field at each point and record it. To calibrate in the Z-direction too I would use measured pieces of foam (3mm) sandwiched between these printed out sheets, align the grids as best I could, and repeat the process.
+Using a Gaussmeter, I would probe the field at each point and record it. To calibrate in the Z-direction too I would use measured pieces of foam (3&nbsp;mm) sandwiched between these printed out sheets, align the grids as best I could, and repeat the process.
 
 {{< fig src="/images/magnet-calibration-sandwich.jpg" caption="The calibration sheet and foam 'sandwich'" >}}
 
@@ -227,7 +227,7 @@ These can both be imagined to be the result of atomic-scale friction between the
 
 I started by looking at the available guides and examples for what COMSOL had to offer for magneto-thermal simulations, however it was largely at the macro-scale so very little was relevant to me. The software however did have provisions for determining the magnetic losses, and then using them as a heat source.
 
-So began by simply playing around with the values of the simulation to see if I could approximate the results of other published trials. To do this I simply simulated a single spherical nanoparticle surrounded in water, with an alternating ambient magnetic field. This quickly resulted in issues for me because COMSOL had issues meshing the nanoparticles if they were smaller than 200nm in diameter (most research was between 10nm and 20nm). However after some tweaking of material values I was able to approximate the power densities of the research at their frequencies. This success was tainted with some serious questions though:
+So began by simply playing around with the values of the simulation to see if I could approximate the results of other published trials. To do this I simply simulated a single spherical nanoparticle surrounded in water, with an alternating ambient magnetic field. This quickly resulted in issues for me because COMSOL had issues meshing the nanoparticles if they were smaller than 200&nbsp;nm in diameter (most research was between 10&nbsp;nm and 20&nbsp;nm). However after some tweaking of material values I was able to approximate the power densities of the research at their frequencies. This success was tainted with some serious questions though:
 
 - *Congratulations, you made the results of this test (an order of magnitude larger) mimic that of a smaller particle.* How can you be sure you have it set up properly for this scale once you get the right material properties?
 - How will I know I have the right material properties?
@@ -237,8 +237,7 @@ So began by simply playing around with the values of the simulation to see if I 
 
 ## Determining Material Propeties
 
-I decided to start by working on the first two questions since I believed they would be the foundation needed to address the other 
-questions properly. 
+I decided to start by working on the first two questions since I believed they would be the foundation needed to address the other questions properly. 
 
 In the magnetic losses simulation of COMSOL, a differential formula is used to determine the magnetic hysteresis loop of a given material and thus the magnetic losses. This formula needs two parameters to characterize a material, μ' and μ'', these are the relative magnetic permeabilities of a material. They would be used in the formula below.
 

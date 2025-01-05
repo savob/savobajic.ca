@@ -51,21 +51,21 @@ N-channel MOSFETs are used on both sides of the bridge due to their lower "on" r
 
 *Bootstrapping* in this application is the process of changing a capacitor between ground and the supply voltage, then disconnecting it on both ends. Then connecting the capacitor terminal that was previously connected to ground, to the supply rail. Since the potential across the capacitor has not been changed, the potential at the positive side is now twice that of the supply rail relative to ground. This is then routed to drive the gate of the high side MOSFETs. *The FAN7888 does not actually switch the connections on the low side of the bootstrapping capacitor*, it has that constantly connected to the source of the MOSFETs (phase output), but it achieves the same effect and is useful for a few other reasons such as avoiding potentially exceeding the gate-source voltage.
 
-### 5V Regulator (Battery Elimination Circuit)
+### 5&nbsp;V Regulator (Battery Elimination Circuit)
 
-A 5V buck regulator is used to supply the microcontroller with power from the battery input. Although the individual draw of the microcontroller on the ESC is well within what could be reasonably provided by a linear regulator, thus saving space on the board and reducing system cost, I decided to use the buck regulator to allow the 5V from an ESC to be used as a common rail to *efficiently* power other drone systems instead having to design a 5V regulator into each.
+A 5&nbsp;V buck regulator is used to supply the microcontroller with power from the battery input. Although the individual draw of the microcontroller on the ESC is well within what could be reasonably provided by a linear regulator, thus saving space on the board and reducing system cost, I decided to use the buck regulator to allow the 5&nbsp;V from an ESC to be used as a common rail to *efficiently* power other drone systems instead having to design a 5&nbsp;V regulator into each.
 
 ## Board Layout
 
-I laid out the circuit on a board that I arbitrarily set to be 65mm x 35mm. In order to decrease the size I had the output stage of the circuit on one side and the remainder of the electronics on the other. All power lines are t be soldered on their designated pads/exposed traces. Along the right edge of the figures there is a large exposed pad for the two power rails, this was done to easily allow the soldering of buffer capacitors along this edge as needed.
+I laid out the circuit on a board that I arbitrarily set to be 65&nbsp;by&nbsp;35&nbsp;mm. In order to decrease the size I had the output stage of the circuit on one side and the remainder of the electronics on the other. All power lines are t be soldered on their designated pads/exposed traces. Along the right edge of the figures there is a large exposed pad for the two power rails, this was done to easily allow the soldering of buffer capacitors along this edge as needed.
 
 {{< fig src="/images/esc-v1-combined-layout.png" caption="The overall layout of the board" >}}
 
-The output stage was put all on one side for simplicity and because given the powerful nature of the components, they were generally bulkier, as well as the traces. I designed all the power traces to be 5mm wide to carry upwards of 10A without exceeding a 20°C rise in temperature with 1oz. copper (~35um) (on the drone they will be positioned under the propellors which should aid with cooling. In addition to their width, I exposed the power traces to allow easier soldering of wires to them as well flooding them with solder to increase their current capacities.
+The output stage was put all on one side for simplicity and because given the powerful nature of the components, they were generally bulkier, as well as the traces. I designed all the power traces to be 5&nbsp;mm wide to carry upwards of 10&nbsp;A without exceeding a 20&nbsp;°C rise in temperature with 1&nbsp;oz. copper (~35&nbsp;um) (on the drone they will be positioned under the propellors which should aid with cooling. In addition to their width, I exposed the power traces to allow easier soldering of wires to them as well flooding them with solder to increase their current capacities.
 
 {{< fig src="/images/esc-v1-top-layout.png" caption="The layout of the output stage side" >}}
 
-The remainder of the system (control and voltage regulator) were housed on one shared side. The 5V buck regulator was nested between the ground and +5V pads on the left part of the board, with distinct thicker traces for the power into and out of it to carry the up to 1A at 5V without issue. The remainder of the side was used for the control part of the system.
+The remainder of the system (control and voltage regulator) were housed on one shared side. The 5&nbsp;V buck regulator was nested between the ground and +5&nbsp;V pads on the left part of the board, with distinct thicker traces for the power into and out of it to carry the up to 1&nbsp;A at 5&nbsp;V without issue. The remainder of the side was used for the control part of the system.
 
 {{< fig src="/images/esc-v1-bottom-layout.png" caption="The layout of the control and voltage regulator side" >}}
 

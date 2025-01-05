@@ -25,9 +25,9 @@ I ordered the boards but never bothered to assemble them, as I was already plann
 
 This revision was mainly a pruning of some thorns in V2 related to development: mixed voltages and expressing status to the user. You can read into what went into designing V2 [on its page]({{< ref "projects/personal/esc/esc-v2#detailed-report" >}}), here I will focus only on my changes:
 
-- The removal of the 5V regulator. 
-  - It is now dependant on an external 5V supply for the microcontroller.
-  - This was done to avoid issues related to unequal 5V through the system and with programmers.
+- The removal of the 5&nbsp;V regulator. 
+  - It is now dependant on an external 5&nbsp;V supply for the microcontroller.
+  - This was done to avoid issues related to unequal 5&nbsp;V through the system and with programmers.
 - The addition of Schottky diodes to supply line for the MOSFET driver.
   - This was done to ensure that the driver chip would always be supplied the higher of 5V or Vbatt
 - The addition of two status LEDs.
@@ -39,7 +39,7 @@ This revision was mainly a pruning of some thorns in V2 related to development: 
 
 Since this is the basically the same as V2 (and thus V1), please refer to [V1's section]({{< ref "projects/personal/esc/esc-v1#circuit-design" >}}) on the circuit's main design. My changes to the design were:
 
-- The removal of the 5V regulator subsystem
+- The removal of the 5&nbsp;V regulator subsystem
 - The addition of Schottky diodes to supply line for the MOSFET driver. **D6 and D7**.
 - The addition of two status LEDs. **D4** for the microcontroller and **D5** for power indication.
 - The rearrangement of how the RESET signal for the microcontroller is routed for programming.
@@ -52,7 +52,7 @@ I started by reusing the layout from V2, so I will link to [its layout descripti
 
 {{< fig src="/images/esc-v3-combined-layout.png" caption="The overall layout of the board" >}}
 
-All changes that occurred were on the top side. The complete removal of the 5V regulator was in the top right. Three of the four new diodes sit in the space it formerly occupied, the only exception being the controlled diode (D4) sitting in the centre of the board.
+All changes that occurred were on the top side. The complete removal of the 5&nbsp;V regulator was in the top right. Three of the four new diodes sit in the space it formerly occupied, the only exception being the controlled diode (D4) sitting in the centre of the board.
 
 {{< fig src="/images/esc-v3-top-layout.png" caption="The layout of the top side" >}}
 

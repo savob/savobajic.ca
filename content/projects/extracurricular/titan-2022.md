@@ -160,11 +160,11 @@ I made two revisions for hardware corresponding with my two main periods of work
 
 The circuit can be broken into a few main sections:
 
-- The 5V regulator. Includes certain power protections like reverse polarity.
+- The 5&nbsp;V regulator. Includes certain power protections like reverse polarity.
 - The microcontroller and communication section (RPis, GPS, telemetry, USB)
 - Sensor interfaces
 
-Most of these are based off reference designs for the respective section (e.g. the regulator chip), so there wasn't too much for me to do other than designating the connections between these. The areas where I did design some circuitry of my own were the power protection stages before the 5V regulator and the comparator for the analog input.
+Most of these are based off reference designs for the respective section (e.g. the regulator chip), so there wasn't too much for me to do other than designating the connections between these. The areas where I did design some circuitry of my own were the power protection stages before the 5&nbsp;V regulator and the comparator for the analog input.
 
 ## Revised Circuits
 
@@ -174,7 +174,7 @@ For the second version I changed a few things from the first, major changes list
 - Added the new IR thermometer and CO2 sensor headers
 - Added status LEDs (controlled by microcontroller)
 - Added SWD debugging header for STM32
-- Changed the 5V regulator (due to supply issues)
+- Changed the 5&nbsp;V regulator (due to supply issues)
 
 {{< fig src="/images/titan-2022-schematic.svg" caption="The completed main schematic for TITAN 2022 (PDF version: [Colour](/pdf/titan-2022.pdf) / [BW](/pdf/titan-2022-BW.pdf))" class="schematic" >}}
 
@@ -194,7 +194,7 @@ There were two boards made, the main boards that were put on the RPis as HATs (m
 
 The board layout underwent a much more intense change from the previous version than the circuitry. Whereas the previous board was meant to sit completely separate of the RPis connected to them by a 40 wire ribbon cable, the new boards were meant to be mounted using the RPi Hardware on Top (HAT) standard. This eliminated the need for the ribbon cable by putting the TITAN board directly on top of the RPi with a 40-pin header which also reduced the overall footprint of the system by having the board overlap the RPi. This was first attempted with [Blueshift]({{<ref "projects/extracurricular/blueshift#layout" >}}) to reduce system size as well as reducing the chance of incorrect connection.
 
-The HAT standard also has a recommended outline to not extend outside the footprint of the RPi (65 by 56 mm), mounting holes to seat nicely on the RPi, and spaces for the different interfaces that might need to pass through; RPi display and RPi camera cables. The default HAT board is shown below, I made two changes to the outline visible when looking at my layouts later: 
+The HAT standard also has a recommended outline to not extend outside the footprint of the RPi (65&nbsp;by&nbsp;56&nbsp;mm), mounting holes to seat nicely on the RPi, and spaces for the different interfaces that might need to pass through; RPi display and RPi camera cables. The default HAT board is shown below, I made two changes to the outline visible when looking at my layouts later: 
 1. I removed the clearance for the display cable on the left edge since we weren't going to use it. HDMI comes out the side of the RPi.
 2. I extended the slot for the camera cable to the lower edge. This would allow the HAT to be seated to or removed from the RPi without needing to fiddle with the camera cabling.
 
@@ -206,11 +206,11 @@ I tried to place the majority of ports around the edges of the boards, and the b
 
 {{< fig src="/images/titan-2022-layout-overall.png" caption="The overall layout of the board" >}}
 
-All the hardware other than the header for the RPi resides on the top side of the board. The microcontroller is seated in the middle with the different parts it connects to placed radially around it. The power regulation and protection circuitry is in the top left quadrant since the 5V pins for the RPi are there so clustering all this there reduces the parasitics present in the power system. Introduced from the previous version, the status LEDs are placed in the centre since I wasn't too sure which side would be easiest to view when mounted in the bike, so here they would be equally visible regardless of board orientation.
+All the hardware other than the header for the RPi resides on the top side of the board. The microcontroller is seated in the middle with the different parts it connects to placed radially around it. The power regulation and protection circuitry is in the top left quadrant since the 5&nbsp;V pins for the RPi are there so clustering all this there reduces the parasitics present in the power system. Introduced from the previous version, the status LEDs are placed in the centre since I wasn't too sure which side would be easiest to view when mounted in the bike, so here they would be equally visible regardless of board orientation.
 
 {{< fig src="/images/titan-2022-layout-top.png" caption="The layout of the top side" >}}
 
-The majority of traces are on the top, the bottom was reserved mostly for a 3.3V plane and the odd traces that needed to use the bottom. Since it was devoid of parts I used it to record some of the boards features as well as some basic assembly instructions.
+The majority of traces are on the top, the bottom was reserved mostly for a 3.3&nbsp;V plane and the odd traces that needed to use the bottom. Since it was devoid of parts I used it to record some of the boards features as well as some basic assembly instructions.
 
 {{< fig src="/images/titan-2022-layout-bottom.png" caption="The layout of the bottom side" >}}
 
@@ -241,7 +241,7 @@ Focusing on the top layers I set the test point for a ground connection to be pe
 
 {{< fig src="/images/titan-wheel-layout-top.png" caption="The layout of the top side" >}}
 
-The bottom served as a 5V plane and had traces for some connections.
+The bottom served as a 5&nbsp;V plane and had traces for some connections.
 
 {{< fig src="/images/titan-wheel-layout-bottom.png" caption="The layout of the bottom side" >}}
 
@@ -474,7 +474,7 @@ Most of the work needed for this I had already done with my [telemetry project](
 
 As I was working and testing the radio communications with our base station I realized that is took tens of milliseconds for each data exchange with TITAN. So for the couple dozen fields of data each individual requested this added up to a notable amount of time on both ends. So I experimented by implementing a single condensed package that was binary encoded (as opposed to the plain text used until now), this allowed much more data to be crammed into a single data packet, I was able to get all the data needed for the base station into a 32 bytes with the usual 2 byte message header this way which allowed it to be sent as a single nRF24 message!
 
-To do this I copied all the data into a custom struct before sending it across the radio. To compress the data, the floating point variables like the speeds were converted to fixed point representation with integers. E.g. 78.921&nbsp;km/h would be transmitted as 78921 and be divided back when decoded at the receiver.
+To do this I copied all the data into a custom structure before sending it across the radio. To compress the data, the floating point variables like the speeds were converted to fixed point representation with integers. E.g. 78.921&nbsp;km/h would be transmitted as 78921 and be divided back when decoded at the receiver.
 
 ```cpp
 bulkDataStruct dataLoad;
@@ -513,7 +513,7 @@ One thing I would potentially change about the radio system it that instead of u
 
 The code for the RPis departed greatly from 2019. In 2019 the entirety of the RPi code was written in Python, however for 2022 the majority of it was rewritten in C with only some parts in Python. **This fundamental rework was done in the interest of improving the reliability and speed of the data overlay system for the video** which was the main reason for my previous system being removed in TITAN for WHPSC 2019.
 
-On the RPis there are a few processes going on handed by different bits of code, the flow of it is as follows: on boot there is a python script that is used to determine which RPi it is (front or rear), then execute the requiste programs. These programs being the camera feed, overlay, and ANT data collection if there is an ANT module present. There are also two additional scripts executed by this boot script to monitor and handle button presses on the TITAN boards such as safely shutting down the RPi.
+On the RPis there are a few processes going on handed by different bits of code, the flow of it is as follows: on boot there is a python script that is used to determine which RPi it is (front or rear), then execute the requisite programs. These programs being the camera feed, overlay, and ANT data collection if there is an ANT module present. There are also two additional scripts executed by this boot script to monitor and handle button presses on the TITAN boards such as safely shutting down the RPi.
 
 To speedup the boot time of the system as well as making it easier for people to notice errors during boot, I had the RPis configured to boot to command line instead of a graphical user interface. This meant that anything my programs printed would appear in the terminal which occupied the entire screen.
 
@@ -533,7 +533,7 @@ When working on TITAN it was annoying to constantly blindly open the terminal an
 
 ### Camera Feed
 
-The camera feed was launched by a Python script as it was for TITAN in 2019 since it was the easiest method and worked as we needed it to. By running it as a seperate program/process to the overlay it means that should the overlay fail for any reason, the video will continue uninterrupted.
+The camera feed was launched by a Python script as it was for TITAN in 2019 since it was the easiest method and worked as we needed it to. By running it as a separate program/process to the overlay it means that should the overlay fail for any reason, the video will continue uninterrupted.
 
 In about a dozen lines the camera feed was up on screen and the video recorded to a file. This code would put the video feed over the entire screen as a "preview", and start recording it to a fill if desired. The settings we could manage were a stable 720p HD video, at 60 frames per second.
 

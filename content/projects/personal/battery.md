@@ -40,15 +40,15 @@ I was doing this on my travels so I didn't have any of my tools so I worked with
 
 ## Disassembly
 
-I first started by recording the information on the outside of the battery case and marking them "1" to "6" so I could better keep track of any faults and work per battery. The first thing that I noticed was the high voltage, 57.6V so I knew to start treading *very* carefully.
+I first started by recording the information on the outside of the battery case and marking them "1" to "6" so I could better keep track of any faults and work per battery. The first thing that I noticed was the high voltage, 57.6&nbsp;V so I knew to start treading *very* carefully.
 
 {{< fig src="/images/battery-case.jpg" caption="The labelling on the battery cases" >}}
 
-Once that was done, I started to open my first battery pack to see what was inside. I was relieved to see that they were using a chain of 16 standard 18650 lithium cells, hence the high nominal voltage of 57.6V (16 * 3.6V). These cells are commonly used for hobbyist projects but also for vapes, so I didn't expect to have issues sourcing them in the city.
+Once that was done, I started to open my first battery pack to see what was inside. I was relieved to see that they were using a chain of 16 standard 18650 lithium cells, hence the high nominal voltage of 57.6&nbsp;V (16 * 3.6&nbsp;V). These cells are commonly used for hobbyist projects but also for vapes, so I didn't expect to have issues sourcing them in the city.
 
 {{< fig src="/images/battery-harvested-board.jpg" caption="A partially unsoldered battery pack. Marked with an 'X' to not reuse the board." >}}
 
-After opening each battery pack I would also mark the board to match it with the case. Although I had no intent to reuse any of the cells I still probed the voltage across each of the 16 cells in each of the six batteries just to see what their health was at out of curiosity. I was expecting them to fall a bit short of the usual 3.6V, maybe 3 or 2.5, but there were some that were entirely negative!
+After opening each battery pack I would also mark the board to match it with the case. Although I had no intent to reuse any of the cells I still probed the voltage across each of the 16 cells in each of the six batteries just to see what their health was at out of curiosity. I was expecting them to fall a bit short of the usual 3.6&nbsp;V, maybe 3 or 2.5, but there were some that were entirely negative!
 
 Once I completed my measurements, I separated the boards from the cells by desoldering their tabs and moving them back carefully with a wooden toothpick to avoid shorts. I marked down the boards that had the fewest critically faulty cells on them as the prime candidates to receive the new cells.
 
@@ -96,7 +96,7 @@ In a balanced battery, all the cells have the same voltage, so the under-voltage
 x = 3.125
 ```
 
-So the voltage on the healthy cells would be 3.125V, but for the two that weren't balanced before are down at 2.125V. This is below the critical threshold for the cell chemistry (3.0V) and leads to irreversible damage if not immediately remedied. This under-voltage happened to two of the cells on the battery, so the next day I had to buy two cells at a vape store and replace the damaged ones. This required me to tear apart much of the work I did the day before, but alas, it had to be done.
+So the voltage on the healthy cells would be 3.125&nbsp;V, but for the two that weren't balanced before are down at 2.125&nbsp;V. This is below the critical threshold for the cell chemistry (3.0&nbsp;V) and leads to irreversible damage if not immediately remedied. This under-voltage happened to two of the cells on the battery, so the next day I had to buy two cells at a vape store and replace the damaged ones. This required me to tear apart much of the work I did the day before, but alas, it had to be done.
 
 {{< fig src="/images/battery-different-cells.jpg" caption="A photo I took of a replacement cell (green)" >}}
 

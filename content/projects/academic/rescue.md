@@ -30,8 +30,8 @@ Overall our team was successful at achieving all milestones. My primary contribu
 ## Requirements
 
 - Milestone 1:
-   - 15 minutes to explore and map 6m x 6m area with static obstacles
-   - Speed limited to 0.25m/s in open space, 0.1m/s when near obstacles
+   - 15 minutes to explore and map 6&nbsp;by&nbsp;6&nbsp;m area with static obstacles
+   - Speed limited to 0.25&nbsp;m/s in open space, 0.1&nbsp;m/s when near obstacles
    - Must use sensors for navigation (no preplanned motions)
 - Milestone 2:
    - Visit the location of each tag and identify it
@@ -98,7 +98,7 @@ The robot had a few different input channels available for use:
    - Left and right wheel drop sensors
    - 3 touch buttons
    
-*Note that not all of these were used in our project, given the flat and virtual operating enviroment we had no use for any of the sensors listed past the bumpers.*
+*Note that not all of these were used in our project, given the flat and virtual operating environment we had no use for any of the sensors listed past the bumpers.*
 
 ### Outputs
 
@@ -171,8 +171,8 @@ One issue we identified with this approach was that it had a possibility to get 
 Holding all this together was a finite state control system with three states:
 
 1. Bumper - Used whenever any bumper is struck
-2. Explore - do weighted random walk (*default state*)
-3. Scan - perform a rotational scan and decide a new heading
+2. Explore - Do weighted random walk (*default state*)
+3. Scan - Perform a rotational scan and decide a new heading
 
 These would have their own sub-states within them, for example when scanning, there would be a state for the actual scanning rotation followed by another sub-state to move to the selected state before returning to the normal explore state.
 
@@ -202,7 +202,7 @@ The simplest conceptually is "brute force", where one goes and calculates the to
 
 The other method we considered was the "nearest neighbour". As the name implies, this algorithm simply builds a route by selecting the nearest unvisited point to the start, and then repeating from that point until all destinations are visited. This is a bit harder to implement and is not guaranteed to find the optimal route, however it is significantly cheaper to compute as more stops are added since the number of computations grows at about `x^2` with the number of stops. **With five stops, 15 distance calculations are needed - with 10, only 55.**
 
-We decided to try and go with the brute force method first and switch to the nearest neighbour if it was far too slow. Our initial code to brute force took about a half minute to provide a route, a respectable time since there is a decent chance it would make up for it with the savings in movement we would get. To reduce this computation time further we made the choice to an "Adjacency Matrix" this was an 11x11 matrix with the distance between any two destinations stored in it (11 destinations are the 10 boxes and then the start/finish point). By pre calculating this, we could replace the calculation for distance between two points in the loop (`sqrt((x1-x2)^2 + (y1-y2)^2)`) with a much faster lookup in the matrix. This dropped the time down to get the optimum path to only about 5 seconds! This was acceptable for us and we left it at that.
+We decided to try and go with the brute force method first and switch to the nearest neighbour if it was far too slow. Our initial code to brute force took about a half minute to provide a route, a respectable time since there is a decent chance it would make up for it with the savings in movement we would get. To reduce this computation time further we made the choice to an "Adjacency Matrix" this was an 11&nbsp;by&nbsp;11 matrix with the distance between any two destinations stored in it (11 destinations are the 10 boxes and then the start/finish point). By calculating this in advance, we could replace the calculation for distance between two points in the loop (\(\sqrt{(x_1-x_2)^2 + (y_1-y_2)^2}\)) with a much faster lookup in the matrix. This dropped the time down to get the optimum path to only about 5 seconds! This was acceptable for us and we left it at that.
 
 ### Distance Consideration
 
@@ -212,7 +212,7 @@ I could have investigated how to pull the planned path length between two points
 
 ## Image Recognition
 
-This was the bulk of the work for this milestone and I worked mostly on this for our team. We used the OpenCV framework which has been well worked into ROS, and thus easy to deploy for our project. The robot's camera provided an RGB video feed at a resolution of 640 pixels wide by 480 pixels tall, at roughly 30 frames per second.
+This was the bulk of the work for this milestone and I worked mostly on this for our team. We used the OpenCV framework which has been well worked into ROS, and thus easy to deploy for our project. The robot's camera provided an RGB video feed at a resolution of 640 pixels wide by 480&nbsp;pixels tall, at roughly 30 frames per second.
 
 Our vision system needed to be satisfy the following for success:
 
@@ -229,7 +229,7 @@ Since I knew that our code was going to be executed in a simulation with perfect
 
 #### Reference Preprocessing
 
-Since I knew that all the images shown in the simulation would be stretched to fill the face on the boxes with a 5:4 aspect ratio I would load in the reference images and resize them to be 500 pixels by 400 pixels. This didn't do much to help most of the image's detection rates since they were all generally around this aspect ratio to begin with. The one major exception to this being "tag_12" with a very narrow aspect ratio of 3:7 which caused poor identification in my initial tests.
+Since I knew that all the images shown in the simulation would be stretched to fill the face on the boxes with a 5:4 aspect ratio I would load in the reference images and resize them to be 500&nbsp;by&nbsp;400&nbsp;pixels. This didn't do much to help most of the image's detection rates since they were all generally around this aspect ratio to begin with. The one major exception to this being "tag_12" with a very narrow aspect ratio of 3:7 which caused poor identification in my initial tests.
 
 {{< fig src="/images/rescue-tag-12.jpg" caption="'tag_12' ready to mislead your unprepared image detection" >}}
 
@@ -282,7 +282,7 @@ Once all tags have be scanned for in the image, the top two final confidence are
 
 ### Testing Image Detection
 
-To test the image detection code in an efficient manner I collected a series of about 50 or 60 images taken from the simulator of various tags on different boxes with differing conditions, generally meant to be adverse to image recognition to properly exercise the system without needing to run the entire simulator everytime. Below are some examples of the tests being passed.
+To test the image detection code in an efficient manner I collected a series of about 50 or 60 images taken from the simulator of various tags on different boxes with differing conditions, generally meant to be adverse to image recognition to properly exercise the system without needing to run the entire simulator every time. Below are some examples of the tests being passed.
 
 
 {{< fig src="/images/rescue-dealing-with-rotation-and-slant.png" caption="Rotation and slant" >}}
@@ -295,7 +295,7 @@ To test the image detection code in an efficient manner I collected a series of 
 
 ## Outputting Data
 
-Output data was just a text file prepared that would be saved on the user's computer listing the locations of boxes visited, the identified tag, and if it was the first time that tag was spotted (*new*) or if it was a duplicate (*dup*). These entries were ordered in the order the robot visited them. For example, if tag 2 was spotted for the first time on a box at (1.94m, -1.41m) with a orientation (heading) of 0.788 radians, the entry would be: 
+Output data was just a text file prepared that would be saved on the user's computer listing the locations of boxes visited, the identified tag, and if it was the first time that tag was spotted (*new*) or if it was a duplicate (*dup*). These entries were ordered in the order the robot visited them. For example, if tag 2 was spotted for the first time on a box at (1.94&nbsp;m, -1.41&nbsp;m) with a orientation (heading) of 0.788 radians, the entry would be: 
 
 ```
 Tag 2 - ( 1.94, -1.41, 0.788) - new
@@ -316,7 +316,6 @@ A full version of our code for this milestone is available at our [contest 2 Git
 Our code for these contest managed a perfect run! Our report also received a good review, you can read it [here](/pdf/Team-22-Contest-2-Report.pdf).
 
 I even recorded a simulated run of this contest since I was so proud of it. I would recommend that you view it in 4K if possible to make out most of the details. 
-
 
 {{< youtube id="zvNsD12UBn4" title="Contest Two Simulation" >}}
 
@@ -356,7 +355,7 @@ To find the victims of the disaster, the robot would need to explore an enclosed
 
 Unlike in contest 1, we didn't have to prepare the majority of the exploration algorithm. We instead primarily used the available *Explore* class in ROS to handle automated exploration. Simply calling `Explore.start()` and `Explore.stop()` were sufficient to run the exploration. 
 
-This exploration algorithm was built upon *gmapping*'s provided map of the world. We were used a "greedy" frontier-based exploration algorithm, where the robot takes the average location of all the frontiers (divisions between explored and unexplored areas, that are not obstacles) in its vicinity and heads to that average. This cycle is repeated again and again, even as the robot moves to make a constantly shifting taget to reach.
+This exploration algorithm was built upon *gmapping*'s provided map of the world. We were used a "greedy" frontier-based exploration algorithm, where the robot takes the average location of all the frontiers (divisions between explored and unexplored areas, that are not obstacles) in its vicinity and heads to that average. This cycle is repeated again and again, even as the robot moves to make a constantly shifting target to reach.
 
 {{< fig src="/images/rescue-partial-exploration.png" caption="Robot exploring the world. Current path is illustrated in red." >}}
 

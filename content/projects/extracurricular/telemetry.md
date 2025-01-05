@@ -17,21 +17,21 @@ thumbnail: "/images/telemetry-modules.jpg"
 
 HPVDT's vehicles collect data about their state and relay it to their riders in real time. I developed a general system that could used to broadcast data out of the vehicle to a base station so our crew could also view data in real time instead of going through logs afterwards to analyze performance.
 
-The system is based on **nRF24L01 modules that support a range of about 1km** with direct line of sight at a bandwidth of couple dozen kilobytes per second, which is a far more than adequate bandwidth for our purposes.
+The system is based on **nRF24L01 modules that support a range of about 1&nbsp;km** with direct line of sight at a bandwidth of couple dozen kilobytes per second, which is a far more than adequate bandwidth for our purposes.
 
 I used Blueshift as the context to develop this for, but it was prepared in a modular way so that it could be easily redeployed in future projects.
 
 ## Requirements
 
-- Communication with vehicles with 400m direct line of sight
+- Communication with vehicles with 400&nbsp;m direct line of sight
    - Based on the distance our trail van is behind our speed bikes
-- Have communication bandwidth of 2kbit/s
+- Have communication bandwidth of 2&nbsp;kbit/s
 - Have a modular code-base/library
 
 ## Objectives
 
-- Range of 750m with direct line of sight
-- Bandwidth of 20kbit/s
+- Range of 750&nbsp;m with direct line of sight
+- Bandwidth of 20&nbsp;kbit/s
 - Bi-directional data exchange
 
 ## Takeaways
@@ -55,9 +55,9 @@ There are two variants, the basic ones with a printed antenna and the other with
 
 ## Hardware Design
 
-Since we were using commercial modules there wasn't much need for any additional hardware other than a development board with SPI support and a 10uF capacitor for the module. For development I selected to use and Arduino Nano since I was familiar with them and their size small size helped reduce clutter in my workspace.
+Since we were using commercial modules there wasn't much need for any additional hardware other than a development board with SPI support and a 10&nbsp;uF capacitor for the module. For development I selected to use and Arduino Nano since I was familiar with them and their size small size helped reduce clutter in my workspace.
 
-I designed a small adapter board to connect the radio modules to the 10uF capacitor and the Nano to make it easier for myself and others to test and develop telemetry code without having to worry about wiring issues.
+I designed a small adapter board to connect the radio modules to the 10&nbsp;uF capacitor and the Nano to make it easier for myself and others to test and develop telemetry code without having to worry about wiring issues.
 
 {{< fig src="/images/telemetry-adapter.jpg" caption="The produced adapter board" >}}
 

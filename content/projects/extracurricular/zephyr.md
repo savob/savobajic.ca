@@ -77,7 +77,7 @@ The remaining PCB space was allocated to data collection and processing, at the 
 - Speed of bike – Using a Hall effect (magnet) sensor to trigger an interrupt every time a magnet on the wheel spokes passed it.
 - Cadence (pedalling rate) – Gathered the same way as speed, but monitoring pedals
 - Temperature – Resistor voltage division where one resistor is a negative thermal coefficient thermistor
-- Battery level (voltage) – Resistor voltage division (this is to reduce the input at peak battery level (12.3V) to be tolerable for the Arduino to read (<5V))
+- Battery level (voltage) – Resistor voltage division (this is to reduce the input at peak battery level (12.3&nbsp;V) to be tolerable for the Arduino to read (<5&nbsp;V))
 
 In addition to being connected to sensors, the Arduino was also connected to the controlled the enable pins of the LED drivers, allowing it to control the lights, which could be dimmed using PWM signals.
 

@@ -27,8 +27,8 @@ When I moved to my fourth revision I needed to re-write much of my code again be
 
 ## Requirements
 
-- Operate with supply voltages between 9V and 20V
-- Be able to supply 30A continuously
+- Operate with supply voltages between 9&nbsp;V and 20&nbsp;V
+- Be able to supply 30&nbsp;A continuously
 - Allow control over I2C
 
 ## Objectives

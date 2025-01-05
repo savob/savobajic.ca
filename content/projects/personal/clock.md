@@ -240,7 +240,7 @@ The finished module ended up looking like this individually. I noticed that alth
 
 ## Testing
 
-Testing was meant to go in three basic stages. The first stage was checking that my signal generator and power supply module was working as expected. This meant powering it up and checking that it was outputting 5&nbsp;V properly and a stable 1 Hz signal on the appropriate headers with my oscilloscope, which it did.
+Testing was meant to go in three basic stages. The first stage was checking that my signal generator and power supply module was working as expected. This meant powering it up and checking that it was outputting 5&nbsp;V properly and a stable 1&nbsp;Hz signal on the appropriate headers with my oscilloscope, which it did.
 
 The second stage of testing was testing each display and reset module to work as expected. For this I connected each display-reset module pair to keep track of the seconds to see if they kept count well, displayed all the numbers they were meant to (0 to 23 or 59) and then rollover properly. All three pairs worked as needed.
 
@@ -418,7 +418,7 @@ Amazingly **no failures were detected in the first almost 80 thousand waves, whi
 
 {{< fig src="/images/clock-555-test-accident.png" caption="The start of my test with the 555 installed" >}}
 
-In the end though after almost 110&nbsp;000 waves with *only one* recorded failure, I ended the test. This was equivalent to 1 300 596 minutes, or just under 2 and a half years! Even this one failure was likely my fault rather than a genuine circuit issue.
+In the end though after almost 110&nbsp;000 waves with *only one* recorded failure, I ended the test. This was equivalent to 1&nbsp;300&nbsp;596 minutes, or just under 2 and a half years! Even this one failure was likely my fault rather than a genuine circuit issue.
 
 {{< fig src="/images/clock-555-test-finish.png" caption="The start of my test with the 555 installed" >}}
 
@@ -510,7 +510,7 @@ I received a static shock, not usually notable - *BUT* I saw that at that instan
 It all made sense looking back:
 
 - Static shocks can only occur when I am around, hence the solid night operation
-- The noise was massive, I doubt even a faulty power supply would be able to swing 40V like that
+- The noise was massive, I doubt even a faulty power supply would be able to swing 40&nbsp;V like that
 - The minutes were the main digits effected in this test due to the long wires picking up EMI
 - I was wearing different pants than I was previously. (Yay laundry!) 
    - I know that the ones I was wearing then had a habit of generating shocks all winter
