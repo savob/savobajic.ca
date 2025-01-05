@@ -47,7 +47,7 @@ In my fourth year control systems class, MIE404: Control Systems, our course pro
 
 In our project we were only considering the motion to be along a single axis, although an additional one can be easily incorporated into the system. The crane system consists of a trolley, rope, and payload. These are shown modelled in the figure below, where:
 
-> \(m_t\) – mass of the trolley  
+> \\(m_t\\) – mass of the trolley  
 > \(m_l\) – mass of the load  
 > \(x_t\) – horizontal displacement of the trolley  
 > \(x_l\) – horizontal displacement of the load  
