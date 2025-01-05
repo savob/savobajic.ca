@@ -76,7 +76,7 @@ At the present the following data is collected by this system:
 
 *This is something I've not been too heavily involved in yet to be frank.*
 
-Since this aircraft is based off the design for [TITAN]({{ <ref "projects/extracurricular/titan-2022" >}}) the pilot configuration does not offer a convenient view port for them. There are no ruled surfaces that would make a physical window easy to manufacture, and even if there was, their heads are not located somewhere that would suit them surveying their surroundings. So as a result of this, and the possibility of pursuing remote controlled test flights a digital vision system is necessary.
+Since this aircraft is based off the design for [TITAN]({{< ref "projects/extracurricular/titan-2022" >}}) the pilot configuration does not offer a convenient view port for them. There are no ruled surfaces that would make a physical window easy to manufacture, and even if there was, their heads are not located somewhere that would suit them surveying their surroundings. So as a result of this, and the possibility of pursuing remote controlled test flights a digital vision system is necessary.
 
 The basis of the system's function would be akin to TITAN: show the outside and overlay it with data. The major departure though is that TITAN, and all of HPVDT's previous vehicles for that matter, have only offered a fixed camera perspective on a fixed screen inside. For the aircraft it was made immediately clear that the video system would need to be 360 degree and head tracking to maximize situational awareness and to minimize the potential motion sickness induced by a video system. This was needed as a minimum for the main pilot, but ideally both pilots would have access to this system.
 

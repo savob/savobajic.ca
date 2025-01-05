@@ -69,7 +69,7 @@ Generating the flashing for the final LED was done using the last of the four av
 
 ## Assembly
 
-As I was finalizing the schematic, I had Bennett begin his hunt for the parts of his desire from my scrap bin. He found and desoldered some buttons and LEDs he liked and we ended up using for the project. All the chips and passives used were ones I had sitting in my toolbox waiting to get used. Other than using exclusively through-hole parts, the main challenge for us was the use of an (ancient) perforated board as the basis of our circuit which was something I hadn't really done since I got into electronics with my [entry fob clone]({{<ref "projects/personal/fob#replicating-the-hardware" >}}). 
+As I was finalizing the schematic, I had Bennett begin his hunt for the parts of his desire from my scrap bin. He found and desoldered some buttons and LEDs he liked and we ended up using for the project. All the chips and passives used were ones I had sitting in my toolbox waiting to get used. Other than using exclusively through-hole parts, the main challenge for us was the use of an (ancient) perforated board as the basis of our circuit which was something I hadn't really done since I got into electronics with my [entry fob clone]({{< ref "projects/personal/fob#replicating-the-hardware" >}}). 
 
 {{< fig src="/images/edit-machine-initial-layout.jpg" caption="Initial layout of primary components" >}}
 
