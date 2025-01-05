@@ -418,16 +418,49 @@ td {
  /* Link */
  /* Note: these only apply to the main body, not header/footer */
  
-main a:link {
+main>section a:link {
   color: var(--unvisitedHyperlink);
 }
 
-main a:visited {
+main>section a:visited {
   color: var(--clickedLinks);
 }
 
-main a:active {
+main>section a:active {
   color: var(--activeHyperlink);
 }
 
 
+/* Table of contents */
+
+details.tableOfContents>nav {
+	margin: -0.5em 0 0.5em 0; 
+	background-color: inherit;
+	text-transform: capitalize;
+	
+	width: 100%;
+	position: relative;
+}
+
+details.tableOfContents>nav a {
+  color: var(--navText);
+  text-align: left;
+  text-decoration: underline;
+  margin: 0;
+  display: block;
+}
+
+details.tableOfContents>nav ul {
+	list-style-type: none;
+}
+
+details.tableOfContents {
+	margin: 2em 0;
+	background-color: var(--navBarColour);
+	padding: 0.5em 1em;
+}
+
+details.tableOfContents>summary {
+	font-size: 1.5em;
+	font-weight: bold;
+}

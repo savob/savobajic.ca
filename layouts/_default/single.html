@@ -14,13 +14,18 @@
 <body>
     {{ partial "header" . }}
 	  
-	  <main>
-	  <section class="mainIntro">
-    {{ partial "titleBlock" . }}
+	<main>
+	<section class="mainIntro">
+        {{ partial "titleBlock" . }}
     </section>
 
+    <details class="tableOfContents">
+        <summary>Table of Contents</summary>
+        {{ .TableOfContents }}
+    </details>
+
     <section class="mainContent">
-    {{.Content}}
+        {{.Content}}
     </section>
     </main>
     
