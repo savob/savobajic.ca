@@ -7,7 +7,7 @@ featuredLinks: [/projects/extracurricular/titan-2022, /projects/personal/esc,  /
 
 # Hi There!
 
-This is a website for Savo Bajic *(me!)*, covering my previous projects and work - lots of embedded systems design: starting from concept to final delivery. 
+This website is for Savo Bajic *(me!)*, covering my projects and work - lots of embedded systems design: from concept to final delivery. 
 
 If you're looking to chat or collaborate drop me a [line]({{< ref "contact">}})!
 

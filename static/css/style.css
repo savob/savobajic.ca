@@ -331,7 +331,6 @@ ul, ol {
   display: flex;
   background-color: var(--navBarColour);
   padding: 0;
-  height: 12em;
   margin: 2rem 0;
   color: var(--navText);
   font-size: 1.25rem;
@@ -343,15 +342,20 @@ ul, ol {
 
 .bio-shot {
   flex-shrink: 0;
-  height: 100%;
+  /* height: 100%; */
+  width: 12em;
   margin: 0 auto;
+}
+
+img.bio-shot {
+  height: 100%;
   object-fit: cover;
 }
 
 
 div.bio-bit {
   padding: 0 2rem;
-  margin: 1rem 0 0 0;
+  margin: 1rem 0 1em 0;
 }
 
 div.bio-bit a:visited, div.bio-bit a:link {
