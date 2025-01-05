@@ -28,8 +28,6 @@ enableGitInfo = true
     
 [markup]
   [markup.goldmark]
-    [markup.goldmark.renderer]
-       unsafe = true
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
         enable = true
