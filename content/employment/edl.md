@@ -11,6 +11,10 @@ points: ["Determining technical project scope from discussion with clients.", "D
 
 {{< fig src="/images/edl-logo.png" caption="Engineering Design Lab's logo, it's on a lot of my emails now!" >}}
 
-I joined [Engineering Design Lab](https://www.engdesignlab.com/), EDL, after being a freelance consultant for them for several months. Still getting started up but it's been super exciting and interesting, and hopefully I can share some of the work I'm doing in the future!
+I joined [Engineering Design Lab](https://www.engdesignlab.com/), EDL, after being a freelance consultant for them for several months. Been there for about a year now and it's been super exciting and interesting, and although I can't share all the details of my work like with my personal projects I've still got some highlights.
 
-Much of my role aligns with what I was doing previously as a [freelancer]({{< ref "employment/freelance" >}}) for them; determining technical scopes, delivering complete systems and firmware - but with some newer roles and responsibilities added as EDL seeks to expand their capabilities in electronics. Already I've had the experience of selecting my first summer intern, which really only has one day less seniority at EDL than me!
+{{< youtube id="HQCfzpiIe7U" title="What is EDL?" >}}
+
+Much of my role aligns with what I was doing previously as a [freelancer]({{< ref "employment/freelance" >}}) for them; determining technical scopes, delivering complete systems and firmware - but with some newer roles and responsibilities added as EDL seeks to expand their capabilities in electronics, including managing some recruiting and staffing as well as liaising directly with clients.
+
+In my time I've had the pleasure to work on some external projects with clients varying from electric mobility startups to artists for public exhibits, as well as some internal projects for the government like WAL-LE and our own product I've been heading - the Vehicle Control Unit (VCU) we're actively launching. I've listed some of these highlights with my [work projects]({{< ref "projects/work" >}}).
