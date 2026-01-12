@@ -146,4 +146,6 @@ As part of the submission as well as some PR for the company, EDL had a document
 
 # Outcome
 
-In the end the project was a success! Our report was reviewed and we were selected to proceed to the next stage where we are required to build a full scale version of our design. This will commence roughly March 2025 and we'll have a year to deliver it, so I'll post some updates here when they're ready.
+In the end the project was a success! Our report was reviewed and we were selected to proceed to the next stage where we are required to build a **full scale** version of our design, so about three times larger in each dimension and capable of carrying a proper payload the Armed Forces would expect.
+
+This work commenced around April 2025, at which point I was already departing EDL so my involvement was limited to reviewing some design choices and offering advice to the team as they recommenced work on WAL-LE. I wish them the best and you can probably find updates from EDL directly on their [website](https://www.engdesignlab.com/) or social media posts.
