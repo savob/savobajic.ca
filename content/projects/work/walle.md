@@ -5,7 +5,7 @@ draft: false
 started: "November 2023"
 finished: "February 2024"
 status: "Complete"
-client: "EDL and the Canadian Department of National Defence"
+client: "The Canadian Department of National Defence via EDL"
 tags: [EDL, EV]
 skills: [embedded, coding, networking]
 summary: "Led the coding and integration of a prototype amphibious electric vehicle for Arctic operation for the Canadian Armed Forces" 
