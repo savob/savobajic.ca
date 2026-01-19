@@ -145,7 +145,11 @@ The screw up I addressed was there from the version 1.0 going through all our de
 
 ## Enclosure Revisions
 
-The enclosure underwent several revisions too, although they were generally less extreme - at least from my view. Granted I wasn't directly involved for the most part. The revisions are also a bit harder to track since different parts underwent revisions at different times so there weren't such clear distinctions for a snapshot of what a given "revision" was.
+The enclosure underwent several revisions too, although they were generally less extreme - at least from my view. Granted I wasn't directly involved for the most part. The revisions are also a bit harder to track since different parts underwent revisions at different times so there weren't such clear distinctions for a snapshot of what a given "revision" was other than the first one being a commercial one, and those that followed were custom.
+
+{{< fig src="/images/vcu_rev_1_0_assembled.jpeg" caption="The first full assembled prototype VCU">}}
+
+As you can see this initial version of the VCU's form was far from something worth selling. The size alone was an issue, without even considering the mated connector sticking out like a spike which would make this that much more difficult to install. Once that was made clear, we embarked on a custom enclosure with a smaller connector system.
 
 ### Sealing
 
