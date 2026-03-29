@@ -6,8 +6,8 @@ started: "December 2021"
 finished: "March 2022"
 status: "Complete"
 client: "Friends"
-tags: ["low power", "attiny85"]
-skills: [embedded, KiCad]
+tags: ["low power", "attiny85", art]
+skills: [art, embedded, KiCad]
 summary: "Built a low-power capacitive sensing, artful circuit board, as a gift for friends and family. My entry to [Hackaday's 2023 Low Power Challenge](https://hackaday.io/contest/189286-2023-hackadayio-low-power-challenge)."
 githubLink: "https://github.com/savob/raccoon"
 thumbnail: "/images/raccoon-hand-soldered.jpg"
