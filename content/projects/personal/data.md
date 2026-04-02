@@ -1,10 +1,10 @@
 ---
 title: "DATA Music Visualizer"
-date: 2026-03-29T19:03:56-04:00
-draft: true
+date: 2024-02-14T19:03:56-04:00
+draft: false
 started: "February 2024"
 finished: "March 2024"
-status: "Shelved"
+status: "Complete"
 client: "Myself"
 tags: [art, audio, lighting]
 skills: [art, pcb, sound]
@@ -46,7 +46,7 @@ I couldn't have completed this as easily without the help of [Elliott Muscat](ht
 
 The project was a success, one of my fastest turnarounds for an idea into reality taking only a couple of weeks to have it working at a basic level! I tuned the effects for a few weeks afterwards. It's impressed most people I've had the chance to show it off to, and I enjoy seeing it run. I learned a fair bit about lighting planning and some basic audio interactions and **I can confidently say that this was a completed project that achieved everything I wanted of it.**
 
-_...That being said, there are always improvements to be made!_ I think this was a beautiful functional prototype but if I were to really release it to the wild I would need to work a fair bit on improving its usability. Some basic ideas would be to use a microphone instead of depending on an aux pass through since few people regularly use those, and even moving to a battery instead so it can be placed freely. Changing the PCB to white on black would definitely improve the look and be more faithful too.
+_...That being said, there are always improvements to be made!_ Changing the PCB to white on black would definitely improve the look and be more faithful too. Even so I think this was a beautiful functional prototype, but if I were to really release it to the wild I would need to work a fair bit on improving its usability _so people find it effortless to use_. Some basic ideas would be to use a microphone instead of depending on an aux pass through since few people regularly use those, and even moving to a battery instead so it can be placed freely. 
 
 # Detailed Report
 
@@ -77,7 +77,7 @@ I wanted there to be several dozen LEDs around the edge so that the lighting eff
 - The RP2040 wouldn't be able to supply all the current needed if all LEDs needed to be on at once
 - I would need a resistor for each individual LED and their variation in resistance would cause nonidentical current and thus brightness at the same duty
 
-For these reasons I used two discrete LED driver chips, the [IS31FL3236A](https://www.lumissil.com/assets/pdf/core/IS31FL3236A_DS.pdf). These are puppetted digitally from the RP2040 to allow each of their 36 LEDs to be controlled independently and also only need a single reference resistor to set the current across all LEDs for a given chip reducing brightness variation.
+For these reasons I used two discrete LED driver chips, the [IS31FL3236A](https://www.lumissil.com/assets/pdf/core/IS31FL3236A_DS.pdf). These are puppetted digitally from the RP2040 to allow each of their 36 LEDs to be controlled independently and also only need a single reference resistor to set the current across all LEDs for a given chip reducing brightness variation. **They had the added benefit of an advertized PWM frequency of 22&nbsp;kHz which meant that with the right configuration there would be no audible noise introduced to the system which might contaminate the audio signal passing through.**
 
 ### Audio Input
 
@@ -137,73 +137,168 @@ Once I had the system connected and powered for the first time I observed no smo
 
 ## Programming
 
-For programming I took a back-to-front approach; I would program the output stage (LEDs) first, so that then I would be able to reliably observe my work on the stages feeding into it, and thus the stages feeding into those. Once I had built up a verified pipeline from audio to LED, I would expand on the lighting effects offered.
+For programming I took a back-to-front approach; I programmed the output stage (LEDs) first, so that then I would be able to reliably observe my work on the stages feeding into it, and thus the stages feeding into those. Once I had built up a verified pipeline from audio to LED, I would expand on the lighting effects offered.
+
+Since I was looking for a fast time to completion I selected the Arduino framework for this project as I was familiar with it and it would likely have some libraries that would spare me some of the work.
 
 ### LED Code
 
-
-
-
-
-
-
-
+Getting the LEDs working wasn't too hard, the driver chips were pretty straight forward to interact with. The only thing that really tripped me up with them was that their I2C addressing was a little confusing, which was compounded by the fact that they only acknowledged write commands; thus they didn't appear when I ran a normal I2C address scanning program which checked for device by _requesting_ data from them. Once I got talking to the right address I had the lights going in no time!
 
 {{< fig src="/images/data_first_illumination.jpg" caption="First proper illumination of a board's LEDs!" >}}
+
+Anyone can make an LED turn on, it takes some skill to make something _✨ sparkle ✨_. So to properly control the LEDs I had to implement two things that were critical for this project. Firstly I had to set the chip into that ultrasonic 22&nbsp;kHz switching mode so the LEDs wouldn't potentially emit an audible hum as the default frequency is 3&nbsp;kHz which is well within audible range. The second notable thing is a key part of any light art project like this, gamma level correction.
+
+Gamma correction is the process of dealing with humans not perceiving light intensity in a linear fashion. I'll leave the full explanation to the [Wikipedia page](https://en.wikipedia.org/wiki/Gamma_correction), but in short it can be approximated as a exponential fit instead - so going from 10% to 20% brightness is a smaller jump in LED power than to go from 80% to 90% brightness. Therefore I needed to do some math to convert between the desired perceived intensity and the appropriate LED power levels. To make my code run faster I limited it to 64 perceived brightness levels and recorded the corresponding calculated LED levels in a look up table (LUT) for the code to use rather than running the calculations every time.
 
 ### Audio Code
 
 Once I had the system powered and connected, I began testing the audio input. Fortunately it worked without major issue. However it did have some difficulty at first and imparted some buzzing to the audio when I was using my desktop as the audio source although it didn't seem to affect the RPi's audio readings. When I switched to my phone it went away. I attribute this to likely be the cause of the longer run of cables from my computer's audio output compared to the phone's.
 
-
-
 {{< fig src="/images/data_testing_with_scope.jpg" caption="Testing setup with oscilloscope probing the audio passed through, headphones split off at the source aux port" >}}
 
+Reading the audio level is fine for some basic effects where one is only concerned with the volume of the music which can be inferred from the amplitude of the signal, and this is what I started with. However to get a better representation of the audio you should use small snippets of multiple samples as this will give you a better idea of the audio in the event you have a sample at the hit of a drum or in the break which would misrepresent the average volume. These snippets also allow for the calculation of a "spectrum" analysis where you can see the presence of different frequencies in the audio which can them be used for more advanced spectrographic effects - think old 2000's audio player visualizations! Granted this microcontroller doesn't have the same computational power for those.
 
+{{< fig src="/images/data_old_visualization.png" caption="Ahh the good old days, where did we go wrong?" attr="Justin Pot" attrlink="https://lifehacker.com/tech/milkymilky-music-visualizer">}}
 
+The actual math used to get the spectrograph for a string of samples I used is called the Fast Fourier Transform (FFT), a common technique for this sort of thing where speed is prized at some cost in accuracy. There are many libraries out there for this, I opted for this [arduinoFFT from kosme](https://github.com/kosme/arduinoFFT). The setup I used is copied below, note that I did have it perform separate processing for the left and right audio channels.
 
+```c++
+const uint16_t NUM_AUDIO_SAMPLES = 128; // Number of samples taken for audio FFT
+const uint16_t NUM_SPECTRUM = NUM_AUDIO_SAMPLES / 2; // Number of entries in the audio spectrograph
 
+const double SAMPLE_FREQ = 25641; // Results in almost 200 Hz wide buckets
+const unsigned int SAMPLE_PER_US = 1000000.0 * (1.0 / SAMPLE_FREQ);
+
+double vReal_R[NUM_AUDIO_SAMPLES];
+double vImag_R[NUM_AUDIO_SAMPLES];
+double vReal_L[NUM_AUDIO_SAMPLES];
+double vImag_L[NUM_AUDIO_SAMPLES];
+int16_t wave_R[NUM_AUDIO_SAMPLES];
+int16_t wave_L[NUM_AUDIO_SAMPLES];
+
+arduinoFFT FFTright = arduinoFFT(vReal_R, vImag_R, NUM_AUDIO_SAMPLES, SAMPLE_FREQ);
+arduinoFFT FFTleft = arduinoFFT(vReal_L, vImag_L, NUM_AUDIO_SAMPLES, SAMPLE_FREQ);
+```
+
+The actual computation code is pretty simple thanks to that library.
+
+```c++
+// FFT Calculation (33ms)
+FFTright.Windowing(FFT_WIN_TYP_HAMMING, FFT_FORWARD);
+FFTleft.Windowing(FFT_WIN_TYP_HAMMING, FFT_FORWARD);
+
+FFTright.Compute(FFT_FORWARD);
+FFTleft.Compute(FFT_FORWARD);
+
+FFTright.ComplexToMagnitude();
+FFTleft.ComplexToMagnitude();
+// Magnitude is in `vReal_x` arrays
+```
+
+Much like light brightness, sound is perceived in an exponential scale, so I performed some linearization. Unlike the LEDs, I did not opt for the lookup table approach as there are far too many possible values for loudness so I actually had the system compute these manually every time. Luckily these calculations were far less numerous than the ones would be for the LEDs. I used the following code for this, which also was meant to bring the loudness to a value between 0 and 1.0 so it could be scaled in later effect stages.
+
+```c++
+#include <math.h>
+
+double normalizeFreqMag(double mag) {
+    const double OFFSET = 1.5;
+    const double SCALING = 1.0 / OFFSET;
+
+    double fy;
+    fy = SCALING * (log10(mag) + OFFSET);
+
+    if (fy < 0) fy = 0;
+    else if (fy > 1.0) fy = 1.0;
+
+    return fy;
+}
+```
 
 ### User Interaction Code
 
+To get the system going I made use of the buttons and LEDs directly wired to the RP2040 for me to control, nothing too crazy there - just some `digitalRead()` and `digitalWrite()` calls. The real meat of this is the capacitance sensor chip, which was my first time using one, or really any "proper" capacitance sensing system.
 
+The CAP1206 did a good job of doing away with a lot of the work on my behalf. Once configured I would just poll it to see which pads were pressed and pass that on, and periodically the code would trigger a re-calibration of the CAP1206 which it would perform internally to accommodate any potential changes in environment. Granted that initial configuration was long compared to most other chips I've used (about 15 functions for different groups of settings), but I guess that's the price of offloading so much work that then your main code is far simpler.
 
+Overall I think that I would reuse the CAP1206 in a heartbeat if I found myself in a project needing capacitive sensing as it had lots of useful features I disabled or ignored altogether for this board.
 
-
-
-
-
-
+Once I had the chip working I did some tests and found that it would work dependably on the four main tabs I intended to use - unfortunately for me though the large pads for "DA" and "TA" didn't work and after some tinkering I gave up on them to focus on the four tabs and developing the rest of the system.
 
 ### Effects Code
 
-With the foundation of the system complete, I had the freedom to build whatever effects I wanted, so I drafted a few in my notebook and then got to working on them.
+With the foundation of the system complete, I had the freedom to build whatever effects I wanted, so I drafted a few in my notebook and then got to working on them. _Unfortunately I don't have my notebook handy as I write this currently so I'll likely flesh this out more in the future._
 
+My first "effect" was simply a constant and uniform brightness on the LEDs which could be adjusted using the tabs to ensure that the LEDs and tabs were working as intended. After that I made the lights respond in a uniform brightness based on the volume of the audio coming in to ensure the basic audio was working too.
 
-I did even consider a basic "rendering" engine, but I need to check my notes.
+Since I wanted a multitude of effects I had to plan ahead to prevent my code becoming a mess. For simplicity and extensibility I decided each effect would be a "state" and coded as a separate function, where two buttons would change the state and the other two would control a "user scalar" that could be used by effects to adjust them, for example to control the brightness mentioned before.
 
+```c++
+if (override) state = overrideState;
+switch (state) {
+case ledFSMstates::BREATH:
+    breathingLED(5000);
+    if (returnState) state = ledFSMstates::SOLID;
+    if (advanceState) state = ledFSMstates::SPINNING;
+    break;
+case ledFSMstates::SPINNING:
+    spinningLED(5000, userControl);
+    if (returnState) state = ledFSMstates::BREATH;
+    if (advanceState) state = ledFSMstates::SWEEP;
+    break;
+case ledFSMstates::SWEEP:
+    sweepLED(500, 500, toggleUser);
+    if (returnState) state = ledFSMstates::SPINNING;
+    if (advanceState) state = ledFSMstates::SWAY;
+    break;
+...
+```
 
+These states would control not only the illumination but **also what kind of audio processing would be done**. Although we could maintain the 20 updates per second in the most intense processing (dual spectrographs), if it wasn't needed we could go to a simpler but sufficient method to achieve faster updates.
 
+```c++
+// Decide what audio processing is needed for the next cycle
+// Uses a lot of "fall-through cases" to collect multiple states
+switch (state) {
+case ledFSMstates::AUD_HORI_SPECTRUM:
+case ledFSMstates::AUD_SPLIT:
+case ledFSMstates::AUD_SPLIT_SPIN:
+    sampleAudio = AudioProcessing::SPECTRUM;
+    break;
+case ledFSMstates::AUD_UNI:
+case ledFSMstates::AUD_BALANCE:
+case ledFSMstates::AUD_VERT_VOL:
+case ledFSMstates::AUD_HORI_VOL:
+case ledFSMstates::AUD_HORI_SPLIT_VOL:
+    sampleAudio = AudioProcessing::RMS_ONLY;
+    break;
+default: 
+    sampleAudio = AudioProcessing::NO_AUDIO;
+    break;
+}
+```
 
+Once I had the frame work set up it was pretty easy and fun to add in additional lighting effects and schemes. The only thing that would occasionally catch me is failing to update the transitions for the existing effects to include the new effect. **In the end I prepared almost 20 different effects for the board, about half of which were responsive to audio.**
 
-
+_In retrospect this did start to feel a bit unwieldy as I got past a dozen "states" but I kept the framework in place, I wonder how I could make this better going forward. Then again, it worked just fine which I guess is the important thing here._
 
 ## Reflections
 
+This was a success in my book, a tightly defined project delivered in record time, that was fun to do and show off. Sadly life got in the way and I haven't yet been able to show Elliott the final product in person - maybe some day in future. I've enjoyed having the board and displaying it nonetheless.
 
+In terms of lessons I learned, the main one that stuck out to me at the time was the audio processing and playing with FFTs; the capacitance sensor although novel was really "just" another sensor I wrote a driver for at the end of the day. 
 
-
-
-
+As the dust settled I noticed many of minor shortsighted things I would like to change in terms of the hardware design which shouldn't surprize anyone who's made something in a week: many compromises were made from a usability standpoint in the interest of completion speed and minimizing the chances something failed and would hold back the project. **That's the real lesson I feel now looking back on this; knowing the true drawbacks of usability compromises and when to take them - _after all what good is technology that no one finds convenient to use?_**
 
 {{< fig src="/images/data_presentation_complete.jpg" caption="A small parting arrangement of the DATA system on my work tables" >}}
 
 ### Future Improvements
 
-As it stands I'm not sure about a return to this project soon, life's gotten quite busy for me and I don't have much time to spare. Should I or anyone else decide to pick up the project again I would advise them to consider the following changes, namely for portability:
+As it stands I'm not sure about a return to this project soon, life's gotten quite busy for me and I don't have much time to spare. Should I or anyone else decide to pick up the project again I would advise them to consider the following changes, namely for portability. 
 
  - Switch from aux to a microphone. Using an aux pass through isn't super convenient for many people and force the board to live in proximity to audio device rather than on display. Using a microphone to listen for audio would allow for freer placement of the board, aux can still remain as a possible input.
  - Make it battery powered. For much the same reason as the microphone, it would be handy to move it around freely. The cell if placed cleverly on the back could act as a supporting leg for the board to stand upright on a table without a separate stand part.
  - Shrink the board so it is easier to place.
- - Ditch stereo effects. They require double the processing of mono effects and visually haven't paid off much. Perhaps tuning the visuals' code might help.
+ - Either ditch or tune stereo effects. They currently require double the processing of mono effects but fail to be visually distinct from the mono effects, maybe they just need to be adjusted to be more evident.
  - Add a system to detect proximity to a wall and adjust the lighting of LEDs to suit based on their orientation.
+ 
