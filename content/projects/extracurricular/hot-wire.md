@@ -15,9 +15,9 @@ thumbnail: "/images/hot-wire-cut-foam.jpg"
 
 # Overview
 
-For our aircraft project, HPVDT was looking to build a hot-wire cutter for foam to use in the development process of our airfoils to make prototypes, and then the mid scale production of them when a design is set. 
+For our aircraft project, HPVDT was looking to build a hot-wire cutter for foam to use in the development process of our airfoils to make prototypes, and then the mid scale production of them when a design is set. In CNC terms I was in was in charge of sorting out the process of taking the [completed G-code from our designers](./#getting-the-foil-designs-and-g-code) for the profiles and running it on some custom hardware.
 
-Although there was another team member that was in charge of this project overall, I aided with regards to the low-level electronics needed. My contributions to this project was to aid in the design and assembly of the electronics system, as well as deploying and modifying firmware on the Arduino controlled CNC to work with the control software on the PC.
+Although there was another team member that was in charge of this project overall, I aided with regards to the low-level electronics needed. My contributions to this project was to aid in the design and assembly of the electronics system, as well as deploying and modifying firmware on the Arduino controlled CNC to work with the control software on the PC. 
 
 ## Requirements
 
@@ -43,6 +43,12 @@ As part of our aircraft project, HPVDT was looking to get a hot-wire cutter for 
 A hot wire foam cutter is a basic machine in principle. There are two opposing vertical planar CNCs, between them a piece of wire is connected and held in tension through which a current flows and heats it up. A piece of foam is placed between them which is then cut according to the profiles drawn on each of the CNCs. We were heavily inspired by the work of others like [How To Mechatronics](https://youtu.be/oIKEYM-lMWQ).
 
 In terms of electronics hardware, there is not a whole lot going on. There is a central controller which sends commands to the motor driver for each axis as needed. There is no positional feedback for each axis other than the limit switches, since the foam does not present any meaningful resistance to the cutting motions.
+
+## Getting the Foil Designs and G-Code
+
+The first step in the process of making the wings was designing them. I believe the cross sections were initially designed and validated using [XFOIL](https://web.mit.edu/drela/Public/web/xfoil/) to then be turned into 3D wings using [SolidWorks](https://www.solidworks.com/product/students) which sponsors the team with student licenses
+
+With the foils designed we had to turn them into G-Code to command the machine to move. For this the team evaluated a couple options before settling on [DevFoam](https://www.devcad.com/eng/devfoam3.asp) for our purposes which has served us well over the course of the project.
 
 ## Hardware design
 
