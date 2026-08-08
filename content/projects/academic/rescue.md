@@ -15,7 +15,7 @@ thumbnail: "/images/rescue-turtlebot2.png"
 
 # Overview
 
-For my class "MIE444, Mechatronics Systems" we had to develop a control algorithm that would eventually be deployed on a robot to aid the victims of a simulated disaster. Unlike the project for MIE443, [the mazebot](../mazebot), **the focus was solely on the algorithms** (no hardware design) as we would be deploying on a standard commercial robot kit called the [TurtleBot2](https://www.turtlebot.com/turtlebot2/). These algorithms had to work within the [Robotics Operating System](https://www.ros.org/) (ROS) framework.
+For my class "MIE443, Mechatronics Systems" we had to develop a control algorithm that would eventually be deployed on a robot to aid the victims of a simulated disaster. Unlike the project for MIE444, [the mazebot](../mazebot), **the focus was solely on the algorithms** (no hardware design) as we would be deploying on a standard commercial robot kit called the [TurtleBot2](https://www.turtlebot.com/turtlebot2/). These algorithms had to work within the [Robotics Operating System](https://www.ros.org/) (ROS) framework.
 
 The project had three milestone for which my team of three had to submit both code to control the robot, as well as a report explaining and justifying our choices. We each had to submit a small report individually for these, answering a couple of questions. The milestones were:
 
