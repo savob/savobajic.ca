@@ -46,7 +46,9 @@ I couldn't have completed this as easily without the help of [Elliott Muscat](ht
 
 The project was a success, one of my fastest turnarounds for an idea into reality taking only a couple of weeks to have it working at a basic level! I tuned the effects for a few weeks afterwards. It's impressed most people I've had the chance to show it off to, and I enjoy seeing it run. I learned a fair bit about lighting planning and some basic audio interactions and **I can confidently say that this was a completed project that achieved everything I wanted of it.**
 
-_...That being said, there are always improvements to be made!_ Changing the PCB to white on black would definitely improve the look and be more faithful too. Even so I think this was a beautiful functional prototype, but if I were to really release it to the wild I would need to work a fair bit on improving its usability _so people find it effortless to use_. Some basic ideas would be to use a microphone instead of depending on an aux pass through since few people regularly use those, and even moving to a battery instead so it can be placed freely. 
+_...That being said, there are always improvements to be made!_ Changing the PCB to white on black would definitely improve the look and be more faithful too. Even so I think this was a beautiful functional prototype, but if I were to really release it to the wild I would need to work a fair bit on improving its usability _so people find it effortless to use_. Some basic ideas would be to use a microphone instead of depending on an aux pass through since few people regularly use those, and even moving to a battery instead so it can be placed freely.
+
+_Well after I finished this I stumbled on this [Scott Lawson's write up](https://scottlawsonbc.com/post/audio-led) of his popular [audio reactive LED strip code](https://github.com/scottlawsonbc/audio-reactive-led-strip), and it showed me some of the ways I could improve the effects to feel better. It delves into some of the ways you can better model the way us humans perceive sound for more "natural" effects as well as some other technical tricks._
 
 # Detailed Report
 
@@ -302,3 +304,5 @@ As it stands I'm not sure about a return to this project soon, life's gotten qui
  - Either ditch or tune stereo effects. They currently require double the processing of mono effects but fail to be visually distinct from the mono effects, maybe they just need to be adjusted to be more evident.
  - Add a system to detect proximity to a wall and adjust the lighting of LEDs to suit based on their orientation.
  
+If anyone is interested in this sort of LED fun I would strongly recommend reading [this write up](https://scottlawsonbc.com/post/audio-led) of a popular [audio reactive LED strip code](https://github.com/scottlawsonbc/audio-reactive-led-strip). It showed me some of the ways I could improve the effects to feel better by better modelling the way we hear sound for better effects in addition to some technical trickery to improve responsiveness without trading precision. So I would definitely consult that if restarting this project, or others like it.
+
