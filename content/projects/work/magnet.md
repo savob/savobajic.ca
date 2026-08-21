@@ -15,7 +15,7 @@ thumbnail: "/images/magnet-assembled.jpg"
 
 # Overview
 
-When I was a research assistant for AMNL my primary job was to design and build a system to generate alternating 3D magnetic fields at frequencies in the 10's of kHz, across a workspace on the order of a couple cm. This was to be used to later test and tune the hyperthermia therapy we were developing where these fields were meant to cause nanoparticles to generate heat.
+When I was a summer research assistant for the [Advanced Micro and Nanosystems Laboratory (AMNL)](https://amnl.mie.utoronto.ca/) my primary job was to design and build a system to generate alternating 3D magnetic fields at frequencies in the 10's of kHz, across a workspace on the order of a couple cm. This was to be used to later test and tune the hyperthermia therapy we were developing where these fields were meant to cause nanoparticles to generate heat.
 
 In addition to building the field generator, I was meant to deliver a control scheme for it to aid in localizing the magnitude of the resulting magnetic field as well as a recommended particle size derived from either simulations or experiments.
 
@@ -23,8 +23,8 @@ In the end I was able to deliver a completely assembled design with my simulatio
 
 ## Requirements
 
-- Use iron nanoparticles between 200nm and 5um diameter
-- Generate a controlled 3D magnetic field with a strength exceeding 20mT across the work volume
+- Use iron nanoparticles between 200&nbsp;nm and 5&nbsp;um diameter
+- Generate a controlled 3D magnetic field with a strength exceeding 20&nbsp;mT across the work volume
 - Use the lab standard coil driver
   - ±50&nbsp;V, 5&nbsp;A output capability
   - Use an analog voltage input that is magnified
@@ -75,7 +75,7 @@ In addition to the design I was asked to provide supporting simulations to justi
 
 Unlike most of my previous projects, this one required significant research. Firstly to help me get up to speed on the subject, ad secondly to aid me in my choices either as guidance or validation by seeing how things went for others attempting similar work. So research and literature review were a consistent part of this project, there wasn't a day that passed where I didn't look at at least one paper in the process of working.
 
-I gathered my research not dissimilarly to when I was doing assignments in undergrad, through searches on the web or though the University's libraries. Occasionally, especially at the beginning my supervisor would provide me with papers they found would be useful for me. I kept a couple dozen papers saved on my computer that I regularly referenced.
+I gathered my research similarly to when I was doing assignments in undergrad, through searches on the web or though the University's libraries. Occasionally, especially at the beginning my supervisor would provide me with papers they found would be useful for me. I kept a couple dozen papers saved on my computer that I regularly referenced.
 
 The topic that I spent the most time researching by far was magneto-thermal interactions of nanoparticles. This was because it was the most foreign topic to me within my scope, and also the one that is currently least understood in general of all my topics. So much so that COMSOL Multiphysics did not instill confidence in me that it would simulate it properly so I was researching the current analytical models for magnetic losses and doing calculations by hand and with computational software in parallel.
 
@@ -91,7 +91,7 @@ The magnetic field generator took two iterations to design. This is due to me fa
 
 Once I had completed my initial reading and research, I began designing the 3D magnetic field generator apparatus with some directions and suggestions from my supervisor.
 
-The main direction given for the final design, other than informing me that I would need to fit the microscopes, was that they wanted a system of eight magnetic tweezers arranged in pairs. This would form four axes of control intersecting the centre of the workspace since each set of coils forming an axis would be wired together and thus be generating equal but opposite magnetic fields.
+The main direction given for the final design, other than informing me that I would need to fit the microscopes, was that they wanted a system of eight magnetic tweezers arranged in pairs. This would form four axes of control intersecting the center of the workspace since each set of coils forming an axis would be wired together and thus be generating equal but opposite magnetic fields.
 
 ### Measurements
 
@@ -243,16 +243,17 @@ In the magnetic losses simulation of COMSOL, a differential formula is used to d
 
 $$ B = μ_0 * (μ' - iμ'') * H $$
 
-> \\(B\\), ambient magnetic field  
-> \\(μ_0\\), permeability of vacuum  
+> \\(B\\), ambient magnetic field
+> \\(μ_0\\), permeability of vacuum
 > \\(H\\), the magnetization of the material
 
 When ploted on a graph of \\(B\\) vs. \\(H\\) it would result in an ellipse centred on the origin. The magnetic losses per cycle can be found by taking the integral of the ellipse's enclosed area.
 
-These parameters are highly dependant on the application of a material and thus rarely stated in data sheets. So I began researching to determine them for myself, either through other people's research or additional simulations. After some digging through COMSOL's documentation, I found an application note describing how to use other simulations to gather the data one would need and then the operations needed to convert this data into the two parameters to use.
+These parameters are highly dependent on the application of a material and thus rarely stated in data sheets. So I began researching to determine them for myself, either through other people's research or additional simulations. After some digging through COMSOL's documentation, I found an application note describing how to use other simulations to gather the data one would need and then the operations needed to convert this data into the two parameters to use.
 
 ## Running Out of Time
 
 Unfortunately, I did not have the time I needed to attempt the process of determining permeabilities analytically before my placement was over. This meant that I was unable to continue and try answering my other questions so we could confidently use the simulations to predict which nanoparticles and frequency pairing would be optimal for our therapy.
 
 As part of my hand-over I left a series of instructions for the next person to follow along and hopefully complete these simulations.
+
